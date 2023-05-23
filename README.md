@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# 프론트엔드
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+본 문서는 프로젝트의 코딩 컨벤션을 위한 문서이다.
 
-## Available Scripts
+본 문서는 프로젝트 종료 후 폭파할 예정이다.
 
-In the project directory, you can run:
+## 작성규칙
+- 폴더
+    - 폴더명은 소문자로 작성한다.
+    - 폴더명을 단수로 작성한다.
 
-### `npm start`
+- 파일
+    - 파일명은 camel case를 지키되, 화면 구성을 위한 파일은 첫 글자를 대문자로 작성한다.
+        - 예) 메인 페이지의 파일명은 MainPage.js, 메인 페이지의 css는 main.css 또는 mainPage.css
+    - 파일명과 화면의 함수명을 동일하게 작성
+    - 이미지 파일은 /public/img에 저장한다.
+        - 이미지 파일의 주소는 /img/*.*이다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 변수
+    - 변수명은 camel case를 지켜 작성한다. 
+        - 대문자로 시작하지 말 것!
+        - snake case 지양할 것!
+    - 카테고리가 같은 변수가 많을 경우 object로 만들어서 사용한다.
+        - 예) 게시판 작성 시 작성정보(제목, 주소, 기간, 이미지 등)를 저장할 목적으로 여러 개의 변수를 만들지 말고 object로 간단하게 만들 것
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 함수 
+    - 함수명은 시작을 대문자로 작성하면서 camel case를 지켜 작성한다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 위치
+- 기존 위치와 다른 부분이 있을 수 있음
+    - 노션 화면목록에 바뀐 위치와 이름을 작성해 두었으니 참고해 주세요

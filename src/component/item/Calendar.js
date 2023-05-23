@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 function Calendar() {
     const [data, setData] = useState();
     const [today, setToday] = useState(new Date());
-    const [nowDate, setNowDate] = useState(new Date());
+    const [nowDate] = useState(new Date());
 
     useEffect(
         () => {
