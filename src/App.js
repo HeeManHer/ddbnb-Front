@@ -62,8 +62,13 @@ function App() {
 
           <Route path="about" element={<AboutPage />} />
 
+          <Route path="myReview" element = {<MyReviewPage/>} />
+          <Route path="AllReview" element = {<AllReviewPage/>}/>
+
           <Route path="mypage" element={<MyPageMain />} />
           <Route path="userProfile" element={<UserProfile />} />
+
+
 
 
         </Route>
