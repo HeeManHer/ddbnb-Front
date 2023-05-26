@@ -1,0 +1,208 @@
+.main {
+    width: 60vn;
+}
+
+.mainpagebox {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: solid #D8D8D8 1px;
+}
+
+.write {
+    margin-top: 1%;
+    position: relative;
+    display: flex;
+    left: 80%;
+    padding: 1%;
+    background-color: white;
+    border: solid #D8D8D8 1px;
+    cursor: pointer;
+}
+
+.doglistbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.searchinfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    width: 8%;
+}
+
+.btnlist {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.wherewhen {
+    display: flex;
+}
+
+.wherewhen section:nth-child(1) {
+    margin-right: 300px;
+    margin-left: 30px;
+}
+
+
+.selectboxlist {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* gap: 10px; */
+    margin-left: 30px;
+    background-color: aqua;
+    height: 80px;
+}
+
+.selectboxlist div {
+    margin-bottom: 40px;
+}
+
+
+
+.title {
+    margin-left: 30px;
+}
+
+.when {
+    /* position: relative; */
+    display: flex;
+}
+
+.firstselect {
+    margin-right: 10px;
+    background-color: #D8D8D8;
+    height: 30px;
+    /* padding: 1px 20px; */
+    width: 100px;
+}
+
+.secondselect {
+    background-color: #D8D8D8;
+    height: 30px;
+    /* padding: 1px 20px; */
+    width: 100px;
+
+}
+
+.doglist {
+    border-radius: 5px;
+    border: none;
+    background-color: #D8D8D8;
+    color: #2D2D2D;
+    padding: 3%;
+    color: black;
+    cursor: pointer;
+    width: 90px;
+    margin-left: 10px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.doglist:focus,
+.doglist:active {
+    background-color: #fab7a2;
+    color: black;
+}
+
+.statecheck {
+    display: flex;
+    justify-content: right;
+
+    /* align-items: right; */
+    margin-right: 10%;
+}
+
+.in {
+    display: flex;
+    background-color: white;
+    border: 1px solid #8D8D8D;
+    width: 80%;
+    align-items: center;
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-left: 10%;
+    justify-content: space-between;
+}
+
+.line {
+    border-top: 1px solid #8D8D8D;
+}
+
+.wheretext {
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+}
+
+.textlist {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 200%;
+    width: 200%;
+    padding: 2%;
+}
+
+.dogimg {
+    width: 300px;
+    height: 200px;
+}
+
+.star {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stardivbtn {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.divbtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.columncss {
+    display: flex;
+    flex-direction: column;
+}
+
+.textlist>div {
+    margin-bottom: 1%;
+}
+
+.columncss>div {
+    margin-top: 10px;
+}
+
+.divbtn>button {
+    margin-left: 60px;
+    padding: 5px 10px;
+    /* 원하는 크기로 설정하세요 */
+}
+
+.star {
+    color: #EFF244;
+}
+
+.dateselect {
+    height: 30px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}

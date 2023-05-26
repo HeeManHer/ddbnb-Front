@@ -1,0 +1,32 @@
+.petmombtn {
+    border-radius: 5px;
+    border: none;
+    background-color: #D8D8D8;
+    color: #2D2D2D;
+    padding: 3%;
+    color: black;
+    cursor: pointer;
+    width: 120px;
+    margin-left: 30px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.petmombtn:focus,
+.petmombtn:active {
+    background-color: #fab7a2;
+    color: black;
+}
+
+.asin {
+    color: #FFC0F1;
+}
+
+.sidogu {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+
+}
