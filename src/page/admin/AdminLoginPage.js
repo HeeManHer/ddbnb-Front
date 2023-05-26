@@ -1,6 +1,16 @@
+import '../../css/admin.css';
+
 function AdminLoginPage() {
     return (
-        <h1>AdminLoginPage</h1>
+        <div className="container">
+            <div className="mainheader">
+            </div>
+            <div>
+            </div>
+            <div>
+                {/* 푸터 */}
+            </div>
+        </div>
     )
  }
 
