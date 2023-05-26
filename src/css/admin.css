@@ -1,0 +1,229 @@
+.container {
+    width: 70vw;
+
+
+    /* border: 1px solid black; */
+}
+
+.menucontainer {
+    width: 300px;
+    height: 85vh;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+
+.mainheader {
+    width: 1920px;
+    height: 5vh;
+}
+
+.header {
+    width: 1920px;
+    height: 104px;
+    display: flex;
+    justify-content: start;
+    text-shadow: 0px 4px 4px gray;
+}
+
+.menuheader {
+    width: 100%;
+    height: 60px;
+    border: 1px solid black;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    background-color: #8E8E8E;
+
+}
+
+.searchheader {
+    width: 100%;
+    height: 60px;
+    border: 1px solid black;
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+    background-color: #8E8E8E;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.searchheader2 {
+    width: 100%;
+    height: 60px;
+    border: 1px solid black;
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+    background-color: #8E8E8E;
+    margin-top: 20px;
+    align-items: center;
+
+    display: flex;
+}
+
+.searchbutton {
+    width: 85px;
+    height: 35px;
+    color: black;
+    background-color: white;
+    font-size: 18px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.changebutton {
+    width: 135px;
+    height: 45px;
+    background-color: white;
+    color: #8D8D8D;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.buttonlist {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 5px;
+    /* border: 1px solid black; */
+
+}
+
+.memberlist {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.memberlist>*>tr>* {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+
+.menu1 {}
+
+
+.modalcontainer {
+    width: 340px;
+    height: 530px;
+    border: 1px solid black;
+}
+
+.modalheader {
+    width: 325px;
+    height: 55px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 7px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.reportcontent {
+    width: 300px;
+    height: 160px;
+    border: 1px solid black;
+    margin-left: 20px;
+    margin-top: 30px;
+
+}
+
+.reportbox1 {
+    margin-left: 20px;
+}
+
+.reportbox2 {
+    margin-left: 50px;
+}
+
+.reporttext1 {
+    margin-left: 7px;
+}
+
+.reporttext2 {
+    margin-left: 35px;
+}
+
+.reporttext3 {
+    margin-left: 20px;
+}
+
+.menutext1 {
+    width: 260px;
+    height: 40px;
+    border: 1px solid black;
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+.modal2h {
+    margin-left: 20px;
+}
+
+.checkbox {
+    width: 17px;
+    height: 17px;
+}
+
+.checkbutton {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-left: 60px;
+    width: 121px;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cancelbutton {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 121px;
+    height: 55px;
+    border-radius: 5px;
+    background-color: white;
+    border: 3px solid #FAB7A2;
+}
+
+.memberbutton1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 121px;
+    height: 55px;
+    border-radius: 5px;
+    background-color: white;
+    border: 3px solid #FAB7A2;
+}
+
+.memberbutton2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 60px;
+    width: 121px;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+}
+
+.number {
+    width: 94px;
+    height: 19px;
+}
