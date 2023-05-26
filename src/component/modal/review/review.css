@@ -1,0 +1,307 @@
+리뷰모달css .reviewmodal {
+    width: 400px;
+    height: 600px;
+    padding: 30px;
+}
+
+.reviewmodal-header {
+    width: 380px;
+    height: 71px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #FAB7A2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bolder;
+    position: relative;
+    left: 10px;
+    top: 10px;
+
+}
+
+.reviewmodal-main {
+    width: 70px;
+    height: 30px;
+    background-color: #FAB7A2;
+    color: #2d2d2d;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: border;
+    font-size: 13px;
+}
+
+.reviewmodal-main2 {
+    width: 70px;
+    height: 30px;
+    background-color: #FAB7A2;
+    color: #2d2d2d;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: border;
+    font-size: 13px;
+    position: relative;
+    left: 42px;
+    top: 40px;
+}
+
+.reviewmodal-main3 {
+    width: 90px;
+    height: 30px;
+    background-color: #FAB7A2;
+    color: #2d2d2d;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: border;
+    font-size: 13px;
+
+
+}
+
+.reviewmodal-position {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    position: relative;
+    top: 30px
+}
+
+fieldset {
+    display: inline-block;
+    /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl;
+    /* 이모지 순서 반전 */
+    border: none;
+    /* 필드셋 테두리 제거 */
+    position: relative;
+    right: 50px;
+    right: 0px;
+
+}
+
+fieldset legend {
+    text-align: left;
+}
+
+input[type=radio] {
+    display: none;
+    /* 라디오박스 감춤 */
+}
+
+label {
+    font-size: 1em;
+    /* 이모지 크기 */
+    color: transparent;
+    /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0;
+    /* 새 이모지 색상 부여 */
+}
+
+label:hover {
+    text-shadow: 0 0 0 yellow;
+    /* 마우스 호버 */
+}
+
+label:hover~label {
+    text-shadow: 0 0 0 yellow;
+    /* 마우스 호버 뒤에오는 이모지들 */
+}
+
+input[type=radio]:checked~label {
+    text-shadow: 0 0 0 yellow;
+    /* 마우스 클릭 체크 */
+}
+
+.starcount {
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+}
+
+.reviewmodal textarea {
+    width: 320px;
+    height: 180px;
+    position: relative;
+    left: 40px;
+    top: 50px;
+    border-radius: 20px;
+    border-color: #FAB7A2;
+    resize: none;
+}
+
+.reviewmodal h3 {
+    position: relative;
+    top: 35px;
+    left: 30px;
+    font-size: 15px;
+}
+
+.reviewmodal-imgbtn {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    top: 50px;
+    left: 10px;
+    font-size: 30px;
+    color: white;
+    background-color: #D2D2D2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewmodal-image {
+    width: 100px;
+    /* 원하는 크기로 조정하세요 */
+    height: 100px;
+    object-fit: cover;
+    /* 이미지가 요소에 맞게 잘리지 않도록 설정 */
+    position: relative;
+    top: 40px;
+}
+
+.reviewmodal-btns {
+    width: 400px;
+    height: 100px;
+    position: relative;
+    top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.reviewmodal-btn {
+    background-color: white;
+    color: black;
+    width: 90px;
+    height: 40px;
+    font-weight: bold;
+    font-size: "13px";
+    user-select: none;
+}
+
+.reviewmodal-btn.selected {
+    background-color: #FAB7A2;
+    color: black;
+}
+
+.reviewmodal-btn.selected:active {
+    background-color: #FAB7A2;
+    color: black;
+}
+
+.imgAndBtn {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.reviewlist {
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.reviewlist-people {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reviewlist-people-line {
+
+    background-color: #FAB7A2;
+    width: 360px;
+    height: 70px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewlist-imgandName {
+    width: 50px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+.reviewlist-img {
+
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #D2D2D2;
+
+}
+
+.reviewlist-imgandName h6 {
+
+    font-size: 1px;
+    font-weight: bolder;
+    width: 100PX;
+    height: 10px;
+    display: flex;
+    justify-content: start;
+    position: relative;
+    left: 18px;
+}
+
+.reviewlist-join {
+    background-color: white;
+    font-size: 1px;
+    font-weight: bolder;
+    border-radius: 3px;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 20px;
+}
+
+.reviewlist-organize {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    width: 200px;
+    position: relative;
+    right: 70px;
+    height: 60px;
+}
+
+.reviewlist-h4 {
+    position: relative;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+}
+
+.checkbox {
+    position: relative;
+    left: 40px;
+}
+
+.ex {
+    background-color: #FAB7A2;
+}
