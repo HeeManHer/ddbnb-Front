@@ -1,0 +1,231 @@
+.petsitterrecruitcontainer {
+    width: 80vn;
+    height: auto;
+}
+
+.smallcontainer {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+.littlebitsmall {
+    width: 100%;
+}
+
+.textarea {
+    resize: none;
+}
+
+.image-container {
+    position: relative;
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.attached-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.custom-file-upload {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 30px;
+    background-color: #e9e9e9;
+    color: #333;
+    border-radius: 2px;
+    cursor: pointer;
+
+}
+
+/* .custom-file-upload:hover {
+    background-color: #ddd;
+} */
+
+.dogwrite {
+    resize: none;
+    height: 100px;
+    width: 100%;
+}
+
+.abc {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.acb {
+    display: flex;
+    width: 110%;
+}
+
+.aaa {
+    display: flex;
+    justify-content: space-between;
+}
+
+.petsitterrecruitbtn {
+    background-color: #FAB7A2;
+    color: black;
+    border-style: none;
+    border-radius: 5px;
+    width: 30%;
+    height: 40px;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-bottom: 3%;
+}
+
+.cruittext {
+    margin-left: 5px;
+    height: 20px;
+}
+
+.imgbtndiv {
+    display: flex;
+}
+
+
+.buttoncontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.insertwrite {
+    margin-left: 70%;
+
+}
+
+
+
+.buttoncontainer>button {
+    background-color: #D8D8D8;
+    border-style: none;
+    width: 7%;
+    height: 30px;
+    border-radius: 10%;
+}
+
+.yongdate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.writedate {
+    margin-top: 1%;
+
+}
+
+.dolbombtn {
+    border-radius: 5px;
+    border: none;
+    background-color: #D8D8D8;
+    color: #2D2D2D;
+    padding: 2%;
+    color: black;
+    cursor: pointer;
+    width: 90px;
+    margin-left: 10px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dolbombtn:focus,
+.dolbombtn:active {
+    background-color: #fab7a2;
+    color: black;
+}
+
+.board {
+    font-size: 50px;
+}
+
+.firstselect {
+    margin-left: 1%;
+}
+
+.inputname {
+    position: relative;
+    display: flex;
+}
+
+.textinput {
+    margin-left: 1%;
+}
+
+.dateselect1 {
+    margin-left: 1%;
+    height: 30px;
+    margin-right: 1%;
+}
+
+.dateselect2 {
+    height: 30px;
+    margin-left: 1%;
+    margin-right: 10%;
+}
+
+.firstselect1 {
+    height: 30px;
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+.secondselect1 {
+    height: 30px;
+    margin-left: 2%;
+}
+
+.significant {
+    height: 50px;
+    width: 200px;
+    margin-left: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.significanttext {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.significantbtn {
+    background-color: #FAB7A2;
+    color: black;
+    border-style: none;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.gender {
+    margin-left: 10%;
+}
+
+.dogdog {
+    margin-top: 5%;
+}
+
+.moneygive {
+    margin-left: 2%;
+    height: 25px;
+}
