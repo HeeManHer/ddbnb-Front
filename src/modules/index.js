@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import sampleReducer from './sample';
+import petMomReducer from './petMom';
+import petSitterReducer from './petSitter';
+import applicantsReducer from './applycant';
+import pageReducer from "./currentPage";
+import userReportReducer from "./userReport";
+
+
 
 const rootReducer = combineReducers({
-    sampleReducer
+    petMomReducer, petSitterReducer, applicantsReducer, pageReducer, userReportReducer
 });
 
 export default rootReducer;

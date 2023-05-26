@@ -1,0 +1,42 @@
+[
+    {
+        "no": 1,
+        "date": "2023/05/11",
+        "reporterId": "user01",
+        "reportedId": "user03",
+        "reason": "욕설",
+        "result": "3일 정지"
+    },
+    {
+        "no": 2,
+        "date": "2023/05/12",
+        "reporterId": "user02",
+        "reportedId": "user03",
+        "reason": "도배",
+        "result": "3일 정지"
+    },
+    {
+        "no": 3,
+        "date": "2023/05/12",
+        "reporterId": "user04",
+        "reportedId": "user03",
+        "reason": "욕설",
+        "result": "3일 정지"
+    },
+    {
+        "no": 4,
+        "date": "2023/05/13",
+        "reporterId": "user05",
+        "reportedId": "user03",
+        "reason": "욕설",
+        "result": "3일 정지"
+    },
+    {
+        "no": 5,
+        "date": "2023/05/13",
+        "reporterId": "user03",
+        "reportedId": "user01",
+        "reason": "도배",
+        "result": "3일 정지"
+    }
+]

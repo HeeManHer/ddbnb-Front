@@ -1,0 +1,81 @@
+.mainPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    margin-bottom: 3vh;
+}
+
+.banner {
+    width: 100%;
+    min-width: 80vw;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cardList>.card {
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardName {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.more {
+    border: none;
+    width: 4rem;
+    height: 2rem;
+}
+
+.lastedCard {
+    min-width: 250px;
+    width: 16vw;
+    height: 350px;
+
+    margin-top: 20px;
+    background-color: #f5f5f5;
+}
+
+.lastedCard-inner {
+    flex-direction: column;
+
+    width: 80%;
+    height: 80%;
+
+    margin: auto;
+}
+
+.date>img {
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.date {
+    flex-wrap: wrap;
+}
+
+.profil {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+}
+
+.profilImg {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 5px;
+}
