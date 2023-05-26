@@ -2,9 +2,9 @@ import "../../css/calendar.css";
 import { useEffect, useState } from 'react';
 
 function Calendar() {
-    const [data, setData] = useState();
+    const nowDate = new Date();
     const [today, setToday] = useState(new Date());
-    const [nowDate] = useState(new Date());
+    const [data, setData] = useState();
 
     useEffect(
         () => {
@@ -15,6 +15,7 @@ function Calendar() {
 
     const prevCalendar = () => {
         setToday(new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()));
+
     }
 
     const nextCalendar = () => {
@@ -38,16 +39,16 @@ function Calendar() {
                         if (dom % 7 === 1) {
                             date.push(<td className="sunday back-gray">{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<td className="saturday back-gray">{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="saturday back-gray">{autoLeftPad(day, 2)}</td>);
                         } else {
-                            date.push(<td className="back-gray">{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="back-gray">{autoLeftPad(day, 2)}</td>);
                         }
                     }
                     else if (nowDate.getDate() < day && lastDate.getDate() >= day) {
                         if (dom % 7 === 1) {
                             date.push(<td className="sunday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<td className="saturday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="saturday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
                         } else {
                             date.push(<td className="back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
                         }
@@ -56,12 +57,9 @@ function Calendar() {
                         if (dom % 7 === 1) {
                             date.push(<td className="sunday back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<>
-                                <td className="saturday back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>
-                                <tr></tr>
-                            </>)
+                            date.push(<td className="saturday back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
                         } else {
-                            date.push(<td className="back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
                         }
                     } else {
                         let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
@@ -143,7 +141,6 @@ function Calendar() {
         }
         return data;
     }
-
     const autoLeftPad = (num, digit) => {
         if (String(num).length < digit) {
             num = new Array(digit - String(num).length + 1).join("0") + num;
@@ -158,6 +155,8 @@ function Calendar() {
             e.target.className += " choiceDay";
         }
     }
+
+
 
     return (
         <div>

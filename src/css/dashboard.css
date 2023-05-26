@@ -1,0 +1,95 @@
+.dashboard {
+    padding: 3vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-size: 1.2em;
+}
+
+.circle {
+    width: 2.25rem;
+    height: 1.5rem;
+
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+
+    text-align: center;
+
+    margin-left: 10px;
+}
+
+.issue {
+    height: 2.5rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.visitantBoard {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.userCount {
+    width: 13rem;
+    height: 13rem;
+
+    border-radius: 50%;
+
+    font-size: 1.5em;
+
+    color: white;
+    text-shadow: -1px 0px black, 1px 0px black, 0px -1px black, 0px 1px black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.allUser {
+    background-color: #33F7D4;
+}
+
+.curruntUser {
+    background-color: #33F73B;
+}
+
+.statusBoard {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 1rem;
+}
+
+.board {
+    width: 45%;
+    height: 150%;
+
+    border: 1px solid black;
+    padding: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 10px;
+}
+
+.boardTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.boardTable>*>tr>* {
+    border-bottom: 1px solid black;
+    text-align: center;
+}

@@ -1,23 +1,11 @@
+import { useState } from 'react';
 import '../../../css/message.css';
 
-function PostMessage() {
-    const value = '안녕하세요 허희만 입니다.\n이것은 쪽지 테스트 입니다.'
-
-    const openModal = () => {
-        const modal_width = '463';
-        const modal_height = '463';
-
-        const window_width = (window.screen.width - modal_width) / 2;
-        const window_height = (window.screen.height - modal_height) / 2;
-
-        const url = '/sendMessage';
-        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height} , scrollbars=yes`;
-
-        window.open(url, 'window_name', option);
-    }
+function SendMessage() {
+    const [value, setValue] = useState('');
 
     return (
-        <div className="postMessage back-color dis-flex flex-column justify-between">
+        <div className="postMessage back-color border-black dis-flex flex-column justify-between">
             <div className='recipientInfo dis-flex align-center justify-between'>
                 <div className="userInfo dis-flex align-center flex-column">
                     <img src="/img/댕댕이.png" />
@@ -35,14 +23,14 @@ function PostMessage() {
                         </div>
                     </div>
                     <div className='messageBtn'>
-                        <button className="back-color" onClick={openModal}>답장</button>
+                        <button className="back-color">보내기</button>
                         <button className="back-color" onClick={() => window.close()}>취소</button>
                     </div>
                 </div>
             </div>
-            <textarea className='message' value={value} placeholder="내용을 입력해 주세요." readOnly />
+            <textarea className='message' value={value} onChange={e => setValue(e.target.value)} placeholder="내용을 입력해 주세요." />
         </div>
     )
 }
 
-export default PostMessage;
+export default SendMessage;

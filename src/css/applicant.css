@@ -1,0 +1,112 @@
+.applicantsList {
+    width: 400px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0px 30px 30px;
+
+    font-size: 0.7rem;
+
+    margin: auto;
+}
+
+.applicants {
+    width: 100%;
+    height: 85%;
+}
+
+.applicantBox {
+    width: 100%;
+    height: 80px;
+
+    margin: 10px;
+
+    justify-content: space-around;
+
+    border-radius: 5px;
+}
+
+.applicantInfo {
+    width: 20%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+
+    justify-content: space-around;
+}
+
+.applicantInfo>img {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.evaluation,
+.navbtn {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.record,
+.point {
+    width: 70%;
+    height: 40% !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: bold;
+
+    font-size: 0.7rem;
+}
+
+.record>div,
+.point {
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.record>div {
+    padding: 0px 10px;
+}
+
+.point>div {
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.navbtn {
+    width: 15%;
+    align-items: center;
+}
+
+.navbtn>* {
+    width: 100%;
+    height: 40%;
+
+    font-weight: bold;
+    background-color: white;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px 5px;
+}
+
+.star {
+    color: yellowgreen;
+}

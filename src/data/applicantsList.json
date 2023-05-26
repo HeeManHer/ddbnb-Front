@@ -1,0 +1,50 @@
+{
+    "pageInfo": {
+        "pageNo": 1,
+        "totalCount": 7,
+        "limit": 5,
+        "buttonAmount": 10,
+        "maxPage": 2,
+        "startPage": 1,
+        "endPage": 2,
+        "startRow": 1,
+        "endRow": 5
+    },
+    "data": [
+        {
+            "no": 1,
+            "name": "기묭민",
+            "img": "/img/기묭민.png",
+            "record": 0,
+            "point": 4
+        },
+        {
+            "no": 2,
+            "name": "이주동",
+            "img": "/img/이주동.png",
+            "record": 3,
+            "point": 3
+        },
+        {
+            "no": 3,
+            "name": "최명건",
+            "img": "/img/최명건.png",
+            "record": 6,
+            "point": 5
+        },
+        {
+            "no": 4,
+            "name": "꿀떡이",
+            "img": "/img/꿀떡이.png",
+            "record": 9,
+            "point": 4.5
+        },
+        {
+            "no": 5,
+            "name": "귀요미",
+            "img": "/img/귀요미.png",
+            "record": 2,
+            "point": 3.5
+        }
+    ]
+}

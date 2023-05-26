@@ -1,0 +1,29 @@
+{
+    "pageInfo": {
+        "pageNo": 2,
+        "totalCount": 7,
+        "limit": 5,
+        "buttonAmount": 10,
+        "maxPage": 2,
+        "startPage": 1,
+        "endPage": 2,
+        "startRow": 6,
+        "endRow": 7
+    },
+    "data": [
+        {
+            "no": 6,
+            "name": "꿀떡이",
+            "img": "/img/꿀떡이.png",
+            "record": 5,
+            "point": 4.5
+        },
+        {
+            "no": 7,
+            "name": "귀요미",
+            "img": "/img/귀요미.png",
+            "record": 3,
+            "point": 3.5
+        }
+    ]
+}

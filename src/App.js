@@ -36,6 +36,9 @@ import PetMomManage from "./page/admin/PetMomManage";
 import PetSitterManage from "./page/admin/PetSitterManage";
 import ReportMember from "./page/admin/ReportMember";
 import ReportPost from "./page/admin/ReportPost";
+import PostMessage from "./component/modal/pm/PostMessage";
+import SendMessage from "./component/modal/pm/SendMessage";
+import ApplicantsList from "./component/modal/apply/ApplicantsList";
 
 
 
@@ -63,9 +66,9 @@ function App() {
           <Route path="about" element={<AboutPage />} />
 
           <Route path="mypage" element={<MyPageMain />} />
-          <Route path="userProfile" element={<UserProfile />} />
-
-
+          <Route path="userProfile">
+            <Route path=":userNo" element={<UserProfile />} />
+          </Route>
         </Route>
 
         <Route path="manage" element={<AdminLayout />}>
@@ -78,6 +81,9 @@ function App() {
           <Route path="reportPost" element={<ReportPost />} />
         </Route>
 
+        <Route path="applicant" element={<ApplicantsList />} />
+        <Route path="postMessage" element={<PostMessage />} />
+        <Route path="sendMessage" element={<SendMessage />} />
       </Routes>
     </BrowserRouter>
   );

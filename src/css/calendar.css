@@ -47,6 +47,10 @@ a {
     background-color: #FFFFE6;
 }
 
+.choiceDay {
+    background-color: #FF9999;
+}
+
 .isPointer {
     cursor: pointer;
 }
@@ -61,8 +65,4 @@ a {
 
 .otherday {
     color: #A9A9A9;
-}
-
-.choiceDay {
-    background-color: #FF9999;
 }

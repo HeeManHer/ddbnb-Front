@@ -1,4 +1,4 @@
-import '../css/common.css'
+import '../css/common.css';
 
 import { Outlet } from 'react-router-dom';
 import Footer from "../component/common/Footer";
