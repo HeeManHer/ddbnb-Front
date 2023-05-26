@@ -1,6 +1,6 @@
 // import React from "react";
 import Calendar from "../../component/item/Calendar";
-import "../../css/detail.css"
+import "./detail.css"
 import React, { useState } from "react";
 
 function PetMomRecruit() {
