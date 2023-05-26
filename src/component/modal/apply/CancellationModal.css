@@ -1,0 +1,63 @@
+.modalsize {
+    width: 400px;
+    height: 250px;
+    border: 1px solid #8d8d8d;
+}
+
+.modalsize-button1 {
+    background-color: #FAB7A2;
+    width: 95%;
+    height: 40px;
+    margin-inline: 10px;
+    margin-top: 10px;
+    display: flex;
+    font-weight: bold;
+    font-size: larger;
+    color: white;
+    border: none;
+    align-items: center;
+    text-align: center;
+}
+
+.modalsize h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2d2d2d;
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.modalsize h5 {
+    color: #8d8d8d;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.modalsize-button2 {
+    background-color: white;
+    width: 90px;
+    height: 35px;
+    margin: 10px;
+    position: relative;
+    left: 85px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #2d2d2d;
+    border-top: 4px solid #FAB7A2;
+    border-bottom: 4px solid #FAB7A2;
+    border-left: 4px solid #FAB7A2;
+    border-right: 4px solid #FAB7A2;
+    border-radius: 3px;
+    user-select: none;
+}
+
+.modalsize-button2:nth-child(1) {
+    background-color: #FAB7A2;
+}
+
+.modalsize-button2:active {
+    background-color: #FAB7A2;
+    color: black;
+}
