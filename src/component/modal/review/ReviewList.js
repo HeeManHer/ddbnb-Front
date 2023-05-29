@@ -1,13 +1,47 @@
-import React, { useState } from "react";
-import "../review/ReviewModal.css";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "../review/review.css";
+import PageBtn from "../../common/PageBtn";
+import { getReviewList } from "../../../api/reviewListAPI"
+import ReviewModal from "../review/ReviewModal";
 
-function ReviewList() {
+function ReviewList({ closeModalList }) {
 
-    const [peopleCount, setPeopleCount] = useState(1);
+    const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
+    const [isModalOpen, setIsModalOpen] = useState(false); // 추가
 
-    const handleIncrease = () => {
-        setPeopleCount(prevCount => prevCount + 1);
+
+
+    const handleSubmit = () => {
+        closeModalList();
     };
+
+    const handleCancel = () => {
+        closeModalList();
+    };
+
+    const dispatch = useDispatch();
+    const currentPage = useSelector(state => state.pageReducer);
+    const { pageInfo, data: reviewList } = useSelector(state => state.reviewmodalReducer);
+
+    useEffect(
+        () => {
+            dispatch(getReviewList(currentPage));
+        },
+        [currentPage]
+    );
+
+    const handleCheckboxChange = (index) => {
+        setSelectedCheckbox(index);
+    };
+
+    const handleReviewModalOpen = () => {
+        if (selectedCheckbox !== -1) {
+            setIsModalOpen(true); // 모달 열기 상태 변경
+        }
+    };
+
+
 
 
     return (
@@ -15,29 +49,37 @@ function ReviewList() {
             <div className="reviewmodal-header">리뷰 작성</div>
             <div className="reviewlist">댕댕비엔비를 함께한 신청자를 선택해주세요.</div>
             <div className="reviewlist-people">
-                {Array.from({ length: peopleCount }, (_, index) => (
-                    <div className="reviewlist-people-line" key={index}>
+                {Array.isArray(reviewList) && reviewList.map((item, index) => (
+                    <div className="reviewlist-people-line" key={item.no}>
                         <div className="reviewlist-organize">
                             <div className="reviewlist-imgandName">
                                 <div className="reviewlist-img">
                                 </div>
-                                <h6>너네 강아지모습</h6>
+                                <h6>{item.name}</h6>
                             </div>
                             <h5 className="reviewlist-join">펫시터 참여 기록</h5>
-                            <h4 className="reviewlist-h4">회</h4>
+                            <h4 className="reviewlist-h4">{item.count} 회</h4>
                         </div>
                         <div className="checkbox">
-                            <input type="checkbox" id={`cb${index + 1}`} />
+                            <input type="checkbox" id={`cb${index + 1}`}
+                                checked={selectedCheckbox === index}
+                                onChange={() => handleCheckboxChange(index)} />
                             <label htmlFor={`cb${index + 1}`}></label>
                         </div>
                     </div>
                 ))}
             </div>
-            <div><button></button></div>
-            <div><button className="reviewmodal-main3" >리뷰작성</button>
-                <div><button className="ex" onClick={handleIncrease} >일단 생성버튼 달아둠</button></div>
+            <div><PageBtn pageInfo={pageInfo} /></div>
+            <div><button className="reviewmodal-main3" onClick={handleReviewModalOpen}>리뷰작성</button>
+                <button className="reviewmodal-main3" onClick={handleCancel} >닫기</button>
             </div>
-        </div>
+            {isModalOpen && (
+                <ReviewModal
+                    closeModalReview={() => setIsModalOpen(false)} // 모달 닫기 상태 변경
+                    index={selectedCheckbox}
+                />
+            )}
+        </div >
     )
 }
 
