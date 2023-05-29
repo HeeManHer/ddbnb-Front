@@ -7,6 +7,8 @@ function PetSitterRecruitDatail() {
         event.target.classList.toggle("selected");
     };
 
+    const currentDate = new Date().toISOString().slice(0, 10);
+
     return (
         <div className="height-auto">
             <div className="dateAndWriter">
@@ -15,7 +17,7 @@ function PetSitterRecruitDatail() {
             </div>
             <div className="dateAndWriter">
                 <h5>작성자 : 김용민</h5>
-                <h5>작성일 : 2023-05-18</h5>
+                <h5>작성일: {currentDate}</h5>
             </div>
             <hr className="line"></hr>
             <div>

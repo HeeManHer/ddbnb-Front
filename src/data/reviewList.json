@@ -1,0 +1,30 @@
+{
+    "pageInfo": {
+        "pageNo": 1,
+        "totalCount": 7,
+        "limit": 5,
+        "buttonAmount": 10,
+        "maxPage": 2,
+        "startPage": 1,
+        "endPage": 2,
+        "startRow": 1,
+        "endRow": 5
+    },
+    "data": [
+        {
+            "no": 1,
+            "name": "기묭민",
+            "count": 3
+        },
+        {
+            "no": 2,
+            "name": "이준성",
+            "count": 3
+        },
+        {
+            "no": 3,
+            "name": "이준성12",
+            "count": 23
+        }
+    ]
+}

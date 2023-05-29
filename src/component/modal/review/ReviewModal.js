@@ -1,29 +1,37 @@
 import React, { useState } from "react";
-import "../review/ReviewModal.css";
+import "../review/review.css";
 
-function ReviewModal() {
-    const [rating, setRating] = useState(0); // 초기값은 0으로 설정
-    const [images, setImages] = useState([]); // 이미지 첨부 상태
+function ReviewModal({ closeModalReview, index }) {
+    const [rating, setRating] = useState(0);
+    const [images, setImages] = useState([]);
 
     const handleRatingChange = (event) => {
         const selectedRating = parseInt(event.target.value);
         setRating(selectedRating);
     };
 
-
     const handleImageSelect = (event) => {
         const selectedImage = event.target.files[0];
         if (images.length < 5) {
-            setImages([...images, selectedImage]); // 기존 이미지 배열에 새로운 이미지 추가
+            setImages([...images, selectedImage]);
         }
     };
 
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
+    const handleSubmit = () => {
+        // index에 대한 리뷰 작성 처리 로직
+        // 작성 완료 후 모달 닫기
+        closeModalReview();
     };
 
+    const handleCancel = () => {
+        // 작성 취소 처리 로직
+        // 모달 닫기
+        closeModalReview();
+    };
+
+
     return (
-        <div className="reviewmodal">
+        <div className="reviewmodal center">
             <div className="reviewmodal-header">리뷰 작성</div>
             <div className="reviewmodal-position">
                 <div className="reviewmodal-main">별점등록</div>
@@ -106,10 +114,10 @@ function ReviewModal() {
                     ))}
                 </div>
                 <div className="reviewmodal-btns">
-                    <button className="reviewmodal-btn" onClick={toggleSelected}>
+                    <button className="reviewmodal-btn" onClick={handleSubmit}>
                         작성
                     </button>
-                    <button className="reviewmodal-btn" onClick={toggleSelected}>
+                    <button className="reviewmodal-btn" onClick={handleCancel}>
                         취소
                     </button>
                 </div>

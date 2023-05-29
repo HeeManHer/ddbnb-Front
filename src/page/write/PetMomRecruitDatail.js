@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
+import ReviewModal from "../../component/modal/review/ReviewModal";
+import ReviewList from "../../component/modal/review/ReviewList";
 
 
 function PetMomRecruitDatail() {
     const toggleSelected = (event) => {
         event.target.classList.toggle("selected");
     };
+
+    const [showModalReview, setShowModalReview] = useState(false);
+    const [showModalList, setShowModalList] = useState(false);
+
+    const openModalReview = () => {
+        setShowModalReview(true);
+    };
+
+    const closeModalReview = () => {
+        setShowModalReview(false);
+    };
+
+    const openModalList = () => {
+        setShowModalList(true);
+    };
+
+    const closeModalList = () => {
+        setShowModalList(false);
+    };
     return (
-        <div className="height-auto">
+        <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
                 <h1>게시판</h1>
                 <button className="declarationButton">신고</button>
@@ -95,9 +116,20 @@ function PetMomRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
                     <button className="wantbtn2">신청하기</button>
+                    <button className="wantbtn2"
+                        onClick={openModalList}
+                    >신청자 목록</button>
+                    <button className="wantbtn2">모집마감</button>
                 </div>
-            </div >
-        </div>
+            </div>
+
+            {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
+            {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
+
+            {showModalList && <ReviewList closeModalList={closeModalList} />}
+            {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
+
+        </div >
     );
 };
 export default PetMomRecruitDatail;
