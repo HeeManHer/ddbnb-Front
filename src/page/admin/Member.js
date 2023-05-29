@@ -2,7 +2,7 @@ import '../../css/admin.css';
 
 function Member() {
     return (
-        <div className="container">
+        <div className="container border-black">
 
             <div className="menuheader">
                 회원 관리
@@ -33,6 +33,7 @@ function Member() {
                         <th>체크</th>
                     </tr>
                 </thead>
+               
             </table>
 
         </div>

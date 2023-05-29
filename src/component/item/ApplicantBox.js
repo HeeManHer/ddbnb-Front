@@ -1,9 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import PostMessage from "../modal/pm/PostMessage";
-
 function ApplicantBox({ user }) {
-
-    const navigate = useNavigate();
 
     const starPoint = [];
 
@@ -16,7 +11,24 @@ function ApplicantBox({ user }) {
         starPoint.push("☆");
     }
 
+    const openModal = () => {
+        // window.close();
 
+        const modal_width = '500';
+        const modal_height = '500';
+
+        const window_width = (window.screen.width - modal_width) / 2;
+        const window_height = (window.screen.height - modal_height) / 2;
+
+        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
+
+        window.open('/postMessage', 'message', option);
+    }
+
+    const closeModal = (url) => {
+        window.opener.location.href = url;
+        // window.close();
+    }
 
     return (
         <div className="applicantBox back-color dis-flex align-center bottom-shadow">
@@ -31,6 +43,10 @@ function ApplicantBox({ user }) {
                     <div className="dis-flex align-center">펫시터 참여 기록</div>
                     <span>{user.record}회</span>
                 </div>
+                <div className="record">
+                    <div className="dis-flex align-center">펫맘 참여 기록</div>
+                    <span>{user.record}회</span>
+                </div>
                 <div className="point">
                     <div className="star">{starPoint}</div>
                     <span>({user.point}점)</span>
@@ -38,8 +54,8 @@ function ApplicantBox({ user }) {
             </div>
 
             <div className="navbtn dis-flex align-center">
-                <div onClick={() => navigate("./userProfile/" + user.no)}>프로필 보기</div>
-                <div onClick={() => <PostMessage user={user} />}>쪽지 쓰기</div>
+                <div onClick={() => closeModal(`/userProfile/${user.no}`)}>프로필 보기</div>
+                <div onClick={() => openModal('postMessage')}>쪽지 쓰기</div>
             </div>
 
         </div>
