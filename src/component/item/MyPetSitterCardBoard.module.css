@@ -1,0 +1,38 @@
+.section {
+    margin: 10px;
+    /* background-color: aqua; */
+    margin-left: 15px;
+    width: auto;
+    height: auto;
+}
+
+
+.category {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 5px;
+    height: 30px;
+    border-bottom: 1px solid #2d2d2d;
+    color: #2d2d2d;
+    font-weight: bold;
+}
+
+.category div:nth-child(1) {
+    flex-grow: 1.5;
+}
+.category div:nth-child(2) {
+    flex-grow: 2.5;
+}
+
+.category div:nth-child(3) {
+    flex-grow: 1.5;
+}
+
+.category div:nth-child(4) {
+    flex-grow: 6.5;
+}
+.category div:nth-child(5) {
+    flex-grow: 1.5;
+}

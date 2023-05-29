@@ -13,7 +13,7 @@
 
 .bottomBoard {
     width:auto;
-    height: 480px;
+    height: auto;
     margin-inline: 12px;
     box-shadow: 5px 5px 5px -5px #8d8d8d;
     margin-bottom: 10px;
@@ -21,9 +21,10 @@
 
 .editLine {
     width: auto;
-    height: 30px;
+    height: 27px;
     display: flex;
     align-items: center;
+    margin-top: 15px;
 
 }
 
@@ -95,12 +96,22 @@
     border-left: #2d2d2d;
     border-bottom: #2d2d2d;
     font-size: 13px;
-
+    cursor: pointer;
     
 }
 
+.careerTitle button:focus,
+.careerTitle button:active {
+    background-color: #fab7a2;
+    color: black;
+}
+
+
 .careerTitle button:nth-child(4){
     border-right: #2d2d2d;
+}
+.careerTitle button:nth-child(1){
+    margin-left: 10px;
 }
 
 .image {

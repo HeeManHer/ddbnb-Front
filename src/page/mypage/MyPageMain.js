@@ -1,17 +1,20 @@
 import style from "./MyPageMain.module.css";
 import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import MyCardList from "../../component/list/AppliedList";
+import React, { useState } from 'react';
+import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 
 function MyPageMain() {
 
-    const navigate = useNavigate();
+    // const [listItems, setListItems] = useState([]);
+    const [buttonId, setButtonId] = useState(null);
 
-    const onClickMyReviewHandler = () => {
-        navigate("/myReview");
+    const handleButtonClick = (id) => {
+        setButtonId(id);
     };
-    const onClickAllReviewHandler = () => {
-        navigate("/allReview");
-    };
+
     return (
         <section className={style.board}>
             {/* 프로필블록 */}
@@ -69,17 +72,19 @@ function MyPageMain() {
             {/* 리스트 블록 */}
             <div className={style.bottomBoard}>
                 <div className={style.careerTitle}>
-                    <button onClick={onClickMyReviewHandler}>댕댕 리뷰 (n개)</button>
-                    <button onClick={onClickAllReviewHandler}>신청 내역</button>
-                    <button>나의 펫시터 모집</button>
-                    <button>나의 펫맘 모집</button>
+                    <button onClick={() => handleButtonClick(1)}>댕댕 리뷰 (n개)</button>
+                    <button onClick={() => handleButtonClick(2)}>신청 내역</button>
+                    <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
+                    <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
                 </div>
-
+                {buttonId && <MyCardList buttonId={buttonId}/>}
 
             </div>
 
         </section>
-    )
+    );
+
 }
+
 
 export default MyPageMain;
