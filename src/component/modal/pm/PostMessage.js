@@ -4,16 +4,17 @@ function PostMessage() {
     const value = '안녕하세요 허희만 입니다.\n이것은 쪽지 테스트 입니다.'
 
     const openModal = () => {
-        const modal_width = '463';
-        const modal_height = '463';
+        // window.close();
+
+        const modal_width = '500';
+        const modal_height = '500';
 
         const window_width = (window.screen.width - modal_width) / 2;
         const window_height = (window.screen.height - modal_height) / 2;
 
-        const url = '/sendMessage';
-        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height} , scrollbars=yes`;
+        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
 
-        window.open(url, 'window_name', option);
+        window.open('/sendMessage', 'message', option);
     }
 
     return (

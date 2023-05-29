@@ -39,6 +39,8 @@ import ReportPost from "./page/admin/ReportPost";
 import PostMessage from "./component/modal/pm/PostMessage";
 import SendMessage from "./component/modal/pm/SendMessage";
 import ApplicantsList from "./component/modal/apply/ApplicantsList";
+import Calendar from "./component/item/Calendar";
+import PostMessageList from "./page/list/PostMessageList";
 
 
 
@@ -65,13 +67,15 @@ function App() {
 
           <Route path="about" element={<AboutPage />} />
 
-          <Route path="myReview" element = {<MyReviewPage/>} />
-          <Route path="AllReview" element = {<AllReviewPage/>}/>
+          <Route path="myReview" element={<MyReviewPage />} />
+          <Route path="AllReview" element={<AllReviewPage />} />
 
           <Route path="mypage" element={<MyPageMain />} />
           <Route path="userProfile">
             <Route path=":userNo" element={<UserProfile />} />
           </Route>
+
+          <Route path="postMessageList" element={<PostMessageList />} />
         </Route>
 
         <Route path="manage" element={<AdminLayout />}>
@@ -87,6 +91,7 @@ function App() {
         <Route path="applicant" element={<ApplicantsList />} />
         <Route path="postMessage" element={<PostMessage />} />
         <Route path="sendMessage" element={<SendMessage />} />
+        <Route path="calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );

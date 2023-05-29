@@ -69,9 +69,10 @@ footer {
 }
 
 .admin-content {
+    width: 100%;
     min-height: 85vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 

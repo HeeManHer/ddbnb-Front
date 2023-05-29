@@ -35,40 +35,28 @@ function MainPage() {
     }
 
 
-    // const openModal = (location) => {
+    const openApplicantList = () => {
 
-    //     let modal_width;
-    //     let modal_height;
+        const modal_width = '500';
+        const modal_height = '750';
 
-    //     switch (location) {
-    //         case 'applicant':
-    //             modal_width = '500';
-    //             modal_height = '650';
-    //             break;
-    //         case 'postMessage':
-    //             modal_width = '500';
-    //             modal_height = '500';
-    //             break;
-    //     }
-    //     console.log(modal_width, modal_height);
-    //     const window_width = (window.screen.width - modal_width) / 2;
-    //     const window_height = (window.screen.height - modal_height) / 2;
+        const window_width = (window.screen.width - modal_width) / 2;
+        const window_height = (window.screen.height - modal_height) / 2;
 
-    //     const url = `/${location}`;
-    //     const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
+        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
 
-    //     window.open(url, location, option);
-    // }
+        window.open('/applicant', 'applicant', option);
+    }
 
     return (
         <div className="mainPage">
 
-            {/* <div>
-                <button onClick={() => openModal('applicant')} > 신청자 목록</button>
-                <button onClick={() => openModal('postMessage')} > 쪽지 확인</button>
-            </div> */}
+            <div>
+                <button onClick={openApplicantList}>신청자 목록</button>
+                <button onClick={() => navigate('/postMessageList')}>쪽지함</button>
+            </div>
 
-            <img src="/img/banner.png" alt="banner" className="banner center" />
+            <img src="/img/banner.png" alt="banner" className="banner center" onClick={() => navigate('/manage/dashboard')} />
             <div className="cardList">
                 <div className='dis-flex justify-between align-center cardName'>
                     <span>{">"}최신 펫시터 모집글</span>

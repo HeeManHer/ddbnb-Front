@@ -1,52 +1,37 @@
 .dashboard {
-    padding: 3vh;
+    min-width: 100px;
+    height: 100%;
+    padding: 2vh;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 1.2rem;
+
+    margin-top: 20px;
+}
+
+.dashboard>* {
+    width: 75%;
+}
+
+
+.visitantBoard {
+    width: 20%;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-
-    font-size: 1.2em;
-}
-
-.circle {
-    width: 2.25rem;
-    height: 1.5rem;
-
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-
-    text-align: center;
-
-    margin-left: 10px;
-}
-
-.issue {
-    height: 2.5rem;
-
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.visitantBoard {
-    display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 20px;
 }
 
 .userCount {
-    width: 13rem;
-    height: 13rem;
+    width: 7.5em;
+    height: 7.5em;
 
     border-radius: 50%;
 
-    font-size: 1.5em;
+    font-size: 35px;
 
     color: white;
     text-shadow: -1px 0px black, 1px 0px black, 0px -1px black, 0px 1px black;
@@ -65,6 +50,32 @@
     background-color: #33F73B;
 }
 
+.issue {
+    min-height: 2.5rem;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.circle {
+    width: 2.25rem;
+    height: 1.5rem;
+
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+
+    text-align: center;
+
+    margin-left: 10px;
+}
+
 .statusBoard {
     display: flex;
     flex-wrap: wrap;
@@ -74,9 +85,9 @@
     font-size: 1rem;
 }
 
-.board {
+.tableSection {
+    min-width: 400px;
     width: 45%;
-    height: 150%;
 
     border: 1px solid black;
     padding: 20px;
@@ -92,4 +103,60 @@
 .boardTable>*>tr>* {
     border-bottom: 1px solid black;
     text-align: center;
+}
+
+@media(max-width:1750px) {
+    .dashboard {
+        height: 100%;
+        padding: 2vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        font-size: 1.2rem;
+
+        margin-top: 20px;
+    }
+
+    .dashboard>* {
+        width: 100%;
+        min-width: 100px;
+    }
+
+    .visitantBoard {
+        width: 100%;
+        flex-direction: row;
+        margin-bottom: 2vh;
+    }
+
+    .tableSection {
+        width: 45%;
+    }
+}
+
+@media(max-width:1500px) {
+    .tableSection {
+        width: 100%;
+    }
+}
+
+@media(max-width:1000px) {
+
+    .visitantBoard {
+        width: 680px;
+        margin-bottom: 10px;
+    }
+
+    .issue {
+        width: 670px;
+    }
+
+    .statusBoard {       
+        width: 670px;
+    }
+
+    .tableSection {
+        width: 650px;
+    }
 }

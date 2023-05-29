@@ -5,7 +5,7 @@ function SendMessage() {
     const [value, setValue] = useState('');
 
     return (
-        <div className="postMessage back-color border-black dis-flex flex-column justify-between">
+        <div className="postMessage back-color dis-flex flex-column justify-between">
             <div className='recipientInfo dis-flex align-center justify-between'>
                 <div className="userInfo dis-flex align-center flex-column">
                     <img src="/img/댕댕이.png" />

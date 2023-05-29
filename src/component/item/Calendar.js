@@ -6,6 +6,8 @@ function Calendar() {
     const [today, setToday] = useState(new Date());
     const [data, setData] = useState();
 
+    const tempDate = new Date(nowDate - today)
+
     useEffect(
         () => {
             setData(getData());
@@ -14,12 +16,15 @@ function Calendar() {
     )
 
     const prevCalendar = () => {
-        setToday(new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()));
-
+        if (tempDate.getMonth() - 1 >= 0) {
+            setToday(new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()));
+        }
     }
 
     const nextCalendar = () => {
-        setToday(new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()));
+        if (tempDate.getMonth() === 0 || tempDate.getMonth() > 9) {
+            setToday(new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()));
+        }
     }
 
     const getData = () => {
@@ -46,20 +51,20 @@ function Calendar() {
                     }
                     else if (nowDate.getDate() < day && lastDate.getDate() >= day) {
                         if (dom % 7 === 1) {
-                            date.push(<td className="sunday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="sunday back-white isPointer">{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<td className="saturday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="saturday back-white isPointer">{autoLeftPad(day, 2)}</td>);
                         } else {
-                            date.push(<td className="back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="back-white isPointer">{autoLeftPad(day, 2)}</td>)
                         }
                     }
                     else if (nowDate.getDate() === day) {
                         if (dom % 7 === 1) {
-                            date.push(<td className="sunday back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="sunday back-whiteYellow isPointer">{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<td className="saturday back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="saturday back-whiteYellow isPointer">{autoLeftPad(day, 2)}</td>);
                         } else {
-                            date.push(<td className="back-whiteYellow isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="back-whiteYellow isPointer">{autoLeftPad(day, 2)}</td>);
                         }
                     } else {
                         let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
@@ -82,11 +87,11 @@ function Calendar() {
                 else {
                     if (Math.sign(day) === 1 && lastDate.getDate() >= day) {
                         if (dom % 7 === 1) {
-                            date.push(<td className="sunday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                            date.push(<td className="sunday back-white isPointer">{autoLeftPad(day, 2)}</td>);
                         } else if (dom % 7 === 0) {
-                            date.push(<td className="saturday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="saturday back-white isPointer">{autoLeftPad(day, 2)}</td>)
                         } else {
-                            date.push(<td className="back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                            date.push(<td className="back-white isPointer">{autoLeftPad(day, 2)}</td>)
                         }
                     } else {
                         let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
@@ -111,11 +116,11 @@ function Calendar() {
             else {
                 if (Math.sign(day) === 1 && lastDate.getDate() >= day) {
                     if (dom % 7 === 1) {
-                        date.push(<td className="sunday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>);
+                        date.push(<td className="sunday back-white isPointer">{autoLeftPad(day, 2)}</td>);
                     } else if (dom % 7 === 0) {
-                        date.push(<td className="saturday back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                        date.push(<td className="saturday back-white isPointer">{autoLeftPad(day, 2)}</td>)
                     } else {
-                        date.push(<td className="back-white isPointer" onClick={calendarChoiceDay}>{autoLeftPad(day, 2)}</td>)
+                        date.push(<td className="back-white isPointer">{autoLeftPad(day, 2)}</td>)
                     }
                 } else {
                     let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
