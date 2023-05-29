@@ -1,8 +1,18 @@
 .container {
     width: 70vw;
+    height: 85vh;
+    margin-top: 10px;
 
 
     /* border: 1px solid black; */
+}
+
+
+
+
+.reporter {
+
+    margin-left: 30px;
 }
 
 .menucontainer {
@@ -62,6 +72,7 @@
     margin-top: 20px;
     align-items: center;
 
+
     display: flex;
 }
 
@@ -73,6 +84,18 @@
     font-size: 18px;
     margin-right: 5px;
     border-radius: 5px;
+
+}
+
+.searchbutton2 {
+    width: 85px;
+    height: 35px;
+    color: black;
+    background-color: white;
+    font-size: 18px;
+    margin-right: 5px;
+    border-radius: 5px;
+    margin-left: auto;
 }
 
 .changebutton {
@@ -226,4 +249,38 @@
 .number {
     width: 94px;
     height: 19px;
+}
+
+.idfield {
+    width: 760px;
+    height: 72px;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 65px;
+}
+
+.pwdfield {
+    width: 830px;
+    height: 72px;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 100px;
+
+
+}
+
+.idbar {
+    width: 660px;
+    height: 72px;
+    background-color: #D9D9D9;
+    font-size: 40px;
+}
+
+.loginimg {
+    text-align: center;
+    border: 1px solid black;
+    margin-top: auto;
+
 }

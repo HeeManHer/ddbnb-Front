@@ -3,15 +3,19 @@ import '../../css/admin.css';
 function AdminLoginPage() {
     return (
         <div className="container">
-            <div className="mainheader">
+            <div className="loginimg">
+                <img src="/img/title.png" alt="댕댕비엔비" />
             </div>
-            <div>
+            <div className="idfield">
+                ID :
+                <input type="text" className="idbar" />
             </div>
-            <div>
-                {/* 푸터 */}
+            <div className="pwdfield">
+                PWD :
+                <input type="password" className="idbar" />
             </div>
         </div>
     )
- }
+}
 
 export default AdminLoginPage;

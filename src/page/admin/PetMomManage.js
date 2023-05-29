@@ -3,13 +3,13 @@ function PetMomManage() {
         <div className="container">
 
             <div className="menuheader">
-                펫시터 모집글 게시판
+                펫맘 모집글 게시판
             </div>
             <div className="searchheader2">
                 상세검색
-                <label htmlFor="nickname">작성자 : </label>
+                <label htmlFor="nickname" className="reporter">작성자 : </label>
                 <input type="text" />
-                <button className="searchbutton">검색</button>
+                <button className="searchbutton2">검색</button>
             </div>
             <div className="buttonlist">
                 <button className="changebutton">상태 변경</button>
