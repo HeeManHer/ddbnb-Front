@@ -4,7 +4,6 @@ import { getPetSitterDetail } from "../../api/petDetailAPI";
 import "../write/detail.css"
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import Modal from 'react-modal';
-import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 
 
@@ -25,8 +24,6 @@ function PetSitterRecruitDatail() {
 
     };
 
-
-    const dispatch = useDispatch();
     const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
 
 
