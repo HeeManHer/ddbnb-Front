@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getPetMomDetail } from "../../api/petDetailAPI";
-import Calendar from "../item/Calendar";
+import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import ReviewList from "../../component/modal/review/ReviewList";
-import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
@@ -52,7 +51,6 @@ function PetMomRecruitDatail() {
         setShowModalList(false);
     };
 
-    const dispatch = useDispatch();
     const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
     const totalImages = petdetail.img ? petdetail.img.length : 0;
 
