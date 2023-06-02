@@ -56,7 +56,7 @@ function MainPage() {
                 <button onClick={() => navigate('/postMessageList')}>쪽지함</button>
             </div>
 
-            <img src="/img/banner.png" alt="banner" className="banner center" onClick={() => navigate('/manage/dashboard')} />
+            <img src="/img/banner.png" alt="banner" className="banner center" />
             <div className="cardList">
                 <div className='dis-flex justify-between align-center cardName'>
                     <span>{">"}최신 펫시터 모집글</span>

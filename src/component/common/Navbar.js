@@ -19,7 +19,7 @@ function Navbar() {
 
     return (
         <div className="menubar bottom-shadow dis-flex align-center">
-            <img src="/img/title.png" alt="댕댕비엔비" onClick={() => navigate("./main")} />
+            <img src="/img/title.png" alt="댕댕비엔비" onClick={() => navigate("/")} />
             <span onClick={goPetSitter} >펫시터 모집</span>
             <span onClick={goPetMom} >펫맘 모집</span>
             <span onClick={() => navigate("/about")} >ABOUT ME</span>

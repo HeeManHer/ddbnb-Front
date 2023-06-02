@@ -1,4 +1,7 @@
-import '../css/common.css'
+import '../css/common.css';
+import '../css/admin.css';
+import '../css/dashboard.css';
+
 
 import { Outlet } from 'react-router-dom';
 import Footer from "../component/common/Footer";
@@ -10,11 +13,9 @@ function AdminLayout() {
     return (
         <>
             <AdminHeader />
-            <div className='admin-content'>
-
+            <div className='admin-content main-width'>
                 <AdminNavbar />
                 <Outlet />
-
             </div>
             <Footer />
         </>

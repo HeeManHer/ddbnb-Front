@@ -1,5 +1,3 @@
-import '../../../css/message.css';
-
 function PostMessage() {
     const value = '안녕하세요 허희만 입니다.\n이것은 쪽지 테스트 입니다.'
 

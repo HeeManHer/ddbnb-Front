@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../../../css/message.css';
 
 function SendMessage() {
     const [value, setValue] = useState('');

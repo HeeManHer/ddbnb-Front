@@ -1,227 +1,197 @@
-.container {
-    width: 70vw;
-    height: 85vh;
-    margin-top: 10px;
+.menuContainer {
+    width: 20%;
+    height: 20vh;
+    min-width: 200px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
-    /* border: 1px solid black; */
+    padding: 0px 10px;
 }
 
+.menutext {
+    width: 100%;
+    height: 20%;
 
+    border: 1px solid black;
 
+    font-size: 1.5rem;
+    font-weight: bold;
 
-.reporter {
-
-    margin-left: 30px;
-}
-
-.menucontainer {
-    width: 300px;
-    height: 85vh;
+    display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
 }
 
-.mainheader {
-    /* width: 1920px; */
-    height: 5vh;
+.container {
+    width: 75%;
 }
 
-.header {
-    width: 1920px;
-    height: 104px;
-    display: flex;
-    justify-content: start;
-    text-shadow: 0px 4px 4px gray;
+.container>* {
+    width: 100%;
 }
 
 .menuheader {
-    width: 100%;
     height: 60px;
     /* border: 1px solid black; */
-    font-size: 36px;
-    font-weight: bold;
+
     color: white;
     background-color: #8E8E8E;
 
+    display: flex;
+    align-items: center;
 }
 
 .searchheader {
-    width: 100%;
     height: 60px;
-    border: 1px solid black;
-    font-size: 23px;
+
     font-weight: bold;
+
     color: white;
     background-color: #8E8E8E;
+
     margin-top: 20px;
+
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    display: flex;
 }
 
-.searchheader2 {
-    width: 100%;
-    height: 60px;
-    border: 1px solid black;
-    font-size: 23px;
-    font-weight: bold;
-    color: white;
-    background-color: #8E8E8E;
-    margin-top: 20px;
-    align-items: center;
+.menuheader>h2,
+.searchheader>div:first-child {
+    margin-left: 10px;
+}
 
+.searchheader>div:first-child {
+    width: 10%;
+    border-right: 1px solid white;
+}
 
-    display: flex;
+.searchheader>div {
+    width: 75%;
 }
 
 .searchbutton {
-    width: 85px;
-    height: 35px;
+    width: 10%;
+
     color: black;
     background-color: white;
+
     font-size: 18px;
+
     margin-right: 5px;
-    border-radius: 5px;
-
-}
-
-.searchbutton2 {
-    width: 85px;
-    height: 35px;
-    color: black;
-    background-color: white;
-    font-size: 18px;
-    margin-right: 5px;
-    border-radius: 5px;
-    margin-left: auto;
-}
-
-.changebutton {
-    width: 135px;
-    height: 45px;
-    background-color: white;
-    color: #8D8D8D;
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 5px;
     border-radius: 5px;
 }
 
 .buttonlist {
-    display: flex;
     width: 100%;
-    justify-content: flex-end;
-    margin-top: 5px;
-    /* border: 1px solid black; */
 
+    display: flex;
+    justify-content: flex-end;
+
+    margin: 15px 0px;
 }
 
-.memberlist {
+.changebutton {
+    width: 105px;
+    height: 35px;
+
+    background-color: white;
+    color: #8D8D8D;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+
+
+.adminTable {
     width: 100%;
     border-collapse: collapse;
 
 }
 
-.memberlist>*>tr>* {
+.adminTable>*>tr>* {
     border-bottom: 1px solid black;
     text-align: center;
 }
 
 
-.menu1 {}
 
 
-.modalcontainer {
+.modalContainer {
     width: 340px;
     height: 530px;
-    border: 1px solid black;
+
+    padding: 10px;
 }
 
-.modalheader {
-    width: 325px;
+.modalHeader {
+    width: 100%;
     height: 55px;
+
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    margin-top: 10px;
-    margin-left: 7px;
+    justify-content: center;
+
     font-size: 30px;
     font-weight: bold;
 }
 
-.reportcontent {
-    width: 300px;
-    height: 160px;
-    border: 1px solid black;
-    margin-left: 20px;
-    margin-top: 30px;
-
+.modalBody {
+    width: 100%;
+    height: 475px;
 }
 
-.reportbox1 {
-    margin-left: 20px;
+.modalBody>div:first-child {
+    height: 60%;
 }
 
-.reportbox2 {
-    margin-left: 50px;
+.modalBody>div:last-child {
+    height: 20%;
 }
 
-.reporttext1 {
-    margin-left: 7px;
+.reportContent {
+    width: 80%;
+    height: 55%;
+
+    padding: 0px 17px 10px;
 }
 
-.reporttext2 {
-    margin-left: 35px;
+.reportContent>div {
+    margin-bottom: 10px;
 }
 
-.reporttext3 {
-    margin-left: 20px;
+.number {
+    width: 100px;
 }
 
-.menutext1 {
-    width: 260px;
-    height: 40px;
-    border: 1px solid black;
-    font-size: 24px;
+.reportbutton>button {
+    width: 121px;
+    height: 55px;
+
+    font-size: 20px;
     font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-top: 10px;
-}
 
-.modal2h {
-    margin-left: 20px;
-}
-
-.checkbox {
-    width: 17px;
-    height: 17px;
+    border-radius: 5px;
 }
 
 .checkbutton {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 100px;
-    margin-left: 60px;
-    width: 121px;
-    height: 55px;
     border: none;
-    border-radius: 5px;
 }
 
 .cancelbutton {
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 20px;
-    width: 121px;
-    height: 55px;
-    border-radius: 5px;
-    background-color: white;
     border: 3px solid #FAB7A2;
+    background-color: white;
 }
+
+
+
 
 .memberbutton1 {
     font-size: 20px;
@@ -244,43 +214,4 @@
     height: 55px;
     border: none;
     border-radius: 5px;
-}
-
-.number {
-    width: 94px;
-    height: 19px;
-}
-
-.idfield {
-    width: 760px;
-    height: 72px;
-    font-size: 48px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 200px;
-    margin-left: 65px;
-}
-
-.pwdfield {
-    width: 830px;
-    height: 72px;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 100px;
-
-
-}
-
-.idbar {
-    width: 660px;
-    height: 72px;
-    background-color: #D9D9D9;
-    font-size: 40px;
-}
-
-.loginimg {
-    text-align: center;
-    border: 1px solid black;
-    margin-top: auto;
-
 }

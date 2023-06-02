@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/dashboard.css";
 import { useEffect } from "react";
-import { getUserReport } from "../../api/dashAPI";
+import { getUserReport } from "../../api/adminAPI";
 
 function Dashboard() {
     const dispatch = useDispatch();
@@ -17,16 +16,18 @@ function Dashboard() {
 
     return (
         <div className="container">
-            <div className="menuheader dis-flex align-center">대시 보드</div>
+            <div className="menuheader">
+                <h2>대시 보드</h2>
+            </div>
 
-            <div className="dashboard border-black">
+            <div className="dashboard">
                 <div className="visitantBoard">
                     <div className="userCount border-black allUser">
-                        <div>25304</div>
+                        <div>25304명</div>
                         <div>전체 회원</div>
                     </div>
                     <div className="userCount border-black curruntUser">
-                        <div>1342</div>
+                        <div>1342명</div>
                         <div>오늘 방문자 수</div>
                     </div>
                 </div>
@@ -48,8 +49,8 @@ function Dashboard() {
 
                     <div className="statusBoard">
                         <div className="tableSection">
-                            <h3>회원 신고 현황</h3>
-                            <table className="boardTable">
+                            <h3>오늘 회원 신고</h3>
+                            <table className="adminTable">
                                 <thead>
                                     <tr>
                                         <th>신고일자</th>
@@ -73,8 +74,8 @@ function Dashboard() {
                             </table>
                         </div>
                         <div className="tableSection">
-                            <h3>회원 신고 현황</h3>
-                            <table className="boardTable">
+                            <h3>오늘 펫맘 게시글 신고</h3>
+                            <table className="adminTable">
                                 <thead>
                                     <tr>
                                         <th>신고일자</th>
@@ -98,8 +99,8 @@ function Dashboard() {
                             </table>
                         </div>
                         <div className="tableSection">
-                            <h3>회원 신고 현황</h3>
-                            <table className="boardTable">
+                            <h3>오늘 펫시터 게시글 신고</h3>
+                            <table className="adminTable">
                                 <thead>
                                     <tr>
                                         <th>신고일자</th>
@@ -123,8 +124,8 @@ function Dashboard() {
                             </table>
                         </div>
                         <div className="tableSection">
-                            <h3>회원 신고 현황</h3>
-                            <table className="boardTable">
+                            <h3>오늘 가입 회원</h3>
+                            <table className="adminTable">
                                 <thead>
                                     <tr>
                                         <th>신고일자</th>
@@ -150,7 +151,7 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-            
+
         </div >
     )
 }

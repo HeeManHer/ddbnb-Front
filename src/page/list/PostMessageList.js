@@ -1,30 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMessageList } from "../../api/messageAPI";
-
+import '../../css/message.css';
+import PageBtn from "../../component/common/PageBtn";
+import { useDispatch, useSelector } from "react-redux";
 
 function PostMessageList() {
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const { data: message, pageInfo } = useSelector(state => state.messageReducer);
+
     const [criteria, setCriteria] = useState();
-    const [message, setMessage] = useState();
-    const [pageInfo, setPageInfo] = useState();
 
     useEffect(
         () => {
-            const messageList = getMessageList();
-            setMessage(messageList.data);
-            setPageInfo(messageList.pageInfo);
+            dispatch(getMessageList());
         },
         []
     )
 
     return (
-        <div className="postMessageList">
+        <div className="postMessageList border-black center dis-flex flex-column justify-between">
             <h1>쪽지함</h1>
             <div className="dis-flex align-center justify-between">
-                <div >
+                <div className="dis-flex align-center justify-between">
                     <button>삭제</button>
                     <button>신고</button>
                     <button>답장</button>
@@ -58,7 +59,7 @@ function PostMessageList() {
                     ))}
                 </tbody>
             </table>
-
+            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }
