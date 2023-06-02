@@ -6,13 +6,13 @@ import pageReducer from "./currentPage";
 import userReportReducer from "./userReport";
 import reviewmodalReducer from "./reviewmodal";
 import petDetailReducer from "./petdetail";
-
+import loginReducer from './LoginModule';
 
 
 
 
 const rootReducer = combineReducers({
-    petMomReducer, petSitterReducer, applicantsReducer, pageReducer, userReportReducer, reviewmodalReducer, petDetailReducer
+    petMomReducer, petSitterReducer, applicantsReducer, pageReducer, userReportReducer, reviewmodalReducer, petDetailReducer, loginReducer
 });
 
 export default rootReducer;
