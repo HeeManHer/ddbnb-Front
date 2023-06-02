@@ -1,12 +1,32 @@
 // import React from "react";
 import Calendar from "../../component/item/Calendar";
 import "./detail.css"
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from "react-redux";
+import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import React, { useState } from "react";
+import RegistPost from "../../component/modal/post/RegistPost";
+import CancelPost from "../../component/modal/post/CancelPost";
 
 function PetMomRecruit() {
+
+    const showModal = useSelector(state => state.modalsReducer.registPost);
+    const dispatch = useDispatch();
+
     const toggleSelected = (event) => {
         event.target.classList.toggle("selected");
     };
+
+
+    const openModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "registPost" });
+    };
+
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+
+
     const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
 
     const handleDatetimeChange = (event) => {
@@ -19,13 +39,28 @@ function PetMomRecruit() {
     };
     return (
         <div className="height-auto">
-            <div className="dateAndWriter">
-                <h1>게시판</h1>
-                <button className="declarationButton">신고</button>
-            </div>
-            <div className="dateAndWriter">
-                <h5>작성자 : 김용민</h5>
-                <h5>작성일 : 2023-05-18</h5>
+            <div className="petsitterrecruitcontainer">
+
+
+
+                <div className="buttoncontainer">
+                    <div className="board">게시판</div>
+                    <button className="insertwrite" onClick={openModal}>등록</button>
+                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                        <RegistPost />
+                    </Modal>
+                    <button onClick={openModal}>취소</button>
+                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                        <CancelPost />
+                    </Modal>
+                </div>
+
+                <div className="yongdate">
+
+                    <h3 className="writeryong">작성자 : 김용민</h3>
+                    <div className="writedate">작성일 : 2023-05-18
+                    </div>
+                </div>
             </div>
             <hr className="line"></hr>
 

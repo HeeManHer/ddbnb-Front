@@ -21,7 +21,7 @@ const modalsReducer = handleActions({
     //         recruitListState: true
     //     };
     // },
-    
+
     [CLOSE_MODAL]: () => {
         return {
             ...initialState

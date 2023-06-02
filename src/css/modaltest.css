@@ -1,0 +1,110 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modalsize111 {
+    position: fixed;
+    width: 500px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10000;
+}
+
+.inmodalcolor {
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #FAB7A2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bolder;
+    position: relative;
+    /* left: 10px; */
+    top: 10px;
+
+}
+
+
+.modalsize-button2 {
+    width: 90px;
+    height: 30px;
+    background-color: white;
+    color: #2d2d2d;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: border;
+    font-size: 13px;
+    cursor: pointer;
+    border: solid 3px #FAB7A2;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: #FAB7A2;
+    }
+}
+
+.button2list {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.joinpet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.joinpost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    margin: 0;
+}
+
+.joinpostdiv {
+
+    padding: 5px 10px;
+}
+
+.modalsize-button3 {
+
+    width: 90px;
+    height: 30px;
+    background-color: white;
+    color: #2d2d2d;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: border;
+    font-size: 13px;
+    cursor: pointer;
+    border: solid 3px #FAB7A2;
+    border-radius: 3px;
+    margin-top: 10%;
+
+    &:hover {
+        background-color: #FAB7A2;
+    }
+}

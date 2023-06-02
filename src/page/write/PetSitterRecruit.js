@@ -1,11 +1,34 @@
-import "../../css/petsitterrecruit.css";
-import React, { useState } from "react";
 
+import "../../css/petsitterrecruit.css";
+import "./detail.css"
+import Modal from 'react-modal';
+import React, { useState } from "react";
+import RegistPost from "../../component/modal/post/RegistPost";
+import CancelPost from "../../component/modal/post/CancelPost";
+import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function PetSitterRecruit() {
 
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
+    const dispatch = useDispatch();
+
+    const toggleSelected = (event) => {
+        event.target.classList.toggle("selected");
+    };
+
+
+    const openModal = (type) => {
+        dispatch({ type: OPEN_MODAL, payload: type });
+    };
+
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -28,8 +51,14 @@ function PetSitterRecruit() {
 
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
-                <button className="insertwrite">등록</button>
-                <button>취소</button>
+                <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
+                <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                    <RegistPost />
+                </Modal>
+                <button onClick={() => openModal("canclepost")}>취소</button>
+                <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
+                    <CancelPost />
+                </Modal>
             </div>
 
             <div className="yongdate">
