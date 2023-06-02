@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import Calendar from "../../component/item/Calendar";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getPetMomDetail } from "../../api/petDetailAPI";
+import Calendar from "../item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import ReviewList from "../../component/modal/review/ReviewList";
@@ -12,10 +14,12 @@ function PetMomRecruitDatail() {
 
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const openModalReview = () => {
-        setShowModalReview(true);
-    };
+
+    // const openModalReview = () => {
+    //     setShowModalReview(true);
+    // };
 
     const closeModalReview = () => {
         setShowModalReview(false);
@@ -28,6 +32,30 @@ function PetMomRecruitDatail() {
     const closeModalList = () => {
         setShowModalList(false);
     };
+
+    const dispatch = useDispatch();
+    const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
+    const totalImages = petdetail.img ? petdetail.img.length : 0;
+
+    useEffect(
+        () => {
+            dispatch(getPetMomDetail());
+        },
+        []
+    )
+
+    const changeImage = (direction) => {
+        let newIndex = currentImageIndex + direction;
+        if (newIndex < 0) {
+            newIndex = totalImages - 1; // 마지막 이미지로 순환
+        } else if (newIndex >= totalImages) {
+            newIndex = 0; // 첫 번째 이미지로 순환
+        }
+        setCurrentImageIndex(newIndex);
+    };
+
+
+
     return (
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
@@ -35,8 +63,8 @@ function PetMomRecruitDatail() {
                 <button className="declarationButton">신고</button>
             </div>
             <div className="dateAndWriter">
-                <h5>작성자 : 김용민</h5>
-                <h5>작성일 : 2023-05-18</h5>
+                <h5>작성자 : {petdetail.name}</h5>
+                <h5>작성일 : {petdetail.date}</h5>
             </div>
             <hr className="line"></hr>
 
@@ -48,12 +76,12 @@ function PetMomRecruitDatail() {
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">제목 </h2>
-                <h3 className="comment-content2" > 모두의 펫맘 사랑스럽게 돌봐드려요</h3>
+                <h3 className="comment-content2" > {petdetail.title}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">지역</h2>
-                <h3 className="comment-content2" >성남시 분당구 백현동</h3>
+                <h3 className="comment-content2" >{petdetail.region}</h3>
             </div>
             <hr className="line"></hr>
 
@@ -68,11 +96,11 @@ function PetMomRecruitDatail() {
 
             <div className="comment">
                 <h2 className="comment-content">기간</h2>
-                <h3 className="comment-content2" >2023-05-17 ~ 2023-05-19</h3>
+                <h3 className="comment-content2" >{petdetail.date2}</h3>
                 <h2 className="comment-mommoney">사례금</h2>
-                <h3 className="comment-mommoney2">10000 ￦</h3>
+                <h3 className="comment-mommoney2">{petdetail.tmoney}</h3>
                 <button className="comment-button1">시간당</button>
-                <h3 className="comment-mommoney3">90000 ￦</h3>
+                <h3 className="comment-mommoney3">{petdetail.dmoney}</h3>
                 <button className="comment-button2">1박</button>
 
 
@@ -81,9 +109,11 @@ function PetMomRecruitDatail() {
             <div className="formsize">
                 <div className="doginfo">
                     <div className="images">
-                        <button className="imageBtn"> &lt; </button>
-                        <img className="images" src="../img/house.png" ></img>
-                        <button className="imageBtn"> &gt; </button>
+                        <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
+                        {petdetail.img && petdetail.img.length > 0 ? (
+                            <img className='imgsize' src={petdetail.img[currentImageIndex]} alt=" 사진이 없습니다!" />
+                        ) : null}
+                        <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
                     </div>
                     <div className="calendar">
                         <Calendar />
@@ -104,16 +134,14 @@ function PetMomRecruitDatail() {
                         <hr className="line2"></hr>
                         <div className="dateAndWriter">
                             <h2>특이사항</h2>
-                            <textarea className="momplz-textarea1">저희는 단독 주택이여서 편하게 반려동물을
-                                맡아 드릴 수 있는 환경입니다.</textarea>
+                            <textarea className="momplz-textarea1" value={petdetail.info}></textarea>
                         </div>
                     </div>
                     <h2> 강아지를 맡아줄게요</h2>
-                    <textarea className="momplz-textarea2">저는 많은 아이들을 맡아본 경험이 있습니다. 믿고 맡겨주세요</textarea>
-                </div>
+                    <textarea className="momplz-textarea2" value={petdetail.info2}></textarea> </div>
             </div>
             <div>
-                <div className="endline2">
+                <div>
                     <hr className="line"></hr>
                     <button className="wantbtn2">신청하기</button>
                     <button className="wantbtn2"
@@ -130,6 +158,8 @@ function PetMomRecruitDatail() {
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
         </div >
-    );
-};
+    )
+
+}
+
 export default PetMomRecruitDatail;

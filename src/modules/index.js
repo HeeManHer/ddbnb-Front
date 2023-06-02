@@ -5,12 +5,14 @@ import applicantsReducer from './applycant';
 import pageReducer from "./currentPage";
 import userReportReducer from "./userReport";
 import reviewmodalReducer from "./reviewmodal";
+import petDetailReducer from "./petdetail";
+
 
 
 
 
 const rootReducer = combineReducers({
-    petMomReducer, petSitterReducer, applicantsReducer, pageReducer, userReportReducer, reviewmodalReducer
+    petMomReducer, petSitterReducer, applicantsReducer, pageReducer, userReportReducer, reviewmodalReducer, petDetailReducer
 });
 
 export default rootReducer;
