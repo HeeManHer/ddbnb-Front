@@ -40,13 +40,8 @@
     
 }
 
-
 .editLine div:nth-child(1) {
-    width: 82%;
-    float: right;
- 
-}.editLine div:nth-child(2) {
-    width: 20%;
+    width: 95%;
     float: right;
 }
 

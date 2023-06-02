@@ -1,0 +1,77 @@
+.modal {
+    display: flex;
+    width: 400px;
+    height: 250px;
+    flex-direction: column;
+    border: 1px solid #8d8d8d;
+    margin-top: 50px;
+}
+.collectFinishMdTitle {
+    display: flex;
+    width: 378px;
+    height: 40px;
+    background-color: #FAB7A2;
+    color: white;
+    align-items: center;
+    flex-direction: start;
+    margin-left: 11px;
+
+}
+
+.collectFinishMdContent {
+    display: flex;
+    width: 378px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 11px;
+}
+
+.btnSet {
+    display: flex;
+    width: 378px;
+    height: 40px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: center;
+}
+
+.btnStyleYes {
+    width: 90px;
+    height: 35px;
+    background-color: #FAB7A2;
+    border : solid 1px #FAB7A2;
+    font-weight :bolder;
+
+
+}
+
+.btnStyleNo {
+    width: 90px;
+    height: 35px;
+    background-color: white;
+    border : solid 2px #FAB7A2;
+    font-weight :bolder;
+}
+
+.collectCancleMdTitle {
+    display: flex;
+    width: 378px;
+    height: 40px;
+    background-color: #FAB7A2;
+    color: white;
+    align-items: center;
+    flex-direction: start;
+    margin-left: 11px;
+
+}
+
+.collectCancleMdContent {
+    display: flex;
+    width: 378px;
+    height: 150px;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 11px;
+}

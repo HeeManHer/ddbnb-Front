@@ -45,7 +45,7 @@ function ReviewModal({ closeModalReview, index }) {
                             checked={rating === 5}
                             onChange={handleRatingChange}
                         />
-                        <label htmlFor="rate1">⭐</label>
+                        <label className="yellow" htmlFor="rate1">⭐</label>
                         <input
                             type="radio"
                             name="rating"
@@ -54,7 +54,7 @@ function ReviewModal({ closeModalReview, index }) {
                             checked={rating === 4}
                             onChange={handleRatingChange}
                         />
-                        <label htmlFor="rate2">⭐</label>
+                        <label className="yellow" htmlFor="rate2">⭐</label>
                         <input
                             type="radio"
                             name="rating"
@@ -63,7 +63,7 @@ function ReviewModal({ closeModalReview, index }) {
                             checked={rating === 3}
                             onChange={handleRatingChange}
                         />
-                        <label htmlFor="rate3">⭐</label>
+                        <label className="yellow" htmlFor="rate3">⭐</label>
                         <input
                             type="radio"
                             name="rating"
@@ -72,7 +72,7 @@ function ReviewModal({ closeModalReview, index }) {
                             checked={rating === 2}
                             onChange={handleRatingChange}
                         />
-                        <label htmlFor="rate4">⭐</label>
+                        <label className="yellow" htmlFor="rate4">⭐</label>
                         <input
                             type="radio"
                             name="rating"
@@ -81,7 +81,7 @@ function ReviewModal({ closeModalReview, index }) {
                             checked={rating === 1}
                             onChange={handleRatingChange}
                         />
-                        <label htmlFor="rate5">⭐</label>
+                        <label className="yellow" htmlFor="rate5">⭐</label>
                     </fieldset>
                     {rating}/5
                 </div>
@@ -99,7 +99,7 @@ function ReviewModal({ closeModalReview, index }) {
                         onChange={handleImageSelect}
                         disabled={images.length === 4} // 이미지 개수가 4개에 도달하면 비활성화
                     />
-                    <label htmlFor="imageUpload" className="reviewmodal-imgbtn">
+                    <label className="yellow" htmlFor="imageUpload" className="reviewmodal-imgbtn">
                         +
                     </label>
                 </div>

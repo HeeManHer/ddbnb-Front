@@ -116,22 +116,22 @@ input[type=radio] {
     /* 라디오박스 감춤 */
 }
 
-/* 
-label {
-    font-size: 1em;
-    이모지 크기
-    color: transparent;
-    기존 이모지 컬러 제거
-    text-shadow: 0 0 0 #f0f0f0;
-    새 이모지 색상 부여
-} */
 
-label:hover {
+.yellow {  
+    font-size: 1em;
+    /* 이모지 크기 */
+    color: transparent;
+    /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0;
+    /* 새 이모지 색상 부여 */
+}
+
+.yellow:hover {
     text-shadow: 0 0 0 yellow;
     /* 마우스 호버 */
 }
 
-label:hover~label {
+.yellow:hover~label {
     text-shadow: 0 0 0 yellow;
     /* 마우스 호버 뒤에오는 이모지들 */
 }
@@ -285,7 +285,7 @@ input[type=radio]:checked~label {
     display: flex;
     justify-content: start;
     position: relative;
-    left: 18px;
+    left: 30px;
 }
 
 .reviewlist-join {

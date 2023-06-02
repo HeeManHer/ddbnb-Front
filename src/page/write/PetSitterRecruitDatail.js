@@ -1,13 +1,54 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getPetSitterDetail } from "../../api/petDetailAPI";
 import "../write/detail.css"
+import PetSitterApply from "../../component/modal/apply/PetSitterApply";
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from "react-redux";
+import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 
 
 function PetSitterRecruitDatail() {
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
+
+    const showModal = useSelector(state => state.modalsReducer.petsitterApply);
+    const dispatch = useDispatch();
+
+    const openModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" });
     };
 
-    const currentDate = new Date().toISOString().slice(0, 10);
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+    const toggleSelected = (event) => {
+        event.target.classList.toggle("selected");
+
+    };
+
+
+    const dispatch = useDispatch();
+    const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
+
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const totalImages = petdetail.img ? petdetail.img.length : 0;
+
+    useEffect(
+        () => {
+            dispatch(getPetSitterDetail());
+        },
+        []
+    )
+
+    const changeImage = (direction) => {
+        let newIndex = currentImageIndex + direction;
+        if (newIndex < 0) {
+            newIndex = totalImages - 1; // 마지막 이미지로 순환
+        } else if (newIndex >= totalImages) {
+            newIndex = 0; // 첫 번째 이미지로 순환
+        }
+        setCurrentImageIndex(newIndex);
+    };
 
     return (
         <div className="height-auto">
@@ -16,18 +57,18 @@ function PetSitterRecruitDatail() {
                 <button className="declarationButton">신고</button>
             </div>
             <div className="dateAndWriter">
-                <h5>작성자 : 김용민</h5>
-                <h5>작성일: {currentDate}</h5>
+                <h5>작성자 : {petdetail.name}</h5>
+                <h5>작성일: {petdetail.date}</h5>
             </div>
             <hr className="line"></hr>
-            <div>
-                <div className="images">
-                    <button className="imageBtn"> &lt; </button>
-                    <img src="../img/Rectangle 47.png"></img>
-                    <button className="imageBtn"> &gt; </button>
-                </div>
-                <h2 className="text">1/4</h2>
+            <div className="images">
+                <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
+                {petdetail.img && petdetail.img.length > 0 ? (
+                    <img className='imgsize' src={petdetail.img[currentImageIndex]} alt=" 사진이 없습니다!" />
+                ) : null}
+                <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
             </div>
+            <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2>
             <div className="comment">
                 <h2 className="comment-content" style={{ right: '4%' }}>게시판</h2>
                 <h3 className="comment-content2" style={{ left: '13px' }} > 펫시터 모집  게시판</h3>
@@ -35,12 +76,12 @@ function PetSitterRecruitDatail() {
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">제목 </h2>
-                <h3 className="comment-content2" >안녕 나는 나시고랭이야</h3>
+                <h3 className="comment-content2" >{petdetail.title}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">지역</h2>
-                <h3 className="comment-content2" >성남시 분당구 백현동</h3>
+                <h3 className="comment-content2" >{petdetail.region}</h3>
             </div>
             <hr className="line"></hr>
 
@@ -55,53 +96,54 @@ function PetSitterRecruitDatail() {
 
             <div className="comment">
                 <h2 className="comment-content">기간</h2>
-                <h3 className="comment-content2" >2023-05-17 ~ 2023-05-19</h3>
+                <h3 className="comment-content2" >{petdetail.date2}</h3>
                 <h2 className="comment-content3">사례금</h2>
-                <h3 className="comment-content4">90000 ￦</h3>
+                <h3 className="comment-content4">{petdetail.dmoney}</h3>
             </div>
             <hr className="line"></hr>
             <div className="formsize">
-                <div className="doginfo">
+                <div className="doginfo3">
                     <div className="size">
                         <button className="doginfo-button">이름</button>
-                        <h3>나시고랭</h3>
+                        <h3>{petdetail.name}</h3>
                     </div>
                     <hr className="line"></hr>
                     <div className="size">
                         <button className="doginfo-button">나이</button>
-                        <h3>2살</h3>
+                        <h3>{petdetail.age}살</h3>
                     </div>
                     <hr className="line"></hr>
                     <div className="size">
                         <button className="doginfo-button">견종</button>
-                        <h3>진돗개</h3>
+                        <h3>{petdetail.type}</h3>
                     </div>
                     <hr className="line"></hr>
                     <div className="size">
                         <button className="doginfo-button" >성별</button>
-                        <h3>남자</h3>
+                        <h3>{petdetail.gender}</h3>
                         <button className="size-size">크기</button>
-                        <h3 className="size-position">중형</h3>
+                        <h3 className="size-position">{petdetail.size}</h3>
                     </div>
                     <hr className="line"></hr>
                     <div className="doginfo2">
                         <button>특이사항</button>
-                        <textarea>활동량이 많아서 하루에
-                            산책 한번은 시켜주세요.
-                            사람을 아주 좋아하는 아이랍니다.</textarea>
+                        <textarea value={petdetail.info}></textarea>
                     </div>
                 </div>
                 <div className="dogplz">
                     <h2>우리 강아지를 맡아주세요</h2>
-                    <textarea>활동량이 많아서 하루에
-                        산책 한번은 시켜주세요.
-                        사람을 아주 좋아하는 아이랍니다.ㅇ럼나ㅣㅇㄴ미안ㅁ안밍ㅁㄴㅇㅁㅇㄴㅁ</textarea>
-                </div>
+                    <textarea value={petdetail.info}></textarea></div>
             </div>
             <div>
                 <div className="endline2">
                     <hr className="line"></hr>
-                    <button className="wantbtn2">신청하기</button>
+
+                    <button className="wantbtn2" onClick={openModal}>신청하기</button>
+
+                    {showModal &&
+                        <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                            <PetSitterApply />
+                        </Modal>}
                 </div>
             </div >
         </div >
