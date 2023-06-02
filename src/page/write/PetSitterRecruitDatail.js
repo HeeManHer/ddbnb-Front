@@ -2,14 +2,29 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getPetSitterDetail } from "../../api/petDetailAPI";
 import "../write/detail.css"
+import PetSitterApply from "../../component/modal/apply/PetSitterApply";
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from "react-redux";
+import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 
 
 function PetSitterRecruitDatail() {
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
+
+    const showModal = useSelector(state => state.modalsReducer.petsitterApply);
+    const dispatch = useDispatch();
+
+    const openModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" });
     };
 
-    const currentDate = new Date().toISOString().slice(0, 10);
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+    const toggleSelected = (event) => {
+        event.target.classList.toggle("selected");
+
+    };
+
 
     const dispatch = useDispatch();
     const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
@@ -122,7 +137,13 @@ function PetSitterRecruitDatail() {
             <div>
                 <div className="endline2">
                     <hr className="line"></hr>
-                    <button className="wantbtn2">신청하기</button>
+
+                    <button className="wantbtn2" onClick={openModal}>신청하기</button>
+
+                    {showModal &&
+                        <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                            <PetSitterApply />
+                        </Modal>}
                 </div>
             </div >
         </div >

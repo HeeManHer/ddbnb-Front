@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../css/petsitterList.css";
 import "../../css/petmomList.css";
+import PageBtn from "../../component/common/PageBtn";
 
 
 function PetMomList() {
@@ -89,12 +90,12 @@ function PetMomList() {
                                 <div>사례￦
                                     <button>모집중</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <PageBtn />
         </div>
     )
 }

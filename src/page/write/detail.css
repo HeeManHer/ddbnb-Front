@@ -291,6 +291,7 @@
     position: relative;
     top: 20px;
     left: 500px;
+    cursor: pointer;
 }
 
 .formsize {

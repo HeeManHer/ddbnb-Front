@@ -5,7 +5,12 @@ import Calendar from "../item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import ReviewList from "../../component/modal/review/ReviewList";
-
+import { useDispatch, useSelector } from "react-redux";
+import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import Modal from 'react-modal';
+import Declaration from "../../component/modal/declaration/Declaration";
+import PetMomApply from "../../component/modal/apply/PetMomApply";
+import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 
 function PetMomRecruitDatail() {
     const toggleSelected = (event) => {
@@ -16,10 +21,24 @@ function PetMomRecruitDatail() {
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+    const { declaration: showModal, petsitterApply } = useSelector(state => state.modalsReducer);
+    const dispatch = useDispatch();
 
-    // const openModalReview = () => {
-    //     setShowModalReview(true);
-    // };
+    const openModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "declaration" });
+    };
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+
+    const openModaljoin = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" })
+    }
+
+
+    const openModalReview = () => {
+        setShowModalReview(true);
+    };
 
     const closeModalReview = () => {
         setShowModalReview(false);
@@ -60,7 +79,10 @@ function PetMomRecruitDatail() {
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
                 <h1>게시판</h1>
-                <button className="declarationButton">신고</button>
+                <button className="declarationButton" onClick={openModal}>신고</button>
+                <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                    <Declaration />
+                </Modal>
             </div>
             <div className="dateAndWriter">
                 <h5>작성자 : {petdetail.name}</h5>
@@ -143,7 +165,12 @@ function PetMomRecruitDatail() {
             <div>
                 <div>
                     <hr className="line"></hr>
-                    <button className="wantbtn2">신청하기</button>
+                    <button className="wantbtn2" onClick={openModaljoin}>신청하기</button>
+
+                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                        <PetMomApply />
+                    </Modal>
+
                     <button className="wantbtn2"
                         onClick={openModalList}
                     >신청자 목록</button>
