@@ -9,7 +9,7 @@ import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 function MyPageMain() {
 
     // const [listItems, setListItems] = useState([]);
-    const [buttonId, setButtonId] = useState(null);
+    const [buttonId, setButtonId] = useState(1);
 
     const handleButtonClick = (id) => {
         setButtonId(id);
@@ -24,8 +24,8 @@ function MyPageMain() {
                         <button>쪽지함</button>
                     </div>
                     <div>
-                        <button style={{ marginRight: '10px' }}>프로필수정</button>
-                        <button>경력수정</button>
+                        <button>프로필수정</button>
+                        {/* <button>경력수정</button> */}
                     </div>
                 </article>
                 <section className={style.profileMain}>

@@ -1,6 +1,11 @@
 import style from "./MyReviewPage.module.css";
-
+import { useNavigate } from 'react-router-dom';
 function MyReviewPage() { 
+
+    const navigate = useNavigate();
+    const closeHandler = () => {
+        navigate("/myPage");
+    }
     return (
         <section className={style.board}>
             <section>
@@ -20,7 +25,7 @@ function MyReviewPage() {
                         </section>
                         <div style={{display : 'flex', alignItems : 'center', justifyItems : 'center'}}>
                         <button>리뷰 답장</button>
-                        <button>닫기</button>
+                        <button onClick={closeHandler}>닫기</button>
                         </div>
                     </section>
                 </div>
