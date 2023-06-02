@@ -1,14 +1,14 @@
 {
     "pageInfo": {
         "pageNo": 1,
-        "totalCount": 7,
-        "limit": 5,
+        "totalCount": 20,
+        "limit": 10,
         "buttonAmount": 10,
         "maxPage": 2,
         "startPage": 1,
         "endPage": 2,
         "startRow": 1,
-        "endRow": 5
+        "endRow": 10
     },
     "data": [
         {
@@ -37,6 +37,36 @@
         },
         {
             "no": 5,
+            "name": "기묭민",
+            "title": "야! 나두 할 수 있어!",
+            "date": "2023/05/20"
+        },
+        {
+            "no": 6,
+            "name": "기묭민",
+            "title": "게시글 보고 연락드립니다.",
+            "date": "2023/05/20"
+        },
+        {
+            "no": 7,
+            "name": "기묭민",
+            "title": "저 할수 있어요",
+            "date": "2023/05/20"
+        },
+        {
+            "no": 8,
+            "name": "기묭민",
+            "title": "시켜만 주시면 열심히 하겠습니다.",
+            "date": "2023/05/20"
+        },
+        {
+            "no": 9,
+            "name": "기묭민",
+            "title": "야! 너두",
+            "date": "2023/05/20"
+        },
+        {
+            "no": 10,
             "name": "기묭민",
             "title": "야! 나두 할 수 있어!",
             "date": "2023/05/20"

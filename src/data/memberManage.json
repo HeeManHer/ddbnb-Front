@@ -1,0 +1,156 @@
+{
+    "pageInfo": {
+        "pageNo": 1,
+        "totalCount": 50,
+        "limit": 20,
+        "buttonAmount": 10,
+        "maxPage": 3,
+        "startPage": 1,
+        "endPage": 3,
+        "startRow": 1,
+        "endRow": 20
+    },
+    "data": [
+        {
+            "no": 1,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 2,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 3,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 4,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 5,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 6,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 7,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 8,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 9,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 10,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 11,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 12,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 13,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 14,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 15,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 16,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 17,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 18,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 19,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        },
+        {
+            "no": 20,
+            "name": "기묭민",
+            "state": "회원",
+            "joinDate": "2023/03/15",
+            "reportAmount": 5
+        }
+        
+    ]
+}

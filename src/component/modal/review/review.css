@@ -116,7 +116,8 @@ input[type=radio] {
     /* 라디오박스 감춤 */
 }
 
-.yellow {
+
+.yellow {  
     font-size: 1em;
     /* 이모지 크기 */
     color: transparent;

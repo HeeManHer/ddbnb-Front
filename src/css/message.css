@@ -1,3 +1,47 @@
+.postMessageList {
+    width: 600px;
+    height: 450px;
+
+    padding: 30px;
+}
+
+.postMessageList>div>div>* {
+    width: 62px;
+    height: 25px;
+
+    background-color: white;
+    border: 1px solid #9D9D9D;
+
+}
+
+.postMessageList>div>div>button {
+    margin: 10px;
+}
+
+.postMessageList>div>div>button:first-child {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.postMessageList>table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.postMessageList>table>thead>tr>th {
+    background-color: #D8D8D8;
+    border-right: 1px solid white;
+}
+
+.postMessageList>table>thead>tr :last-child {
+    border-right: none;
+}
+
+.postMessageList>table>tbody>tr>td {
+    border-bottom: 1px solid black;
+}
+
 .postMessage {
     min-width: 400px;
     min-height: 400px;
@@ -83,17 +127,4 @@
 
     border-radius: 3px;
     border: none;
-}
-
-
-
-
-
-
-
-
-
-
-.postMessageList{
-    width: 50%;
 }

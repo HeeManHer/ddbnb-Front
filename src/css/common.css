@@ -63,17 +63,25 @@ footer {
     margin: auto;
 }
 
+@media(max-width:960px) {
+    .main-width {
+        width: 90vw;
+    }
+}
+
 .content {
     min-height: 85vh;
     flex: 1;
 }
 
 .admin-content {
-    width: 100%;
-    min-height: 85vh;
+    min-height: 79vh;
+
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 20px 0px;
 }
 
 .dis-flex {

@@ -1,0 +1,55 @@
+{
+    "pageInfo": {
+        "pageNo": 1,
+        "totalCount": 50,
+        "limit": 20,
+        "buttonAmount": 10,
+        "maxPage": 3,
+        "startPage": 1,
+        "endPage": 3,
+        "startRow": 1,
+        "endRow": 20
+    },
+    "data": [
+        {
+            "no": 1,
+            "reportMember": "준자",
+            "memberReport": "기묭민",
+            "date": "2023/05/31",
+            "reportContact": "광고 게시물",
+            "memberReportManagement": "미처리"
+        },
+        {
+            "no": 2,
+            "reportMember": "준자",
+            "memberReport": "기묭민",
+            "date": "2023/05/31",
+            "reportContact": "광고 게시물",
+            "memberReportManagement": "처리"
+        },
+        {
+            "no": 3,
+            "reportMember": "준자",
+            "memberReport": "기묭민",
+            "date": "2023/05/31",
+            "reportContact": "광고 게시물",
+            "memberReportManagement": "처리"
+        },
+        {
+            "no": 4,
+            "reportMember": "준자",
+            "memberReport": "기묭민",
+            "date": "2023/05/31",
+            "reportContact": "광고 게시물",
+            "memberReportManagement": "처리"
+        },
+        {
+            "no": 5,
+            "reportMember": "준자",
+            "memberReport": "기묭민",
+            "date": "2023/05/31",
+            "reportContact": "광고 게시물",
+            "memberReportManagement": "처리"
+        }
+    ]
+}

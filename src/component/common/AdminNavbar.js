@@ -6,19 +6,12 @@ function AdminNavbar() {
     const navigate = useNavigate();
 
     return (
-        <div className="menucontainer">
-            <div className="menutext1" onClick={() => navigate('/manage/dashboard')}>
-                대시보드
-            </div>
-            <div className="menutext1" onClick={() => navigate('/manage/member')}>
-                회원 관리
-            </div>
-            <div className="menutext1" onClick={() => navigate('/manage/petMom')}>
-                게시판 관리
-            </div>
-            <div className="menutext1" onClick={() => navigate('/manage/reportMember')}>
-                신고 관리
-            </div>
+        <div className="menuContainer ">
+            <div className="menutext" onClick={() => navigate('/manage')}>대시보드</div>
+            <div className="menutext" onClick={() => navigate('./member')}>회원 관리</div>
+            <div className="menutext" onClick={() => navigate('./petMom')}>게시판 관리</div>
+            <div className="menutext" onClick={() => navigate('./reportMember')}>신고 관리</div>
+            <div className="menutext" onClick={() => navigate('./modal')}>모달확인</div>
         </div>
     )
 }

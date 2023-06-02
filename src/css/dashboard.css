@@ -1,26 +1,15 @@
 .dashboard {
-    min-width: 100px;
-    height: 100%;
-    padding: 2vh;
-
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-
-    font-size: 1.2rem;
 
     margin-top: 20px;
 }
 
-.dashboard>* {
-    width: 75%;
-}
-
-
 .visitantBoard {
-    width: 20%;
+    margin-bottom: 2vh;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
@@ -31,7 +20,7 @@
 
     border-radius: 50%;
 
-    font-size: 35px;
+    font-size: 2.2rem;
 
     color: white;
     text-shadow: -1px 0px black, 1px 0px black, 0px -1px black, 0px 1px black;
@@ -48,6 +37,10 @@
 
 .curruntUser {
     background-color: #33F73B;
+}
+
+.issueBoard {
+    font-size: 1.2rem;
 }
 
 .issue {
@@ -81,82 +74,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-
-    font-size: 1rem;
 }
 
 .tableSection {
-    min-width: 400px;
-    width: 45%;
-
-    border: 1px solid black;
-    padding: 20px;
-    padding-bottom: 50px;
-    margin-bottom: 10px;
-}
-
-.boardTable {
+    min-width: 388px;
     width: 100%;
-    border-collapse: collapse;
-}
 
-.boardTable>*>tr>* {
-    border-bottom: 1px solid black;
-    text-align: center;
-}
-
-@media(max-width:1750px) {
-    .dashboard {
-        height: 100%;
-        padding: 2vh;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
-        font-size: 1.2rem;
-
-        margin-top: 20px;
-    }
-
-    .dashboard>* {
-        width: 100%;
-        min-width: 100px;
-    }
-
-    .visitantBoard {
-        width: 100%;
-        flex-direction: row;
-        margin-bottom: 2vh;
-    }
-
-    .tableSection {
-        width: 45%;
-    }
-}
-
-@media(max-width:1500px) {
-    .tableSection {
-        width: 100%;
-    }
-}
-
-@media(max-width:1000px) {
-
-    .visitantBoard {
-        width: 680px;
-        margin-bottom: 10px;
-    }
-
-    .issue {
-        width: 670px;
-    }
-
-    .statusBoard {       
-        width: 670px;
-    }
-
-    .tableSection {
-        width: 650px;
-    }
+    /* padding: 20px; */
+    margin-bottom: 10px;
 }
