@@ -16,9 +16,61 @@ export function getUserReport() {
 
 export function getMemberList() {
 
+    let url = `http://localhost:8080/api/v1/member/list`;
+
+
     return async function (dispatch, getState) {
-        dispatch({ type: GET_MEMBER_LIST, payload: memberList });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status == 200) {
+            dispatch({ type: GET_MEMBER_LIST, payload: result.data });
+        }
     }
+}
+
+export async function getMemberAmount() {
+
+    let url = `http://localhost:8080/api/v1/member/amount`;
+
+    return await fetch(url, {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Accept": '*/*'
+        }
+    }).then(res => res.json());
+}
+
+export async function getTodayVisitant() {
+
+    let url = `http://localhost:8080/api/v1/member/visitant`;
+
+    return await fetch(url, {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Accept": '*/*'
+        }
+    }).then(res => res.json());
+}
+
+export async function findMemberBySignDayIsToday() {
+
+    let url = `http://localhost:8080/api/v1/member/signdate`;
+
+    return await fetch(url, {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Accept": '*/*'
+        }
+    }).then(res => res.json());
 }
 
 export function getPetMomList() {

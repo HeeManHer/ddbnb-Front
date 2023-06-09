@@ -19,8 +19,8 @@ const rootReducer = combineReducers({
     petSitterReducer,
     reviewmodalReducer,
     userReportReducer,
-    petDetailReducer, 
-    loginReducer, 
+    petDetailReducer,
+    loginReducer,
     modalsReducer
 });
 
