@@ -117,7 +117,7 @@ input[type=radio] {
 }
 
 
-.yellow {  
+.yellow {
     font-size: 1em;
     /* 이모지 크기 */
     color: transparent;
@@ -273,6 +273,8 @@ input[type=radio]:checked~label {
     height: 50px;
     border-radius: 50px;
     background-color: #D2D2D2;
+    position: relative;
+    right: 30px;
 
 }
 
@@ -284,8 +286,7 @@ input[type=radio]:checked~label {
     height: 10px;
     display: flex;
     justify-content: start;
-    position: relative;
-    left: 30px;
+
 }
 
 .reviewlist-join {
@@ -298,24 +299,24 @@ input[type=radio]:checked~label {
     justify-content: center;
     display: flex;
     height: 20px;
+
 }
+
 
 .reviewlist-organize {
     display: flex;
     justify-content: center;
     justify-content: space-around;
     width: 200px;
-    position: relative;
-    right: 70px;
     height: 60px;
 }
 
-.reviewlist-h4 {
-    position: relative;
-    bottom: 20px;
-    left: 20px;
-    color: white;
+.reviewList-line {
+    display: flex;
+    justify-content: space-around;
 }
+
+
 
 .checkbox {
     position: relative;
@@ -324,4 +325,9 @@ input[type=radio]:checked~label {
 
 .ex {
     background-color: #FAB7A2;
+}
+
+.reviewlist-c {
+    display: flex;
+    flex-direction: row-reverse;
 }
