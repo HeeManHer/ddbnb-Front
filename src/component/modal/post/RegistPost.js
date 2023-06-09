@@ -7,17 +7,8 @@ import { useDispatch } from 'react-redux';
 function RegistPost() {
     const dispatch = useDispatch();
 
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
-
     const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL, payload: "registpost" });
+        dispatch({ type: CLOSE_MODAL });
     };
 
     return (

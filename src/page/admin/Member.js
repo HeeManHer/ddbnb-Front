@@ -7,7 +7,7 @@ function Member() {
     const dispatch = useDispatch();
 
     const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
-
+    
     useEffect(
         () => {
             dispatch(getMemberList());
@@ -49,16 +49,16 @@ function Member() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(memberList) && memberList.map(item => (
-                        <tr>
+                    {Array.isArray(memberList) && memberList.map((member, index) => (
+                        <tr key={index}>
                             <td>
-                                <input type="checkbox" name="" id="" />
+                                <input type="checkbox"/>
                             </td>
-                            <td>{item.no}</td>
-                            <td>{item.name}</td>
-                            <td>{item.state}</td>
-                            <td>{item.joinDate}</td>
-                            <td>{item.reportAmount}</td>
+                            <td>{member.memberId}</td>
+                            <td>{member.nickname}</td>
+                            <td>{member.status}</td>
+                            <td>{member.signDate}</td>
+                            <td>{member.reportedCount}</td>
                         </tr>
                     ))}
                 </tbody>

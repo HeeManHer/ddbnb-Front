@@ -12,8 +12,8 @@ function PetSitterRecruitDatail() {
     const { declaration: showModal, petsittercollectcancle, PetSitterApply } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
-    const openModal = () => {
-        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" });
+    const openModal = (type) => {
+        dispatch({ type: OPEN_MODAL, payload: type });
     };
 
     const closeModal = () => {
@@ -143,12 +143,12 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
-                    <button className="wantbtn2" onClick={openModal}>신청하기</button>
+                    <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
 
-                    {showModal &&
-                        <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                            <PetSitterApply />
-                        </Modal>}
+
+                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                        <PetSitterApply />
+                    </Modal>
                 </div>
             </div >
         </div >

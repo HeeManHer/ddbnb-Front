@@ -39,10 +39,6 @@ function PetMomRecruitDatail() {
         dispatch({ type: OPEN_MODAL, payload: "petmomcollectcancle" });
     };
 
-    const openModalReview = () => {
-        setShowModalReview(true);
-    };
-
     const closeModalReview = () => {
         setShowModalReview(false);
     };
