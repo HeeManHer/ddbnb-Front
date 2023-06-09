@@ -2,6 +2,7 @@ import { createActions, handleActions } from "redux-actions";
 
 const initialState = {
     petsitterApply: false,
+    petmomApply: false,
     declaration: false,
     registpost: false,
     canclepost: false
