@@ -5,12 +5,11 @@ import "../write/detail.css"
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import Declaration from '../../component/modal/declaration/Declaration';
-
+import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 
 function PetSitterRecruitDatail() {
 
-    const { petsitterApply, declaration } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, PetSitterApply } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = (type) => {
@@ -23,6 +22,10 @@ function PetSitterRecruitDatail() {
     const toggleSelected = (event) => {
         event.target.classList.toggle("selected");
 
+    };
+
+    const openCollectCancleModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
     };
 
     const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
@@ -52,9 +55,10 @@ function PetSitterRecruitDatail() {
         <div className="height-auto">
             <div className="dateAndWriter">
                 <h1>게시판</h1>
-                <button className="declarationButton" onClick={() => openModal("declaration")}>신고</button>
-                <Modal className="modal-backdrop" isOpen={declaration} onRequestClose={closeModal}>
-                    <Declaration />
+                <button className="declarationButton">신고</button>
+                <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
+                    <PetSitterCollectCancle/>
                 </Modal>
             </div>
             <div className="dateAndWriter">

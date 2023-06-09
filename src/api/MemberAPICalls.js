@@ -1,5 +1,5 @@
 import { GET_MEMBER } from "../modules/MemberModule";
-import { OPEN_NICKNAME } from "../modules/ModalsModule";
+// import { OPEN_NICKNAME } from "../modules/ModalsModule";
 
 
 export const getMembers = async () => {
@@ -43,7 +43,7 @@ export const getCurrentMember = () => {
             
             if(result.results.member.nickname.startsWith("새로운회원")) {
                 
-                dispatch({ type: OPEN_NICKNAME });
+                // dispatch({ type: OPEN_NICKNAME });
             }
         }
     };

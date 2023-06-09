@@ -369,6 +369,20 @@
     font-weight: bold;
     font-size: large;
 }
+.declarationButton1 {
+    width: 90px;
+    height: 35px;
+    color: #2d2d2d;
+    font-size: medium;
+    display: inline-block;
+    background-color: #d8d8d8;
+    margin-top: 3%;
+    border: none;
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+}
 
 .imgsize {
     margin-top: 50px;

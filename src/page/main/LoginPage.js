@@ -6,7 +6,7 @@ const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKA
 
 const NAVER_CLIENT_ID = 'T0mWG2VjAfBH9cYz6Qrf';
 const NAVER_REDIRECT_URI = encodeURI('http://localhost:8080/login/oauth2/code/naver');
-const NAVER_STATE_STRING = 'http://localhost:8080';
+const NAVER_STATE_STRING = 'login';
 const NAVER_AUTH_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${NAVER_REDIRECT_URI}&state=${NAVER_STATE_STRING}`;
 
 const GOOGLE_CLIENT_ID = '525204361597-ih6gpjgmfsa797sinujfj7jgikj0qp0h.apps.googleusercontent.com';
