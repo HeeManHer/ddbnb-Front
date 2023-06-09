@@ -351,11 +351,8 @@
 }
 
 .calendar {
-    display: flex;
-    justify-content: center;
     position: relative;
-    top: 30px;
-    height: 600px;
+    top: 15px;
 }
 
 .declarationButton {

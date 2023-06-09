@@ -14,17 +14,20 @@
         {
             "no": 1,
             "name": "기묭민",
-            "count": 3
+            "count1": 3,
+            "count2": 12
         },
         {
             "no": 2,
             "name": "이준성",
-            "count": 3
+            "count1": 3,
+            "count2": 12
         },
         {
             "no": 3,
             "name": "이준성12",
-            "count": 23
+            "count1": 23,
+            "count2": 12
         }
     ]
 }
