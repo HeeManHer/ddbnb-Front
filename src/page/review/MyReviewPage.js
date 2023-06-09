@@ -2,6 +2,7 @@ import style from "./MyReviewPage.module.css";
 import { useNavigate } from 'react-router-dom';
 function MyReviewPage() { 
 
+    
     const navigate = useNavigate();
     const closeHandler = () => {
         navigate("/myPage");
