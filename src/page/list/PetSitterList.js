@@ -17,7 +17,7 @@ function PetSitterList() {
                     <div className="wherewhen">
                         <section>
                             <h4 className="where">어디에 사시나요?</h4>
-                            <div>
+                            <div className="sidogu">
                                 <select className="firstselect">
                                     <option value="">시/도</option>
                                 </select>
@@ -38,10 +38,10 @@ function PetSitterList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            <button className="doglist">소/중형견</button>
-                            <button className="doglist">대형견</button>
-                            <button className="doglist">산책</button>
-                            <button className="doglist">방문/출장</button>
+                            <button className="petmombtn">소/중형견</button>
+                            <button className="petmombtn">대형견</button>
+                            <button className="petmombtn">산책</button>
+                            <button className="petmombtn">방문/출장</button>
                         </div>
                         <button className="searchinfo">
                             <img src="../img/readingglasses.png"></img>

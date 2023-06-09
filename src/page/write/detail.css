@@ -375,3 +375,54 @@
     width: 550px;
     height: 300px;
 }
+
+.imagegogo {
+    margin-top: 15%;
+}
+
+.plusbtn {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    top: 50px;
+    left: 10px;
+    font-size: 30px;
+    color: white;
+    background-color: #D2D2D2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.reviewmodal-image1 {
+
+    width: 400px;
+    height: 300px;
+    position: relative;
+    top: 50px;
+    left: 10px;
+    font-size: 30px;
+    color: white;
+    background-color: #D2D2D2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewmodal-imgbtn {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    top: 50px;
+    left: 10px;
+    font-size: 30px;
+    color: white;
+    background-color: #D2D2D2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

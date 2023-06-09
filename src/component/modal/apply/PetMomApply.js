@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 
 function PetMomApply() {
+
     const dispatch = useDispatch();
 
     const toggleSelected = (event) => {
@@ -18,7 +19,7 @@ function PetMomApply() {
     };
 
     const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL, payload: "petSitterApply" });
+        dispatch({ type: CLOSE_MODAL });
     };
 
     return (

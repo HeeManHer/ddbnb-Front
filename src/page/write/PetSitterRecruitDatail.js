@@ -5,15 +5,16 @@ import "../write/detail.css"
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import Declaration from '../../component/modal/declaration/Declaration';
 
 
 function PetSitterRecruitDatail() {
 
-    const showModal = useSelector(state => state.modalsReducer.petsitterApply);
+    const { petsitterApply, declaration } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
-    const openModal = () => {
-        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" });
+    const openModal = (type) => {
+        dispatch({ type: OPEN_MODAL, payload: type });
     };
 
     const closeModal = () => {
@@ -51,7 +52,10 @@ function PetSitterRecruitDatail() {
         <div className="height-auto">
             <div className="dateAndWriter">
                 <h1>게시판</h1>
-                <button className="declarationButton">신고</button>
+                <button className="declarationButton" onClick={() => openModal("declaration")}>신고</button>
+                <Modal className="modal-backdrop" isOpen={declaration} onRequestClose={closeModal}>
+                    <Declaration />
+                </Modal>
             </div>
             <div className="dateAndWriter">
                 <h5>작성자 : {petdetail.name}</h5>
@@ -135,12 +139,12 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
-                    <button className="wantbtn2" onClick={openModal}>신청하기</button>
+                    <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
 
-                    {showModal &&
-                        <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                            <PetSitterApply />
-                        </Modal>}
+
+                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                        <PetSitterApply />
+                    </Modal>
                 </div>
             </div >
         </div >
