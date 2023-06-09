@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { callKakaoLoginAPI } from "../apis/LoginAPICalls";
+import { callKakaoLoginAPI } from "../../api/LoginAPI";
 import { useDispatch } from "react-redux";
 
 function KakaoPage() {

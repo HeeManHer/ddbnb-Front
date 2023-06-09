@@ -3,9 +3,8 @@ import { getCurrentMember } from "./MemberAPICalls";
 
 export const callKakaoLoginAPI = (code) => {
 
-    console.log("제발");
     const requestURL = 'http://localhost:8080/api/v1/login/kakaocode';
-    console.log("여기같은데?");
+    
     return async (dispatch, getState) => {
 
         let data = { code: code }
@@ -18,10 +17,10 @@ export const callKakaoLoginAPI = (code) => {
             },
             body: JSON.stringify(data)
         }).then(res => res.json());
+        console.log(result);
+        if (result.Status === 200) {
 
-        if (result.httpStatus === 200) {
-
-            window.localStorage.setItem('jwtToken', JSON.stringify(result.results.token));
+            window.localStorage.setItem('accessToken', JSON.stringify(result.results.token));
             dispatch({ type: IS_LOGIN });
         }
     };
@@ -31,7 +30,9 @@ export const callKakaoLoginAPI = (code) => {
 
 export const callNaverLoginAPI = (code, state) => {
 
-    const requestURL = ''
+    console.log("제발");
+    const requestURL = 'http://localhost:8080/api/v1/login/navercode'
+    console.log("여기같은데?");
 
     return async (dispatch, getState) => {
 

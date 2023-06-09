@@ -10,6 +10,7 @@ import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
+import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
 
 function PetMomRecruitDatail() {
     const toggleSelected = (event) => {
@@ -20,7 +21,7 @@ function PetMomRecruitDatail() {
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { declaration: showModal, petsitterApply } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsitterApply, petmomcollectcancle } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = () => {
@@ -34,6 +35,9 @@ function PetMomRecruitDatail() {
         dispatch({ type: OPEN_MODAL, payload: "petsitterApply" })
     }
 
+    const openCollectCancleModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petmomcollectcancle" });
+    };
 
     const openModalReview = () => {
         setShowModalReview(true);
@@ -80,6 +84,10 @@ function PetMomRecruitDatail() {
                 <button className="declarationButton" onClick={openModal}>신고</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
+                </Modal>
+                <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
+                    <PetMomCollectCancle/>
                 </Modal>
             </div>
             <div className="dateAndWriter">

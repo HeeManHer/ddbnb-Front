@@ -41,7 +41,8 @@ import ApplicantsList from "./component/modal/apply/ApplicantsList";
 import Calendar from "./component/item/Calendar";
 import PostMessageList from "./page/list/PostMessageList";
 import Temp from "./page/admin/Temp";
-
+import KakaoPage from "./page/main/KakaoPage";
+import NaverPage from "./page/main/NaverPage";
 
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="/kakao/callback" element={<KakaoPage />} />
+          <Route path="/login/oauth2/code/naver" element={<NaverPage />} />
 
           <Route path="petMom" >
             <Route index element={<PetMomList />} />
