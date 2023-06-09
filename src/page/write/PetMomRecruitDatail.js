@@ -35,10 +35,6 @@ function PetMomRecruitDatail() {
     }
 
 
-    const openModalReview = () => {
-        setShowModalReview(true);
-    };
-
     const closeModalReview = () => {
         setShowModalReview(false);
     };

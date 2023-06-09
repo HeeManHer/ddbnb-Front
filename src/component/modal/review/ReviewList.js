@@ -57,8 +57,12 @@ function ReviewList({ closeModalList }) {
                                 </div>
                                 <h6>{item.name}</h6>
                             </div>
-                            <h5 className="reviewlist-join">펫시터 참여 기록</h5>
-                            <h4 className="reviewlist-h4">{item.count} 회</h4>
+                            <div className="reviewList-line">
+                                <h5 className="reviewlist-join">펫시터 참여 기록</h5>
+                                <h4 className="reviewlist-h4">{item.count1}회</h4>
+                                <h5 className="reviewlist-join">펫맘 참여 기록</h5>
+                                <h4 className="reviewlist-h4">{item.count2}회</h4>
+                            </div>
                         </div>
                         <div className="checkbox">
                             <input type="checkbox" id={`cb${index + 1}`}
@@ -73,12 +77,14 @@ function ReviewList({ closeModalList }) {
             <div><button className="reviewmodal-main3" onClick={handleReviewModalOpen}>리뷰작성</button>
                 <button className="reviewmodal-main3" onClick={handleCancel} >닫기</button>
             </div>
-            {isModalOpen && (
-                <ReviewModal
-                    closeModalReview={() => setIsModalOpen(false)} // 모달 닫기 상태 변경
-                    index={selectedCheckbox}
-                />
-            )}
+            {
+                isModalOpen && (
+                    <ReviewModal
+                        closeModalReview={() => setIsModalOpen(false)} // 모달 닫기 상태 변경
+                        index={selectedCheckbox}
+                    />
+                )
+            }
         </div >
     )
 }

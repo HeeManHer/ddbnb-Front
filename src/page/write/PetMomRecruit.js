@@ -9,8 +9,10 @@ import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
 
 function PetMomRecruit() {
+    const [images, setImages] = useState([]);
+    const [images2, setImages2] = useState([]);
 
-    const showModal = useSelector(state => state.modalsReducer.registPost);
+    const { registpost, canclepost } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const toggleSelected = (event) => {
@@ -18,8 +20,8 @@ function PetMomRecruit() {
     };
 
 
-    const openModal = () => {
-        dispatch({ type: OPEN_MODAL, payload: "registPost" });
+    const openModal = (type) => {
+        dispatch({ type: OPEN_MODAL, payload: type });
     };
 
     const closeModal = () => {
@@ -37,6 +39,15 @@ function PetMomRecruit() {
 
         setInputmoney1(selectedValue); // inputmoney1 업데이트
     };
+
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        if (images.length < 1) {
+            setImages([selectedImage]); // 선택된 이미지를 큰 이미지 배열에 저장
+        } else if (images2.length < 3) {
+            setImages2((prevImages) => [...prevImages, selectedImage]); // 선택된 이미지를 작은 이미지 배열에 추가
+        }
+    };
     return (
         <div className="height-auto">
             <div className="petsitterrecruitcontainer">
@@ -45,12 +56,12 @@ function PetMomRecruit() {
 
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
-                    <button className="insertwrite" onClick={openModal}>등록</button>
-                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                    <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
+                    <Modal className="modal-backdrop" isOpen={registpost} onRequestClose={closeModal}>
                         <RegistPost />
                     </Modal>
-                    <button onClick={openModal}>취소</button>
-                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                    <button onClick={() => openModal("canclepost")}>취소</button>
+                    <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
                         <CancelPost />
                     </Modal>
                 </div>
@@ -64,67 +75,94 @@ function PetMomRecruit() {
             </div>
             <hr className="line"></hr>
 
-            <div className="comment">
-                <h2 className="comment-content" style={{ right: '4%' }}>게시판</h2>
-                <h3 className="comment-content2" style={{ left: '13px' }} > 펫맘 모집  게시판</h3>
+            <div className="petsitterrecruitwrite">게시판
+                <select className="firstselect">
+                    <option value="">펫시터 모집 게시판</option>
+                </select>
             </div>
 
             <hr className="line"></hr>
-            <div className="comment">
-                <h2 className="comment-content">제목 </h2>
-                <h3 className="comment-content2" > 모두의 펫맘 사랑스럽게 돌봐드려요</h3>
+            <div className="inputname">
+                <div>
+                    제목
+                </div>
+                <input className="textinput" type="text" placeholder="제목을 입력해 주세요." />
+                {/* <textarea placeholder="제목을 입력해 주세요." /> */}
             </div>
             <hr className="line"></hr>
-            <div className="comment">
-                <h2 className="comment-content">지역</h2>
-                <h3 className="comment-content2" >성남시 분당구 백현동</h3>
+            <div>
+                지역
+                <select className="firstselect">
+                    <option value="">시/도</option>
+                </select>
+                <select className="secondselect">
+                    <option value="">시/군/구</option>
+                </select>
             </div>
             <hr className="line"></hr>
 
-            <div className="comment">
-                <h2 className="comment-content">돌봄</h2>
-                <button className="choice-box" onClick={toggleSelected}>방문</button>
-                <button className="choice-box" onClick={toggleSelected}>출장</button>
-                <button className="choice-box" onClick={toggleSelected}>산책</button>
-
+            <div>
+                돌봄
+                <button className="dolbombtn">방문</button>
+                <button className="dolbombtn">출장</button>
+                <button className="dolbombtn">산책</button>
             </div>
+
             <hr className="line"></hr>
+            <div>
+                기간
+                <input className="dateselect1" type="date" />~<input className="dateselect2" type="date" />
+                사례금
+                <input className="moneygive" type="text" placeholder="사례금을 작성해 주세요." />
+            </div>
 
-            <div className="comment">
-                <h2 className="comment-content">기간</h2>
-                <h3 className="comment-content2" >2023-05-17 ~ 2023-05-19</h3>
-
-                <div className="mommoneydiv">
-                    <h2 className="comment-mommoney">사례금</h2>
-
-                    {/* <select className="datetime">
+            {/* <select className="datetime">
                         <option value="">요일/시간</option>
                         <option value="">1박</option>
                         <option value="">시간</option>
                     </select> */}
 
-                    <select className="datetime" onChange={handleDatetimeChange}>
-                        <option value="">요일/시간</option>
-                        <option value="selectedValue">1박</option>
-                        <option value="selectedText">시간</option>
-                    </select>
-
-                    <input className="inputmoney1" type="text" placeholder="금액을 입력해 주세요." />
-                </div>
-
-
-
-            </div>
             <hr className="line"></hr>
             <div className="formsize">
                 <div className="doginfo">
-                    <div className="images">
-                        <button className="imageBtn"> &lt; </button>
-                        <img className="images" src="../img/house.png" ></img>
-                        <button className="imageBtn"> &gt; </button>
-                    </div>
-                    <div className="calendar">
-                        <Calendar />
+                    <div className="imgAndBtn">
+                        <h3 className="imagegogo">이미지첨부</h3>
+                        <div>
+                            {/* 이미지 업로드 버튼 */}
+                            <input
+                                type="file"
+                                id="imageUpload"
+                                accept="image/*"
+                                style={{ display: "none" }}
+                                onChange={handleImageSelect}
+                                disabled={images.length === 1 && images2.length === 3} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
+                            />
+                            <label htmlFor="imageUpload" className="plusbtn">
+                                +
+                            </label>
+
+                            {/* 이미지 미리보기 */}
+                            <div className="image-preview-container">
+                                {images.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        src={URL.createObjectURL(image)}
+                                        alt={`첨부 이미지 ${index}`}
+                                        className="reviewmodal-image1"
+                                    />
+                                ))}
+                            </div>
+                            <div className="image-preview-container2">
+                                {images2.map((image2, index) => (
+                                    <img
+                                        key={index}
+                                        src={URL.createObjectURL(image2)}
+                                        alt={`첨부 이미지 ${index + 1}`}
+                                        className="reviewmodal-image"
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="momplz">
@@ -153,7 +191,6 @@ function PetMomRecruit() {
             <div>
                 <div className="endline2">
                     <hr className="line"></hr>
-                    <button className="wantbtn2">신청하기</button>
                 </div>
             </div >
         </div>
