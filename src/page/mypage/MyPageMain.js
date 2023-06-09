@@ -3,18 +3,30 @@ import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MyCardList from "../../component/list/AppliedList";
-import React, { useState } from 'react';
 import AppliedCardBoard from "../../component/item/AppliedCardBoard"
+import { useEffect, useState } from "react";
+import {callReviewListAPI} from "../../api/reviewListAPI";
 
 function MyPageMain() {
-
-    // const [listItems, setListItems] = useState([]);
+    //리덕스
+    // const dispatch = useDispatch();
+    // const reviewList = useSelector(state => state.reviewReducer);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const pageInfo = reviewList?.paging;
+    // const pageNumber = [1];
+    // // const [listItems, setListItems] = useState([]);
     const [buttonId, setButtonId] = useState(1);
+
+    // useEffect(() => {
+    //     dispatch(callReviewListAPI({ currentPage: currentPage }));
+
+    // }, [currentPage]);
+
+    // console.log(reviewList);
 
     const handleButtonClick = (id) => {
         setButtonId(id);
     };
-
     return (
         <section className={style.board}>
             {/* 프로필블록 */}
@@ -77,7 +89,7 @@ function MyPageMain() {
                     <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
                     <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
                 </div>
-                {buttonId && <MyCardList buttonId={buttonId}/>}
+                {buttonId && <MyCardList buttonId={buttonId} />}
 
             </div>
 

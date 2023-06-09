@@ -1,189 +1,63 @@
 import style from './ReviewCardBoard.module.css';
 import { useNavigate } from 'react-router-dom';
 import MyReviewPage from '../../page/review/MyReviewPage';
+import { useEffect, useState } from "react";
+import {callReviewListAPI} from "../../api/reviewListAPI";
+import { useDispatch, useSelector } from "react-redux";
+import PageBtn from '../common/PageBtn';
 
 function ReviewCardBoard() {
 
-    const navigate = useNavigate();
+    //리덕스
+    const dispatch = useDispatch();
+    const reviewList = useSelector(state => state.reviewReducer);    
+    const currentPage = useSelector(state => state.pageReducer);
+    const {data:reviews, pageInfo} = reviewList;
 
+    useEffect(() => {
+        dispatch(callReviewListAPI({ currentPage: currentPage }));
+
+    }, [currentPage]);
+
+    const navigate = useNavigate();
     const goReviewHandler = () => {
         navigate("/myReview");
         // window.location.reload();
     }
 
+    //리뷰리스트 출력
+    console.log(reviewList);
 
+    /* 리뷰명 */
+    // const REVIEW_NAME = reviewList.reviewTitle;
 
     return (
         <section className={style.section}>
             {/* 리뷰 */}
             {/* 블럭1 */}
             <div className={style.board}>
-            <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
+                {Array.isArray(reviews) && reviews.map((review, index) =>
+                    <button className={style.review} onClick={goReviewHandler} key ={index}>
+                        <div className={style.Image}>
                         </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
+                        <div className={style.context}>
+                            <div className={style.star}>
+                                {review.reviewStarPoint}
+                            </div>
+                            <div className={style.ReviewName}>
+                                {review.reviewTitle}
+                            </div>
+                            <div className={style.write}>
+                                <div>{review.reviewerId}</div>
+                                <div>{new Date(review.reviewWriteDate).toLocaleDateString().slice(0, -1)}</div>
+                            </div>
                         </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-            </div>
-            {/* 블럭2 */}
-            <div className={style.board}>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
-                <button className={style.review} onClick={goReviewHandler}>
-                    <div className={style.Image}>
-                    </div>
-                    <div className={style.context}>
-                        <div className={style.star}>
-                            별점
-                        </div>
-                        <div className={style.ReviewName}>
-                            리뷰명
-                        </div>
-                        <div className={style.write}>
-                            <div>이주동</div>
-                            <div>2023-03-21</div>
-                        </div>
-                        {/* <div className={style.category}>
-                            <div>소형견</div>
-                            <div>서울시 광진구</div>
-                        </div> */}
-                    </div>
-                </button>
+                    </button>
+                )}
             </div>
 
             {/* 페이징 */}
+            <PageBtn pageInfo={pageInfo}/>
 
 
         </section>
