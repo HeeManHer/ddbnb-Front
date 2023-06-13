@@ -1,29 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getReportMemberList } from "../../api/adminAPI";
+import { getReportList } from "../../api/adminAPI";
 import PageBtn from "../../component/common/PageBtn";
 import { useNavigate } from "react-router-dom";
 
-function ReportMember() {
+function ReportManage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
+    const { data: reportList, pageInfo } = useSelector(state => state.reportReducer);
+    const currentPage = useSelector(state => state.pageReducer);
+    const [category, setCategory] = useState('회원');
 
     useEffect(
         () => {
-            dispatch(getReportMemberList());
+            dispatch(getReportList(category));
         },
-        []
+        [category, currentPage]
     )
 
     return (
         <div className="container">
             <div className="menuheader">
-                <h2 onClick={() => navigate("/manage/reportMember")}>회원 신고</h2>
+                <h2 style={category === '회원' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('회원')}>회원 신고</h2>
                 <div className="topbar-divider"></div>
-                <h2 onClick={() => navigate("/manage/reportPost")}>게시글 신고</h2>
+                <h2 style={category === '게시글' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('게시글')}>게시글 신고</h2>
             </div>
             <div className="searchheader">
                 <div>상세검색</div>
@@ -53,17 +55,17 @@ function ReportMember() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(memberList) && memberList.map(item => (
+                    {Array.isArray(reportList) && reportList.map(item => (
                         <tr>
                             <td >
                                 <input type="checkbox" />
                             </td>
-                            <td >{item.no}</td>
-                            <td >{item.reportMember}</td>
-                            <td >{item.memberReport}</td>
-                            <td >{item.date}</td>
-                            <td >{item.reportContact}</td>
-                            <td >{item.memberReportManagement}</td>
+                            <td >{item.reportId}</td>
+                            <td >{item.currentUser.nickname}</td>
+                            <td >{item.otherUser.nickname}</td>
+                            <td >{item.reportDate}</td>
+                            <td >{item.reportReason}</td>
+                            <td >{item.reportState}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -73,4 +75,4 @@ function ReportMember() {
     )
 }
 
-export default ReportMember;
+export default ReportManage;

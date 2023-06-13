@@ -58,7 +58,7 @@ function PetSitterRecruitDatail() {
                 <button className="declarationButton">신고</button>
                 <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
-                    <PetSitterCollectCancle/>
+                    <PetSitterCollectCancle />
                 </Modal>
             </div>
             <div className="dateAndWriter">

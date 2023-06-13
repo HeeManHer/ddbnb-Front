@@ -1,23 +1,36 @@
-import userReport from "../data/userReport.json";
-import memberList from "../data/memberManage.json";
-import petMomListManage from "../data/petMomListManage.json";
-import petSitterListManage from "../data/petSitterListManage.json";
-import reportPostListManage from "../data/reportPostListManage.json";
-import reportMemberListManage from "../data/reportMemberListManage.json";
-import { GET_USER_REPORT, GET_MEMBER_LIST, GET_PETMOM_LIST, GET_PETSITTER_LIST, GET_REPORTMEMBER_LIST, GET_REPORTPOST_LIST } from "../modules/userReport";
+import { GET_USER_REPORT, GET_MEMBER_LIST, GET_REPORTMEMBER_LIST } from "../modules/report";
+import { SET_PETMOM } from "../modules/petMom";
+import { SET_PETSITTER } from "../modules/petSitter";
+import { GET_MEMBER } from "../modules/MemberModule";
 
+export function getMemberList(page) {
 
-export function getUserReport() {
+    let url = `http://localhost:8080/api/v1/member?page=${page}`;
 
     return async function (dispatch, getState) {
-        dispatch({ type: GET_USER_REPORT, payload: userReport });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status == 200) {
+            dispatch({ type: GET_MEMBER, payload: result.data });
+        }
     }
 }
 
-export function getMemberList() {
+export function searchMemberList(page, { nickname, signDate }) {
 
-    let url = `http://localhost:8080/api/v1/member/list`;
-
+    let url = `http://localhost:8080/api/v1/member?page=${page}`;
+    if (nickname !== '') {
+        url += `&nickname=${nickname}`;
+    }
+    if (signDate !== '') {
+        url += `&signDate=${signDate}`;
+    }
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -34,9 +47,11 @@ export function getMemberList() {
     }
 }
 
+
+
 export async function getMemberAmount() {
 
-    let url = `http://localhost:8080/api/v1/member/amount`;
+    let url = `http://localhost:8080/api/v1/amount`;
 
     return await fetch(url, {
         method: 'GET',
@@ -62,7 +77,20 @@ export async function getTodayVisitant() {
 
 export async function findMemberBySignDayIsToday() {
 
-    let url = `http://localhost:8080/api/v1/member/signdate`;
+    const today = new Date();
+
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    let url = `http://localhost:8080/api/v1/member?size=5&signDate=${year}-${month}-${day}`;
 
     return await fetch(url, {
         method: 'GET',
@@ -70,34 +98,87 @@ export async function findMemberBySignDayIsToday() {
             "Content-Type": 'application/json',
             "Accept": '*/*'
         }
-    }).then(res => res.json());
+    }).then(res => res.json()).then(res => res.data);
 }
 
-export function getPetMomList() {
+export function getPetMomList(page) {
+
+    let url = `http://localhost:8080/api/v1/petmom/list?page=${page}`;
 
     return async function (dispatch, getState) {
-        dispatch({ type: GET_PETMOM_LIST, payload: petMomListManage });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status === 200) {
+
+            dispatch({ type: SET_PETMOM, payload: result.data });
+        }
     }
 }
 
-export function getPetSitterList() {
+export function getPetSitterList(page) {
+
+    let url = `http://localhost:8080/api/v1/petsitter/list?page=${page}`;
+
 
     return async function (dispatch, getState) {
-        dispatch({ type: GET_PETSITTER_LIST, payload: petSitterListManage });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status === 200) {
+
+            dispatch({ type: SET_PETSITTER, payload: result.data });
+        }
     }
 }
 
-export function getReportMemberList() {
+export function getReportList(category) {
+
+    let url = `http://localhost:8080/api/v1/report?size=20&category=${category}`;
 
     return async function (dispatch, getState) {
-        dispatch({ type: GET_REPORTMEMBER_LIST, payload: reportMemberListManage });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status === 200) {
+
+            dispatch({ type: GET_REPORTMEMBER_LIST, payload: result.data });
+        }
     }
 }
 
-export function getReportPostList() {
+export function getNewReport() {
+
+    let url = `http://localhost:8080/api/v1/report/today`;
 
     return async function (dispatch, getState) {
-        dispatch({ type: GET_REPORTPOST_LIST, payload: reportPostListManage });
+        const result = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            }
+        }).then(res => res.json());
+
+        if (result.status === 200) {
+
+            dispatch({ type: GET_USER_REPORT, payload: result.data.data });
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getReportMemberList } from "../../api/adminAPI";
+import { getReportList } from "../../api/adminAPI";
 import PageBtn from "../../component/common/PageBtn";
 import { useNavigate } from "react-router-dom";
 
@@ -9,11 +9,11 @@ function ReportMember() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
+    const { data: reportList, pageInfo } = useSelector(state => state.userReportReducer);
 
     useEffect(
         () => {
-            dispatch(getReportMemberList());
+            dispatch(getReportList('게시글'));
         },
         []
     )
@@ -23,7 +23,7 @@ function ReportMember() {
             <div className="menuheader">
                 <h2 onClick={() => navigate("/manage/reportMember")}>회원 신고</h2>
                 <div className="topbar-divider"></div>
-                <h2 onClick={() => navigate("/manage/reportPost")}>게시글 신고</h2>
+                <h2 className="font-color-main" onClick={() => navigate("/manage/reportPost")}>게시글 신고</h2>
             </div>
             <div className="searchheader">
                 <div>상세검색</div>
@@ -53,17 +53,17 @@ function ReportMember() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(memberList) && memberList.map(item => (
+                    {Array.isArray(reportList) && reportList.map(item => (
                         <tr>
                             <td >
                                 <input type="checkbox" />
                             </td>
-                            <td >{item.no}</td>
+                            <td >{item.reportId}</td>
                             <td >{item.reportMember}</td>
                             <td >{item.memberReport}</td>
-                            <td >{item.date}</td>
-                            <td >{item.reportContact}</td>
-                            <td >{item.memberReportManagement}</td>
+                            <td >{item.reportDate}</td>
+                            <td >{item.reportReason}</td>
+                            <td >{item.reportState}</td>
                         </tr>
                     ))}
                 </tbody>

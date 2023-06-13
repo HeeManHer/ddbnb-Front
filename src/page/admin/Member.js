@@ -1,19 +1,32 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getMemberList } from '../../api/adminAPI';
-import { useEffect } from 'react';
+import { getMemberList, searchMemberList } from '../../api/adminAPI';
+import { useEffect, useState } from 'react';
 import PageBtn from '../../component/common/PageBtn';
 
 function Member() {
     const dispatch = useDispatch();
 
-    const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
-    
+    const { data: memberList, pageInfo } = useSelector(state => state.memberReducer);
+    const currentPage = useSelector(state => state.pageReducer);
+    const [searchValue, setSearchValue] = useState({
+        nickname: "",
+        signDate: ""
+    });
+
     useEffect(
         () => {
-            dispatch(getMemberList());
+            dispatch(getMemberList(currentPage));
         },
-        []
+        [currentPage]
     )
+
+    const inputSearchValue = (e) => {
+        setSearchValue({
+            ...searchValue,
+            [e.target.name]: e.target.value
+        })
+    }
+    console.log(typeof searchValue.signDate);
 
     return (
         <div className="container">
@@ -22,15 +35,21 @@ function Member() {
             </div>
             <div className="searchheader">
                 <div>상세검색</div>
-                <div className='dis-flex justify-between'>
-                    <label htmlFor="nickname">닉네임 : </label>
-                    <input type="text" />
-                    <label htmlFor="signupDate">가입일 : </label>
-                    <input type="date" />
-                    <label htmlFor="lastLogin">최종 접속일 : </label>
-                    <input type="date" />
+                <div className='dis-flex justify-around'>
+                    <div>
+                        <label htmlFor="nickname">닉네임 : </label>
+                        <input type="text" name='nickname' value={searchValue.nickname} onChange={inputSearchValue} />
+                    </div>
+                    <div>
+                        <label htmlFor="signDate">가입일 : </label>
+                        <input type="date" name='signDate' value={searchValue.signDate} onChange={inputSearchValue} />
+                    </div>
+                    <div>
+                        <label htmlFor="lastVisitDate">최종 접속일 : </label>
+                        <input type="date" name='lastVisitDate' />
+                    </div>
                 </div>
-                <button className="searchbutton">검색</button>
+                <button className="searchbutton" onClick={() => dispatch(searchMemberList(currentPage, searchValue))}>검색</button>
             </div>
             <div className="buttonlist">
                 <button className="changebutton">상태 변경</button>
@@ -52,7 +71,7 @@ function Member() {
                     {Array.isArray(memberList) && memberList.map((member, index) => (
                         <tr key={index}>
                             <td>
-                                <input type="checkbox"/>
+                                <input type="checkbox" />
                             </td>
                             <td>{member.memberId}</td>
                             <td>{member.nickname}</td>

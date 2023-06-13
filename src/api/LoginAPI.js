@@ -17,9 +17,7 @@ export const callKakaoLoginAPI = (code) => {
             },
             body: JSON.stringify(data)
         }).then(res => res.json());
-        console.log(result);
         if (result.status === 200) {
-
             window.localStorage.setItem('accessToken', JSON.stringify(result.data.token));
             dispatch({ type: IS_LOGIN });
         }
