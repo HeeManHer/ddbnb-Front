@@ -25,6 +25,7 @@ const rootReducer = combineReducers({
     petDetailReducer,
     modalsReducer,
     reviewReducer,
+    memberReducer
 });
 
 export default rootReducer;

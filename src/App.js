@@ -26,7 +26,7 @@ import AboutPage from "./page/main/AboutPage";
 import MyPageMain from "./page/mypage/MyPageMain";
 import UserProfile from "./page/mypage/UserProfile";
 
-import AllReviewPage from "./page/review/AllReviewPage";
+import ReviewPage from "./page/review/ReviewPage";
 import MyReviewPage from "./page/review/MyReviewPage";
 
 import Dashboard from "./page/admin/Dashboard";
@@ -70,9 +70,11 @@ function App() {
           </Route>
 
           <Route path="about" element={<AboutPage />} />
+          <Route path="reviews">
+            <Route path=':reviewId' element={<ReviewPage/>}/>
+            </Route>
 
           <Route path="myReview" element={<MyReviewPage />} />
-          <Route path="AllReview" element={<AllReviewPage />} />
 
           <Route path="mypage" element={<MyPageMain />} />
           <Route path="userProfile">

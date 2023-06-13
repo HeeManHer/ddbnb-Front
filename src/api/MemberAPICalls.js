@@ -22,9 +22,9 @@ export const getMembers = async () => {
 /* 현재 로그인 된 멤버 정보 가져오기 */
 export const getCurrentMember = () => {
 
-    const token = window.localStorage.getItem('jwtToken');
+    const token = JSON.parse( window.localStorage.getItem('accessToken'));
 
-    const requestURL = ''
+    const requestURL = `http://localhost:8080/api/v1/member/${token.memberId}`
 
     return async (dispatch, getState) => {
 
@@ -33,18 +33,18 @@ export const getCurrentMember = () => {
             headers: {
                 "Content-Type": 'application/json',
                 "Accept": '*/*',
-                "Auth": token
+                // "Auth": token
             }
         }).then(res => res.json());
 
-        if (result.httpStatus === 200) {
+        if (result.status === 200) {
 
-            dispatch({ type: GET_MEMBER, payload: result.results.member });
+            dispatch({ type: GET_MEMBER, payload: result.data});
             
-            if(result.results.member.nickname.startsWith("새로운회원")) {
+            // if(result.data.member.nickname.startsWith("새로운회원")) {
                 
-                // dispatch({ type: OPEN_NICKNAME });
-            }
+            //     // dispatch({ type: OPEN_NICKNAME });
+            // }
         }
     };
 }

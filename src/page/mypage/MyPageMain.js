@@ -1,28 +1,26 @@
 import style from "./MyPageMain.module.css";
 import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import MyCardList from "../../component/list/AppliedList";
 import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
-import {callReviewListAPI} from "../../api/reviewListAPI";
-
+import { getCurrentMember } from "../../api/MemberAPICalls";
+import { useDispatch, useSelector } from 'react-redux';
 function MyPageMain() {
-    //리덕스
-    // const dispatch = useDispatch();
-    // const reviewList = useSelector(state => state.reviewReducer);
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const pageInfo = reviewList?.paging;
-    // const pageNumber = [1];
-    // // const [listItems, setListItems] = useState([]);
+
+    const dispatch = useDispatch();
+
+    const member = useSelector(state => state.memberReducer);
+
+    useEffect(() => {
+        dispatch(getCurrentMember());
+    
+    }, []
+    );
+
+    console.log(member);
+
     const [buttonId, setButtonId] = useState(1);
-
-    // useEffect(() => {
-    //     dispatch(callReviewListAPI({ currentPage: currentPage }));
-
-    // }, [currentPage]);
-
-    // console.log(reviewList);
 
     const handleButtonClick = (id) => {
         setButtonId(id);
