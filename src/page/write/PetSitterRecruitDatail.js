@@ -145,8 +145,7 @@ function PetSitterRecruitDatail() {
 
                     <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
 
-{/* 
-                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+            {/* <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
                         <PetSitterApply />
                     </Modal> */}
                 </div>
