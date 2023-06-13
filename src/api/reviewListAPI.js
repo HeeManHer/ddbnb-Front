@@ -42,7 +42,38 @@ export const callReviewListAPI = ({ currentPage }) => {
         if (result.status === 200) {
             dispatch({ type: GET_REVIEWLIST, payload: result.data });
             
-            console.log(result);
+            // console.log(result);
         }
+    };
+}
+
+
+
+/* 상세 조회 */
+export const callReviewDetailAPI = ({ reviewId }) => {
+
+    const URL = `http://localhost:8080/api/v1/reviews/${reviewId}`;
+
+    // const token = window.localStorage.getItem('jwtToken');
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                // "Auth": token
+            }
+        })
+            .then(response => response.json())
+
+        if (result.status === 200) {
+            dispatch({ type: GET_REVIEW, payload: result.data.reviews });
+        }
+        else {
+            console.log("데이터 안돼");
+        }
+
     };
 }
