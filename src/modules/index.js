@@ -5,25 +5,26 @@ import pageReducer from "./currentPage";
 import petMomReducer from './petMom';
 import petSitterReducer from './petSitter';
 import reviewmodalReducer from "./reviewmodal";
-import userReportReducer from "./userReport";
+import reportReducer from "./report";
 import modalsReducer from "./petSittermodal";
 import petDetailReducer from "./petdetail";
 import loginReducer from './LoginModule';
 import reviewReducer from './ReviewModule';
-
+import memberReducer from './MemberModule';
 
 const rootReducer = combineReducers({
     applicantsReducer,
-    messageReducer,
     pageReducer,
+    loginReducer,
+    memberReducer,
+    messageReducer,
     petMomReducer,
     petSitterReducer,
     reviewmodalReducer,
-    userReportReducer,
-    petDetailReducer, 
-    loginReducer, 
+    reportReducer,
+    petDetailReducer,
     modalsReducer,
-    reviewReducer
+    reviewReducer,
 });
 
 export default rootReducer;

@@ -4,8 +4,13 @@ import { useNavigate } from "react-router-dom";
 function Header() {
     const navigate = useNavigate();
 
-    const [token, setToken] = useState(false);
-    const [admin, setAdmin] = useState(false);
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+    const admin = token !== null && token.memberId == '952' ? true : false;
+    console.log(token)
+    const logout = () => {
+        window.localStorage.removeItem("accessToken");
+        navigate("/", { replace: true });
+    }
 
     if (token) {
         if (admin) {
@@ -13,14 +18,14 @@ function Header() {
                 <header className="back-color dis-flex align-center">
                     <span onClick={() => navigate("/manage")} >관리자페이지</span>
                     <span onClick={() => navigate("/mypage")} >마이페이지</span>
-                    <span onClick={() => { setToken(false); setAdmin(false); navigate("/") }} >로그아웃</span>
+                    <span onClick={logout} >로그아웃</span>
                 </header>
             )
         } else {
             return (
                 <header className="back-color dis-flex align-center">
                     <span onClick={() => navigate("/mypage")} >마이페이지</span>
-                    <span onClick={() => { setToken(false); navigate("/") }} >로그아웃</span>
+                    <span onClick={logout} >로그아웃</span>
                 </header>
             )
         }
@@ -28,8 +33,6 @@ function Header() {
         return (
             <header className="back-color dis-flex align-center">
                 <span onClick={() => navigate("/login")} >로그인</span>
-                <span onClick={() => { setToken(true); navigate("/") }} >일반 로그인 후 화면</span>
-                <span onClick={() => { setToken(true); setAdmin(true); navigate("/") }} >관리자 로그인 후 화면</span>
             </header>
         )
     }

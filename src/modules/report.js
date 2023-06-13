@@ -18,7 +18,7 @@ const actions = createActions({
     [GET_REPORTPOST_LIST]: () => { },
 });
 
-const userReportReducer = handleActions({
+const reportReducer = handleActions({
     [GET_USER_REPORT]: (state, { payload }) => payload,
     [GET_MEMBER_LIST]: (state, { payload }) => payload,
     [GET_PETMOM_LIST]: (state, { payload }) => payload,
@@ -28,4 +28,4 @@ const userReportReducer = handleActions({
 }, initialState
 );
 
-export default userReportReducer; 
+export default reportReducer; 

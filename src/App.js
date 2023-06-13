@@ -33,7 +33,7 @@ import Dashboard from "./page/admin/Dashboard";
 import Member from "./page/admin/Member";
 import PetMomManage from "./page/admin/PetMomManage";
 import PetSitterManage from "./page/admin/PetSitterManage";
-import ReportMember from "./page/admin/ReportMember";
+import ReportManage from "./page/admin/ReportManage";
 import ReportPost from "./page/admin/ReportPost";
 import PostMessage from "./component/modal/pm/PostMessage";
 import SendMessage from "./component/modal/pm/SendMessage";
@@ -87,8 +87,7 @@ function App() {
           <Route path="member" element={<Member />} />
           <Route path="petMom" element={<PetMomManage />} />
           <Route path="petSitter" element={<PetSitterManage />} />
-          <Route path="reportMember" element={<ReportMember />} />
-          <Route path="reportPost" element={<ReportPost />} />
+          <Route path="report" element={<ReportManage />} />
           <Route path="modal" element={<Temp />} />
         </Route>
 

@@ -1,28 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { findMemberBySignDayIsToday, getMemberAmount, getTodayVisitant, getUserReport } from "../../api/adminAPI";
+import { findMemberBySignDayIsToday, getMemberAmount, getTodayVisitant, getNewReport } from "../../api/adminAPI";
 
 function Dashboard() {
     const dispatch = useDispatch();
 
-    const userReport = useSelector(state => state.userReportReducer);
+    const report = useSelector(state => state.reportReducer);
     const member = useSelector(state => state.memberReducer);
 
-    const [memberAmount, setMemberAmount] = useState(0);
-    const [visitant, setVisitant] = useState(0);
+    const [memberAmount, setMemberAmount] = useState({
+        allMember: 0,
+        todayVisitant: 0,
+        newMember: 0,
+
+        memberReport: 0,
+        boardReport: 0,
+    });
     const [signDayIsToday, setSignDayIsToday] = useState([]);
 
     useEffect(
         () => {
-            dispatch(getUserReport());
+            dispatch(getNewReport());
             getMemberAmount().then(amount => setMemberAmount(amount.data));
-            getTodayVisitant().then(visitant => setVisitant(visitant.data));
-            findMemberBySignDayIsToday(member => setSignDayIsToday(member.data))
+            findMemberBySignDayIsToday().then(member => setSignDayIsToday(member.data));
         },
         []
     )
 
-    console.log(signDayIsToday);
+    console.log(report);
 
     return (
         <div className="container">
@@ -33,11 +38,11 @@ function Dashboard() {
             <div className="dashboard">
                 <div className="visitantBoard">
                     <div className="userCount border-black allUser">
-                        <div>{memberAmount}명</div>
+                        <div>{memberAmount.allMember}명</div>
                         <div>전체 회원</div>
                     </div>
                     <div className="userCount border-black curruntUser">
-                        <div>{visitant}명</div>
+                        <div>{memberAmount.todayVisitant}명</div>
                         <div>오늘 방문자 수</div>
                     </div>
                 </div>
@@ -46,14 +51,19 @@ function Dashboard() {
                     <div className="issueBoard">
                         <div className="dis-flex align-center">
                             <span>오늘의 이슈 </span>
-                            <div className="circle">3</div>
+                            <div className="circle">
+                                {
+                                    memberAmount.newMember +
+                                    memberAmount.memberReport +
+                                    memberAmount.boardReport
+                                }
+                            </div>
                         </div>
 
                         <div className="issue border-black">
-                            <span>신규 회원 {0}</span>
-                            <span>회원신고 {1}</span>
-                            <span>펫맘 게시글 신고 {1}</span>
-                            <span>펫시터 게시글 신고 {1}</span>
+                            <span>신규 회원 {memberAmount.newMember}</span>
+                            <span>회원신고 {memberAmount.memberReport}</span>
+                            <span>게시글 신고 {memberAmount.boardReport}</span>
                         </div>
                     </div>
 
@@ -71,7 +81,6 @@ function Dashboard() {
                                 </thead>
                                 <tbody>
                                     {Array.isArray(signDayIsToday) && signDayIsToday.map(member => (
-                                        console.log(member) &&
                                         <tr key={member.memberId}>
                                             <td>{member.memberId}</td>
                                             <td>{member.nickname}</td>
@@ -95,20 +104,22 @@ function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Array.isArray(userReport) && userReport.map(report => (
-                                        <tr key={report.no}>
-                                            <td>{report.date}</td>
-                                            <td>{report.reporterId}</td>
-                                            <td>{report.reportedId}</td>
-                                            <td>{report.reason}</td>
-                                            <td>{report.result}</td>
-                                        </tr>
-                                    ))}
+                                    {Array.isArray(report) && report.map(report =>
+                                        report.reportCategory === '회원' &&
+                                        (
+                                            <tr key={report.reportId}>
+                                                <td>{report.reportDate}</td>
+                                                <td>{report.currentUser.memberId}</td>
+                                                <td>{report.otherUser.memberId}</td>
+                                                <td>{report.reportReason}</td>
+                                                <td>{report.reportState}</td>
+                                            </tr>
+                                        ))}
                                 </tbody>
                             </table>
                         </div>
                         <div className="tableSection">
-                            <h3>오늘 펫맘 게시글 신고</h3>
+                            <h3>오늘 게시글 신고</h3>
                             <table className="adminTable">
                                 <thead>
                                     <tr>
@@ -120,44 +131,20 @@ function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Array.isArray(userReport) && userReport.map(report => (
-                                        <tr key={report.no}>
-                                            <td>{report.date}</td>
-                                            <td>{report.reporterId}</td>
-                                            <td>{report.reportedId}</td>
-                                            <td>{report.reason}</td>
-                                            <td>{report.result}</td>
-                                        </tr>
-                                    ))}
+                                    {Array.isArray(report) && report.map(report =>
+                                        report.reportCategory === '게시글' &&
+                                        (
+                                            <tr key={report.reportId}>
+                                                <td>{report.reportDate}</td>
+                                                <td>{report.currentUser.memberId}</td>
+                                                <td>{report.otherUser.memberId}</td>
+                                                <td>{report.reportReason}</td>
+                                                <td>{report.reportState}</td>
+                                            </tr>
+                                        ))}
                                 </tbody>
                             </table>
                         </div>
-                        <div className="tableSection">
-                            <h3>오늘 펫시터 게시글 신고</h3>
-                            <table className="adminTable">
-                                <thead>
-                                    <tr>
-                                        <th>신고일자</th>
-                                        <th>신고자 ID</th>
-                                        <th>피신고자 ID</th>
-                                        <th>신고사유</th>
-                                        <th>처리상태</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {Array.isArray(userReport) && userReport.map(report => (
-                                        <tr key={report.no}>
-                                            <td>{report.date}</td>
-                                            <td>{report.reporterId}</td>
-                                            <td>{report.reportedId}</td>
-                                            <td>{report.reason}</td>
-                                            <td>{report.result}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-
                     </div>
                 </div>
             </div>

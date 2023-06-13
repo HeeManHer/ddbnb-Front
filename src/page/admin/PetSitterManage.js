@@ -9,13 +9,14 @@ function PetMomManage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
+    const { data: petSitterList, pageInfo } = useSelector(state => state.petSitterReducer);
+    const currentPage = useSelector(state => state.pageReducer);
 
     useEffect(
         () => {
-            dispatch(getPetSitterList());
+            dispatch(getPetSitterList(currentPage));
         },
-        []
+        [currentPage]
     )
 
     return (
@@ -23,7 +24,7 @@ function PetMomManage() {
             <div className="menuheader dis-flex">
                 <h2 onClick={() => navigate("/manage/petMom")}>펫맘 모집글 게시판</h2>
                 <div className="topbar-divider"></div>
-                <h2 onClick={() => navigate("/manage/petSitter")}>펫시터 모집글 게시판</h2>
+                <h2 className="font-color-main" onClick={() => navigate("/manage/petSitter")}>펫시터 모집글 게시판</h2>
             </div>
             <div className="searchheader">
                 <div>상세검색</div>
@@ -50,15 +51,15 @@ function PetMomManage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(memberList) && memberList.map(item => (
+                    {Array.isArray(petSitterList) && petSitterList.map(item => (
                         <tr>
                             <td >
                                 <input type="checkbox" />
                             </td>
-                            <td >{item.no}</td>
-                            <td >{item.title}</td>
-                            <td >{item.name}</td>
-                            <td >{item.date}</td>
+                            <td >{item.boardId}</td>
+                            <td >{item.boardTitle}</td>
+                            <td >{item.memberId.nickname}</td>
+                            <td >{item.boardDate}</td>
                         </tr>
                     ))}
                 </tbody>

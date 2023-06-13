@@ -9,19 +9,20 @@ function PetMomManage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data: memberList, pageInfo } = useSelector(state => state.userReportReducer);
+    const { data: petMomList, pageInfo } = useSelector(state => state.petMomReducer);
+    const currentPage = useSelector(state => state.pageReducer);
 
     useEffect(
         () => {
-            dispatch(getPetMomList());
+            dispatch(getPetMomList(currentPage));
         },
-        []
+        [currentPage]
     )
 
     return (
         <div className="container">
             <div className="menuheader dis-flex">
-                <h2 onClick={() => navigate("/manage/petMom")}>펫맘 모집글 게시판</h2>
+                <h2 className="font-color-main" onClick={() => navigate("/manage/petMom")}>펫맘 모집글 게시판</h2>
                 <div className="topbar-divider"></div>
                 <h2 onClick={() => navigate("/manage/petSitter")}>펫시터 모집글 게시판</h2>
             </div>
@@ -50,7 +51,7 @@ function PetMomManage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(memberList) && memberList.map(item => (
+                    {Array.isArray(petMomList) && petMomList.map(item => (
                         <tr>
                             <td >
                                 <input type="checkbox" />

@@ -4,7 +4,7 @@ import { getCurrentMember } from "./MemberAPICalls";
 export const callKakaoLoginAPI = (code) => {
 
     const requestURL = 'http://localhost:8080/api/v1/login/kakaocode';
-    
+
     return async (dispatch, getState) => {
 
         let data = { code: code }
@@ -17,10 +17,10 @@ export const callKakaoLoginAPI = (code) => {
             },
             body: JSON.stringify(data)
         }).then(res => res.json());
-        console.log(result);
-        if (result.Status === 200) {
+        console.log(result.data);
 
-            window.localStorage.setItem('accessToken', JSON.stringify(result.results.token));
+        if (result.status === 200) {
+            window.localStorage.setItem('accessToken', JSON.stringify(result.data.token));
             dispatch({ type: IS_LOGIN });
         }
     };

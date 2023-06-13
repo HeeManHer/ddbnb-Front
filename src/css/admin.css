@@ -190,10 +190,7 @@
     background-color: white;
 }
 
-
-
-
-.memberbutton1 {
+/* .memberbutton1 {
     font-size: 20px;
     font-weight: bold;
     margin-top: 30px;
@@ -214,4 +211,9 @@
     height: 55px;
     border: none;
     border-radius: 5px;
+} */
+
+
+.font-color-main {
+    color: #FAB7A2;
 }
