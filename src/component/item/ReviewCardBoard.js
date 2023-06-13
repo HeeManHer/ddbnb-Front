@@ -1,5 +1,5 @@
 import style from './ReviewCardBoard.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MyReviewPage from '../../page/review/MyReviewPage';
 import { useEffect, useState } from "react";
 import {callReviewListAPI} from "../../api/reviewListAPI";
@@ -26,7 +26,7 @@ function ReviewCardBoard() {
     }
 
     //리뷰리스트 출력
-    console.log(reviewList);
+    // console.log(reviewList);
 
     /* 리뷰명 */
     // const REVIEW_NAME = reviewList.reviewTitle;
@@ -37,7 +37,8 @@ function ReviewCardBoard() {
             {/* 블럭1 */}
             <div className={style.board}>
                 {Array.isArray(reviews) && reviews.map((review, index) =>
-                    <button className={style.review} onClick={goReviewHandler} key ={index}>
+                <Link to={`/reviews/${review.reviewId}`}>
+                    <button className={style.review} key ={index}>
                         <div className={style.Image}>
                         </div>
                         <div className={style.context}>
@@ -51,8 +52,9 @@ function ReviewCardBoard() {
                                 <div>{review.reviewerId}</div>
                                 <div>{new Date(review.reviewWriteDate).toLocaleDateString().slice(0, -1)}</div>
                             </div>
-                        </div>
+                        </div>  
                     </button>
+                    </Link>
                 )}
             </div>
 
