@@ -4,6 +4,7 @@ import MemberModal from "../../component/modal/admin/MemberModal";
 import PostModal from "../../component/modal/admin/PostModal";
 import ReportMessageModal from "../../component/modal/admin/ReportMessageModal";
 import ReportModal from "../../component/modal/admin/ReportModal";
+import ReviewModal from "../../component/modal/review/ReviewModal";
 
 function Temp() {
 
@@ -14,7 +15,8 @@ function Temp() {
             {/* <ReportMessageModal /> */}
             {/* <MemberModal /> */}
             {/* <PostModal /> */}
-            <ReportModal />
+            {/* <ReportModal /> */}
+            <ReviewModal />
         </>
     )
 }

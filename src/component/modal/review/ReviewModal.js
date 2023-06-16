@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../review/review.css";
 
 function ReviewModal({ closeModalReview, index }) {
     const [rating, setRating] = useState(0);
     const [images, setImages] = useState([]);
+    const [imageUrl, setImageUrl] = useState([]);
+
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        // 이미지 업로드시 미리보기 세팅
+        if (image) {
+            const fileReader = new FileReader();
+            fileReader.onload = (e) => {
+                const { result } = e.target;
+                if (result) {
+                    setImageUrl([...imageUrl, result]);
+                }
+            }
+            fileReader.readAsDataURL(image);
+            if (images.length < 5) {
+                setImages([...images, image]);
+            }
+        }
+    }, [image]);
+    console.log(image);
+    console.log(images);
 
     const handleRatingChange = (event) => {
         const selectedRating = parseInt(event.target.value);
@@ -12,9 +34,7 @@ function ReviewModal({ closeModalReview, index }) {
 
     const handleImageSelect = (event) => {
         const selectedImage = event.target.files[0];
-        if (images.length < 5) {
-            setImages([...images, selectedImage]);
-        }
+        setImage(selectedImage);
     };
 
     const handleSubmit = () => {
@@ -86,9 +106,11 @@ function ReviewModal({ closeModalReview, index }) {
                     {rating}/5
                 </div>
             </div>
-            <div className="reviewmodal-main2">리뷰</div>
             <div>
-                <textarea></textarea>
+                <div>
+                    <div className="reviewmodal-main2">리뷰</div>
+                    <textarea ></textarea>
+                </div>
                 <div className="imgAndBtn">
                     <h3>이미지첨부</h3>
                     <input
@@ -99,19 +121,23 @@ function ReviewModal({ closeModalReview, index }) {
                         onChange={handleImageSelect}
                         disabled={images.length === 4} // 이미지 개수가 4개에 도달하면 비활성화
                     />
-                    <label className="yellow" htmlFor="imageUpload" className="reviewmodal-imgbtn">
+                    <label className="yellow reviewmodal-imgbtn" htmlFor="imageUpload">
                         +
                     </label>
                 </div>
                 <div className="image-preview-container">
-                    {images.map((image, index) => (
-                        <img
-                            key={index}
-                            src={URL.createObjectURL(image)}
-                            alt={`첨부 이미지 ${index + 1}`}
-                            className="reviewmodal-image"
-                        />
-                    ))}
+                    {images.map((image, index) => {
+                        console.log(imageUrl[index]);
+                        return (
+                            <img
+                                key={index}
+                                src={imageUrl[index]}
+                                alt={`첨부 이미지 ${index + 1}`}
+                                className="reviewmodal-image"
+                            />
+                        )
+                    }
+                    )}
                 </div>
                 <div className="reviewmodal-btns">
                     <button className="reviewmodal-btn" onClick={handleSubmit}>

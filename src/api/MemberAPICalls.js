@@ -37,9 +37,7 @@ export const getCurrentMember = () => {
         }).then(res => res.json());
 
         if (result.status === 200) {
-
-            dispatch({ type: GET_MEMBER, payload: result.data.member});
-            
+            dispatch({ type: GET_MEMBER, payload: result.data.members});            
             // if(result.data.member.nickname.startsWith("새로운회원")) {
                 // dispatch({ type: OPEN_NICKNAME });
             // }

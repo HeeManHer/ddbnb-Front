@@ -17,7 +17,7 @@ function AllReviewPage() {
 
     useEffect(
         () => {
-            dispatch(callReviewDetailAPI({ reviewId: reviewId }));
+            dispatch(callReviewDetailAPI(reviewId));
         }
         , []
     );
@@ -32,12 +32,14 @@ function AllReviewPage() {
             </section>
             <article>
                 <div className={style.content}>
-                    <div className={style.image}>사진</div>
+                    <div className={style.image}>
+                        <img src={review.reviewImageUrl} alt="사진" />
+                    </div>
                     <article>( n / n )</article>
                     <section className={style.contentContainer}>
                         <div style={{ display: 'flex', borderBottom: '1px solid #8d8d8d' }}>
-                            <div>닉네임님</div>
-                            <div>별점</div>
+                            <div>{review.reviewer && review.reviewer.nickname}</div>
+                            <div>{review.reviewStarPoint}</div>
                         </div>
                         <section className={style.context}>{review.reviewTitle}
                             <section>{review.reviewDetail}</section>

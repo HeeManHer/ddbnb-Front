@@ -18,6 +18,7 @@ function PetMomManage() {
         },
         [currentPage]
     )
+    console.log(petSitterList)
 
     return (
         <div className="container">

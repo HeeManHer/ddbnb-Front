@@ -135,7 +135,7 @@
 }
 
 .profileSub div {
-    width : 45%;
+    width : 37%;
     height: 40px;
     background-color:#FAB7A2;
     text-align: center;
@@ -202,5 +202,5 @@
 
 .careerDetail div:nth-child(4) {
     width: 560px;
-    height: 140px;
+    height: auto;
 }

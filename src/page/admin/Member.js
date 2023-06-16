@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMemberList, searchMemberList } from '../../api/adminAPI';
 import { useEffect, useState } from 'react';
 import PageBtn from '../../component/common/PageBtn';
+import { RESET_PAGE } from '../../modules/currentPage';
 
 function Member() {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function Member() {
 
     useEffect(
         () => {
-            dispatch(getMemberList(currentPage));
+            dispatch(getMemberList(currentPage, searchValue));
         },
         [currentPage]
     )
@@ -26,7 +27,12 @@ function Member() {
             [e.target.name]: e.target.value
         })
     }
-    console.log(typeof searchValue.signDate);
+    console.log(memberList);
+
+    const search = () => {
+        dispatch({ type: RESET_PAGE });
+        dispatch(getMemberList(1, searchValue))
+    }
 
     return (
         <div className="container">
@@ -49,7 +55,7 @@ function Member() {
                         <input type="date" name='lastVisitDate' />
                     </div>
                 </div>
-                <button className="searchbutton" onClick={() => dispatch(searchMemberList(currentPage, searchValue))}>검색</button>
+                <button className="searchbutton" onClick={search}>검색</button>
             </div>
             <div className="buttonlist">
                 <button className="changebutton">상태 변경</button>
