@@ -3,26 +3,7 @@ import { SET_PETMOM } from "../modules/petMom";
 import { SET_PETSITTER } from "../modules/petSitter";
 import { GET_MEMBER } from "../modules/MemberModule";
 
-export function getMemberList(page) {
-
-    let url = `http://localhost:8080/api/v1/member?page=${page}`;
-
-    return async function (dispatch, getState) {
-        const result = await fetch(url, {
-            method: 'GET',
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": '*/*'
-            }
-        }).then(res => res.json());
-
-        if (result.status == 200) {
-            dispatch({ type: GET_MEMBER, payload: result.data });
-        }
-    }
-}
-
-export function searchMemberList(page, { nickname, signDate }) {
+export function getMemberList(page, { nickname, signDate }) {
 
     let url = `http://localhost:8080/api/v1/member?page=${page}`;
     if (nickname !== '') {
@@ -42,29 +23,14 @@ export function searchMemberList(page, { nickname, signDate }) {
         }).then(res => res.json());
 
         if (result.status == 200) {
-            dispatch({ type: GET_MEMBER_LIST, payload: result.data });
+            dispatch({ type: GET_MEMBER, payload: result.data });
         }
     }
 }
 
-
-
 export async function getMemberAmount() {
 
     let url = `http://localhost:8080/api/v1/amount`;
-
-    return await fetch(url, {
-        method: 'GET',
-        headers: {
-            "Content-Type": 'application/json',
-            "Accept": '*/*'
-        }
-    }).then(res => res.json());
-}
-
-export async function getTodayVisitant() {
-
-    let url = `http://localhost:8080/api/v1/member/visitant`;
 
     return await fetch(url, {
         method: 'GET',
@@ -136,7 +102,7 @@ export function getPetSitterList(page) {
         }).then(res => res.json());
 
         if (result.status === 200) {
-
+            console.log(result)
             dispatch({ type: SET_PETSITTER, payload: result.data });
         }
     }

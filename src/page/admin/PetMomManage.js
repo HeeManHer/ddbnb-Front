@@ -18,7 +18,7 @@ function PetMomManage() {
         },
         [currentPage]
     )
-
+    
     return (
         <div className="container">
             <div className="menuheader dis-flex">
@@ -51,15 +51,15 @@ function PetMomManage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(petMomList) && petMomList.map(item => (
-                        <tr>
+                    {Array.isArray(petMomList) && petMomList.map((item, index) => (
+                        <tr key={index}>
                             <td >
                                 <input type="checkbox" />
                             </td>
-                            <td >{item.no}</td>
-                            <td >{item.title}</td>
-                            <td >{item.name}</td>
-                            <td >{item.date}</td>
+                            <td >{item.petMomId}</td>
+                            <td >{item.petMomTitle}</td>
+                            <td >{item.memberId.nickname}</td>
+                            <td >{item.petMomDate}</td>
                         </tr>
                     ))}
                 </tbody>
