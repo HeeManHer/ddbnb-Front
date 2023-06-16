@@ -2,7 +2,7 @@ import { useState } from "react";
 import { flushSync } from "react-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { callKakaoLogoutAPI } from "../../api/LoginAPI";
+import { callKakaoLogoutAPI, callNaverLogoutAPI } from "../../api/LoginAPI";
 function Header() {
 
     const dispatch = useDispatch();
@@ -10,10 +10,14 @@ function Header() {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const admin = token !== null && token.memberId == '952' ? true : false;
-    // console.log(token);
     const logout = () => {
-        window.localStorage.removeItem('accessToken');
-        // dispatch(callKakaoLogoutAPI());
+    //     if(SocialLogin == "KAKAO") {
+    //         dispatch(callKakaoLogoutAPI());
+    //         navigate("/", { replace: true });
+    //     } 
+    //     dispatch(callNaverLogoutAPI());
+    // }
+        dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
     }
 

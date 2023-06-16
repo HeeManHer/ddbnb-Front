@@ -1,33 +1,48 @@
 import style from './ProfileStyle.module.css';
-import { IoIosFemale } from 'react-icons/io';
-import { IoIosMale } from 'react-icons/io';
+// import { IoIosFemale } from 'react-icons/io';
+// import { IoIosMale } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 function LoginProfilePage() {
 
     const navigate = useNavigate();
 
+    const [texts, setTexts] = useState([]);
+    const [inputText, setInputText] = useState('');
+
+    const handleInputChange = (e) => {
+        setInputText(e.target.value);
+    };
+
+    const handleKeyClick = (e) => {
+        if (e.key === 'Enter') {
+            // 입력된 텍스트를 배열에 추가
+            setTexts((prevTexts) => [...prevTexts, e.target.value]);
+            setInputText(''); // 입력 필드 초기화
+        }
+    };
     /* 성별 아이콘 */
-    function GenderIcon() {
+    // function GenderIcon() {
 
-        if (member?.gender === 'female') {
-            return <IoIosFemale />
-        } else {
-            return <IoIosMale />
-        }
-    }
+    //     if (member?.gender === 'female') {
+    //         return <IoIosFemale />
+    //     } else {
+    //         return <IoIosMale />
+    //     }
+    // }
 
-    /* 소셜 로그인 아이콘 */
-    function SocialIcon() {
+    // /* 소셜 로그인 아이콘 */
+    // function SocialIcon() {
 
-        if (member?.socialLogin === "KAKAO") {
-            return <img src='./img/kakao.png' alt='kakao logo' width={'20px'} height={'20px'} />
-        }
+    //     if (member?.socialLogin === "KAKAO") {
+    //         return <img src='./img/kakao.png' alt='kakao logo' width={'20px'} height={'20px'} />
+    //     }
 
-        if (member?.socialLogin === 'NAVER') {
-            return <img src='./img/naver.png' alt='naver logo' width={'20px'} height={'20px'} />
-        }
-    }
+    //     if (member?.socialLogin === 'NAVER') {
+    //         return <img src='./img/naver.png' alt='naver logo' width={'20px'} height={'20px'} />
+    //     }
+    // }
 
     // <div className={style.Profile}>
     //     <img src={member?.imageSource} alt='profile' className={style.ProfileImg} />
@@ -65,21 +80,35 @@ function LoginProfilePage() {
                 <div className={style.profileCareer}>
                     닉네임
                 </div>
-                <input className={style.underLine} type="text" placeholder="닉네임을 입력해주세요"></input>
+                <input className={style.underLine} type="text" placeholder="닉네임을 입력해주세요"/>
             </div>
-
+            
             <div className={style.profiles}>
                 <div className={style.profileCareer}>
                     경험견종
                 </div>
-                <input className={style.underLine} type="text" placeholder="경험한 견종을 입력해주세요"></input>
+                
+                    <input className={style.underLine}
+                        type="text"
+                        value={inputText}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyClick}
+                        placeholder="경험 견종을 입력해주세요"
+                    />
+                    <ul >
+                        {texts.map((text, index) => (
+                            <li key={index}>{text}</li>
+                        ))}
+                    </ul>
+                    
             </div>
-
-            <div className={style.profiles}>
-                <div className={style.profileCareer}>
-                    기간
+            <div>
+                <div className={style.profiles}>
+                    <div className={style.profileCareer}>
+                        기간
+                    </div>
+                    <input className={style.underLine} type="text" placeholder="기간을 적어주세요"></input>
                 </div>
-                <input className={style.underLine} type="text" placeholder="기간을 적어주세요"></input>
             </div>
 
             <div className={style.profiles}>
