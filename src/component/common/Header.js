@@ -12,7 +12,8 @@ function Header() {
     const admin = token !== null && token.memberId == '952' ? true : false;
     // console.log(token);
     const logout = () => {
-        dispatch(callKakaoLogoutAPI());
+        window.localStorage.removeItem('accessToken');
+        // dispatch(callKakaoLogoutAPI());
         navigate("/", { replace: true });
     }
 

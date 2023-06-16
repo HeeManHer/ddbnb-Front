@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { findMemberBySignDayIsToday, getMemberAmount, getTodayVisitant, getNewReport } from "../../api/adminAPI";
+import { findMemberBySignDayIsToday, getMemberAmount, getNewReport } from "../../api/adminAPI";
 
 function Dashboard() {
     const dispatch = useDispatch();
 
     const report = useSelector(state => state.reportReducer);
-    const member = useSelector(state => state.memberReducer);
 
     const [memberAmount, setMemberAmount] = useState({
         allMember: 0,
@@ -26,8 +25,6 @@ function Dashboard() {
         },
         []
     )
-
-    console.log(report);
 
     return (
         <div className="container">
