@@ -6,16 +6,35 @@ import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
 import { getCurrentMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
+import { FaStar } from 'react-icons/fa';
+
 function MyPageMain() {
 
+    //리덕스
     const dispatch = useDispatch();
 
     const member = useSelector(state => state.memberReducer);
 
+
     useEffect(() => {
         dispatch(getCurrentMember());
-    
+
     }, []
+    );
+
+    const ARRAY = [0, 1, 2, 3, 4];
+    const [score, setScore] = useState([false, false, false, false, false]);
+    const starScore = starPoint => {
+        let star = [...score];
+        for (let i = 0; i < 5; i++) {
+            star[i] = i < starPoint ? true : false;
+        }
+        setScore(star);
+    };
+
+    useEffect(() => {
+        starScore(member.starPoint)
+    }, [member]
     );
 
     console.log(member);
@@ -42,19 +61,35 @@ function MyPageMain() {
                     {/* 왼쪽프로필 */}
                     <article className={style.profileBoard}>
                         <div className={style.image}>프로필 사진</div>
-                        <div style={{ marginBottom: '15px' }}> 별점 </div>
+                        <div style={{ fontWeight: 'bold' }}>
+                            {member.nickname}
+                        </div>
+                        <div style={{ marginBottom: '15px', marginTop: '10px' }}>
+                            <div>{ARRAY.map((el, index) => (
+                                <FaStar
+                                    style={{ marginRight: "3px" }}
+                                    key={index}
+                                    size="18"
+                                    className={score[el] ? 'yellowStar' : "grayStar"}
+                                ></FaStar>
+                            ))}
+                            </div>
+                            <div  style={{ marginLeft: "3px" }}>
+                            {member.starPoint}.0
+                            </div>
+                        </div>
                         <article>
-                            <div className={style.profileSub}>
+                            {/* <div className={style.profileSub}>
                                 <div>펫시터 모집 기록</div>
                                 <h4> 2 회</h4>
                             </div>
                             <div className={style.profileSub}>
                                 <div>펫맘 모집 기록</div>
                                 <h4> 2 회</h4>
-                            </div>
+                            </div> */}
                             <div className={style.profileSub}>
                                 <div>선호 지역</div>
-                                <h4>서울시 광진구</h4>
+                                <h4>{member.preferredArea}</h4>
                             </div>
                         </article>
                     </article>
@@ -70,9 +105,9 @@ function MyPageMain() {
                             </div>
                             <div className={style.careerDetail}>
                                 <div></div>
+                                <div>{member.period}</div>
                                 <div></div>
-                                <div></div>
-                                <div></div>
+                                <div>{member.detailedHistory}</div>
                             </div>
                         </article>
                     </article>
