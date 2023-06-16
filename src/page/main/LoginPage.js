@@ -43,12 +43,6 @@ function LoginPage() {
             <br/>
             <div onClick={() => loginHandler('K')}><img src="../../../img/kakaoLogin.png" />
             </div>
-            
-            {/* <a href="/oauth2/authorization/naver"><img src="../../../img/naverLogin.png"/>
-            </a>
-            <br/>
-            <a href="/oauth2/authorization/kakao"><img src="../../../img/kakaoLogin.png"/>
-            </a> */}
         </div>
     )
 }

@@ -44,6 +44,9 @@ import Temp from "./page/admin/Temp";
 import KakaoPage from "./page/main/KakaoPage";
 import NaverPage from "./page/main/NaverPage";
 
+import LoginProfilePage from "./page/profile/LoginProfilePage";
+import ReviceProfilePage from "./page/profile/ReviseProfilePage";
+
 
 function App() {
 
@@ -56,6 +59,8 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="/kakao/callback" element={<KakaoPage />} />
           <Route path="/login/oauth2/code/naver" element={<NaverPage />} />
+          <Route path="/loginprofile" element={<LoginProfilePage />} />
+          <Route path="/reviseprofile" element={<ReviceProfilePage />} />
 
           <Route path="petMom" >
             <Route index element={<PetMomList />} />

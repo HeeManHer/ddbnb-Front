@@ -9,7 +9,7 @@ import PetSitterCollectCancle from '../../component/modal/collect/PetSitterColle
 
 function PetSitterRecruitDatail() {
 
-    const { declaration: showModal, petsittercollectcancle, PetSitterApply } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, petsitterapply } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = (type) => {
@@ -145,9 +145,9 @@ function PetSitterRecruitDatail() {
 
                     <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
 
-            {/* <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+            <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
                         <PetSitterApply />
-                    </Modal> */}
+                    </Modal>
                 </div>
             </div >
         </div >

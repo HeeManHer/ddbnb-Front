@@ -16,21 +16,6 @@ function NaverPage() {
     const dispatch = useDispatch();
 
     const loginStatus = useSelector(state => state.memberReducer)
-
-    // useEffect(
-    //     () => {
-    //         console.log('로그인시작')
-    //         dispatch(callNaverLoginAPI(code, state));
-    //         console.log('로그인끝')
-    //         if(loginStatus) {
-    //             console.log("로그인되어있습니다.")
-    //         } else {
-    //             alert("로그인에 실패하였습니다.")
-    //         }
-    //         navigate("/");
-    //     }
-    // )
-
     
     useEffect(() => {
         console.log("너야?");

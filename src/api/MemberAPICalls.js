@@ -24,8 +24,7 @@ export const getCurrentMember = () => {
 
     const token = JSON.parse( window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://localhost:8080/api/v1/member/${token.memberId}`
-
+    const requestURL = `http://localhost:8080/api/v1/member/${token.memberId}`;
     return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
@@ -33,17 +32,16 @@ export const getCurrentMember = () => {
             headers: {
                 "Content-Type": 'application/json',
                 "Accept": '*/*',
-                // "Auth": token
+                "Auth": token
             }
         }).then(res => res.json());
 
         if (result.status === 200) {
 
-            dispatch({ type: GET_MEMBER, payload: result.data});
+            dispatch({ type: GET_MEMBER, payload: result.data.member});
             
             // if(result.data.member.nickname.startsWith("새로운회원")) {
-                
-            //     // dispatch({ type: OPEN_NICKNAME });
+                // dispatch({ type: OPEN_NICKNAME });
             // }
         }
     };
