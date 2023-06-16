@@ -169,3 +169,11 @@ footer {
 
     margin: 5px;
 }
+
+.yellowStar {
+    color: rgba(255, 224, 50, 0.767);
+}
+
+.grayStar {
+    color : lightgray;
+}

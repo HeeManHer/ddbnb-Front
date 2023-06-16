@@ -37,8 +37,8 @@ function ReviewCardBoard() {
             {/* 블럭1 */}
             <div className={style.board}>
                 {Array.isArray(reviews) && reviews.map((review, index) =>
-                <Link to={`/reviews/${review.reviewId}`}>
-                    <button className={style.review} key ={index}>
+                <Link to={`/reviews/${review.reviewId}`}  key ={index}>
+                    <button className={style.review}>
                         <div className={style.Image}>
                         </div>
                         <div className={style.context}>

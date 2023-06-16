@@ -39,7 +39,7 @@ export const getCurrentMember = () => {
 
         if (result.status === 200) {
 
-            dispatch({ type: GET_MEMBER, payload: result.data});
+            dispatch({ type: GET_MEMBER, payload: result.data.members});
             
             // if(result.data.member.nickname.startsWith("새로운회원")) {
                 
