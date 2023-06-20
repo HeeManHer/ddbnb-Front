@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { callReviewListAPI } from "../../api/reviewListAPI";
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
+import StarPoint from './StarPoint';
 
 function ReviewCardBoard() {
 
@@ -26,7 +27,7 @@ function ReviewCardBoard() {
     }
 
     //리뷰리스트 출력
-    console.log(reviews);
+    // console.log(reviews);
 
     /* 리뷰명 */
     // const REVIEW_NAME = reviewList.reviewTitle;
@@ -37,11 +38,12 @@ function ReviewCardBoard() {
             {/* 블럭1 */}
             <div className={style.board}>
                 {Array.isArray(reviews) && reviews.map((review, index) =>
-                    <Link to={`/reviews/${review.reviewId}`}>
-                        <button className={style.review} key={index}>
+                    <Link to={`/reviews/${review.reviewId}`} key={index}>
+                        <button className={style.review}>
                             <div className={style.Image}>
                             </div>
                             <div className={style.context}>
+                                <StarPoint starPoint={review.reviewStarPoint} />
                                 <div className={style.star}>
                                     {review.reviewStarPoint}
                                 </div>

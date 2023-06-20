@@ -10,15 +10,18 @@ function Header() {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const admin = token !== null && token.memberId == '952' ? true : false;
+
     const logout = () => {
-    //     if(SocialLogin == "KAKAO") {
-    //         dispatch(callKakaoLogoutAPI());
-    //         navigate("/", { replace: true });
-    //     } 
-    //     dispatch(callNaverLogoutAPI());
-    // }
+        //     if(SocialLogin == "KAKAO") {
+        //         dispatch(callKakaoLogoutAPI());
+        //         navigate("/", { replace: true });
+        //     } 
+        //     dispatch(callNaverLogoutAPI());
+        // }
+        // window.localStorage.removeItem('accessToken');
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
+
     }
 
     if (token) {
