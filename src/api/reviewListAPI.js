@@ -1,6 +1,7 @@
 import { SET_REVIEWMODAL } from "../modules/reviewmodal";
 import reviewList from "../data/reviewList.json";
 import { GET_REVIEW, GET_REVIEWLIST, PUT_REVIEW, POST_REVIEW, DELETE_REVIEW } from '../modules/ReviewModule';
+import { json } from "react-router-dom";
 
 
 export function getReviewList(page) {
@@ -15,7 +16,6 @@ export function getReviewList(page) {
 
 // 전체 리뷰 리스트 조회
 export const callReviewListAPI = ({ currentPage }) => {
-   
     const token = JSON.parse( window.localStorage.getItem('accessToken'));
 
     let URL;
@@ -76,4 +76,24 @@ export const callReviewDetailAPI = (reviewId) => {
         }
 
     };
+}
+
+export const registNewReview = form => {
+    const URL = `http://localhost:8080/api/v1/reviews`;
+    console.log(form)
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: JSON.stringify(form)
+        }).then(response => response.json())
+
+        console.log(result.message)
+    };
+
 }

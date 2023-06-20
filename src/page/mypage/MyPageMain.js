@@ -7,16 +7,13 @@ import { useEffect, useState } from "react";
 import { getCurrentMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMan, AiOutlineWoman } from "react-icons/ai";
-
 import StarPoint from "../../component/item/StarPoint";
-
-
 
 function MyPageMain() {
 
     //리덕스
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const member = useSelector(state => state.memberReducer);
 
     useEffect(() => {
@@ -42,7 +39,7 @@ function MyPageMain() {
 
 
 
-    console.log(member);
+    // console.log(member);
 
     const [buttonId, setButtonId] = useState(1);
 
@@ -58,7 +55,7 @@ function MyPageMain() {
                         <button>쪽지함</button>
                     </div>
                     <div>
-                        <button>프로필수정</button>
+                        <button onClick={ClickHandler}>프로필수정</button>
                         {/* <button>경력수정</button> */}
                     </div>
                 </article>

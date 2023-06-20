@@ -8,7 +8,6 @@ import PageBtn from '../common/PageBtn';
 import { FaStar } from 'react-icons/fa';
 import StarPoint from './StarPoint';
 
-
 function ReviewCardBoard() {
 
     //리덕스
@@ -30,7 +29,7 @@ function ReviewCardBoard() {
 
 
     //리뷰리스트 출력
-    console.log(reviews);
+    // console.log(reviews);
 
     /* 리뷰명 */
     // const REVIEW_NAME = reviewList.reviewTitle;

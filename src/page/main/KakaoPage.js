@@ -11,15 +11,17 @@ function KakaoPage() {
 
     useEffect(() => {
         console.log("너야?");
-        dispatch(callKakaoLoginAPI(code)).then(() => {
-            console.log("여긴돼??");
-            if(dispatch(getCurrentMember()) == "새로운회원") {
-                navigate("/profile", { replace: true });
-            }
-            navigate("/", { replace: true });
-        });
+        dispatch(callKakaoLoginAPI(code))
+            .then(() => dispatch(getCurrentMember()))
+            .then((member) => {
+                if (member === "새로운회원") {
+                    navigate("/loginprofile", { replace: true });
+                } else {
+                    navigate("/", { replace: true });
+                }
+            });
     }, [code, dispatch, navigate]);
-
+    
     return null;
 }
 

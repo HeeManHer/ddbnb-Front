@@ -31,21 +31,21 @@ export const callKakaoLogoutAPI = () => {
 
     return async (dispatch, getState) => {
         const accessToken = JSON.parse(window.localStorage.getItem('accessToken'));
-        console.log("되지?",accessToken);
+        console.log("되지?", accessToken);
         const result = await fetch(requestURL, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
                 "Authorization": accessToken.access_token
             }
-        }).then(res => res.json());  
-        console.log("보내는거 확인용",accessToken.access_token);
-        console.log("결과", result);    
+        }).then(res => res.json());
+        console.log("보내는거 확인용", accessToken.access_token);
+        console.log("결과", result);
         if (result.status === 200) {
             window.localStorage.removeItem('accessToken');
             dispatch({ type: IS_LOGIN });
             window.location.reload();
-            
+
         }
     };
 }
@@ -84,16 +84,16 @@ export const callNaverLogoutAPI = () => {
 
     return async (dispatch, getState) => {
         const accessToken = JSON.parse(window.localStorage.getItem('accessToken'));
-        console.log("되지?",accessToken);
+        console.log("되지?", accessToken);
         const result = await fetch(requestURL, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
                 "Authorization": accessToken.access_token
             }
-        }).then(res => res.json());  
-        console.log("보내는거 확인용",accessToken.access_token);
-        console.log("결과", result);    
+        }).then(res => res.json());
+        // console.log("보내는거 확인용", accessToken.access_token);
+        console.log("결과", result);
         if (result.status === 200) {
             window.localStorage.removeItem('accessToken');
             dispatch({ type: IS_LOGIN });

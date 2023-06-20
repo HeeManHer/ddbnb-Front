@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { callNaverLoginAPI } from "../../api/LoginAPI";
+import { getCurrentMember } from "../../api/MemberAPICalls";
 
 function NaverPage() {
 
@@ -16,17 +17,19 @@ function NaverPage() {
     const dispatch = useDispatch();
 
     const loginStatus = useSelector(state => state.memberReducer)
-    
+
     useEffect(() => {
         console.log("너야?");
-        dispatch(callNaverLoginAPI(code, state)).then(() => {
-            console.log("여긴돼??");
-            navigate("/", { replace: true });
-        });
+        dispatch(callNaverLoginAPI(code, state)).then(() => dispatch(getCurrentMember()))
+            .then((member) => {
+                if (member === "새로운회원") {
+                    navigate("/loginprofile", { replace: true });
+                } else {
+                    navigate("/", { replace: true });
+                }
+            });
     }, [code, dispatch, navigate]);
-
     return null;
-
 }
 
 export default NaverPage;
