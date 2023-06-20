@@ -12,9 +12,12 @@ function MyPageMain() {
 
     //리덕스
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const member = useSelector(state => state.memberReducer);
-
+    
+    const ClickHandler = () => {
+        navigate("/reviseprofile", { replace: true });
+    }
 
     useEffect(() => {
         dispatch(getCurrentMember());
@@ -53,7 +56,7 @@ function MyPageMain() {
                         <button>쪽지함</button>
                     </div>
                     <div>
-                        <button>프로필수정</button>
+                        <button onClick={ClickHandler}>프로필수정</button>
                         {/* <button>경력수정</button> */}
                     </div>
                 </article>
