@@ -37,6 +37,9 @@ function MyPageMain() {
         }
     }
 
+    const ClickHandler = () => {
+        navigate("/reviseprofile");
+    }
 
 
     // console.log(member);
@@ -78,7 +81,7 @@ function MyPageMain() {
                                 <div>성별</div>
                                 <h3> {genderSet()}</h3>
                             </div>
-                            
+
                             <div className={style.profileSub}>
                                 <div>선호 지역</div>
                                 <h4>{member.preferredArea}</h4>
