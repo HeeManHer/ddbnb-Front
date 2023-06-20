@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 function StarPoint({ starPoint }) {
-    console.log(starPoint)
     const [score, setScore] = useState([false, false, false, false, false]);
 
     const starScore = starPoint => {
@@ -12,8 +11,7 @@ function StarPoint({ starPoint }) {
         }
         setScore(star);
     };
-    console.log(score)
-
+  
     useEffect(() => {
         starScore(starPoint)
     }, [starPoint]

@@ -136,7 +136,7 @@
 
 .profileSub div {
     width : 37%;
-    height: 40px;
+    height: 33px;
     background-color:#FAB7A2;
     text-align: center;
     font-weight: bold;
@@ -147,9 +147,22 @@
     font-size: 13px;
 }
 
+
 .profileSub h4 {
-    width : 35%;
+    width : 37%;
     font-size: 13px;
+    height: 20px;
+    /* border: 1px solid#2d2d2d; */
+    margin-top: 8px;
+}
+
+.profileSub h3 {
+    width : 37%;
+    font-size: 13px;
+    height: 20px;
+    /* border: 1px solid#2d2d2d; */
+    margin-top: 8px;
+    font-weight: bold;
 }
 
 .careerTitle {
@@ -200,7 +213,18 @@
     font-size: 13px;
 }
 
-.careerDetail div:nth-child(4) {
-    width: 560px;
+.careerDetail div:nth-child(3) {
+    width: 650px;
     height: auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column; 
+    justify-content: left;
+    align-items: flex-start;   
+    max-height: 180px;
+    overflow:scroll;
+}
+
+.careerDetail p {
+    margin: 10px 10px 10px 10px;
 }
