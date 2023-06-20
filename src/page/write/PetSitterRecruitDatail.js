@@ -7,7 +7,10 @@ import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 
+
 function PetSitterRecruitDatail() {
+
+
 
     const { declaration: showModal, petsittercollectcancle, petsitterapply } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
@@ -27,6 +30,8 @@ function PetSitterRecruitDatail() {
     const openCollectCancleModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
     };
+
+
 
     const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
 
@@ -145,7 +150,7 @@ function PetSitterRecruitDatail() {
 
                     <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
 
-            <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
+                    <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
                         <PetSitterApply />
                     </Modal>
                 </div>

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 
-function RegistPost() {
+function RegistPost({ registpetsitter }) {
     const dispatch = useDispatch();
 
     const closeModal = () => {
@@ -24,7 +24,9 @@ function RegistPost() {
 
 
             <div className="button2list">
-                <button className="modalsize-button3" onClick={closeModal}>
+                <button className="modalsize-button3" onClick={() => {
+                    registpetsitter(); closeModal();
+                }}>
                     예
                 </button>
                 <button className="modalsize-button3" onClick={closeModal}>
@@ -32,7 +34,6 @@ function RegistPost() {
                 </button>
             </div>
         </div>
-
 
     );
 }

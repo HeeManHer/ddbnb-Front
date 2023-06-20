@@ -1,0 +1,2252 @@
+[
+    {
+        "sig": {
+            "sig_cd": "11110",
+            "sig_eng_nm": "Jongno-gu",
+            "sig_full_nm": "서울특별시 종로구",
+            "sig_kor_nm": "종로구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6251"
+    },
+    {
+        "sig": {
+            "sig_cd": "11140",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "서울특별시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6252"
+    },
+    {
+        "sig": {
+            "sig_cd": "11170",
+            "sig_eng_nm": "Yongsan-gu",
+            "sig_full_nm": "서울특별시 용산구",
+            "sig_kor_nm": "용산구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6253"
+    },
+    {
+        "sig": {
+            "sig_cd": "11200",
+            "sig_eng_nm": "Seongdong-gu",
+            "sig_full_nm": "서울특별시 성동구",
+            "sig_kor_nm": "성동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6254"
+    },
+    {
+        "sig": {
+            "sig_cd": "11215",
+            "sig_eng_nm": "Gwangjin-gu",
+            "sig_full_nm": "서울특별시 광진구",
+            "sig_kor_nm": "광진구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6255"
+    },
+    {
+        "sig": {
+            "sig_cd": "11230",
+            "sig_eng_nm": "Dongdaemun-gu",
+            "sig_full_nm": "서울특별시 동대문구",
+            "sig_kor_nm": "동대문구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6256"
+    },
+    {
+        "sig": {
+            "sig_cd": "11260",
+            "sig_eng_nm": "Jungnang-gu",
+            "sig_full_nm": "서울특별시 중랑구",
+            "sig_kor_nm": "중랑구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6257"
+    },
+    {
+        "sig": {
+            "sig_cd": "11290",
+            "sig_eng_nm": "Seongbuk-gu",
+            "sig_full_nm": "서울특별시 성북구",
+            "sig_kor_nm": "성북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6258"
+    },
+    {
+        "sig": {
+            "sig_cd": "11305",
+            "sig_eng_nm": "Gangbuk-gu",
+            "sig_full_nm": "서울특별시 강북구",
+            "sig_kor_nm": "강북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6259"
+    },
+    {
+        "sig": {
+            "sig_cd": "11320",
+            "sig_eng_nm": "Dobong-gu",
+            "sig_full_nm": "서울특별시 도봉구",
+            "sig_kor_nm": "도봉구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6260"
+    },
+    {
+        "sig": {
+            "sig_cd": "11350",
+            "sig_eng_nm": "Nowon-gu",
+            "sig_full_nm": "서울특별시 노원구",
+            "sig_kor_nm": "노원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6261"
+    },
+    {
+        "sig": {
+            "sig_cd": "11380",
+            "sig_eng_nm": "Eunpyeong-gu",
+            "sig_full_nm": "서울특별시 은평구",
+            "sig_kor_nm": "은평구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6262"
+    },
+    {
+        "sig": {
+            "sig_cd": "11410",
+            "sig_eng_nm": "Seodaemun-gu",
+            "sig_full_nm": "서울특별시 서대문구",
+            "sig_kor_nm": "서대문구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6263"
+    },
+    {
+        "sig": {
+            "sig_cd": "11440",
+            "sig_eng_nm": "Mapo-gu",
+            "sig_full_nm": "서울특별시 마포구",
+            "sig_kor_nm": "마포구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6264"
+    },
+    {
+        "sig": {
+            "sig_cd": "11470",
+            "sig_eng_nm": "Yangcheon-gu",
+            "sig_full_nm": "서울특별시 양천구",
+            "sig_kor_nm": "양천구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6265"
+    },
+    {
+        "sig": {
+            "sig_cd": "11500",
+            "sig_eng_nm": "Gangseo-gu",
+            "sig_full_nm": "서울특별시 강서구",
+            "sig_kor_nm": "강서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6266"
+    },
+    {
+        "sig": {
+            "sig_cd": "11530",
+            "sig_eng_nm": "Guro-gu",
+            "sig_full_nm": "서울특별시 구로구",
+            "sig_kor_nm": "구로구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6267"
+    },
+    {
+        "sig": {
+            "sig_cd": "11545",
+            "sig_eng_nm": "Geumcheon-gu",
+            "sig_full_nm": "서울특별시 금천구",
+            "sig_kor_nm": "금천구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6268"
+    },
+    {
+        "sig": {
+            "sig_cd": "11560",
+            "sig_eng_nm": "Yeongdeungpo-gu",
+            "sig_full_nm": "서울특별시 영등포구",
+            "sig_kor_nm": "영등포구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6269"
+    },
+    {
+        "sig": {
+            "sig_cd": "11590",
+            "sig_eng_nm": "Dongjak-gu",
+            "sig_full_nm": "서울특별시 동작구",
+            "sig_kor_nm": "동작구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6270"
+    },
+    {
+        "sig": {
+            "sig_cd": "11620",
+            "sig_eng_nm": "Gwanak-gu",
+            "sig_full_nm": "서울특별시 관악구",
+            "sig_kor_nm": "관악구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6271"
+    },
+    {
+        "sig": {
+            "sig_cd": "11650",
+            "sig_eng_nm": "Seocho-gu",
+            "sig_full_nm": "서울특별시 서초구",
+            "sig_kor_nm": "서초구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6272"
+    },
+    {
+        "sig": {
+            "sig_cd": "11680",
+            "sig_eng_nm": "Gangnam-gu",
+            "sig_full_nm": "서울특별시 강남구",
+            "sig_kor_nm": "강남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6273"
+    },
+    {
+        "sig": {
+            "sig_cd": "11710",
+            "sig_eng_nm": "Songpa-gu",
+            "sig_full_nm": "서울특별시 송파구",
+            "sig_kor_nm": "송파구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6274"
+    },
+    {
+        "sig": {
+            "sig_cd": "11740",
+            "sig_eng_nm": "Gangdong-gu",
+            "sig_full_nm": "서울특별시 강동구",
+            "sig_kor_nm": "강동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6275"
+    },
+    {
+        "sig": {
+            "sig_cd": "26110",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "부산광역시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6276"
+    },
+    {
+        "sig": {
+            "sig_cd": "26140",
+            "sig_eng_nm": "Seo-gu",
+            "sig_full_nm": "부산광역시 서구",
+            "sig_kor_nm": "서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6277"
+    },
+    {
+        "sig": {
+            "sig_cd": "26170",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "부산광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6278"
+    },
+    {
+        "sig": {
+            "sig_cd": "26200",
+            "sig_eng_nm": "Yeongdo-gu",
+            "sig_full_nm": "부산광역시 영도구",
+            "sig_kor_nm": "영도구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6279"
+    },
+    {
+        "sig": {
+            "sig_cd": "26230",
+            "sig_eng_nm": "Busanjin-gu",
+            "sig_full_nm": "부산광역시 부산진구",
+            "sig_kor_nm": "부산진구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6280"
+    },
+    {
+        "sig": {
+            "sig_cd": "26260",
+            "sig_eng_nm": "Dongnae-gu",
+            "sig_full_nm": "부산광역시 동래구",
+            "sig_kor_nm": "동래구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6281"
+    },
+    {
+        "sig": {
+            "sig_cd": "26290",
+            "sig_eng_nm": "Nam-gu",
+            "sig_full_nm": "부산광역시 남구",
+            "sig_kor_nm": "남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6282"
+    },
+    {
+        "sig": {
+            "sig_cd": "26320",
+            "sig_eng_nm": "Buk-gu",
+            "sig_full_nm": "부산광역시 북구",
+            "sig_kor_nm": "북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6283"
+    },
+    {
+        "sig": {
+            "sig_cd": "26350",
+            "sig_eng_nm": "Haeundae-gu",
+            "sig_full_nm": "부산광역시 해운대구",
+            "sig_kor_nm": "해운대구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6284"
+    },
+    {
+        "sig": {
+            "sig_cd": "26380",
+            "sig_eng_nm": "Saha-gu",
+            "sig_full_nm": "부산광역시 사하구",
+            "sig_kor_nm": "사하구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6285"
+    },
+    {
+        "sig": {
+            "sig_cd": "26410",
+            "sig_eng_nm": "Geumjeong-gu",
+            "sig_full_nm": "부산광역시 금정구",
+            "sig_kor_nm": "금정구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6286"
+    },
+    {
+        "sig": {
+            "sig_cd": "26440",
+            "sig_eng_nm": "Gangseo-gu",
+            "sig_full_nm": "부산광역시 강서구",
+            "sig_kor_nm": "강서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6287"
+    },
+    {
+        "sig": {
+            "sig_cd": "26470",
+            "sig_eng_nm": "Yeonje-gu",
+            "sig_full_nm": "부산광역시 연제구",
+            "sig_kor_nm": "연제구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6288"
+    },
+    {
+        "sig": {
+            "sig_cd": "26500",
+            "sig_eng_nm": "Suyeong-gu",
+            "sig_full_nm": "부산광역시 수영구",
+            "sig_kor_nm": "수영구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6289"
+    },
+    {
+        "sig": {
+            "sig_cd": "26530",
+            "sig_eng_nm": "Sasang-gu",
+            "sig_full_nm": "부산광역시 사상구",
+            "sig_kor_nm": "사상구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6290"
+    },
+    {
+        "sig": {
+            "sig_cd": "26710",
+            "sig_eng_nm": "Gijang-gun",
+            "sig_full_nm": "부산광역시 기장군",
+            "sig_kor_nm": "기장군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6291"
+    },
+    {
+        "sig": {
+            "sig_cd": "27110",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "대구광역시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6292"
+    },
+    {
+        "sig": {
+            "sig_cd": "27140",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "대구광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6293"
+    },
+    {
+        "sig": {
+            "sig_cd": "27170",
+            "sig_eng_nm": "Seo-gu",
+            "sig_full_nm": "대구광역시 서구",
+            "sig_kor_nm": "서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6294"
+    },
+    {
+        "sig": {
+            "sig_cd": "27200",
+            "sig_eng_nm": "Nam-gu",
+            "sig_full_nm": "대구광역시 남구",
+            "sig_kor_nm": "남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6295"
+    },
+    {
+        "sig": {
+            "sig_cd": "27230",
+            "sig_eng_nm": "Buk-gu",
+            "sig_full_nm": "대구광역시 북구",
+            "sig_kor_nm": "북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6296"
+    },
+    {
+        "sig": {
+            "sig_cd": "27260",
+            "sig_eng_nm": "Suseong-gu",
+            "sig_full_nm": "대구광역시 수성구",
+            "sig_kor_nm": "수성구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6297"
+    },
+    {
+        "sig": {
+            "sig_cd": "27290",
+            "sig_eng_nm": "Dalseo-gu",
+            "sig_full_nm": "대구광역시 달서구",
+            "sig_kor_nm": "달서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6298"
+    },
+    {
+        "sig": {
+            "sig_cd": "27710",
+            "sig_eng_nm": "Dalseong-gun",
+            "sig_full_nm": "대구광역시 달성군",
+            "sig_kor_nm": "달성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6299"
+    },
+    {
+        "sig": {
+            "sig_cd": "28110",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "인천광역시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6300"
+    },
+    {
+        "sig": {
+            "sig_cd": "28140",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "인천광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6301"
+    },
+    {
+        "sig": {
+            "sig_cd": "28177",
+            "sig_eng_nm": "Michuhol-gu",
+            "sig_full_nm": "인천광역시 미추홀구",
+            "sig_kor_nm": "미추홀구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6302"
+    },
+    {
+        "sig": {
+            "sig_cd": "28185",
+            "sig_eng_nm": "Yeonsu-gu",
+            "sig_full_nm": "인천광역시 연수구",
+            "sig_kor_nm": "연수구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6303"
+    },
+    {
+        "sig": {
+            "sig_cd": "28200",
+            "sig_eng_nm": "Namdong-gu",
+            "sig_full_nm": "인천광역시 남동구",
+            "sig_kor_nm": "남동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6304"
+    },
+    {
+        "sig": {
+            "sig_cd": "28237",
+            "sig_eng_nm": "Bupyeong-gu",
+            "sig_full_nm": "인천광역시 부평구",
+            "sig_kor_nm": "부평구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6305"
+    },
+    {
+        "sig": {
+            "sig_cd": "28245",
+            "sig_eng_nm": "Gyeyang-gu",
+            "sig_full_nm": "인천광역시 계양구",
+            "sig_kor_nm": "계양구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6306"
+    },
+    {
+        "sig": {
+            "sig_cd": "28260",
+            "sig_eng_nm": "Seo-gu",
+            "sig_full_nm": "인천광역시 서구",
+            "sig_kor_nm": "서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6307"
+    },
+    {
+        "sig": {
+            "sig_cd": "28710",
+            "sig_eng_nm": "Ganghwa-gun",
+            "sig_full_nm": "인천광역시 강화군",
+            "sig_kor_nm": "강화군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6308"
+    },
+    {
+        "sig": {
+            "sig_cd": "28720",
+            "sig_eng_nm": "Ongjin-gun",
+            "sig_full_nm": "인천광역시 옹진군",
+            "sig_kor_nm": "옹진군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6309"
+    },
+    {
+        "sig": {
+            "sig_cd": "29110",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "광주광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6310"
+    },
+    {
+        "sig": {
+            "sig_cd": "29140",
+            "sig_eng_nm": "Seo-gu",
+            "sig_full_nm": "광주광역시 서구",
+            "sig_kor_nm": "서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6311"
+    },
+    {
+        "sig": {
+            "sig_cd": "29155",
+            "sig_eng_nm": "Nam-gu",
+            "sig_full_nm": "광주광역시 남구",
+            "sig_kor_nm": "남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6312"
+    },
+    {
+        "sig": {
+            "sig_cd": "29170",
+            "sig_eng_nm": "Buk-gu",
+            "sig_full_nm": "광주광역시 북구",
+            "sig_kor_nm": "북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6313"
+    },
+    {
+        "sig": {
+            "sig_cd": "29200",
+            "sig_eng_nm": "Gwangsan-gu",
+            "sig_full_nm": "광주광역시 광산구",
+            "sig_kor_nm": "광산구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6314"
+    },
+    {
+        "sig": {
+            "sig_cd": "30110",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "대전광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6315"
+    },
+    {
+        "sig": {
+            "sig_cd": "30140",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "대전광역시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6316"
+    },
+    {
+        "sig": {
+            "sig_cd": "30170",
+            "sig_eng_nm": "Seo-gu",
+            "sig_full_nm": "대전광역시 서구",
+            "sig_kor_nm": "서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6317"
+    },
+    {
+        "sig": {
+            "sig_cd": "30200",
+            "sig_eng_nm": "Yuseong-gu",
+            "sig_full_nm": "대전광역시 유성구",
+            "sig_kor_nm": "유성구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6318"
+    },
+    {
+        "sig": {
+            "sig_cd": "30230",
+            "sig_eng_nm": "Daedeok-gu",
+            "sig_full_nm": "대전광역시 대덕구",
+            "sig_kor_nm": "대덕구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6319"
+    },
+    {
+        "sig": {
+            "sig_cd": "31110",
+            "sig_eng_nm": "Jung-gu",
+            "sig_full_nm": "울산광역시 중구",
+            "sig_kor_nm": "중구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6320"
+    },
+    {
+        "sig": {
+            "sig_cd": "31140",
+            "sig_eng_nm": "Nam-gu",
+            "sig_full_nm": "울산광역시 남구",
+            "sig_kor_nm": "남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6321"
+    },
+    {
+        "sig": {
+            "sig_cd": "31170",
+            "sig_eng_nm": "Dong-gu",
+            "sig_full_nm": "울산광역시 동구",
+            "sig_kor_nm": "동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6322"
+    },
+    {
+        "sig": {
+            "sig_cd": "31200",
+            "sig_eng_nm": "Buk-gu",
+            "sig_full_nm": "울산광역시 북구",
+            "sig_kor_nm": "북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6323"
+    },
+    {
+        "sig": {
+            "sig_cd": "31710",
+            "sig_eng_nm": "Ulju-gun",
+            "sig_full_nm": "울산광역시 울주군",
+            "sig_kor_nm": "울주군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6324"
+    },
+    {
+        "sig": {
+            "sig_cd": "36110",
+            "sig_eng_nm": "Sejong-si",
+            "sig_full_nm": "세종특별자치시",
+            "sig_kor_nm": "세종특별자치시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6325"
+    },
+    {
+        "sig": {
+            "sig_cd": "41111",
+            "sig_eng_nm": "Jangan-gu, Suwon-si",
+            "sig_full_nm": "경기도 수원시 장안구",
+            "sig_kor_nm": "수원시 장안구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6326"
+    },
+    {
+        "sig": {
+            "sig_cd": "41113",
+            "sig_eng_nm": "Gwonseon-gu, Suwon-si",
+            "sig_full_nm": "경기도 수원시 권선구",
+            "sig_kor_nm": "수원시 권선구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6327"
+    },
+    {
+        "sig": {
+            "sig_cd": "41115",
+            "sig_eng_nm": "Paldal-gu, Suwon-si",
+            "sig_full_nm": "경기도 수원시 팔달구",
+            "sig_kor_nm": "수원시 팔달구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6328"
+    },
+    {
+        "sig": {
+            "sig_cd": "41117",
+            "sig_eng_nm": "Yeongtong-gu, Suwon-si",
+            "sig_full_nm": "경기도 수원시 영통구",
+            "sig_kor_nm": "수원시 영통구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6329"
+    },
+    {
+        "sig": {
+            "sig_cd": "41131",
+            "sig_eng_nm": "Sujeong-gu, Seongnam-si",
+            "sig_full_nm": "경기도 성남시 수정구",
+            "sig_kor_nm": "성남시 수정구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6330"
+    },
+    {
+        "sig": {
+            "sig_cd": "41133",
+            "sig_eng_nm": "Jungwon-gu, Seongnam-si",
+            "sig_full_nm": "경기도 성남시 중원구",
+            "sig_kor_nm": "성남시 중원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6331"
+    },
+    {
+        "sig": {
+            "sig_cd": "41135",
+            "sig_eng_nm": "Bundang-gu, Seongnam-si",
+            "sig_full_nm": "경기도 성남시 분당구",
+            "sig_kor_nm": "성남시 분당구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6332"
+    },
+    {
+        "sig": {
+            "sig_cd": "41150",
+            "sig_eng_nm": "Uijeongbu-si",
+            "sig_full_nm": "경기도 의정부시",
+            "sig_kor_nm": "의정부시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6333"
+    },
+    {
+        "sig": {
+            "sig_cd": "41171",
+            "sig_eng_nm": "Manan-gu, Anyang-si",
+            "sig_full_nm": "경기도 안양시만안구",
+            "sig_kor_nm": "안양시 만안구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6334"
+    },
+    {
+        "sig": {
+            "sig_cd": "41173",
+            "sig_eng_nm": "Dongan-gu, Anyang-si",
+            "sig_full_nm": "경기도 안양시동안구",
+            "sig_kor_nm": "안양시 동안구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6335"
+    },
+    {
+        "sig": {
+            "sig_cd": "41190",
+            "sig_eng_nm": "Bucheon-si",
+            "sig_full_nm": "경기도 부천시",
+            "sig_kor_nm": "부천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6336"
+    },
+    {
+        "sig": {
+            "sig_cd": "41210",
+            "sig_eng_nm": "Gwangmyeong-si",
+            "sig_full_nm": "경기도 광명시",
+            "sig_kor_nm": "광명시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6337"
+    },
+    {
+        "sig": {
+            "sig_cd": "41220",
+            "sig_eng_nm": "Pyeongtaek-si",
+            "sig_full_nm": "경기도 평택시",
+            "sig_kor_nm": "평택시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6338"
+    },
+    {
+        "sig": {
+            "sig_cd": "41250",
+            "sig_eng_nm": "Dongducheon-si",
+            "sig_full_nm": "경기도 동두천시",
+            "sig_kor_nm": "동두천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6339"
+    },
+    {
+        "sig": {
+            "sig_cd": "41271",
+            "sig_eng_nm": "Sangnok-gu, Ansan-si",
+            "sig_full_nm": "경기도 안산시상록구",
+            "sig_kor_nm": "안산시 상록구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6340"
+    },
+    {
+        "sig": {
+            "sig_cd": "41273",
+            "sig_eng_nm": "Danwon-gu, Ansan-si",
+            "sig_full_nm": "경기도 안산시단원구",
+            "sig_kor_nm": "안산시 단원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6341"
+    },
+    {
+        "sig": {
+            "sig_cd": "41281",
+            "sig_eng_nm": "Deogyang-gu, Goyang-si",
+            "sig_full_nm": "경기도 고양시덕양구",
+            "sig_kor_nm": "고양시 덕양구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6342"
+    },
+    {
+        "sig": {
+            "sig_cd": "41285",
+            "sig_eng_nm": "Ilsandong-gu, Goyang-si",
+            "sig_full_nm": "경기도 고양시일산동구",
+            "sig_kor_nm": "고양시 일산동구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6343"
+    },
+    {
+        "sig": {
+            "sig_cd": "41287",
+            "sig_eng_nm": "Ilsanseo-gu, Goyang-si",
+            "sig_full_nm": "경기도 고양시일산서구",
+            "sig_kor_nm": "고양시 일산서구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6344"
+    },
+    {
+        "sig": {
+            "sig_cd": "41290",
+            "sig_eng_nm": "Gwacheon-si",
+            "sig_full_nm": "경기도 과천시",
+            "sig_kor_nm": "과천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6345"
+    },
+    {
+        "sig": {
+            "sig_cd": "41310",
+            "sig_eng_nm": "Guri-si",
+            "sig_full_nm": "경기도 구리시",
+            "sig_kor_nm": "구리시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6346"
+    },
+    {
+        "sig": {
+            "sig_cd": "41360",
+            "sig_eng_nm": "Namyangju-si",
+            "sig_full_nm": "경기도 남양주시",
+            "sig_kor_nm": "남양주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6347"
+    },
+    {
+        "sig": {
+            "sig_cd": "41370",
+            "sig_eng_nm": "Osan-si",
+            "sig_full_nm": "경기도 오산시",
+            "sig_kor_nm": "오산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6348"
+    },
+    {
+        "sig": {
+            "sig_cd": "41390",
+            "sig_eng_nm": "Siheung-si",
+            "sig_full_nm": "경기도 시흥시",
+            "sig_kor_nm": "시흥시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6349"
+    },
+    {
+        "sig": {
+            "sig_cd": "41410",
+            "sig_eng_nm": "Gunpo-si",
+            "sig_full_nm": "경기도 군포시",
+            "sig_kor_nm": "군포시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6350"
+    },
+    {
+        "sig": {
+            "sig_cd": "41430",
+            "sig_eng_nm": "Uiwang-si",
+            "sig_full_nm": "경기도 의왕시",
+            "sig_kor_nm": "의왕시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6351"
+    },
+    {
+        "sig": {
+            "sig_cd": "41450",
+            "sig_eng_nm": "Hanam-si",
+            "sig_full_nm": "경기도 하남시",
+            "sig_kor_nm": "하남시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6352"
+    },
+    {
+        "sig": {
+            "sig_cd": "41461",
+            "sig_eng_nm": "Cheoin-gu, Yongin-si",
+            "sig_full_nm": "경기도 용인시처인구",
+            "sig_kor_nm": "용인시 처인구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6353"
+    },
+    {
+        "sig": {
+            "sig_cd": "41463",
+            "sig_eng_nm": "Giheung-gu, Yongin-si",
+            "sig_full_nm": "경기도 용인시기흥구",
+            "sig_kor_nm": "용인시 기흥구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6354"
+    },
+    {
+        "sig": {
+            "sig_cd": "41465",
+            "sig_eng_nm": "Suji-gu, Yongin-si",
+            "sig_full_nm": "경기도 용인시수지구",
+            "sig_kor_nm": "용인시 수지구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6355"
+    },
+    {
+        "sig": {
+            "sig_cd": "41480",
+            "sig_eng_nm": "Paju-si",
+            "sig_full_nm": "경기도 파주시",
+            "sig_kor_nm": "파주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6356"
+    },
+    {
+        "sig": {
+            "sig_cd": "41500",
+            "sig_eng_nm": "Icheon-si",
+            "sig_full_nm": "경기도 이천시",
+            "sig_kor_nm": "이천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6357"
+    },
+    {
+        "sig": {
+            "sig_cd": "41550",
+            "sig_eng_nm": "Anseong-si",
+            "sig_full_nm": "경기도 안성시",
+            "sig_kor_nm": "안성시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6358"
+    },
+    {
+        "sig": {
+            "sig_cd": "41570",
+            "sig_eng_nm": "Gimpo-si",
+            "sig_full_nm": "경기도 김포시",
+            "sig_kor_nm": "김포시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6359"
+    },
+    {
+        "sig": {
+            "sig_cd": "41590",
+            "sig_eng_nm": "Hwaseong-si",
+            "sig_full_nm": "경기도 화성시",
+            "sig_kor_nm": "화성시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6360"
+    },
+    {
+        "sig": {
+            "sig_cd": "41610",
+            "sig_eng_nm": "Gwangju-si",
+            "sig_full_nm": "경기도 광주시",
+            "sig_kor_nm": "광주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6361"
+    },
+    {
+        "sig": {
+            "sig_cd": "41630",
+            "sig_eng_nm": "Yangju-si",
+            "sig_full_nm": "경기도 양주시",
+            "sig_kor_nm": "양주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6362"
+    },
+    {
+        "sig": {
+            "sig_cd": "41650",
+            "sig_eng_nm": "Pocheon-si",
+            "sig_full_nm": "경기도 포천시",
+            "sig_kor_nm": "포천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6363"
+    },
+    {
+        "sig": {
+            "sig_cd": "41670",
+            "sig_eng_nm": "Yeoju-si",
+            "sig_full_nm": "경기도 여주시",
+            "sig_kor_nm": "여주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6364"
+    },
+    {
+        "sig": {
+            "sig_cd": "41800",
+            "sig_eng_nm": "Yeoncheon-gun",
+            "sig_full_nm": "경기도 연천군",
+            "sig_kor_nm": "연천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6365"
+    },
+    {
+        "sig": {
+            "sig_cd": "41820",
+            "sig_eng_nm": "Gapyeong-gun",
+            "sig_full_nm": "경기도 가평군",
+            "sig_kor_nm": "가평군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6366"
+    },
+    {
+        "sig": {
+            "sig_cd": "41830",
+            "sig_eng_nm": "Yangpyeong-gun",
+            "sig_full_nm": "경기도 양평군",
+            "sig_kor_nm": "양평군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6367"
+    },
+    {
+        "sig": {
+            "sig_cd": "42110",
+            "sig_eng_nm": "Chuncheon-si",
+            "sig_full_nm": "강원도 춘천시",
+            "sig_kor_nm": "춘천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6368"
+    },
+    {
+        "sig": {
+            "sig_cd": "42130",
+            "sig_eng_nm": "Wonju-si",
+            "sig_full_nm": "강원도 원주시",
+            "sig_kor_nm": "원주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6369"
+    },
+    {
+        "sig": {
+            "sig_cd": "42150",
+            "sig_eng_nm": "Gangneung-si",
+            "sig_full_nm": "강원도 강릉시",
+            "sig_kor_nm": "강릉시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6370"
+    },
+    {
+        "sig": {
+            "sig_cd": "42170",
+            "sig_eng_nm": "Donghae-si",
+            "sig_full_nm": "강원도 동해시",
+            "sig_kor_nm": "동해시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6371"
+    },
+    {
+        "sig": {
+            "sig_cd": "42190",
+            "sig_eng_nm": "Taebaek-si",
+            "sig_full_nm": "강원도 태백시",
+            "sig_kor_nm": "태백시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6372"
+    },
+    {
+        "sig": {
+            "sig_cd": "42210",
+            "sig_eng_nm": "Sokcho-si",
+            "sig_full_nm": "강원도 속초시",
+            "sig_kor_nm": "속초시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6373"
+    },
+    {
+        "sig": {
+            "sig_cd": "42230",
+            "sig_eng_nm": "Samcheok-si",
+            "sig_full_nm": "강원도 삼척시",
+            "sig_kor_nm": "삼척시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6374"
+    },
+    {
+        "sig": {
+            "sig_cd": "42720",
+            "sig_eng_nm": "Hongcheon-gun",
+            "sig_full_nm": "강원도 홍천군",
+            "sig_kor_nm": "홍천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6375"
+    },
+    {
+        "sig": {
+            "sig_cd": "42730",
+            "sig_eng_nm": "Hoengseong-gun",
+            "sig_full_nm": "강원도 횡성군",
+            "sig_kor_nm": "횡성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6376"
+    },
+    {
+        "sig": {
+            "sig_cd": "42750",
+            "sig_eng_nm": "Yeongwol-gun",
+            "sig_full_nm": "강원도 영월군",
+            "sig_kor_nm": "영월군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6377"
+    },
+    {
+        "sig": {
+            "sig_cd": "42760",
+            "sig_eng_nm": "Pyeongchang-gun",
+            "sig_full_nm": "강원도 평창군",
+            "sig_kor_nm": "평창군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6378"
+    },
+    {
+        "sig": {
+            "sig_cd": "42770",
+            "sig_eng_nm": "Jeongseon-gun",
+            "sig_full_nm": "강원도 정선군",
+            "sig_kor_nm": "정선군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6379"
+    },
+    {
+        "sig": {
+            "sig_cd": "42780",
+            "sig_eng_nm": "Cheorwon-gun",
+            "sig_full_nm": "강원도 철원군",
+            "sig_kor_nm": "철원군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6380"
+    },
+    {
+        "sig": {
+            "sig_cd": "42790",
+            "sig_eng_nm": "Hwacheon-gun",
+            "sig_full_nm": "강원도 화천군",
+            "sig_kor_nm": "화천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6381"
+    },
+    {
+        "sig": {
+            "sig_cd": "42800",
+            "sig_eng_nm": "Yanggu-gun",
+            "sig_full_nm": "강원도 양구군",
+            "sig_kor_nm": "양구군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6382"
+    },
+    {
+        "sig": {
+            "sig_cd": "42810",
+            "sig_eng_nm": "Inje-gun",
+            "sig_full_nm": "강원도 인제군",
+            "sig_kor_nm": "인제군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6383"
+    },
+    {
+        "sig": {
+            "sig_cd": "42820",
+            "sig_eng_nm": "Goseong-gun",
+            "sig_full_nm": "강원도 고성군",
+            "sig_kor_nm": "고성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6384"
+    },
+    {
+        "sig": {
+            "sig_cd": "42830",
+            "sig_eng_nm": "Yangyang-gun",
+            "sig_full_nm": "강원도 양양군",
+            "sig_kor_nm": "양양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6385"
+    },
+    {
+        "sig": {
+            "sig_cd": "43111",
+            "sig_eng_nm": "Sangdang-gu, Cheongju-si",
+            "sig_full_nm": "충청북도 청주시 상당구",
+            "sig_kor_nm": "청주시 상당구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6386"
+    },
+    {
+        "sig": {
+            "sig_cd": "43112",
+            "sig_eng_nm": "Seowon-gu, Cheongju-si",
+            "sig_full_nm": "충청북도 청주시 서원구",
+            "sig_kor_nm": "청주시 서원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6387"
+    },
+    {
+        "sig": {
+            "sig_cd": "43113",
+            "sig_eng_nm": "Heungdeok-gu, Cheongju-si",
+            "sig_full_nm": "충청북도 청주시 흥덕구",
+            "sig_kor_nm": "청주시 흥덕구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6388"
+    },
+    {
+        "sig": {
+            "sig_cd": "43114",
+            "sig_eng_nm": "Cheongwon-gu, Cheongju-si",
+            "sig_full_nm": "충청북도 청주시 청원구",
+            "sig_kor_nm": "청주시 청원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6389"
+    },
+    {
+        "sig": {
+            "sig_cd": "43130",
+            "sig_eng_nm": "Chungju-si",
+            "sig_full_nm": "충청북도 충주시",
+            "sig_kor_nm": "충주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6390"
+    },
+    {
+        "sig": {
+            "sig_cd": "43150",
+            "sig_eng_nm": "Jecheon-si",
+            "sig_full_nm": "충청북도 제천시",
+            "sig_kor_nm": "제천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6391"
+    },
+    {
+        "sig": {
+            "sig_cd": "43720",
+            "sig_eng_nm": "Boeun-gun",
+            "sig_full_nm": "충청북도 보은군",
+            "sig_kor_nm": "보은군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6392"
+    },
+    {
+        "sig": {
+            "sig_cd": "43730",
+            "sig_eng_nm": "Okcheon-gun",
+            "sig_full_nm": "충청북도 옥천군",
+            "sig_kor_nm": "옥천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6393"
+    },
+    {
+        "sig": {
+            "sig_cd": "43740",
+            "sig_eng_nm": "Yeongdong-gun",
+            "sig_full_nm": "충청북도 영동군",
+            "sig_kor_nm": "영동군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6394"
+    },
+    {
+        "sig": {
+            "sig_cd": "43745",
+            "sig_eng_nm": "Jeungpyeong-gun",
+            "sig_full_nm": "충청북도 증평군",
+            "sig_kor_nm": "증평군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6395"
+    },
+    {
+        "sig": {
+            "sig_cd": "43750",
+            "sig_eng_nm": "Jincheon-gun",
+            "sig_full_nm": "충청북도 진천군",
+            "sig_kor_nm": "진천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6396"
+    },
+    {
+        "sig": {
+            "sig_cd": "43760",
+            "sig_eng_nm": "Goesan-gun",
+            "sig_full_nm": "충청북도 괴산군",
+            "sig_kor_nm": "괴산군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6397"
+    },
+    {
+        "sig": {
+            "sig_cd": "43770",
+            "sig_eng_nm": "Eumseong-gun",
+            "sig_full_nm": "충청북도 음성군",
+            "sig_kor_nm": "음성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6398"
+    },
+    {
+        "sig": {
+            "sig_cd": "43800",
+            "sig_eng_nm": "Danyang-gun",
+            "sig_full_nm": "충청북도 단양군",
+            "sig_kor_nm": "단양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6399"
+    },
+    {
+        "sig": {
+            "sig_cd": "44131",
+            "sig_eng_nm": "Dongnam-gu, Cheonan-si",
+            "sig_full_nm": "충청남도 천안시동남구",
+            "sig_kor_nm": "천안시 동남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6400"
+    },
+    {
+        "sig": {
+            "sig_cd": "44133",
+            "sig_eng_nm": "Seobuk-gu, Cheonan-si",
+            "sig_full_nm": "충청남도 천안시서북구",
+            "sig_kor_nm": "천안시 서북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6401"
+    },
+    {
+        "sig": {
+            "sig_cd": "44150",
+            "sig_eng_nm": "Gongju-si",
+            "sig_full_nm": "충청남도 공주시",
+            "sig_kor_nm": "공주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6402"
+    },
+    {
+        "sig": {
+            "sig_cd": "44180",
+            "sig_eng_nm": "Boryeong-si",
+            "sig_full_nm": "충청남도 보령시",
+            "sig_kor_nm": "보령시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6403"
+    },
+    {
+        "sig": {
+            "sig_cd": "44200",
+            "sig_eng_nm": "Asan-si",
+            "sig_full_nm": "충청남도 아산시",
+            "sig_kor_nm": "아산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6404"
+    },
+    {
+        "sig": {
+            "sig_cd": "44210",
+            "sig_eng_nm": "Seosan-si",
+            "sig_full_nm": "충청남도 서산시",
+            "sig_kor_nm": "서산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6405"
+    },
+    {
+        "sig": {
+            "sig_cd": "44230",
+            "sig_eng_nm": "Nonsan-si",
+            "sig_full_nm": "충청남도 논산시",
+            "sig_kor_nm": "논산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6406"
+    },
+    {
+        "sig": {
+            "sig_cd": "44250",
+            "sig_eng_nm": "Gyeryong-si",
+            "sig_full_nm": "충청남도 계룡시",
+            "sig_kor_nm": "계룡시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6407"
+    },
+    {
+        "sig": {
+            "sig_cd": "44270",
+            "sig_eng_nm": "Dangjin-si",
+            "sig_full_nm": "충청남도 당진시",
+            "sig_kor_nm": "당진시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6408"
+    },
+    {
+        "sig": {
+            "sig_cd": "44710",
+            "sig_eng_nm": "Geumsan-gun",
+            "sig_full_nm": "충청남도 금산군",
+            "sig_kor_nm": "금산군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6409"
+    },
+    {
+        "sig": {
+            "sig_cd": "44760",
+            "sig_eng_nm": "Buyeo-gun",
+            "sig_full_nm": "충청남도 부여군",
+            "sig_kor_nm": "부여군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6410"
+    },
+    {
+        "sig": {
+            "sig_cd": "44770",
+            "sig_eng_nm": "Seocheon-gun",
+            "sig_full_nm": "충청남도 서천군",
+            "sig_kor_nm": "서천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6411"
+    },
+    {
+        "sig": {
+            "sig_cd": "44790",
+            "sig_eng_nm": "Cheongyang-gun",
+            "sig_full_nm": "충청남도 청양군",
+            "sig_kor_nm": "청양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6412"
+    },
+    {
+        "sig": {
+            "sig_cd": "44800",
+            "sig_eng_nm": "Hongseong-gun",
+            "sig_full_nm": "충청남도 홍성군",
+            "sig_kor_nm": "홍성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6413"
+    },
+    {
+        "sig": {
+            "sig_cd": "44810",
+            "sig_eng_nm": "Yesan-gun",
+            "sig_full_nm": "충청남도 예산군",
+            "sig_kor_nm": "예산군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6414"
+    },
+    {
+        "sig": {
+            "sig_cd": "44825",
+            "sig_eng_nm": "Taean-gun",
+            "sig_full_nm": "충청남도 태안군",
+            "sig_kor_nm": "태안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6415"
+    },
+    {
+        "sig": {
+            "sig_cd": "45111",
+            "sig_eng_nm": "Wansan-gu, Jeonju-si",
+            "sig_full_nm": "전라북도 전주시완산구",
+            "sig_kor_nm": "전주시 완산구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6416"
+    },
+    {
+        "sig": {
+            "sig_cd": "45113",
+            "sig_eng_nm": "Deokjin-gu, Jeonju-si",
+            "sig_full_nm": "전라북도 전주시덕진구",
+            "sig_kor_nm": "전주시 덕진구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6417"
+    },
+    {
+        "sig": {
+            "sig_cd": "45130",
+            "sig_eng_nm": "Gunsan-si",
+            "sig_full_nm": "전라북도 군산시",
+            "sig_kor_nm": "군산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6418"
+    },
+    {
+        "sig": {
+            "sig_cd": "45140",
+            "sig_eng_nm": "Iksan-si",
+            "sig_full_nm": "전라북도 익산시",
+            "sig_kor_nm": "익산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6419"
+    },
+    {
+        "sig": {
+            "sig_cd": "45180",
+            "sig_eng_nm": "Jeongeup-si",
+            "sig_full_nm": "전라북도 정읍시",
+            "sig_kor_nm": "정읍시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6420"
+    },
+    {
+        "sig": {
+            "sig_cd": "45190",
+            "sig_eng_nm": "Namwon-si",
+            "sig_full_nm": "전라북도 남원시",
+            "sig_kor_nm": "남원시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6421"
+    },
+    {
+        "sig": {
+            "sig_cd": "45210",
+            "sig_eng_nm": "Gimje-si",
+            "sig_full_nm": "전라북도 김제시",
+            "sig_kor_nm": "김제시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6422"
+    },
+    {
+        "sig": {
+            "sig_cd": "45710",
+            "sig_eng_nm": "Wanju-gun",
+            "sig_full_nm": "전라북도 완주군",
+            "sig_kor_nm": "완주군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6423"
+    },
+    {
+        "sig": {
+            "sig_cd": "45720",
+            "sig_eng_nm": "Jinan-gun",
+            "sig_full_nm": "전라북도 진안군",
+            "sig_kor_nm": "진안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6424"
+    },
+    {
+        "sig": {
+            "sig_cd": "45730",
+            "sig_eng_nm": "Muju-gun",
+            "sig_full_nm": "전라북도 무주군",
+            "sig_kor_nm": "무주군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6425"
+    },
+    {
+        "sig": {
+            "sig_cd": "45740",
+            "sig_eng_nm": "Jangsu-gun",
+            "sig_full_nm": "전라북도 장수군",
+            "sig_kor_nm": "장수군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6426"
+    },
+    {
+        "sig": {
+            "sig_cd": "45750",
+            "sig_eng_nm": "Imsil-gun",
+            "sig_full_nm": "전라북도 임실군",
+            "sig_kor_nm": "임실군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6427"
+    },
+    {
+        "sig": {
+            "sig_cd": "45770",
+            "sig_eng_nm": "Sunchang-gun",
+            "sig_full_nm": "전라북도 순창군",
+            "sig_kor_nm": "순창군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6428"
+    },
+    {
+        "sig": {
+            "sig_cd": "45790",
+            "sig_eng_nm": "Gochang-gun",
+            "sig_full_nm": "전라북도 고창군",
+            "sig_kor_nm": "고창군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6429"
+    },
+    {
+        "sig": {
+            "sig_cd": "45800",
+            "sig_eng_nm": "Buan-gun",
+            "sig_full_nm": "전라북도 부안군",
+            "sig_kor_nm": "부안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6430"
+    },
+    {
+        "sig": {
+            "sig_cd": "46110",
+            "sig_eng_nm": "Mokpo-si",
+            "sig_full_nm": "전라남도 목포시",
+            "sig_kor_nm": "목포시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6431"
+    },
+    {
+        "sig": {
+            "sig_cd": "46130",
+            "sig_eng_nm": "Yeosu-si",
+            "sig_full_nm": "전라남도 여수시",
+            "sig_kor_nm": "여수시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6432"
+    },
+    {
+        "sig": {
+            "sig_cd": "46150",
+            "sig_eng_nm": "Suncheon-si",
+            "sig_full_nm": "전라남도 순천시",
+            "sig_kor_nm": "순천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6433"
+    },
+    {
+        "sig": {
+            "sig_cd": "46170",
+            "sig_eng_nm": "Naju-si",
+            "sig_full_nm": "전라남도 나주시",
+            "sig_kor_nm": "나주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6434"
+    },
+    {
+        "sig": {
+            "sig_cd": "46230",
+            "sig_eng_nm": "Gwangyang-si",
+            "sig_full_nm": "전라남도 광양시",
+            "sig_kor_nm": "광양시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6435"
+    },
+    {
+        "sig": {
+            "sig_cd": "46710",
+            "sig_eng_nm": "Damyang-gun",
+            "sig_full_nm": "전라남도 담양군",
+            "sig_kor_nm": "담양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6436"
+    },
+    {
+        "sig": {
+            "sig_cd": "46720",
+            "sig_eng_nm": "Gokseong-gun",
+            "sig_full_nm": "전라남도 곡성군",
+            "sig_kor_nm": "곡성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6437"
+    },
+    {
+        "sig": {
+            "sig_cd": "46730",
+            "sig_eng_nm": "Gurye-gun",
+            "sig_full_nm": "전라남도 구례군",
+            "sig_kor_nm": "구례군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6438"
+    },
+    {
+        "sig": {
+            "sig_cd": "46770",
+            "sig_eng_nm": "Goheung-gun",
+            "sig_full_nm": "전라남도 고흥군",
+            "sig_kor_nm": "고흥군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6439"
+    },
+    {
+        "sig": {
+            "sig_cd": "46780",
+            "sig_eng_nm": "Boseong-gun",
+            "sig_full_nm": "전라남도 보성군",
+            "sig_kor_nm": "보성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6440"
+    },
+    {
+        "sig": {
+            "sig_cd": "46790",
+            "sig_eng_nm": "Hwasun-gun",
+            "sig_full_nm": "전라남도 화순군",
+            "sig_kor_nm": "화순군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6441"
+    },
+    {
+        "sig": {
+            "sig_cd": "46800",
+            "sig_eng_nm": "Jangheung-gun",
+            "sig_full_nm": "전라남도 장흥군",
+            "sig_kor_nm": "장흥군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6442"
+    },
+    {
+        "sig": {
+            "sig_cd": "46810",
+            "sig_eng_nm": "Gangjin-gun",
+            "sig_full_nm": "전라남도 강진군",
+            "sig_kor_nm": "강진군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6443"
+    },
+    {
+        "sig": {
+            "sig_cd": "46820",
+            "sig_eng_nm": "Haenam-gun",
+            "sig_full_nm": "전라남도 해남군",
+            "sig_kor_nm": "해남군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6444"
+    },
+    {
+        "sig": {
+            "sig_cd": "46830",
+            "sig_eng_nm": "Yeongam-gun",
+            "sig_full_nm": "전라남도 영암군",
+            "sig_kor_nm": "영암군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6445"
+    },
+    {
+        "sig": {
+            "sig_cd": "46840",
+            "sig_eng_nm": "Muan-gun",
+            "sig_full_nm": "전라남도 무안군",
+            "sig_kor_nm": "무안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6446"
+    },
+    {
+        "sig": {
+            "sig_cd": "46860",
+            "sig_eng_nm": "Hampyeong-gun",
+            "sig_full_nm": "전라남도 함평군",
+            "sig_kor_nm": "함평군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6447"
+    },
+    {
+        "sig": {
+            "sig_cd": "46870",
+            "sig_eng_nm": "Yeonggwang-gun",
+            "sig_full_nm": "전라남도 영광군",
+            "sig_kor_nm": "영광군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6448"
+    },
+    {
+        "sig": {
+            "sig_cd": "46880",
+            "sig_eng_nm": "Jangseong-gun",
+            "sig_full_nm": "전라남도 장성군",
+            "sig_kor_nm": "장성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6449"
+    },
+    {
+        "sig": {
+            "sig_cd": "46890",
+            "sig_eng_nm": "Wando-gun",
+            "sig_full_nm": "전라남도 완도군",
+            "sig_kor_nm": "완도군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6450"
+    },
+    {
+        "sig": {
+            "sig_cd": "46900",
+            "sig_eng_nm": "Jindo-gun",
+            "sig_full_nm": "전라남도 진도군",
+            "sig_kor_nm": "진도군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6451"
+    },
+    {
+        "sig": {
+            "sig_cd": "46910",
+            "sig_eng_nm": "Sinan-gun",
+            "sig_full_nm": "전라남도 신안군",
+            "sig_kor_nm": "신안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6452"
+    },
+    {
+        "sig": {
+            "sig_cd": "47111",
+            "sig_eng_nm": "Nam-gu, Pohang-si",
+            "sig_full_nm": "경상북도 포항시 남구",
+            "sig_kor_nm": "포항시 남구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6453"
+    },
+    {
+        "sig": {
+            "sig_cd": "47113",
+            "sig_eng_nm": "Buk-gu, Pohang-si",
+            "sig_full_nm": "경상북도 포항시 북구",
+            "sig_kor_nm": "포항시 북구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6454"
+    },
+    {
+        "sig": {
+            "sig_cd": "47130",
+            "sig_eng_nm": "Gyeongju-si",
+            "sig_full_nm": "경상북도 경주시",
+            "sig_kor_nm": "경주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6455"
+    },
+    {
+        "sig": {
+            "sig_cd": "47150",
+            "sig_eng_nm": "Gimcheon-si",
+            "sig_full_nm": "경상북도 김천시",
+            "sig_kor_nm": "김천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6456"
+    },
+    {
+        "sig": {
+            "sig_cd": "47170",
+            "sig_eng_nm": "Andong-si",
+            "sig_full_nm": "경상북도 안동시",
+            "sig_kor_nm": "안동시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6457"
+    },
+    {
+        "sig": {
+            "sig_cd": "47190",
+            "sig_eng_nm": "Gumi-si",
+            "sig_full_nm": "경상북도 구미시",
+            "sig_kor_nm": "구미시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6458"
+    },
+    {
+        "sig": {
+            "sig_cd": "47210",
+            "sig_eng_nm": "Yeongju-si",
+            "sig_full_nm": "경상북도 영주시",
+            "sig_kor_nm": "영주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6459"
+    },
+    {
+        "sig": {
+            "sig_cd": "47230",
+            "sig_eng_nm": "Yeongcheon-si",
+            "sig_full_nm": "경상북도 영천시",
+            "sig_kor_nm": "영천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6460"
+    },
+    {
+        "sig": {
+            "sig_cd": "47250",
+            "sig_eng_nm": "Sangju-si",
+            "sig_full_nm": "경상북도 상주시",
+            "sig_kor_nm": "상주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6461"
+    },
+    {
+        "sig": {
+            "sig_cd": "47280",
+            "sig_eng_nm": "Mungyeong-si",
+            "sig_full_nm": "경상북도 문경시",
+            "sig_kor_nm": "문경시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6462"
+    },
+    {
+        "sig": {
+            "sig_cd": "47290",
+            "sig_eng_nm": "Gyeongsan-si",
+            "sig_full_nm": "경상북도 경산시",
+            "sig_kor_nm": "경산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6463"
+    },
+    {
+        "sig": {
+            "sig_cd": "47720",
+            "sig_eng_nm": "Gunwi-gun",
+            "sig_full_nm": "경상북도 군위군",
+            "sig_kor_nm": "군위군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6464"
+    },
+    {
+        "sig": {
+            "sig_cd": "47730",
+            "sig_eng_nm": "Uiseong-gun",
+            "sig_full_nm": "경상북도 의성군",
+            "sig_kor_nm": "의성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6465"
+    },
+    {
+        "sig": {
+            "sig_cd": "47750",
+            "sig_eng_nm": "Cheongsong-gun",
+            "sig_full_nm": "경상북도 청송군",
+            "sig_kor_nm": "청송군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6466"
+    },
+    {
+        "sig": {
+            "sig_cd": "47760",
+            "sig_eng_nm": "Yeongyang-gun",
+            "sig_full_nm": "경상북도 영양군",
+            "sig_kor_nm": "영양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6467"
+    },
+    {
+        "sig": {
+            "sig_cd": "47770",
+            "sig_eng_nm": "Yeongdeok-gun",
+            "sig_full_nm": "경상북도 영덕군",
+            "sig_kor_nm": "영덕군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6468"
+    },
+    {
+        "sig": {
+            "sig_cd": "47820",
+            "sig_eng_nm": "Cheongdo-gun",
+            "sig_full_nm": "경상북도 청도군",
+            "sig_kor_nm": "청도군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6469"
+    },
+    {
+        "sig": {
+            "sig_cd": "47830",
+            "sig_eng_nm": "Goryeong-gun",
+            "sig_full_nm": "경상북도 고령군",
+            "sig_kor_nm": "고령군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6470"
+    },
+    {
+        "sig": {
+            "sig_cd": "47840",
+            "sig_eng_nm": "Seongju-gun",
+            "sig_full_nm": "경상북도 성주군",
+            "sig_kor_nm": "성주군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6471"
+    },
+    {
+        "sig": {
+            "sig_cd": "47850",
+            "sig_eng_nm": "Chilgok-gun",
+            "sig_full_nm": "경상북도 칠곡군",
+            "sig_kor_nm": "칠곡군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6472"
+    },
+    {
+        "sig": {
+            "sig_cd": "47900",
+            "sig_eng_nm": "Yecheon-gun",
+            "sig_full_nm": "경상북도 예천군",
+            "sig_kor_nm": "예천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6473"
+    },
+    {
+        "sig": {
+            "sig_cd": "47920",
+            "sig_eng_nm": "Bonghwa-gun",
+            "sig_full_nm": "경상북도 봉화군",
+            "sig_kor_nm": "봉화군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6474"
+    },
+    {
+        "sig": {
+            "sig_cd": "47930",
+            "sig_eng_nm": "Uljin-gun",
+            "sig_full_nm": "경상북도 울진군",
+            "sig_kor_nm": "울진군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6475"
+    },
+    {
+        "sig": {
+            "sig_cd": "47940",
+            "sig_eng_nm": "Ulleung-gun",
+            "sig_full_nm": "경상북도 울릉군",
+            "sig_kor_nm": "울릉군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6476"
+    },
+    {
+        "sig": {
+            "sig_cd": "48121",
+            "sig_eng_nm": "Uichang-gu, Changwon-si",
+            "sig_full_nm": "경상남도 창원시 의창구",
+            "sig_kor_nm": "창원시 의창구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6477"
+    },
+    {
+        "sig": {
+            "sig_cd": "48123",
+            "sig_eng_nm": "Seongsan-gu, Changwon-si",
+            "sig_full_nm": "경상남도 창원시 성산구",
+            "sig_kor_nm": "창원시 성산구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6478"
+    },
+    {
+        "sig": {
+            "sig_cd": "48125",
+            "sig_eng_nm": "Masanhappo-gu, Changwon-si",
+            "sig_full_nm": "경상남도 창원시 마산합포구",
+            "sig_kor_nm": "창원시 마산합포구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6479"
+    },
+    {
+        "sig": {
+            "sig_cd": "48127",
+            "sig_eng_nm": "Masanhoewon-gu, Changwon-si",
+            "sig_full_nm": "경상남도 창원시 마산회원구",
+            "sig_kor_nm": "창원시 마산회원구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6480"
+    },
+    {
+        "sig": {
+            "sig_cd": "48129",
+            "sig_eng_nm": "Jinhae-gu, Changwon-si",
+            "sig_full_nm": "경상남도 창원시 진해구",
+            "sig_kor_nm": "창원시 진해구"
+        },
+        "id": "LT_C_ADSIGG_INFO.6481"
+    },
+    {
+        "sig": {
+            "sig_cd": "48170",
+            "sig_eng_nm": "Jinju-si",
+            "sig_full_nm": "경상남도 진주시",
+            "sig_kor_nm": "진주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6482"
+    },
+    {
+        "sig": {
+            "sig_cd": "48220",
+            "sig_eng_nm": "Tongyeong-si",
+            "sig_full_nm": "경상남도 통영시",
+            "sig_kor_nm": "통영시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6483"
+    },
+    {
+        "sig": {
+            "sig_cd": "48240",
+            "sig_eng_nm": "Sacheon-si",
+            "sig_full_nm": "경상남도 사천시",
+            "sig_kor_nm": "사천시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6484"
+    },
+    {
+        "sig": {
+            "sig_cd": "48250",
+            "sig_eng_nm": "Gimhae-si",
+            "sig_full_nm": "경상남도 김해시",
+            "sig_kor_nm": "김해시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6485"
+    },
+    {
+        "sig": {
+            "sig_cd": "48270",
+            "sig_eng_nm": "Miryang-si",
+            "sig_full_nm": "경상남도 밀양시",
+            "sig_kor_nm": "밀양시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6486"
+    },
+    {
+        "sig": {
+            "sig_cd": "48310",
+            "sig_eng_nm": "Geoje-si",
+            "sig_full_nm": "경상남도 거제시",
+            "sig_kor_nm": "거제시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6487"
+    },
+    {
+        "sig": {
+            "sig_cd": "48330",
+            "sig_eng_nm": "Yangsan-si",
+            "sig_full_nm": "경상남도 양산시",
+            "sig_kor_nm": "양산시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6488"
+    },
+    {
+        "sig": {
+            "sig_cd": "48720",
+            "sig_eng_nm": "Uiryeong-gun",
+            "sig_full_nm": "경상남도 의령군",
+            "sig_kor_nm": "의령군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6489"
+    },
+    {
+        "sig": {
+            "sig_cd": "48730",
+            "sig_eng_nm": "Haman-gun",
+            "sig_full_nm": "경상남도 함안군",
+            "sig_kor_nm": "함안군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6490"
+    },
+    {
+        "sig": {
+            "sig_cd": "48740",
+            "sig_eng_nm": "Changnyeong-gun",
+            "sig_full_nm": "경상남도 창녕군",
+            "sig_kor_nm": "창녕군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6491"
+    },
+    {
+        "sig": {
+            "sig_cd": "48820",
+            "sig_eng_nm": "Goseong-gun",
+            "sig_full_nm": "경상남도 고성군",
+            "sig_kor_nm": "고성군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6492"
+    },
+    {
+        "sig": {
+            "sig_cd": "48840",
+            "sig_eng_nm": "Namhae-gun",
+            "sig_full_nm": "경상남도 남해군",
+            "sig_kor_nm": "남해군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6493"
+    },
+    {
+        "sig": {
+            "sig_cd": "48850",
+            "sig_eng_nm": "Hadong-gun",
+            "sig_full_nm": "경상남도 하동군",
+            "sig_kor_nm": "하동군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6494"
+    },
+    {
+        "sig": {
+            "sig_cd": "48860",
+            "sig_eng_nm": "Sancheong-gun",
+            "sig_full_nm": "경상남도 산청군",
+            "sig_kor_nm": "산청군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6495"
+    },
+    {
+        "sig": {
+            "sig_cd": "48870",
+            "sig_eng_nm": "Hamyang-gun",
+            "sig_full_nm": "경상남도 함양군",
+            "sig_kor_nm": "함양군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6496"
+    },
+    {
+        "sig": {
+            "sig_cd": "48880",
+            "sig_eng_nm": "Geochang-gun",
+            "sig_full_nm": "경상남도 거창군",
+            "sig_kor_nm": "거창군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6497"
+    },
+    {
+        "sig": {
+            "sig_cd": "48890",
+            "sig_eng_nm": "Hapcheon-gun",
+            "sig_full_nm": "경상남도 합천군",
+            "sig_kor_nm": "합천군"
+        },
+        "id": "LT_C_ADSIGG_INFO.6498"
+    },
+    {
+        "sig": {
+            "sig_cd": "50110",
+            "sig_eng_nm": "Jeju-si",
+            "sig_full_nm": "제주특별자치도 제주시",
+            "sig_kor_nm": "제주시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6499"
+    },
+    {
+        "sig": {
+            "sig_cd": "50130",
+            "sig_eng_nm": "Seogwipo-si",
+            "sig_full_nm": "제주특별자치도 서귀포시",
+            "sig_kor_nm": "서귀포시"
+        },
+        "id": "LT_C_ADSIGG_INFO.6500"
+    }
+]
