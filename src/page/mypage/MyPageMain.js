@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getCurrentMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
+import StarPoint from "../../component/item/StarPoint";
 
 function MyPageMain() {
 
@@ -40,7 +41,7 @@ function MyPageMain() {
     }, [member]
     );
 
-    console.log(member);
+    // console.log(member);
 
     const [buttonId, setButtonId] = useState(1);
 
@@ -68,17 +69,9 @@ function MyPageMain() {
                             {member.nickname}
                         </div>
                         <div style={{ marginBottom: '15px', marginTop: '10px' }}>
-                            <div>{ARRAY.map((el, index) => (
-                                <FaStar
-                                    style={{ marginRight: "3px" }}
-                                    key={index}
-                                    size="18"
-                                    className={score[el] ? 'yellowStar' : "grayStar"}
-                                ></FaStar>
-                            ))}
-                            </div>
-                            <div  style={{ marginLeft: "3px" }}>
-                            {member.starPoint}.0
+                            <StarPoint starPoint={member.starPoint} />
+                            <div style={{ marginLeft: "3px" }}>
+                                {member.starPoint}.0
                             </div>
                         </div>
                         <article>
