@@ -15,13 +15,13 @@ export function getReviewList(page) {
 
 // 전체 리뷰 리스트 조회
 export const callReviewListAPI = ({ currentPage }) => {
-
-    // const token = window.localStorage.getItem('jwtToken');
+   
+    const token = JSON.parse( window.localStorage.getItem('accessToken'));
 
     let URL;
 
     if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/reviews?page=${currentPage}`;
+        URL = `http://localhost:8080/api/v1/reviews?page=${currentPage}&memberId=${token.memberId}`;
     } else {
         URL = 'http://localhost:8080/api/v1/reviews';
     }

@@ -1,5 +1,7 @@
+import StarPoint from "../../component/item/StarPoint";
 import style from "./MyReviewPage.module.css";
 import { useNavigate } from 'react-router-dom';
+
 function MyReviewPage() { 
 
     
@@ -19,7 +21,7 @@ function MyReviewPage() {
                     <section className={style.contentContainer}>
                         <div style={{display : 'flex', borderBottom : '1px solid #8d8d8d' }}>
                             <div>닉네임 님</div>
-                            <div>별점</div>
+                            {/* <StarPoint starPoint={review.reviewStarPoint} /> */}
                         </div>
                         <section className={style.context}>제목
                             <section>리뷰 상세 내용</section>

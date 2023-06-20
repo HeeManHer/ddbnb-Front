@@ -63,7 +63,12 @@
     width: 450px;
 }
 .contentContainer div:nth-child(2){
-    width: 50px;
+    width: 165px;
+    float: right;
+}
+
+.contentContainer div:nth-child(3){
+    width: 75px;
     float: right;
 }
 

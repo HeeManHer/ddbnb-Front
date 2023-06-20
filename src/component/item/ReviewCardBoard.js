@@ -5,14 +5,17 @@ import { useEffect, useState } from "react";
 import { callReviewListAPI } from "../../api/reviewListAPI";
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
+import { FaStar } from 'react-icons/fa';
+import StarPoint from './StarPoint';
+
 
 function ReviewCardBoard() {
 
     //리덕스
     const dispatch = useDispatch();
-    const reviewList = useSelector(state => state.reviewReducer);
+    const review = useSelector(state => state.reviewReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: reviews, pageInfo } = reviewList;
+    const { data: reviews, pageInfo } = review;
 
     useEffect(() => {
         dispatch(callReviewListAPI({ currentPage: currentPage }));
@@ -24,6 +27,7 @@ function ReviewCardBoard() {
         navigate("/myReview");
         // window.location.reload();
     }
+
 
     //리뷰리스트 출력
     console.log(reviews);
@@ -37,13 +41,16 @@ function ReviewCardBoard() {
             {/* 블럭1 */}
             <div className={style.board}>
                 {Array.isArray(reviews) && reviews.map((review, index) =>
-                    <Link to={`/reviews/${review.reviewId}`}>
-                        <button className={style.review} key={index}>
+                    <Link to={`/reviews/${review.reviewId}`} key={index}>
+                        <button className={style.review} >
                             <div className={style.Image}>
                             </div>
                             <div className={style.context}>
-                                <div className={style.star}>
-                                    {review.reviewStarPoint}
+                                <div style={{ display: "flex" }}>
+                                    <StarPoint starPoint={review.reviewStarPoint} />
+                                    <div style={{ marginLeft: "3px", marginTop: "3px", fontWeight: "bold" }}>
+                                        ( {review.reviewStarPoint}.0 )
+                                    </div>
                                 </div>
                                 <div className={style.ReviewName}>
                                     {review.reviewTitle}
