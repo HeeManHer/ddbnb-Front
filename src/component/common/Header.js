@@ -20,6 +20,7 @@ function Header() {
         // }
         // window.localStorage.removeItem('accessToken');
         dispatch(callNaverLogoutAPI());
+        dispatch(callKakaoLogoutAPI());
         navigate("/", { replace: true });
 
     }
@@ -41,7 +42,7 @@ function Header() {
                 </header>
             )
         }
-    } else {
+    } else{
         return (
             <header className="back-color dis-flex align-center">
                 <span onClick={() => navigate("/login")} >로그인</span>

@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import MyCardList from "../../component/list/AppliedList";
 import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
-import { getCurrentMember } from "../../api/MemberAPICalls";
+import { getCurrentMember, deleteMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMan, AiOutlineWoman } from "react-icons/ai";
 import StarPoint from "../../component/item/StarPoint";
+import { callNaverLogoutAPI } from "../../api/LoginAPI";
 
 function MyPageMain() {
 
@@ -18,11 +19,16 @@ function MyPageMain() {
 
     useEffect(() => {
         dispatch(getCurrentMember());
-
     }, []
     );
-
-
+    const handleDelete = () => {
+        const memberId = member?.memberId;
+        dispatch(deleteMember(memberId));
+        dispatch(callNaverLogoutAPI());
+        navigate("/", { replace: true });
+        
+    };
+    
     //성별 구분
     const genderSet = () => {
         if (member.gender === ("M" || "male")) {
@@ -40,6 +46,7 @@ function MyPageMain() {
     const ClickHandler = () => {
         navigate("/reviseprofile");
     }
+
 
 
     // console.log(member);
@@ -116,8 +123,8 @@ function MyPageMain() {
                     <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
                 </div>
                 {buttonId && <MyCardList buttonId={buttonId} />}
-
             </div>
+            <button onClick={handleDelete} >사이트 탈퇴하기</button>
 
         </section>
     );
