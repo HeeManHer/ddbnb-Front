@@ -1,18 +1,23 @@
-import petMomDetail from '../data/petMomDetail.json';
-import petSitterDetail from '../data/petSitterDetail.json';
+import { SET_PETMOMDETAIL } from '../modules/petdetail';
+import { GET_PETMOMDETAIL } from '../modules/petdetail';
 
-import { SET_PETMOMDETAIL, SET_PETSITTERDETAIL } from '../modules/petdetail';
 
-export function getPetMomDetail() {
 
-    return async function (dispatch, getState) {
-        dispatch({ type: SET_PETMOMDETAIL, payload: petMomDetail })
+export const getPetMomDetail = (boardId) => {
+
+    let URL = "http://localhost:8080/api/v1/petmom/list/" + boardId;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            }
+        }).then(response => response.json());
+        console.log(`result = ${result}`);
+        dispatch({ type: GET_PETMOMDETAIL, payload: result.data });
     }
 }
 
-export function getPetSitterDetail() {
-
-    return async function (dispatch, getState) {
-        dispatch({ type: SET_PETSITTERDETAIL, payload: petSitterDetail })
-    }
-}

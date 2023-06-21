@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getPetSitterDetail } from "../../api/petDetailAPI";
 import "../write/detail.css"
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
+import { getPetsitterdetailAPI } from "../../api/petsitterAPI";
+import { useParams } from 'react-router-dom';
 
 
 function PetSitterRecruitDatail() {
@@ -33,18 +34,22 @@ function PetSitterRecruitDatail() {
 
 
 
-    const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
+    const petdetail = useSelector(state => state.petSitterReducer) || { images: [] };
 
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const totalImages = petdetail.img ? petdetail.img.length : 0;
 
+    const { boardId } = useParams();
+
     useEffect(
         () => {
-            dispatch(getPetSitterDetail());
+            dispatch(getPetsitterdetailAPI(boardId));
         },
         []
     )
+
+
 
     const changeImage = (direction) => {
         let newIndex = currentImageIndex + direction;

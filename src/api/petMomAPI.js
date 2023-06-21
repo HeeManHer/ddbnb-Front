@@ -33,21 +33,4 @@ export const getPetMomList = (currentPage) => {
     }
 }
 
-export function getPetMompage(currentPage, boardId) {
-    // 43.201.211.175
-    let URL = "http://localhost:8080/api/v1/petmom/list/" + boardId;
-
-    return async (dispatch, getState) => {
-        const result = await fetch(URL, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
-            }
-        }).then(response => response.json());
-
-        dispatch({ type: GET_PETMOM, payload: result.data });
-    }
-}
 
