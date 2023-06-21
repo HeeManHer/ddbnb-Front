@@ -59,9 +59,9 @@ export const getMyPetMomList = ({ currentPage }) => {
     let URL;
 
     if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/mypage/petmom/list?page=${currentPage}&memberId=${token.memberId}`;
+        URL = `http://localhost:8080/api/v1/petmom/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
     } else {
-        URL = 'http://localhost:8080/api/v1/mypage/petmom/list';
+        URL = 'http://localhost:8080/api/v1/petmom/mypetmoms';
     }
 
 
