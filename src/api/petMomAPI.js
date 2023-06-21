@@ -51,3 +51,36 @@ export function getPetMompage(currentPage, boardId) {
     }
 }
 
+
+//내가쓴 게시글 부르기
+export const getMyPetMomList = ({ currentPage }) => {
+    const token = JSON.parse( window.localStorage.getItem('accessToken'));
+
+    let URL;
+
+    if (currentPage !== undefined || currentPage !== null) {
+        URL = `http://localhost:8080/api/v1/mypage/petmom/list?page=${currentPage}&memberId=${token.memberId}`;
+    } else {
+        URL = 'http://localhost:8080/api/v1/mypage/petmom/list';
+    }
+
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Accept": "*/*",
+                // "Auth": token
+            }
+        })
+            .then(response => response.json());
+
+        if (result.status === 200) {
+            dispatch({ type: GET_PETMOM , payload: result.data });
+
+            console.log(result);
+        }
+    };
+}
