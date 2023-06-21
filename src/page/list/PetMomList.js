@@ -1,21 +1,21 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../../css/petsitterList.css";
-// import sigunguList from '../../data/sigoongu.json';
+import sigunguList from '../../data/sigoongu.json';
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/petmomList.css";
 import PageBtn from "../../component/common/PageBtn";
 import { getPetMomList } from "../../api/petMomAPI";
 
-// function searchSig(sido) {
+function searchSig(sido) {
 
-//     return sigunguList.filter(sig => sig.sig.sig_full_nm.startsWith(sido));
-// }    
+    return sigunguList.filter(sig => sig.sig.sig_full_nm.startsWith(sido));
+}
 
-// function Sigoon({ sig }) {
+function Sigoon({ sig }) {
 
-//     return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
-// }
+    return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
+}
 function PetMomList() {
 
     const dispatch = useDispatch();
@@ -33,33 +33,33 @@ function PetMomList() {
     const navigate = useNavigate()
 
 
-    const handleItemClick = () => {
-        navigate("./PetMomRecuitDetail");
-    };
 
-    // // 시도 선택시 시군구 리스트 담음
-    // const [sigList, setSigList] = useState([]);
 
-    // // 시도 + 시군구 합치기
-    // const [location, setLocation] = useState({
-    //     SIDO: '',
-    //     SIGUNGU: ''
-    // });
 
-    // const onChangeSidoHandler = (e) => {
-    //     setSigList(searchSig(e.target.value));
-    //     setLocation({
-    //         ...location,
-    //         SIDO: e.target.value
-    //     })
-    // }
 
-    // const onChangeSigunguHandler = (e) => {
-    //     setLocation({
-    //         ...location,
-    //         SIGUNGU: e.target.value
-    //     })
-    // }
+    // 시도 선택시 시군구 리스트 담음
+    const [sigList, setSigList] = useState([]);
+
+    // 시도 + 시군구 합치기
+    const [location, setLocation] = useState({
+        SIDO: '',
+        SIGUNGU: ''
+    });
+
+    const onChangeSidoHandler = (e) => {
+        setSigList(searchSig(e.target.value));
+        setLocation({
+            ...location,
+            SIDO: e.target.value
+        })
+    }
+
+    const onChangeSigunguHandler = (e) => {
+        setLocation({
+            ...location,
+            SIGUNGU: e.target.value
+        })
+    }
 
 
 
@@ -71,7 +71,7 @@ function PetMomList() {
 
                 <div className="mainpagebox">
                     <div className="wherewhen">
-                        {/* <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+                        <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                             <option value="">시/도</option>
                             <option value="서울">서울특별시</option>
                             <option value="부산">부산광역시</option>
@@ -98,7 +98,7 @@ function PetMomList() {
                                 {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                             </select>
 
-                        </div> */}
+                        </div>
                         <section>
 
                             <h4 className="when">언제 맡기길 원하시나요?</h4>
@@ -130,7 +130,7 @@ function PetMomList() {
 
             {Array.isArray(petmomList) && petmomList.map(petmom => (
                 <div key={petmom.boardId}>
-                    <div className="in" onClick={handleItemClick} >
+                    <div className="in" /*onClick={handleItemClick}*/ >
 
                         <img className="dogimg" src="../img/angrydog.png"></img>
 

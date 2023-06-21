@@ -65,19 +65,19 @@ function App() {
           <Route path="petMom" >
             <Route index element={<PetMomList />} />
             <Route path="recruit" element={<PetMomRecruit />} />\
-            <Route path=":petMomNo" element={<PetMomRecruitDatail />} />
+            <Route path=":boardId" element={<PetMomRecruitDatail />} />
           </Route>
 
           <Route path="petSitter" >
             <Route index element={<PetSitterList />} />
             <Route path="recruit" element={<PetSitterRecruit />} />\
-            <Route path=":petSitterNo" element={<PetSitterRecruitDatail />} />
+            <Route path=":boardId" element={<PetSitterRecruitDatail />} />
           </Route>
 
           <Route path="about" element={<AboutPage />} />
           <Route path="reviews">
-            <Route path=':reviewId' element={<ReviewPage/>}/>
-            </Route>
+            <Route path=':reviewId' element={<ReviewPage />} />
+          </Route>
 
           <Route path="myReview" element={<MyReviewPage />} />
 

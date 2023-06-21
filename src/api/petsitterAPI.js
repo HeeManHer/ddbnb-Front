@@ -1,4 +1,4 @@
-import { GET_PETSITTERLIST, POST_PETSITTER } from '../modules/petSitter';
+import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER } from '../modules/petSitter';
 
 
 export const callPetsitterListAPI = (currentPage) => {
@@ -8,7 +8,7 @@ export const callPetsitterListAPI = (currentPage) => {
     if (currentPage !== undefined || currentPage !== null) {
         URL = `http://localhost:8080/api/v1/petsitter/list?page=${currentPage}`;
     } else {
-        URL = 'http://localhost:8080/api/v1/petsitter/list';
+        URL = `http://localhost:8080/api/v1/petsitter/list`;
     }
 
     return async (dispatch, getState) => {
@@ -48,3 +48,22 @@ export function registPetsitterAPI(petreg) {
         dispatch({ type: POST_PETSITTER, payload: result.data });
     };
 }
+
+
+export function getPetsitterdetailAPI(boardId) {
+
+    let URL = "http://localhost:8080/api/petsitter/list/" + boardId;
+
+    return async function (dispatch, getState) {
+
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+            .then(response => response.json());
+        dispatch({ type: GET_PETSITTERDETAIL, payload: result.data });
+    }
+};

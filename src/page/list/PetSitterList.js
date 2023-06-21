@@ -59,7 +59,11 @@ function PetSitterList() {
             SIGUNGU: e.target.value
         })
     }
+    const [selectedPetsitter, setSelectedPetsitter] = useState(null);
 
+    const handleClick = (petsitter) => {
+        setSelectedPetsitter(petsitter);
+    };
 
     return (
         <div>
@@ -130,7 +134,7 @@ function PetSitterList() {
 
             {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
 
-                <div className="in" >
+                <div className="in" key={petsitter.boardId} onClick={() => navigate(`./${petsitter.boardId}`)}>
 
                     <img className="dogimg" src="../img/angrydog.png"></img>
                     <div className="textlist">

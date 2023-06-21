@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getPetMomDetail } from "../../api/petDetailAPI";
 import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
@@ -11,6 +10,10 @@ import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
+import { getPetMomDetail } from '../../api/petDetailAPI';
+import { useParams } from 'react-router-dom';
+
+
 
 function PetMomRecruitDatail() {
     const toggleSelected = (event) => {
@@ -51,25 +54,28 @@ function PetMomRecruitDatail() {
         setShowModalList(false);
     };
 
-    const petdetail = useSelector(state => state.petDetailReducer) || { images: [] };
-    const totalImages = petdetail.img ? petdetail.img.length : 0;
+    const data = useSelector(state => state.petDetailReducer);
+    console.log(data);
+    // const totalImages = petdetail.img ? petdetail.img.length : 0;
+    const { boardId } = useParams();
+
 
     useEffect(
         () => {
-            dispatch(getPetMomDetail());
+            dispatch(getPetMomDetail(boardId));
         },
         []
     )
 
-    const changeImage = (direction) => {
-        let newIndex = currentImageIndex + direction;
-        if (newIndex < 0) {
-            newIndex = totalImages - 1; // 마지막 이미지로 순환
-        } else if (newIndex >= totalImages) {
-            newIndex = 0; // 첫 번째 이미지로 순환
-        }
-        setCurrentImageIndex(newIndex);
-    };
+    // const changeImage = (direction) => {
+    //     let newIndex = currentImageIndex + direction;
+    //     if (newIndex < 0) {
+    //         newIndex = totalImages - 1; // 마지막 이미지로 순환
+    //     } else if (newIndex >= totalImages) {
+    //         newIndex = 0; // 첫 번째 이미지로 순환
+    //     }
+    //     setCurrentImageIndex(newIndex);
+    // };
 
 
 
@@ -83,12 +89,13 @@ function PetMomRecruitDatail() {
                 </Modal>
                 <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
-                    <PetMomCollectCancle/>
+                    <PetMomCollectCancle />
                 </Modal>
             </div>
+
             <div className="dateAndWriter">
-                <h5>작성자 : {petdetail.name}</h5>
-                <h5>작성일 : {petdetail.date}</h5>
+                {/* <h5>작성자 : {data.name}</h5> */}
+                {/* <h5>작성일 : {data.boardDate}</h5> */}
             </div>
             <hr className="line"></hr>
 
@@ -100,31 +107,30 @@ function PetMomRecruitDatail() {
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">제목 </h2>
-                <h3 className="comment-content2" > {petdetail.title}</h3>
+                <h3 className="comment-content2" > {data.boardTitle}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
                 <h2 className="comment-content">지역</h2>
-                <h3 className="comment-content2" >{petdetail.region}</h3>
+                <h3 className="comment-content2" >{data.location}</h3>
             </div>
             <hr className="line"></hr>
 
             <div className="comment">
                 <h2 className="comment-content">돌봄</h2>
-                <button className="choice-box" onClick={toggleSelected}>방문</button>
-                <button className="choice-box" onClick={toggleSelected}>출장</button>
-                <button className="choice-box" onClick={toggleSelected}>산책</button>
-
+                <button className={`choice-box ${data.care === '방문' ? 'selected' : ''}`}>방문</button>
+                <button className={`choice-box ${data.care === '출장' ? 'selected' : ''}`}>출장</button>
+                <button className={`choice-box ${data.care === '산책' ? 'selected' : ''}`}>산책</button>
             </div>
             <hr className="line"></hr>
 
             <div className="comment">
                 <h2 className="comment-content">기간</h2>
-                <h3 className="comment-content2" >{petdetail.date2}</h3>
+                <h3 className="comment-content2" >{data.startDate}~{data.endDate}</h3>
                 <h2 className="comment-mommoney">사례금</h2>
-                <h3 className="comment-mommoney2">{petdetail.tmoney}</h3>
+                <h3 className="comment-mommoney2">{data.hourlyRate} \</h3>
                 <button className="comment-button1">시간당</button>
-                <h3 className="comment-mommoney3">{petdetail.dmoney}</h3>
+                <h3 className="comment-mommoney3">{data.dateRate} \</h3>
                 <button className="comment-button2">1박</button>
 
 
@@ -132,37 +138,39 @@ function PetMomRecruitDatail() {
             <hr className="line"></hr>
             <div className="formsize">
                 <div className="doginfo">
-                    <div className="images">
+                    {/* <div className="images">
                         <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
-                        {petdetail.img && petdetail.img.length > 0 ? (
-                            <img className='imgsize' src={petdetail.img[currentImageIndex]} alt=" 사진이 없습니다!" />
+                        {data.img && data.img.length > 0 ? (
+                            <img className='imgsize' src={data.img[currentImageIndex]} alt=" 사진이 없습니다!" />
                         ) : null}
                         <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
-                    </div>
+                    </div> */}
                     <div className="calendar">
                         <Calendar />
                     </div>
                 </div>
                 <div className="momplz">
                     <div>
-                        <button className="choice-box2" onClick={toggleSelected}>단독주택</button>
-                        <button className="choice-box2" onClick={toggleSelected}>아파트</button>
-                        <button className="choice-box2" onClick={toggleSelected}>빌라</button>
+                        <button className={`choice-box2 ${data.houseType === '단독주택' ? 'selected' : ''}`}>단독주택</button>
+                        <button className={`choice-box2 ${data.houseType === '아파트' ? 'selected' : ''}`}>아파트</button>
+                        <button className={`choice-box2 ${data.houseType === '빌라' ? 'selected' : ''}`}>빌라</button>
                         <hr className="line2"></hr>
-                        <button className="choice-box2" onClick={toggleSelected}>픽업가능</button>
-                        <button className="choice-box2" onClick={toggleSelected}>대형견 가능</button>
-                        <button className="choice-box2" onClick={toggleSelected}>노견케어</button>
+                        <button className={`choice-box2 ${data.otherCondition && data.otherCondition.some(item => item.typeId === 1) ? 'selected' : ''}`}>픽업가능</button>
+                        <button className={`choice-box2 ${data.otherCondition && data.otherCondition.some(item => item.typeId === 2) ? 'selected' : ''}`}>대형견 가능</button>
+                        <button className={`choice-box2 ${data.otherCondition && data.otherCondition.some(item => item.typeId === 3) ? 'selected' : ''}`}>노견케어</button>
+
+
                         <hr className="line2"></hr>
-                        <button className="choice-box3" onClick={toggleSelected}>반려동물 있어요</button>
-                        <button className="choice-box3" onClick={toggleSelected}>반려동물 없어요</button>
+                        <button className={`choice-box3 ${data.petYN === true ? 'selected' : ''}`}>반려동물 있어요</button>
+                        <button className={`choice-box3 ${data.petYN === false ? 'selected' : ''}`}>반려동물 없어요</button>
                         <hr className="line2"></hr>
                         <div className="dateAndWriter">
                             <h2>특이사항</h2>
-                            <textarea className="momplz-textarea1" value={petdetail.info}></textarea>
+                            <textarea className="momplz-textarea1" value={data.signficant}></textarea>
                         </div>
                     </div>
                     <h2> 강아지를 맡아줄게요</h2>
-                    <textarea className="momplz-textarea2" value={petdetail.info2}></textarea> </div>
+                    <textarea className="momplz-textarea2" value={data.request}></textarea> </div>
             </div>
             <div>
                 <div>
