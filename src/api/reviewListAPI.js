@@ -16,7 +16,7 @@ export function getReviewList(page) {
 
 // 전체 리뷰 리스트 조회
 export const callReviewListAPI = ({ currentPage }) => {
-    const token = JSON.parse( window.localStorage.getItem('accessToken'));
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     let URL;
 
@@ -78,22 +78,24 @@ export const callReviewDetailAPI = (reviewId) => {
     };
 }
 
-export const registNewReview = form => {
+export const registNewReview = (form) => {
     const URL = `http://localhost:8080/api/v1/reviews`;
-    console.log(form)
+
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+                "Accept": "*/*"
             },
-            body: JSON.stringify(form)
+            body: form
         }).then(response => response.json())
 
         console.log(result.message)
+        console.log(result.data)
+        // if (result.status = 200) {
+        //     alert(result.message)
+        // }
     };
 
 }

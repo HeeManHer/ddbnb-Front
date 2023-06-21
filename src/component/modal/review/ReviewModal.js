@@ -13,13 +13,9 @@ function ReviewModal({ closeModalReview, index: memberId }) {
     const [form, setForm] = useState({
         member: { memberId: token.memberId },
         reviewer: { memberId: 2952 },
-        reviewDetail: '',
-        reviewStarPoint: '',
-        reviewImage: ''
+        reviewDetail: "",
+        reviewStarPoint: 0
     })
-
-    const [content, setContent] = useState("");
-    const [rating, setRating] = useState(0);
 
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState("");
@@ -38,9 +34,8 @@ function ReviewModal({ closeModalReview, index: memberId }) {
         }
     }, [image]);
 
-    const handleRatingChange = (event) => {
-        const selectedRating = parseInt(event.target.value);
-        setRating(selectedRating);
+    const handleRatingChange = (e) => {
+        setForm({ ...form, reviewStarPoint: parseInt(e.target.value) })
     };
 
     const handleImageSelect = (event) => {
@@ -55,19 +50,15 @@ function ReviewModal({ closeModalReview, index: memberId }) {
 
         const formData = new FormData();
 
-        formData.append('member', { memberId: token.memberId })
-        formData.append('reviewer', { memberId: 2952 })
+        formData.append('newReview', new Blob([JSON.stringify(form)], { type: "application/json" }))
 
-        formData.append("reviewDetail", content)
-        formData.append("reviewStarPoint", rating)
 
         if (image) {
-            formData.append("reviewImage", image)
+            formData.append("img", image)
         }
 
         dispatch(registNewReview(formData))
 
-        // window.location.reload();
     };
 
     const handleCancel = () => {
@@ -91,7 +82,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                             name="rating"
                             value="5"
                             id="rate1"
-                            checked={rating === 5}
+                            checked={form.reviewStarPoint === 5}
                             onChange={handleRatingChange}
                         />
                         <label className="yellow" htmlFor="rate1">⭐</label>
@@ -100,7 +91,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                             name="rating"
                             value="4"
                             id="rate2"
-                            checked={rating === 4}
+                            checked={form.reviewStarPoint === 4}
                             onChange={handleRatingChange}
                         />
                         <label className="yellow" htmlFor="rate2">⭐</label>
@@ -109,7 +100,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                             name="rating"
                             value="3"
                             id="rate3"
-                            checked={rating === 3}
+                            checked={form.reviewStarPoint === 3}
                             onChange={handleRatingChange}
                         />
                         <label className="yellow" htmlFor="rate3">⭐</label>
@@ -118,7 +109,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                             name="rating"
                             value="2"
                             id="rate4"
-                            checked={rating === 2}
+                            checked={form.reviewStarPoint === 2}
                             onChange={handleRatingChange}
                         />
                         <label className="yellow" htmlFor="rate4">⭐</label>
@@ -127,18 +118,18 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                             name="rating"
                             value="1"
                             id="rate5"
-                            checked={rating === 1}
+                            checked={form.reviewStarPoint === 1}
                             onChange={handleRatingChange}
                         />
                         <label className="yellow" htmlFor="rate5">⭐</label>
                     </fieldset>
-                    {rating}/5
+                    {form.reviewStarPoint}/5
                 </div>
             </div>
             <div>
                 <div>
                     <div className="reviewmodal-main2">리뷰</div>
-                    <textarea value={content} onChange={e => setContent(e.target.value)}></textarea>
+                    <textarea value={form.reviewDetail} onChange={e => setForm({ ...form, reviewDetail: e.target.value })}></textarea>
                 </div>
                 <div className="imgAndBtn">
                     <h3>이미지첨부</h3>
