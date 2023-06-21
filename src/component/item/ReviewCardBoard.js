@@ -43,6 +43,7 @@ function ReviewCardBoard() {
                     <Link to={`/reviews/${review.reviewId}`} key={index}>
                         <button className={style.review} >
                             <div className={style.Image}>
+                                <img src={review.reviewImageUrl} />
                             </div>
                             <div className={style.context}>
                                 <div style={{ display: "flex" }}>

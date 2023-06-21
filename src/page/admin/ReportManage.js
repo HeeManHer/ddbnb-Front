@@ -55,8 +55,8 @@ function ReportManage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(reportList) && reportList.map(item => (
-                        <tr>
+                    {Array.isArray(reportList) && reportList.map((item, index) => (
+                        <tr key={index}>
                             <td >
                                 <input type="checkbox" />
                             </td>

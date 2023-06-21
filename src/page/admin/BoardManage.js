@@ -1,31 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPetSitterList } from "../../api/adminAPI";
+import { getBoardList } from "../../api/adminAPI";
 import PageBtn from "../../component/common/PageBtn";
 import { useNavigate } from "react-router-dom";
 
-function PetMomManage() {
+function BoardManage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { data: petSitterList, pageInfo } = useSelector(state => state.petSitterReducer);
+    const { data: boardList, pageInfo } = useSelector(state => state.petSitterReducer);
     const currentPage = useSelector(state => state.pageReducer);
+    const [category, setCategory] = useState('petmom');
+
 
     useEffect(
         () => {
-            dispatch(getPetSitterList(currentPage));
+            dispatch(getBoardList(category, currentPage));
         },
-        [currentPage]
+        [category, currentPage]
     )
-    console.log(petSitterList)
+    // console.log(boardList)
 
     return (
         <div className="container">
             <div className="menuheader dis-flex">
-                <h2 onClick={() => navigate("/manage/petMom")}>펫맘 모집글 게시판</h2>
+                <h2 style={category === 'petmom' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('petmom')}>펫맘 모집글 게시판</h2>
                 <div className="topbar-divider"></div>
-                <h2 className="font-color-main" onClick={() => navigate("/manage/petSitter")}>펫시터 모집글 게시판</h2>
+                <h2 style={category === 'petsitter' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('petsitter')}>펫시터 모집글 게시판</h2>
             </div>
             <div className="searchheader">
                 <div>상세검색</div>
@@ -52,14 +54,14 @@ function PetMomManage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(petSitterList) && petSitterList.map(item => (
-                        <tr>
+                    {Array.isArray(boardList) && boardList.map((item, index) => (
+                        <tr key={index}>
                             <td >
                                 <input type="checkbox" />
                             </td>
                             <td >{item.boardId}</td>
                             <td >{item.boardTitle}</td>
-                            <td >{item.memberId.nickname}</td>
+                            {item.memberId ? <td >{item.memberId.nickname}</td> : <td></td>}
                             <td >{item.boardDate}</td>
                         </tr>
                     ))}
@@ -70,4 +72,4 @@ function PetMomManage() {
     )
 }
 
-export default PetMomManage;
+export default BoardManage;

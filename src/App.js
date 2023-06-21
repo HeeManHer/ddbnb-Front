@@ -31,10 +31,9 @@ import MyReviewPage from "./page/review/MyReviewPage";
 
 import Dashboard from "./page/admin/Dashboard";
 import Member from "./page/admin/Member";
-import PetMomManage from "./page/admin/PetMomManage";
-import PetSitterManage from "./page/admin/PetSitterManage";
+import BoardManage from "./page/admin/BoardManage";
 import ReportManage from "./page/admin/ReportManage";
-import ReportPost from "./page/admin/ReportPost";
+
 import PostMessage from "./component/modal/pm/PostMessage";
 import SendMessage from "./component/modal/pm/SendMessage";
 import ApplicantsList from "./component/modal/apply/ApplicantsList";
@@ -76,8 +75,8 @@ function App() {
 
           <Route path="about" element={<AboutPage />} />
           <Route path="reviews">
-            <Route path=':reviewId' element={<ReviewPage/>}/>
-            </Route>
+            <Route path=':reviewId' element={<ReviewPage />} />
+          </Route>
 
           <Route path="myReview" element={<MyReviewPage />} />
 
@@ -92,8 +91,7 @@ function App() {
         <Route path="manage" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="member" element={<Member />} />
-          <Route path="petMom" element={<PetMomManage />} />
-          <Route path="petSitter" element={<PetSitterManage />} />
+          <Route path="board" element={<BoardManage />} />
           <Route path="report" element={<ReportManage />} />
           <Route path="modal" element={<Temp />} />
         </Route>

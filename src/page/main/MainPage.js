@@ -13,8 +13,8 @@ function MainPage() {
     const navigate = useNavigate();
 
 
-    const petMom = useSelector(state => state.petMomReducer);
-    const petSitter = useSelector(state => state.petSitterReducer);
+    const { data: petMom } = useSelector(state => state.petMomReducer);
+    const { data: petSitter } = useSelector(state => state.petSitterReducer);
 
     useEffect(
         () => {
@@ -63,7 +63,7 @@ function MainPage() {
                     <button className="more back-color" onClick={goPetSitter} >더보기+</button>
                 </div>
                 <div className='card dis-flex justify-between'>
-                    {Array.isArray(petSitter) && petSitter.map(item => <LastedCard key={item.no} category="petSitter" item={item} />)}
+                    {Array.isArray(petSitter) && petSitter.map(item => <LastedCard key={item.boardId} category="petSitter" item={item} />)}
                 </div>
             </div>
             <div className="cardList">
@@ -72,7 +72,7 @@ function MainPage() {
                     <button className="more back-color" onClick={goPetMom} >더보기+</button>
                 </div>
                 <div className='card dis-flex justify-between'>
-                    {Array.isArray(petMom) && petMom.map(item => <LastedCard key={item.no} category="petMom" item={item} />)}
+                    {Array.isArray(petMom) && petMom.map(item => <LastedCard key={item.boardId} category="petMom" item={item} />)}
                 </div>
             </div>
         </div >

@@ -67,29 +67,9 @@ export async function findMemberBySignDayIsToday() {
     }).then(res => res.json()).then(res => res.data);
 }
 
-export function getPetMomList(page) {
+export function getBoardList(category, page) {
 
-    let url = `http://localhost:8080/api/v1/petmom/list?page=${page}`;
-
-    return async function (dispatch, getState) {
-        const result = await fetch(url, {
-            method: 'GET',
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": '*/*'
-            }
-        }).then(res => res.json());
-
-        if (result.status === 200) {
-
-            dispatch({ type: SET_PETMOM, payload: result.data });
-        }
-    }
-}
-
-export function getPetSitterList(page) {
-
-    let url = `http://localhost:8080/api/v1/petsitter/list?page=${page}`;
+    let url = `http://localhost:8080/api/v1/${category}/list?page=${page}`;
 
 
     return async function (dispatch, getState) {
