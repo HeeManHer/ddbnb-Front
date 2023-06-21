@@ -14,24 +14,35 @@ function ReviseProfilePage() {
 
     const dispatch = useDispatch();
 
-    useEffect(
-        () => {
-            dispatch(getCurrentMember())
-        }
-        , []
-    );
     const [form, setForm] = useState({
-        nickname: "",
+        nickname:  "",
         experience: "",
         preferredArea: "",
         detailedHistory: "",
         petSitterCareer: ""
     });
 
+    useEffect(
+        () => {
+            dispatch(getCurrentMember())
+        }
+        , []
+    );
+
+    useEffect(
+        () => {
+            setForm(members);
+        }
+        , [members]
+    );
+
+
+    
+
     const handleActions = () => {
         const memberId = members?.memberId;
         dispatch(getUpdateMember(memberId, form));
-        navigate("/", { replace: true });
+        navigate("/mypage", { replace: true });
     }
 
     const onChangeHandler = (e) => {
@@ -93,7 +104,7 @@ function ReviseProfilePage() {
                     <input className={style.underLine}
                         type="text"
                         name='nickname'
-                        
+                        value={form.nickname}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -107,6 +118,7 @@ function ReviseProfilePage() {
                     <input className={style.underLine}
                         type="text"
                         name='experience'
+                        value={form.experience}
                         onChange={onChangeHandler}
                     />
                 </div>
@@ -120,6 +132,7 @@ function ReviseProfilePage() {
                     <input className={style.underLine}
                         type="text"
                         name='petSitterCareer'
+                        value={form.petSitterCareer}
                         onChange={onChangeHandler} />
                 </div>
             </div>
@@ -132,7 +145,7 @@ function ReviseProfilePage() {
                     <input className={style.underLine}
                         type="text"
                         name='preferredArea'
-                        value={members.preferredArea}
+                        value={form.preferredArea}
                         onChange={onChangeHandler} />
                 </div>
             </div>
@@ -145,7 +158,10 @@ function ReviseProfilePage() {
                     <textarea className={style.textareabox}
                         type="text"
                         name='detailedHistory'
-                        onChange={onChangeHandler} />
+                        value={form.detailedHistory}
+                        onChange={onChangeHandler}
+                        // onChange={(e) => {dispatch(putMemberDetailedHistory(e.target.value))} }
+                        />
                 </div>
             </div>
 
@@ -155,7 +171,7 @@ function ReviseProfilePage() {
                 </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button className={style.btnStyleInsert} onClick={handleActions}>
-                    회원가입
+                    수정
                 </button>
             </div>
         </div>
