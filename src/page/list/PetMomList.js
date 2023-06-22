@@ -62,7 +62,11 @@ function PetMomList() {
     }
 
 
+    const [selectedPetmom, setSelectedPetmom] = useState(null);
 
+    const handleClick = (petmom) => {
+        setSelectedPetmom(petmom);
+    };
     return (
         <div>
             <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
@@ -129,7 +133,7 @@ function PetMomList() {
 
 
             {Array.isArray(petmomList) && petmomList.map(petmom => (
-                <div key={petmom.boardId}>
+                <div key={petmom.boardId} onClick={() => navigate(`./${petmom.boardId}`)}>
                     <div className="in" /*onClick={handleItemClick}*/ >
 
                         <img className="dogimg" src="../img/angrydog.png"></img>
