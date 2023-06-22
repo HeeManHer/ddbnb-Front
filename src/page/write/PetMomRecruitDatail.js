@@ -84,6 +84,7 @@ function PetMomRecruitDatail() {
             <div className="dateAndWriter">
                 <h1>게시판</h1>
                 <button className="declarationButton" onClick={openModal}>신고</button>
+                <button className="declarationButton">수정</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>

@@ -1,14 +1,65 @@
-// import React from "react";
+import React, { useState } from "react";
 import Calendar from "../../component/item/Calendar";
 import "./detail.css"
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import React, { useState } from "react";
 import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
+import { postPetMomPage } from "../../api/petMomAPI";
+import sigunguList from '../../data/sigoongu.json';
+
+function searchSig(sido) {
+
+    return sigunguList.filter(sig => sig.sig.sig_full_nm.startsWith(sido));
+}
+
+function Sigoon({ sig }) {
+
+    return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
+}
 
 function PetMomRecruit() {
+
+    const [form, setform] = useState({
+        boardTitle: '',
+        location: '',
+        care: '',
+        startDate: '',
+        endDate: '',
+        hourlyRate: '',
+        dateRate: '',
+        houseType: '',
+        //otherCondition
+        petYN: '',
+        signficant: '',
+        request: ''
+    });
+
+    // 시도 선택시 시군구 리스트 담음
+    const [sigList, setSigList] = useState([]);
+
+    // 시도 + 시군구 합치기
+    const [location, setLocation] = useState({
+        SIDO: '',
+        SIGUNGU: ''
+    });
+
+    const onChangeSidoHandler = (e) => {
+        setSigList(searchSig(e.target.value));
+        setLocation({
+            ...location,
+            SIDO: e.target.value
+        })
+    }
+
+    const onChangeSigunguHandler = (e) => {
+        setLocation({
+            ...location,
+            SIGUNGU: e.target.value
+        })
+    }
+
     const [images, setImages] = useState([]);
     const [images2, setImages2] = useState([]);
 
@@ -27,6 +78,15 @@ function PetMomRecruit() {
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
     };
+
+
+    const registPetMom = () => {
+        console.log("registPetMom");
+        dispatch(postPetMomPage(form));
+
+    };
+
+
 
 
     const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
@@ -58,7 +118,7 @@ function PetMomRecruit() {
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
                     <Modal className="modal-backdrop" isOpen={registpost} onRequestClose={closeModal}>
-                        <RegistPost />
+                        <RegistPost registpetsitter={registPetMom} />
                     </Modal>
                     <button onClick={() => openModal("canclepost")}>취소</button>
                     <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
@@ -76,9 +136,7 @@ function PetMomRecruit() {
             <hr className="line"></hr>
 
             <div className="petsitterrecruitwrite">게시판
-                <select className="firstselect">
-                    <option value="">펫시터 모집 게시판</option>
-                </select>
+                <h2>펫시터 모집 게시판</h2>
             </div>
 
             <hr className="line"></hr>
@@ -86,18 +144,39 @@ function PetMomRecruit() {
                 <div>
                     제목
                 </div>
-                <input className="textinput" type="text" placeholder="제목을 입력해 주세요." />
+                <input className="textinput" type="text" value={form.boardTitle} onChange={e => setform({ ...form, boardTitle: e.target.value })} placeholder="제목을 입력해 주세요." ></input>
                 {/* <textarea placeholder="제목을 입력해 주세요." /> */}
             </div>
             <hr className="line"></hr>
             <div>
                 지역
-                <select className="firstselect">
+                <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                     <option value="">시/도</option>
+                    <option value="서울">서울특별시</option>
+                    <option value="부산">부산광역시</option>
+                    <option value="대구">대구광역시</option>
+                    <option value="인천">인천광역시</option>
+                    <option value="광주">광주광역시</option>
+                    <option value="대전">대전광역시</option>
+                    <option value="울산">울산광역시</option>
+                    <option value="세종특별자치시">세종특별자치시</option>
+                    <option value="경기도">경기도</option>
+                    <option value="강원도">강원도</option>
+                    <option value="충청북도">충청북도</option>
+                    <option value="충청남도">충청남도</option>
+                    <option value="전라북도">전라북도</option>
+                    <option value="전라남도">전라남도</option>
+                    <option value="경상북도">경상북도</option>
+                    <option value="경상남도">경상남도</option>
+                    <option value="제주특별자치도">제주특별자치도</option>
                 </select>
-                <select className="secondselect">
-                    <option value="">시/군/구</option>
-                </select>
+
+                <div className="sidogu">
+                    <select className="secondselect" id="sigungu" onChange={onChangeSigunguHandler} readOnly>
+                        <option value="">시 / 군 / 구</option>
+                        {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
+                    </select>
+                </div>
             </div>
             <hr className="line"></hr>
 
