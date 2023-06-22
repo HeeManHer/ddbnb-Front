@@ -78,7 +78,7 @@ export const callReviewDetailAPI = (reviewId) => {
     };
 }
 
-export const registNewReview = (form) => {
+export const registNewReview = (form, close) => {
     const URL = `http://localhost:8080/api/v1/reviews`;
 
     return async (dispatch, getState) => {
@@ -93,9 +93,10 @@ export const registNewReview = (form) => {
 
         console.log(result.message)
         console.log(result.data)
-        // if (result.status = 200) {
-        //     alert(result.message)
-        // }
+        if (result.status = 200) {
+            alert(result.message);
+            close();
+        }
     };
 
 }
