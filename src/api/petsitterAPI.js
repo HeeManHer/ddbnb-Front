@@ -52,7 +52,7 @@ export function registPetsitterAPI(petreg) {
 
 export function getPetsitterdetailAPI(boardId) {
 
-    let URL = "http://localhost:8080/api/petsitter/list/" + boardId;
+    let URL = "http://localhost:8080/api/v1/petsitter/list/" + boardId;
 
     return async function (dispatch, getState) {
 
