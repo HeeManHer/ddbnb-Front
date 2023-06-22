@@ -61,7 +61,7 @@ export const getMyPetMomList = ({ currentPage }) => {
             .then(response => response.json());
 
         if (result.status === 200) {
-            dispatch({ type: GET_PETMOM , payload: result.data });
+            dispatch({ type: GET_PETMOM , payload: result.data});
 
             console.log(result);
         }
