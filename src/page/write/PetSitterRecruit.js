@@ -2,7 +2,7 @@
 import "../../css/petsitterrecruit.css";
 import "./detail.css"
 import Modal from 'react-modal';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
@@ -25,7 +25,7 @@ function Sigoon({ sig }) {
 
 function PetSitterRecruit() {
 
-    const [form, setform] = useState({
+    const [form, setForm] = useState({
         boardTitle: '',
         location: '',
         care: '',
@@ -46,25 +46,36 @@ function PetSitterRecruit() {
 
     // 시도 + 시군구 합치기
     const [location, setLocation] = useState({
-        SIDO: '',
-        SIGUNGU: ''
+        sido: '',
+        sigungu: ''
     });
 
     const onChangeSidoHandler = (e) => {
-        setSigList(searchSig(e.target.value));
+
+        if (e.target.id == "sido")
+            setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
-            SIDO: e.target.value
-        })
-    }
+            [e.target.id]: e.target.value
+        });
+    };
 
-    const onChangeSigunguHandler = (e) => {
-        setLocation({
-            ...location,
-            SIGUNGU: e.target.value
+    useEffect(() => {
+        setForm({
+            ...form,
+            location: location.sido + " " + location.sigungu
         })
-    }
+    }, [location]
+    )
 
+    const onChangeHandler = (e) => {
+
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+    console.log(form);
 
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -116,7 +127,7 @@ function PetSitterRecruit() {
                 <div className="board">게시판</div>
                 <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                    <RegistPost registpetsitter={regpetsitter} />
+                    <RegistPost regist={regpetsitter} />
                 </Modal>
                 <button onClick={() => openModal("canclepost")}>취소</button>
                 <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
@@ -149,7 +160,7 @@ function PetSitterRecruit() {
                         <div>
                             제목
                         </div>
-                        <input className="textinput" type="text" placeholder="제목을 입력해 주세요." />
+                        <input className="textinput" vlaue={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" placeholder="제목을 입력해 주세요." />
                         {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                     </div>
 
@@ -157,7 +168,7 @@ function PetSitterRecruit() {
 
                     <div>
                         지역
-                        <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+                        <select className="firstselect" onChange={onChangeSidoHandler} id="sido" readOnly>
                             <option value="">시/도</option>
                             <option value="서울">서울특별시</option>
                             <option value="부산">부산광역시</option>
@@ -179,7 +190,7 @@ function PetSitterRecruit() {
                         </select>
 
                         <div className="sidogu">
-                            <select className="secondselect" id="sigungu" onChange={onChangeSigunguHandler} readOnly>
+                            <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                                 <option value="">시 / 군 / 구</option>
                                 {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                             </select>
@@ -190,18 +201,18 @@ function PetSitterRecruit() {
 
                     <div>
                         돌봄
-                        <button className="dolbombtn">방문</button>
-                        <button className="dolbombtn">출장</button>
-                        <button className="dolbombtn">산책</button>
+                        <button className="dolbombtn" onClick={onChangeHandler} name="care" value="방문">방문</button>
+                        <button className="dolbombtn" onClick={onChangeHandler} name="care" value="출장">출장</button>
+                        <button className="dolbombtn" onClick={onChangeHandler} name="care" value="산책">산책</button>
                     </div>
 
                     <hr className="line"></hr>
 
                     <div>
                         기간
-                        <input className="dateselect1" type="date" />~<input className="dateselect2" type="date" />
+                        <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" value={form.startDate} />~<input className="dateselect2" type="date" name="endDate" value={form.endDate} onChange={onChangeHandler} />
                         사례금
-                        <input className="moneygive" type="text" placeholder="사례금을 작성해 주세요." />
+                        <input className="moneygive" type="text" onChange={onChangeHandler} name="rate" value={form.rate} placeholder="사례금을 작성해 주세요." />
                     </div>
 
                     <hr className="line"></hr>
@@ -228,30 +239,32 @@ function PetSitterRecruit() {
                         <div >
                             <div className="abc">
                                 <button className="petsitterrecruitbtn">이름</button>
-                                <input className="cruittext" type="text" />
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petName" />
                                 <hr className="line"></hr>
                             </div>
                             <div className="abc">
                                 <button className="petsitterrecruitbtn">나이</button>
-                                <input className="cruittext" type="text" />
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petAge" />
                                 <hr className="line"></hr>
                             </div>
 
                             <div className="abc">
-                                <button className="petsitterrecruitbtn">견종</button>
-                                <input className="cruittext" type="text" />
+                                <button className="petsitterrecruitbtn" >견종</button>
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petShape" />
 
                                 <hr className="line"></hr>
                             </div>
 
                             <div className="gender">
                                 성별
-                                <select className="firstselect1">
-                                    <option value="">남/여</option>
+                                <select className="firstselect1" onChange={onChangeHandler} name="petGender">
+                                    <option value="" >남/여</option>
+                                    <option value="남">{form.petGender}</option>
+                                    <option value="여">{form.petGender}</option>
                                     <hr className="line"></hr>
                                 </select>
                                 크기
-                                <select className="secondselect1">
+                                <select className="secondselect1" onChange={onChangeHandler} name="petSize">
                                     <option value="">소/중/대</option>
                                     <hr className="line"></hr>
                                 </select>
@@ -259,7 +272,7 @@ function PetSitterRecruit() {
                             </div>
                             <div className="acb">
                                 <button className="significantbtn">특이사항</button>
-                                <input className="significant" type="text" />
+                                <input className="significant" type="text" onChange={onChangeHandler} name="signficant" />
                             </div>
                         </div>
                     </div>
@@ -267,7 +280,7 @@ function PetSitterRecruit() {
                     <div className="dogdog">
                         우리 강아지를 맡아주세요
                     </div>
-                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite">
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request">
 
                     </textarea>
                 </div>
