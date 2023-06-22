@@ -139,7 +139,7 @@ function PetSitterList() {
                     <img className="dogimg" src="../img/angrydog.png"></img>
                     <div className="textlist">
                         <div className="wheretext">
-                            <div>{petsitter.location}</div>
+                            <div>{petsitter.boardId}</div>
                             <div>{petsitter.boardDate}</div>
                         </div>
                         <div>

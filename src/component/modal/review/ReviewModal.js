@@ -57,8 +57,8 @@ function ReviewModal({ closeModalReview, index: memberId }) {
             formData.append("img", image)
         }
 
-        dispatch(registNewReview(formData))
-
+        dispatch(registNewReview(formData,closeModalReview))
+        
     };
 
     const handleCancel = () => {

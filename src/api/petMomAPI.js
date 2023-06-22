@@ -1,4 +1,4 @@
-import { POST_PETMOM, SET_PETMOM } from "../modules/petMom";
+import { POST_PETMOM, PUT_PETMOM, SET_PETMOM } from "../modules/petMom";
 import { GET_PETMOM } from "../modules/petMom";
 
 
@@ -81,8 +81,32 @@ export const getMyPetMomList = ({ currentPage }) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_PETMOM, payload: result.data });
-
             console.log(result);
         }
     };
 }
+
+
+export const putMypetMomCancle = (boardId, form) => {
+
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+    const requestURL = `http://localhost:8080/api/v1/list/${token.boardId}/collectcancle`;
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*',
+                "Authorization": token
+            },
+            body: JSON.stringify(form) // 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
+        }).then(res => res.json());
+        console.log(result);
+
+        if (result.status === 200) {
+            dispatch({ type: PUT_PETMOM, payload: result.data });
+        }
+    };
+}
+
