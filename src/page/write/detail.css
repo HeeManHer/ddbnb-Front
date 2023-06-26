@@ -136,6 +136,16 @@
     right: 10px;
 }
 
+.doginfo-petmom {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    height: 550px;
+    position: relative;
+    bottom: 10px;
+    right: 10px;
+}
+
 .doginfo3 {
     width: 50%;
     float: left;
@@ -369,6 +379,7 @@
     font-weight: bold;
     font-size: large;
 }
+
 .declarationButton1 {
     width: 90px;
     height: 35px;

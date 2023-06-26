@@ -148,7 +148,7 @@ function PetMomList() {
                                 <hr className="line"></hr>
                             </div>
                             <div className="columncss">
-                                <div>{petmom.houseType} {petmom.petYN ? "반려동물있어요" : "반려동물 없어요"} {petmom.care}</div>
+                                <div>{petmom.houseType} {petmom.petYN ? "반려동물 있어요" : "반려동물 없어요"} {petmom.care}</div>
                                 <div>기간: {petmom.startDate} ~ {petmom.endDate}</div>
                                 <div className="stardivbtn">
                                     <div className="dis-flex">
