@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getLastedPetmom, getLastedPetsitter } from '../../api/mainAPI';
@@ -47,6 +47,8 @@ function MainPage() {
 
         window.open('/applicant', 'applicant', option);
     }
+    console.log(petSitter)
+    console.log(petMom)
 
     return (
         <div className="mainPage">

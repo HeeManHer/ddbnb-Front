@@ -26,12 +26,12 @@ function MyPageMain() {
         dispatch(deleteMember(memberId));
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
-        
+
     };
-    
+
     //성별 구분
     const genderSet = () => {
-        if (member.gender === "M" || member.gender ==="male") {
+        if (member.gender === "M" || member.gender === "male") {
             return (
                 <AiOutlineMan />
             )
@@ -105,7 +105,7 @@ function MyPageMain() {
                                 <div>상세 이력</div>
                             </div>
                             <div className={style.careerDetail}>
-                                <div></div>
+                                <div>{member.experience}</div>
                                 <div>{member.petSitterCareer}회</div>
                                 <div>{member.detailedHistory && member.detailedHistory.split(". ").map(item => <p>{item}</p>)} </div>
                             </div>
