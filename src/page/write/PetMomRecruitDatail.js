@@ -10,8 +10,10 @@ import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
+import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFinish';
 import { getPetMomDetail } from '../../api/petDetailAPI';
 import { useParams } from 'react-router-dom';
+import { putMypetMomCancle } from '../../api/petMomAPI';
 
 
 
@@ -24,7 +26,7 @@ function PetMomRecruitDatail() {
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { declaration: showModal, petsitterApply, petmomcollectcancle } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsitterApply, petmomcollectcancle, petmomcollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = () => {
@@ -40,6 +42,10 @@ function PetMomRecruitDatail() {
 
     const openCollectCancleModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petmomcollectcancle" });
+    };
+
+    const openCollectFinishModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petmomcollectfinish" });
     };
 
     const closeModalReview = () => {
@@ -59,6 +65,17 @@ function PetMomRecruitDatail() {
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
 
+    const onClickhandle = () => {
+        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집취소"}));
+        closeModal();
+        window.location.reload();
+    }
+
+    const onClickhan = () => {
+        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집마감"}));
+        closeModal();
+        window.location.reload();
+    }
 
     useEffect(
         () => {
@@ -91,9 +108,10 @@ function PetMomRecruitDatail() {
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
-                <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+
+                <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
-                    <PetMomCollectCancle />
+                    <PetMomCollectCancle  onClickhandle={onClickhandle}/>
                 </Modal>
             </div>
 
@@ -188,7 +206,10 @@ function PetMomRecruitDatail() {
                     <button className="wantbtn2"
                         onClick={openModalList}
                     >신청자 목록</button>
-                    <button className="wantbtn2">모집마감</button>
+                    <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                    <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>
+                    <PetMomCollectFinish  onClickhan={onClickhan}/>
+                </Modal>
                 </div>
             </div>
 

@@ -5,7 +5,8 @@ const initialState = {
     petmomApply: false,
     declaration: false,
     registpost: false,
-    canclepost: false
+    canclepost: false,
+    finishpost: false,
 };
 
 // export const OPEN_RECRUIT_LIST = 'modal/OPEN_RECRUIT_LIST';

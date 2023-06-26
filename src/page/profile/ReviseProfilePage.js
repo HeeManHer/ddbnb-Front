@@ -37,7 +37,9 @@ function ReviseProfilePage() {
     );
 
 
-    
+    const handleAction = () => {
+        navigate("/mypage", { replace: true });
+    }
 
     const handleActions = () => {
         const memberId = members?.memberId;
@@ -66,18 +68,18 @@ function ReviseProfilePage() {
     function SocialIcon() {
 
         if (members?.socialLogin === "KAKAO") {
-            return <img src='./img/kakao.png' alt='kakao logo' width={'20px'} height={'20px'} />
+            return <img src='../../../img/kakao_logo.png' alt='kakao logo' width={'30px'} height={'27px'} />
         }
 
         if (members?.socialLogin === 'NAVER') {
-            return <img src='./img/naver.png' alt='naver logo' width={'20px'} height={'20px'} />
+            return <img src='../../../img/naver_logo.png' alt='naver logo' width={'30px'} height={'27px'} />
         }
     }
 
     return (
         <div className={style.profileContainer}>
             <div>
-                <h2>프로필등록 SocialIcon</h2>
+                <h2>{SocialIcon()} 프로필등록  </h2>
                 <hr />
             </div>
             <div className={style.profileBox}>
@@ -166,7 +168,7 @@ function ReviseProfilePage() {
             </div>
 
             <div className={style.btnSet}>
-                <button className={style.btnStyleCancle}>
+                <button className={style.btnStyleCancle} onClick={handleAction}>
                     취소
                 </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
