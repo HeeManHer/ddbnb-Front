@@ -2,14 +2,21 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import "../write/detail.css"
 import PetSitterApply from "../../component/modal/apply/PetSitterApply";
+import ReviewModal from "../../component/modal/review/ReviewModal";
+import ReviewList from "../../component/modal/review/ReviewList";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 import { getPetsitterdetailAPI } from "../../api/petsitterAPI";
 import { useParams } from 'react-router-dom';
+import style from './PetSitterRecruitDatail.module.css';
+import { getApplicantListAPI } from '../../api/applicantAPI';
 
 
 function PetSitterRecruitDatail() {
+
+    const [showModalReview, setShowModalReview] = useState(false);
+    const [showModalList, setShowModalList] = useState(false);
 
 
 
@@ -32,10 +39,23 @@ function PetSitterRecruitDatail() {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
     };
 
+    const closeModalReview = () => {
+        setShowModalReview(false);
+    };
+
+    const openModalList = () => {
+        setShowModalList(true);
+    };
+
+    const closeModalList = () => {
+        setShowModalList(false);
+    };
 
 
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
 
+
+    const applicantlist = useSelector(state => state.applicantsReducer);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -45,10 +65,11 @@ function PetSitterRecruitDatail() {
     useEffect(
         () => {
             dispatch(getPetsitterdetailAPI(boardId));
+            dispatch(getApplicantListAPI(boardId));
         },
         []
     )
-    console.log(boardId);
+    // console.log(boardId);
 
 
     // const changeImage = (direction) => {
@@ -62,12 +83,14 @@ function PetSitterRecruitDatail() {
     // };
 
     return (
-        <div className="height-auto">
+        <div className={style.heightauto}>
             <div className="dateAndWriter">
                 <h1>게시판</h1>
-                <button className="declarationButton">신고</button>
-                <button className="declarationButton">수정</button>
-                <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                <div>
+                    <button className="declarationButton" >신고</button>
+                    <button className="declarationButton">수정</button>
+                    <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
                     <PetSitterCollectCancle />
                 </Modal>
@@ -86,23 +109,23 @@ function PetSitterRecruitDatail() {
             </div> */}
             {/* <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2> */}
             <div className="comment">
-                <h2 className="comment-content" style={{ right: '4%' }}>게시판</h2>
+                <h3 className="comment-content" style={{ right: '4%' }}>게시판</h3>
                 <h3 className="comment-content2" style={{ left: '13px' }} > 펫시터 모집  게시판</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
-                <h2 className="comment-content">제목 </h2>
+                <h3 className="comment-content">제목 </h3>
                 <h3 className="comment-content2" >{petsdetail.boardCategory}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
-                <h2 className="comment-content">지역</h2>
+                <h3 className="comment-content">지역</h3>
                 <h3 className="comment-content2" >{petsdetail.location}</h3>
             </div>
             <hr className="line"></hr>
 
             <div className="comment">
-                <h2 className="comment-content">돌봄</h2>
+                <h3 className="comment-content">돌봄</h3>
                 <button className={`choice-box ${petsdetail.care === '방문' ? 'selected' : ''}`}>방문</button>
                 <button className={`choice-box ${petsdetail.care === '출장' ? 'selected' : ''}`}>출장</button>
                 <button className={`choice-box ${petsdetail.care === '산책' ? 'selected' : ''}`}>산책</button>
@@ -111,9 +134,9 @@ function PetSitterRecruitDatail() {
             <hr className="line"></hr>
 
             <div className="comment">
-                <h2 className="comment-content">기간</h2>
+                <h3 className="comment-content">기간</h3>
                 <h3 className="comment-content2" >{petsdetail.startDate}~{petsdetail.endDate}</h3>
-                <h2 className="comment-content3">사례금</h2>
+                <h3 className="comment-content3">사례금</h3>
                 <h3 className="comment-content4">{petsdetail.rate}</h3>
             </div>
             <hr className="line"></hr>
@@ -135,9 +158,9 @@ function PetSitterRecruitDatail() {
                     </div>
                     <hr className="line"></hr>
                     <div className="size">
-                        <button className="doginfo-button" >성별</button>
+                        <button className="genderbtn" >성별</button>
                         <h3>{petsdetail.petGender}</h3>
-                        <button className="size-size">크기</button>
+                        <button className="sizebtn">크기</button>
                         <h3 className="size-position">{petsdetail.petSize}</h3>
                     </div>
                     <hr className="line"></hr>
@@ -159,6 +182,18 @@ function PetSitterRecruitDatail() {
                     <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
                         <PetSitterApply />
                     </Modal>
+
+                    <button className="wantbtn2"
+                        onClick={openModalList}
+                    >신청자 목록</button>
+                    <button className="wantbtn2">모집마감</button>
+
+
+                    {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
+                    {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
+
+                    {showModalList && <ReviewList closeModalList={closeModalList} />}
+                    {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
                 </div>
             </div >
         </div >
