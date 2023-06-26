@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "../../component/item/Calendar";
 import "./detail.css"
 import Modal from 'react-modal';
@@ -30,45 +30,104 @@ function PetMomRecruit() {
         hourlyRate: '',
         dateRate: '',
         houseType: '',
-        //otherCondition
+        otherCondition: [{ typeContent: '' }],
         petYN: '',
         signficant: '',
-        request: ''
+        request: '',
     });
 
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
 
-    // 시도 + 시군구 합치기
     const [location, setLocation] = useState({
-        SIDO: '',
-        SIGUNGU: ''
+        sido: '',
+        sigungu: ''
     });
-
     const onChangeSidoHandler = (e) => {
-        setSigList(searchSig(e.target.value));
-        setLocation({
-            ...location,
-            SIDO: e.target.value
-        })
-    }
 
-    const onChangeSigunguHandler = (e) => {
+        if (e.target.id == "sido")
+            setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
-            SIGUNGU: e.target.value
+            [e.target.id]: e.target.value
+        });
+    };
+    useEffect(() => {
+        setform({
+            ...form,
+            location: location.sido + " " + location.sigungu
         })
-    }
+    }, [location]
+    )
+    const onChangeHandler = (e) => {
+
+        setform({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+    const onChangeHandlerOther = (e) => {
+        const value = e.target.value;
+        const existingIndex = form.otherCondition.findIndex((item) => item.typeContent === value.trim());
+
+        if (existingIndex !== -1) {
+            // 이미 선택된 값인 경우 제거
+            const updatedOtherConditions = [...form.otherCondition];
+            updatedOtherConditions.splice(existingIndex, 1);
+
+            setform({
+                ...form,
+                otherCondition: updatedOtherConditions
+            });
+        } else if (value.trim() !== '') {
+            // 새로운 값인 경우 추가
+            setform({
+                ...form,
+                otherCondition: [
+                    ...form.otherCondition,
+                    {
+                        typeContent: value.trim()
+                    }
+                ]
+            });
+        }
+    };
+
+
+    console.log(form)
 
     const [images, setImages] = useState([]);
     const [images2, setImages2] = useState([]);
 
-    const { registpost, canclepost } = useSelector(state => state.modalsReducer);
+    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [selectedPetButton, setSelectedPetButton] = useState(null);
+    const [selectedOtherButton, setSelectedOtherButton] = useState([]);
+
+
     const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
+        const buttonValue = event.target.value;
+        setSelectedButton((prevSelectedButton) => {
+            return prevSelectedButton !== buttonValue ? buttonValue : null;
+        });
     };
+    const toggleSelectedPet = (event) => {
+        const buttonValue = event.target.value;
+        setSelectedPetButton((prevSelectedButton) => {
+            return prevSelectedButton !== buttonValue ? buttonValue : null;
+        });
+    };
+    const toggleSelectedOther = (e) => {
+        if (e.target.className.indexOf(" selected") >= 1) {
+            e.target.className = e.target.className.replace(" selected", "")
+        } else {
+            e.target.className += " selected";
+        }
+    };
+
+
 
 
     const openModal = (type) => {
@@ -81,7 +140,6 @@ function PetMomRecruit() {
 
 
     const registPetMom = () => {
-        console.log("registPetMom");
         dispatch(postPetMomPage(form));
 
     };
@@ -108,6 +166,7 @@ function PetMomRecruit() {
             setImages2((prevImages) => [...prevImages, selectedImage]); // 선택된 이미지를 작은 이미지 배열에 추가
         }
     };
+
     return (
         <div className="height-auto">
             <div className="petsitterrecruitcontainer">
@@ -117,8 +176,8 @@ function PetMomRecruit() {
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
-                    <Modal className="modal-backdrop" isOpen={registpost} onRequestClose={closeModal}>
-                        <RegistPost registpetsitter={registPetMom} />
+                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
+                        <RegistPost regist={registPetMom} />
                     </Modal>
                     <button onClick={() => openModal("canclepost")}>취소</button>
                     <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
@@ -128,7 +187,7 @@ function PetMomRecruit() {
 
                 <div className="yongdate">
 
-                    <h3 className="writeryong">작성자 : 김용민</h3>
+                    <h3 className="writeryong">작성자 : {form.nickname}</h3>
                     <div className="writedate">작성일 : 2023-05-18
                     </div>
                 </div>
@@ -136,7 +195,7 @@ function PetMomRecruit() {
             <hr className="line"></hr>
 
             <div className="petsitterrecruitwrite">게시판
-                <h2>펫시터 모집 게시판</h2>
+                <h2>펫맘 모집 게시판</h2>
             </div>
 
             <hr className="line"></hr>
@@ -148,9 +207,11 @@ function PetMomRecruit() {
                 {/* <textarea placeholder="제목을 입력해 주세요." /> */}
             </div>
             <hr className="line"></hr>
+
+
             <div>
                 지역
-                <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+                <select className="firstselect" onChange={onChangeSidoHandler} id="sido" readOnly>
                     <option value="">시/도</option>
                     <option value="서울">서울특별시</option>
                     <option value="부산">부산광역시</option>
@@ -172,7 +233,7 @@ function PetMomRecruit() {
                 </select>
 
                 <div className="sidogu">
-                    <select className="secondselect" id="sigungu" onChange={onChangeSigunguHandler} readOnly>
+                    <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                         <option value="">시 / 군 / 구</option>
                         {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                     </select>
@@ -182,29 +243,26 @@ function PetMomRecruit() {
 
             <div>
                 돌봄
-                <button className="dolbombtn">방문</button>
-                <button className="dolbombtn">출장</button>
-                <button className="dolbombtn">산책</button>
+                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="방문">방문</button>
+                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="출장">출장</button>
+                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="산책">산책</button>
             </div>
 
             <hr className="line"></hr>
             <div>
                 기간
-                <input className="dateselect1" type="date" />~<input className="dateselect2" type="date" />
-                사례금
-                <input className="moneygive" type="text" placeholder="사례금을 작성해 주세요." />
+                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" value={form.startDate} />~<input className="dateselect2" type="date" name="endDate" value={form.endDate} onChange={onChangeHandler} />
+                1박
+                <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" value={form.dateRate} placeholder="사례금을 작성해 주세요." />
+                시간당
+                <input className="moneygive" type="text" onChange={onChangeHandler} name="hourlyRate" value={form.hourlyRate} placeholder="사례금을 작성해 주세요." />
             </div>
 
-            {/* <select className="datetime">
-                        <option value="">요일/시간</option>
-                        <option value="">1박</option>
-                        <option value="">시간</option>
-                    </select> */}
 
             <hr className="line"></hr>
             <div className="formsize">
-                <div className="doginfo">
-                    <div className="imgAndBtn">
+                <div className="doginfo-petmom">
+                    <div>
                         <h3 className="imagegogo">이미지첨부</h3>
                         <div>
                             {/* 이미지 업로드 버튼 */}
@@ -246,25 +304,32 @@ function PetMomRecruit() {
                 </div>
                 <div className="momplz">
                     <div>
-                        <button className="choice-box2" onClick={toggleSelected}>단독주택</button>
-                        <button className="choice-box2" onClick={toggleSelected}>아파트</button>
-                        <button className="choice-box2" onClick={toggleSelected}>빌라</button>
+
+                        <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
+                        <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
+                        <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
+
+
+
                         <hr className="line2"></hr>
-                        <button className="choice-box2" onClick={toggleSelected}>픽업가능</button>
-                        <button className="choice-box2" onClick={toggleSelected}>대형견 가능</button>
-                        <button className="choice-box2" onClick={toggleSelected}>노견케어</button>
+
+                        <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeContent" value="픽업가능">픽업가능</button>
+                        <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeContent" value="대형견 가능">대형견 가능</button>
+                        <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeContent" value="노견케어">노견케어</button>
                         <hr className="line2"></hr>
-                        <button className="choice-box3" onClick={toggleSelected}>반려동물 있어요</button>
-                        <button className="choice-box3" onClick={toggleSelected}>반려동물 없어요</button>
+                        <button className={`choice-box2 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
+                        <button className={`choice-box2 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
+
+
                         <hr className="line2"></hr>
                         <div className="dateAndWriter">
                             <h2>특이사항</h2>
-                            <textarea className="momplz-textarea1">저희는 단독 주택이여서 편하게 반려동물을
-                                맡아 드릴 수 있는 환경입니다.</textarea>
+                            <input className="significant" type="text" onChange={onChangeHandler} name="signficant" />
+
                         </div>
                     </div>
                     <h2> 강아지를 맡아줄게요</h2>
-                    <textarea className="momplz-textarea2">저는 많은 아이들을 맡아본 경험이 있습니다. 믿고 맡겨주세요</textarea>
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" />
                 </div>
             </div>
             <div>
