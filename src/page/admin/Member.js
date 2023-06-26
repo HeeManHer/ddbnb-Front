@@ -70,7 +70,7 @@ function Member() {
                         <th>닉네임</th>
                         <th>상태</th>
                         <th>가입일</th>
-                        <th>신고 처리 수</th>
+                        <th>신고</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -15,8 +15,8 @@ function Temp() {
             {/* <ReportMessageModal /> */}
             {/* <MemberModal /> */}
             {/* <PostModal /> */}
-            {/* <ReportModal /> */}
-            <ReviewModal />
+            <ReportModal />
+            {/* <ReviewModal /> */}
         </>
     )
 }

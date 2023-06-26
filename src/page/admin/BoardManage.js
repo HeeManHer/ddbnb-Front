@@ -20,7 +20,6 @@ function BoardManage() {
         },
         [category, currentPage]
     )
-    // console.log(boardList)
 
     return (
         <div className="container">
@@ -48,9 +47,10 @@ function BoardManage() {
                     <tr>
                         <th style={{ "width": "5%" }}></th>
                         <th style={{ "width": "5%" }}>번호</th>
-                        <th style={{ "width": "45%" }}>게시글 제목</th>
+                        <th style={{ "width": "35%" }}>게시글 제목</th>
                         <th style={{ "width": "10%" }}>작성자</th>
                         <th style={{ "width": "10%" }}>게시글 등록일</th>
+                        <th style={{ "width": "10%" }}>게시 상태</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,8 +61,9 @@ function BoardManage() {
                             </td>
                             <td >{item.boardId}</td>
                             <td >{item.boardTitle}</td>
-                            {item.memberId ? <td >{item.memberId.nickname}</td> : <td></td>}
+                            <td >{item.memberId?.nickname}</td>
                             <td >{item.boardDate}</td>
+                            <td >{item.boardStatus}</td>
                         </tr>
                     ))}
                 </tbody>
