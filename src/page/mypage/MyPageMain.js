@@ -31,7 +31,7 @@ function MyPageMain() {
     
     //성별 구분
     const genderSet = () => {
-        if (member.gender === ("M" || "male")) {
+        if (member.gender === "M" || member.gender ==="male") {
             return (
                 <AiOutlineMan />
             )
