@@ -134,7 +134,13 @@ function PetSitterList() {
 
             {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
 
-                <div className="in" key={petsitter.boardId} onClick={() => navigate(`./${petsitter.boardId}`)}>
+
+                <div
+                    className={`in ${petsitter.sitterStatus === '모집취소' ? 'gray' : ''}`}
+                    style={petsitter.sitterStatus === '모집취소' ? { backgroundColor: 'gray' } : {}}
+                    key={petsitter.boardId}
+                    onClick={() => navigate(`./${petsitter.boardId}`)}
+                >
                     <img className="dogimg" src="../img/angrydog.png"></img>
                     <div className="textlist">
                         <div className="wheretext">
@@ -153,7 +159,7 @@ function PetSitterList() {
                                 {/* <img className="star" src="../img/star.png"></img> */}
                                 <div className="divbtn">
                                     <div>사례 : {petsitter.rate}</div>
-                                    <button>모집중</button>
+                                    <button>{petsitter.sitterStatus}</button>
                                 </div>
                             </div>
                         </div>
