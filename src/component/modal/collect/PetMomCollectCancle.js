@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petCollectModule';
 import { useDispatch, useSelector  } from 'react-redux';
 import { putMypetMomCancle } from '../../../api/petMomAPI';
-function PetMomCollectCancle() {
+function PetMomCollectCancle({onClickhandle}) {
     
     const dispatch = useDispatch();
 
@@ -17,17 +17,6 @@ function PetMomCollectCancle() {
         dispatch({ type: CLOSE_MODAL, payload: "petmomcollectcancle" });
     };
 
-
-    const data = useSelector(state => state.petDetailReducer);
-    console.log(data);
-    // const totalImages = petdetail.img ? petdetail.img.length : 0;
-
-    const handleConfirm = () => {
-        const boardId = data.petdetail.boardId;
-        const form = {};
-        dispatch(putMypetMomCancle(boardId, form));
-        closeModal();
-    };
 
     
     return (
@@ -43,7 +32,7 @@ function PetMomCollectCancle() {
 
 
                 <div className="button2list">
-                    <button className="modalsize-button2" onClick={handleConfirm}>
+                    <button className="modalsize-button2" onClick={onClickhandle}>
                         예
                     </button>
                     <button className="modalsize-button2" onClick={closeModal}>

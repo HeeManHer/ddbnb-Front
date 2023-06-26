@@ -135,7 +135,6 @@ function PetSitterList() {
             {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
 
                 <div className="in" key={petsitter.boardId} onClick={() => navigate(`./${petsitter.boardId}`)}>
-
                     <img className="dogimg" src="../img/angrydog.png"></img>
                     <div className="textlist">
                         <div className="wheretext">
@@ -155,7 +154,6 @@ function PetSitterList() {
                                 <div className="divbtn">
                                     <div>사례 : {petsitter.rate}</div>
                                     <button>모집중</button>
-
                                 </div>
                             </div>
                         </div>

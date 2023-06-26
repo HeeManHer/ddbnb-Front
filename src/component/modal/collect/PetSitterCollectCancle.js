@@ -4,7 +4,7 @@ import { CLOSE_MODAL } from '../../../modules/petCollectModule';
 import { useDispatch } from 'react-redux';
 
 
-function PetSitterCollectCancle() {
+function PetSitterCollectCancle({onClickhandle}) {
 
     const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ function PetSitterCollectCancle() {
 
 
                 <div className="button2list">
-                    <button className="modalsize-button2" onClick={closeModal}>
+                    <button className="modalsize-button2" onClick={onClickhandle}>
                         예
                     </button>
                     <button className="modalsize-button2" onClick={closeModal}>

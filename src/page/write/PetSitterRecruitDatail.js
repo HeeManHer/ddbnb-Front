@@ -5,7 +5,8 @@ import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
-import { getPetsitterdetailAPI } from "../../api/petsitterAPI";
+import PetSitterCollectFinish from '../../component/modal/collect/PetSitterCollectFinish';
+import { getPetsitterdetailAPI, putMypetSitterCancle } from "../../api/petsitterAPI";
 import { useParams } from 'react-router-dom';
 
 
@@ -13,7 +14,7 @@ function PetSitterRecruitDatail() {
 
 
 
-    const { declaration: showModal, petsittercollectcancle, petsitterapply } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, petsitterapply, petsittercollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = (type) => {
@@ -30,6 +31,10 @@ function PetSitterRecruitDatail() {
 
     const openCollectCancleModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
+    };
+
+    const openCollectFinishModal = () => {
+        dispatch({ type: OPEN_MODAL, payload: "petsittercollectfinish" });
     };
 
 
@@ -50,6 +55,19 @@ function PetSitterRecruitDatail() {
     )
     console.log(boardId);
 
+    const onClickhandle = () => {
+        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집취소"}));
+        closeModal();
+        window.location.reload();
+    }
+
+    const onClickhan = () => {
+        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집마감"}));
+        closeModal();
+        window.location.reload();
+    }
+
+
 
     // const changeImage = (direction) => {
     //     let newIndex = currentImageIndex + direction;
@@ -69,7 +87,7 @@ function PetSitterRecruitDatail() {
                 <button className="declarationButton">수정</button>
                 <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
-                    <PetSitterCollectCancle />
+                    <PetSitterCollectCancle onClickhandle={onClickhandle}/>
                 </Modal>
             </div>
             <div className="dateAndWriter">
@@ -154,8 +172,12 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
-                    <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
+                    <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                    <Modal className="modal-backdrop" isOpen={petsittercollectfinish} onRequestClose={closeModal}>
+                        <PetSitterCollectFinish  onClickhan={onClickhan}/>
+                    </Modal>
 
+                    <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
                     <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
                         <PetSitterApply />
                     </Modal>
