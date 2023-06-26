@@ -30,12 +30,13 @@ export const getPetMomList = (currentPage) => {
             dispatch({ type: GET_PETMOM, payload: result.data });
         }
 
-    }
+    };
 }
 
 
 //펫맘 글쓰기
-export const postPetMomPage = () => {
+export function postPetMomPage(form) {
+
     let URL = `http://localhost:8080/api/v1/petmom/regist`;
 
     return async function (dispatch, getState) {
@@ -46,11 +47,15 @@ export const postPetMomPage = () => {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
                 // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
-            },
-            body: JSON.stringify({})
+            }, body: JSON.stringify(form)
+
         }).then(response => response.json());
-        dispatch({ type: POST_PETMOM, payload: result.data });
-    }
+
+        if (result.status === 200) {
+            alert(result.message);
+        }
+        // dispatch({ type: POST_PETMOM, payload: result.data });
+    };
 }
 
 

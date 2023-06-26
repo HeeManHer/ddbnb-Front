@@ -20,7 +20,6 @@ function MyPetMomCardBoard() {
 
     }, [currentPage]);
 
-
     return (
         <>
             <section className={style.section}>
@@ -35,14 +34,16 @@ function MyPetMomCardBoard() {
 
 
             {Array.isArray(mypetMoms) && mypetMoms.map((myPetMom, index) =>
-                <Link to={`/petmom/list${myPetMom.boardId}`} style={{ textDecoration: 'none', color: '#202020' }}>
-                    <section className={`${style.category} ${style.flex_center}`}>
+                <Link to={`/petmom/${myPetMom.boardId}`} style={{ textDecoration: 'none', color: '#202020' }}>
+                    <section className={`${style.category2} ${style.flex_center}`}>
                         <div>
-                            {/* {rallytype()} */}
+                            <section style={myPetMom.momStatus === "취소됨" ? { backgroundColor : "#8d8d8d", color:"white"} : {backgroundColor : "#FAB7A2"}}>
+                                {myPetMom.momStatus}
+                            </section>
                         </div>
                         <div>{myPetMom.location}</div>
                         <div>{myPetMom.boardTitle}</div>
-                        <div>{myPetMom.boardDate}</div>
+                        <div>{new Date(myPetMom.boardDate).toLocaleDateString().slice(0, -1)}</div>
                         {/* <div>{REVIEW_DATE}</div> */}
                     </section>
                 </Link>

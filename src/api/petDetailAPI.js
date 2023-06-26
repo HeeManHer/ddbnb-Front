@@ -17,7 +17,7 @@ export const getPetMomDetail = (boardId) => {
             }
         }).then(response => response.json());
         console.log(`result = ${result}`);
-        dispatch({ type: GET_PETMOMDETAIL, payload: result.data });
+        dispatch({ type: GET_PETMOMDETAIL, payload: result });
     }
 }
 

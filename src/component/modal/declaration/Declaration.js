@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 import "../../../css/declaration.css";
+import { reportPostAPI } from '../../../api/reportAPI';
 
 function Declaration() {
 
@@ -17,6 +18,10 @@ function Declaration() {
     const openModal = () => {
         setIsOpen(true);
     };
+
+    const postreport = () => {
+        dispatch(reportPostAPI());
+    }
 
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petsitterApply" });

@@ -17,6 +17,8 @@ function ReviewModal({ closeModalReview, index: memberId }) {
         reviewStarPoint: 0
     })
 
+    console.log(memberId);
+
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState("");
 
@@ -57,8 +59,8 @@ function ReviewModal({ closeModalReview, index: memberId }) {
             formData.append("img", image)
         }
 
-        dispatch(registNewReview(formData,closeModalReview))
-        
+        dispatch(registNewReview(formData, closeModalReview))
+
     };
 
     const handleCancel = () => {

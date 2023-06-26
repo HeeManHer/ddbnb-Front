@@ -100,8 +100,11 @@ function PetMomRecruitDatail() {
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
                 <h1>게시판</h1>
+                <h3>작성자: {data.member && data.member.nickname}</h3>
+
+
                 <button className="declarationButton" onClick={openModal}>신고</button>
-                <button className="declarationButton">수정</button>
+                <button className="declarationButton" onClick={openModal}>수정</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
@@ -156,7 +159,7 @@ function PetMomRecruitDatail() {
             </div>
             <hr className="line"></hr>
             <div className="formsize">
-                <div className="doginfo">
+                <div className="doginfo-petmom">
                     {/* <div className="images">
                         <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
                         {data.img && data.img.length > 0 ? (
@@ -180,8 +183,8 @@ function PetMomRecruitDatail() {
 
 
                         <hr className="line2"></hr>
-                        <button className={`choice-box3 ${data.petYN === true ? 'selected' : ''}`}>반려동물 있어요</button>
-                        <button className={`choice-box3 ${data.petYN === false ? 'selected' : ''}`}>반려동물 없어요</button>
+                        <button className={`choice-box3 ${data.petYN === "반려동물 있어요" ? 'selected' : ''}`}>반려동물 있어요</button>
+                        <button className={`choice-box3 ${data.petYN === "반려동물 없어요" ? 'selected' : ''}`}>반려동물 없어요</button>
                         <hr className="line2"></hr>
                         <div className="dateAndWriter">
                             <h2>특이사항</h2>

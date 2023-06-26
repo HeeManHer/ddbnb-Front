@@ -4,6 +4,7 @@
     justify-content: space-between;
 }
 
+
 .imageBtn {
     display: flex;
     width: 40px;
@@ -136,8 +137,19 @@
     right: 10px;
 }
 
-.doginfo3 {
+.doginfo-petmom {
     width: 50%;
+    float: left;
+    box-sizing: border-box;
+    height: 550px;
+    position: relative;
+    bottom: 10px;
+    right: 10px;
+}
+
+.doginfo3 {
+    width: 40%;
+    margin-left: 20px;
     float: left;
     box-sizing: border-box;
     height: 550px;
@@ -164,7 +176,7 @@
 }
 
 .dogplz textarea {
-    width: 510px;
+    width: 410px;
     height: 390px;
     resize: none;
 }
@@ -187,7 +199,7 @@
     background-color: #FAB7A2;
     color: black;
     border: none;
-    width: 65px;
+    width: 100px;
     height: 40px;
     font-weight: bold;
     font-size: large;
@@ -205,7 +217,7 @@
 }
 
 .doginfo3 textarea {
-    width: 470px;
+    width: 380px;
     height: 140px;
     margin-left: 2%;
     border-radius: 3%;
@@ -233,7 +245,7 @@
 
 .size {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     margin-top: 3%;
     width: 50%;
 }
@@ -257,8 +269,11 @@
     display: flex;
     justify-content: flex-start;
     margin-top: 3%;
+    width: 300px;
 
 }
+
+
 
 .size-position {
     position: relative;
@@ -369,6 +384,7 @@
     font-weight: bold;
     font-size: large;
 }
+
 .declarationButton1 {
     width: 90px;
     height: 35px;
@@ -439,4 +455,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.genderbtn {
+    background-color: #FAB7A2;
+    color: black;
+    border: none;
+    width: 300px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 3%;
+}
+
+.sizebtn {
+    background-color: #FAB7A2;
+    color: black;
+    border: none;
+    width: 300px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 3%;
+    position: relative;
+    left: 100px;
 }

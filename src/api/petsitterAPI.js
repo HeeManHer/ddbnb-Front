@@ -45,7 +45,11 @@ export function registPetsitterAPI(petreg) {
             }, body: JSON.stringify(petreg)
 
         }).then(res => res.json());
+        if (result.status === 200) {
+            alert(result.message);
+        }
         dispatch({ type: POST_PETSITTER, payload: result.data });
+
     };
 }
 
