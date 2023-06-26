@@ -81,6 +81,7 @@ function PetSitterRecruit() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
+
     const dispatch = useDispatch();
 
     const toggleSelected = (event) => {
@@ -239,40 +240,43 @@ function PetSitterRecruit() {
                         <div >
                             <div className="abc">
                                 <button className="petsitterrecruitbtn">이름</button>
-                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petName" />
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petName" value={form.petName} />
                                 <hr className="line"></hr>
                             </div>
                             <div className="abc">
                                 <button className="petsitterrecruitbtn">나이</button>
-                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petAge" />
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petAge" value={form.petAge} />
                                 <hr className="line"></hr>
                             </div>
 
                             <div className="abc">
                                 <button className="petsitterrecruitbtn" >견종</button>
-                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petShape" />
+                                <input className="cruittext" type="text" onChange={onChangeHandler} name="petShape" value={form.petShape} />
 
                                 <hr className="line"></hr>
                             </div>
 
                             <div className="gender">
                                 성별
-                                <select className="firstselect1" onChange={onChangeHandler} name="petGender">
+                                <select className="firstselect1" onChange={onChangeHandler} name="petGender" value={form.petGender}>
                                     <option value="" >남/여</option>
-                                    <option value="남">{form.petGender}</option>
-                                    <option value="여">{form.petGender}</option>
+                                    <option value="남">남</option>
+                                    <option value="여">여</option>
                                     <hr className="line"></hr>
                                 </select>
                                 크기
-                                <select className="secondselect1" onChange={onChangeHandler} name="petSize">
-                                    <option value="">소/중/대</option>
+                                <select className="secondselect1" onChange={onChangeHandler} name="petSize" value={form.petSize}>
+                                    <option value="">소/중/대   </option>
+                                    <option value="소형">소형</option>
+                                    <option value="중형">중형</option>
+                                    <option value="대형">대형</option>
                                     <hr className="line"></hr>
                                 </select>
                                 <hr className="line"></hr>
                             </div>
                             <div className="acb">
                                 <button className="significantbtn">특이사항</button>
-                                <input className="significant" type="text" onChange={onChangeHandler} name="signficant" />
+                                <input className="significant" type="text" onChange={onChangeHandler} name="signficant" value={form.applicant} />
                             </div>
                         </div>
                     </div>
@@ -280,7 +284,7 @@ function PetSitterRecruit() {
                     <div className="dogdog">
                         우리 강아지를 맡아주세요
                     </div>
-                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request">
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" value={form.request}>
 
                     </textarea>
                 </div>
