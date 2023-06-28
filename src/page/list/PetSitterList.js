@@ -136,8 +136,8 @@ function PetSitterList() {
 
 
                 <div
-                    className={`in ${petsitter.sitterStatus === '모집취소' ? 'gray' : ''}`}
-                    style={petsitter.sitterStatus === '모집취소' ? { backgroundColor: 'gray' } : {}}
+                    className={`in ${petsitter.sitterStatus === '모집 취소' ? 'gray' : ''}`}
+                    style={petsitter.sitterStatus === '모집 취소' ? { backgroundColor: "#9D9D9D" } : {}}
                     key={petsitter.boardId}
                     onClick={() => navigate(`./${petsitter.boardId}`)}
                 >
@@ -159,7 +159,7 @@ function PetSitterList() {
                                 {/* <img className="star" src="../img/star.png"></img> */}
                                 <div className="divbtn">
                                     <div>사례 : {petsitter.rate}</div>
-                                    <button>{petsitter.sitterStatus}</button>
+                                    <button className="section1">{petsitter.sitterStatus}</button>
                                 </div>
                             </div>
                         </div>

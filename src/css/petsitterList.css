@@ -206,3 +206,14 @@
     /* background-color: #EFF244; */
     /* width: 40%; */
 }
+
+.section1{
+    /* border: 1px solid #2d2d2d; */
+    width: 85px;
+    height: 30px;
+    border-radius: 3px;
+    background-color:#FAB7A2 ;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
