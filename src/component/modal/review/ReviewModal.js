@@ -12,27 +12,25 @@ function ReviewModal({ closeModalReview, index: memberId }) {
 
     const [form, setForm] = useState({
         member: { memberId: token.memberId },
-        reviewer: { memberId: 2952 },
+        reviewer: { memberId },
         reviewDetail: "",
         reviewStarPoint: 0
     })
 
-    console.log(memberId);
-
-    const [image, setImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState("");
+    const [image, setImage] = useState([]);
+    const [imageUrl, setImageUrl] = useState([]);
 
     useEffect(() => {
         // 이미지 업로드시 미리보기 세팅
-        if (image) {
+        if (image.length > 0) {
             const fileReader = new FileReader();
             fileReader.onload = (e) => {
                 const { result } = e.target;
                 if (result) {
-                    setImageUrl(result);
+                    setImageUrl([...imageUrl, result]);
                 }
             }
-            fileReader.readAsDataURL(image);
+            fileReader.readAsDataURL(image[image.length - 1]);
         }
     }, [image]);
 
@@ -42,7 +40,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
 
     const handleImageSelect = (event) => {
         const img = event.target.files[0];
-        setImage(img);
+        setImage([...image, img]);
     };
 
     const handleSubmit = () => {
@@ -56,8 +54,14 @@ function ReviewModal({ closeModalReview, index: memberId }) {
 
 
         if (image) {
-            formData.append("img", image)
+            for (let index in image) {
+                formData.append("img", image[index])
+            }
         }
+
+        console.log(formData.get('img'));
+
+
 
         dispatch(registNewReview(formData, closeModalReview))
 
@@ -148,12 +152,11 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                     </label>
                 </div>
                 <div className="image-preview-container">
-                    {imageUrl && <img
-                        src={imageUrl}
+                    {Array.isArray(imageUrl) && imageUrl.map(url => <img
+                        src={url}
                         alt={`첨부 이미지`}
                         className="reviewmodal-image"
-                    />
-                    }
+                    />)}
                 </div>
                 <div className="reviewmodal-btns">
                     <button className="reviewmodal-btn" onClick={handleSubmit}>

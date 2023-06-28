@@ -175,7 +175,7 @@ function PetMomList() {
                 </div>
 
             ))}
-            <PageBtn pageInfo={pageInfo} />
+            <PageBtn pageInfo={pageInfo}/>
         </div>
     )
 }

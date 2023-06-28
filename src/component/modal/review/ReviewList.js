@@ -26,12 +26,6 @@ function ReviewList({ closeModalList }) {
         , []
     )
 
-
-
-    console.log(getapplicant);
-
-
-
     const handleSubmit = () => {
         closeModalList();
     };

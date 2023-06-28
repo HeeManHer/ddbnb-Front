@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMessageList } from "../../api/messageAPI";
+import { deleteMessage, getMessageList } from "../../api/messageAPI";
 import '../../css/message.css';
 import PageBtn from "../../component/common/PageBtn";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,22 +11,34 @@ function PostMessageList() {
     const navigate = useNavigate();
 
     const { data: message, pageInfo } = useSelector(state => state.messageReducer);
-
+    const currentPage = useSelector(state => state.pageReducer);
     const [criteria, setCriteria] = useState();
+    const [deleteList, setDeleteList] = useState([]);
 
     useEffect(
         () => {
-            dispatch(getMessageList());
+            const token = JSON.parse(window.localStorage.getItem('accessToken'));
+            dispatch(getMessageList(currentPage, token.memberId));
         },
-        []
+        [currentPage]
     )
+    console.log(deleteList)
+
+    const deleteListSetting = e => {
+        if (e.target.checked) {
+            setDeleteList([...deleteList, e.target.value]);
+        } else {
+            setDeleteList(deleteList.filter(item => item !== e.target.value));
+        }
+    }
+
 
     return (
         <div className="postMessageList border-black center dis-flex flex-column justify-between">
             <h1>쪽지함</h1>
             <div className="dis-flex align-center justify-between">
                 <div className="dis-flex align-center justify-between">
-                    <button>삭제</button>
+                    <button onClick={() => dispatch(deleteMessage(deleteList))}>삭제</button>
                     <button>신고</button>
                     <button>답장</button>
                 </div>
@@ -50,11 +62,11 @@ function PostMessageList() {
                 </thead>
                 <tbody>
                     {Array.isArray(message) && message.map(item => (
-                        <tr>
-                            <td><input type="checkbox" name="" id="" /></td>
-                            <td>{item.name}</td>
-                            <td>{item.title}</td>
-                            <td>{item.date}</td>
+                        <tr key={item?.msgId}>
+                            <td><input type="checkbox" value={item?.msgId} onChange={deleteListSetting} /></td>
+                            <td>{item?.who?.nickname}</td>
+                            <td>{item?.msgContent}</td>
+                            <td>{item?.writeDate}</td>
                         </tr>
                     ))}
                 </tbody>

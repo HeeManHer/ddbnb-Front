@@ -61,7 +61,6 @@ function PetMomRecruitDatail() {
     };
 
     const data = useSelector(state => state.petDetailReducer);
-    console.log(data);
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
 

@@ -16,8 +16,8 @@ function LastedCard({ category, item }) {
                 </div>
                 <div className="profil">
                     {<div className="dis-flex align-center" >
-                        <img src={item?.memberId?.profileImage} alt="프로필사진" className="profilImg" />
-                        <span>{item?.memberId?.nickname}</span>
+                        <img src={item?.member?.profileImage} alt="프로필사진" className="profilImg" />
+                        <span>{item?.member?.nickname}</span>
                     </div>}
                     <span>{item.location}</span>
                 </div>
