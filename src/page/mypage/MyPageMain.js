@@ -86,7 +86,7 @@ function MyPageMain() {
                         <article>
                             <div className={style.profileSub}>
                                 <div>성별</div>
-                                <h3> {genderSet()}</h3>
+                                <h3 style={{ fontSize:"1.10em"}}> {genderSet()}</h3>
                             </div>
 
                             <div className={style.profileSub}>

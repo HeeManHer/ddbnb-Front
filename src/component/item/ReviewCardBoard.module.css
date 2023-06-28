@@ -29,11 +29,11 @@
     border: none;
 }
 
-.Image {
+.review img {
     width: 97%;
     height : 110px;
     background-color: #d8d8d8;
-    margin: 2%;
+    /* margin: 1%; */
 }
 
 .star{

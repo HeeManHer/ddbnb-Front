@@ -95,3 +95,34 @@ export const putMypetSitterCancle = (boardId,form) => {
         }
     };
 }
+
+    export const getMyPetSitterList = ({currentPage}) => {
+        const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+        let URL;
+
+        if (currentPage !== undefined || currentPage !== null) {
+            URL = `http://localhost:8080/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
+        } else {
+            URL = 'http://localhost:8080/api/v1/petsitter/mypetsitters';
+        }
+
+        return async (dispatch, getState) => {
+
+            const result = await fetch(URL, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Accept": "*/*",
+                    // "Auth": token
+                }
+            })
+                .then(response => response.json());
+    
+            if (result.status === 200) {
+                dispatch({ type: GET_PETSITTERLIST, payload: result.data });
+                console.log(result);
+            }
+        };
+    };
+

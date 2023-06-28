@@ -96,10 +96,10 @@ function PetMomRecruitDatail() {
 
 
                 <button className="declarationButton" onClick={openModal}>신고</button>
-                <button className="declarationButton" >수정</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
+                <button className="declarationButton">수정</button>
 
                 <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
