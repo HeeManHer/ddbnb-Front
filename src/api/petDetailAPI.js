@@ -16,7 +16,8 @@ export const getPetMomDetail = (boardId) => {
                 // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             }
         }).then(response => response.json());
-        dispatch({ type: GET_PETMOMDETAIL, payload: result });
+        console.log(`result = ${result}`);
+        dispatch({ type: GET_PETMOMDETAIL, payload: result.data });
     }
 }
 

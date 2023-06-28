@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
-import { postPetMomPage, putPetMomPage } from "../../api/petMomAPI";
+import { putPetMomPage } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 
 function searchSig(sido) {
@@ -19,7 +19,7 @@ function Sigoon({ sig }) {
     return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
 }
 
-function PetMomRecruit() {
+function PetMomModify() {
 
     const [form, setform] = useState({
         boardTitle: '',
@@ -344,4 +344,4 @@ function PetMomRecruit() {
         </div>
     );
 };
-export default PetMomRecruit;
+export default PetMomModify;

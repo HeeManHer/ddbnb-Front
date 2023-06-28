@@ -213,6 +213,11 @@
     font-size: 13px;
 }
 
+.careerDetail div:nth-child(1){
+    width: auto;
+    max-width: 100px;
+}
+
 .careerDetail div:nth-child(3) {
     width: 650px;
     height: auto;

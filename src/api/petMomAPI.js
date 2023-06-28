@@ -33,6 +33,24 @@ export const getPetMomList = (currentPage) => {
     };
 }
 
+export function putPetMomPage(page) {
+
+    let URL = `http://localhost:8080/api/v1/petmom/modify`;
+    return async function (dispatch, getState) {
+
+        const result = await fetch(URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: JSON.stringify(page)
+        }).then(response => response.json());
+
+    }
+}
+
 
 //펫맘 글쓰기
 export function postPetMomPage(form) {
@@ -92,11 +110,11 @@ export const getMyPetMomList = ({ currentPage }) => {
 }
 
 
-export const putMypetMomCancle = (boardId,form) => {
+export const putMypetMomCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://localhost:8080/api/v1/petmom/list/${boardId}/status`;
+    const requestURL = `http://localhost:8080/api/v1/list/${token.boardId}/collectcancle`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
@@ -114,4 +132,3 @@ export const putMypetMomCancle = (boardId,form) => {
         }
     };
 }
-
