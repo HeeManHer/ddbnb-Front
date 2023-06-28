@@ -66,13 +66,13 @@ function PetMomRecruitDatail() {
     const { boardId } = useParams();
 
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집취소"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집마감"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집마감" }));
         closeModal();
         window.location.reload();
     }
@@ -84,15 +84,6 @@ function PetMomRecruitDatail() {
         []
     )
 
-    // const changeImage = (direction) => {
-    //     let newIndex = currentImageIndex + direction;
-    //     if (newIndex < 0) {
-    //         newIndex = totalImages - 1; // 마지막 이미지로 순환
-    //     } else if (newIndex >= totalImages) {
-    //         newIndex = 0; // 첫 번째 이미지로 순환
-    //     }
-    //     setCurrentImageIndex(newIndex);
-    // };
 
 
 
@@ -101,17 +92,18 @@ function PetMomRecruitDatail() {
             <div className="dateAndWriter">
                 <h1>게시판</h1>
                 <h3>작성자: {data.member && data.member.nickname}</h3>
+                <h4>작성일 : {data.boardDate}</h4>
 
 
                 <button className="declarationButton" onClick={openModal}>신고</button>
-                <button className="declarationButton" onClick={openModal}>수정</button>
+                <button className="declarationButton" >수정</button>
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
 
                 <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
-                    <PetMomCollectCancle  onClickhandle={onClickhandle}/>
+                    <PetMomCollectCancle onClickhandle={onClickhandle} />
                 </Modal>
             </div>
 
@@ -208,8 +200,8 @@ function PetMomRecruitDatail() {
                     >신청자 목록</button>
                     <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
                     <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>
-                    <PetMomCollectFinish  onClickhan={onClickhan}/>
-                </Modal>
+                        <PetMomCollectFinish onClickhan={onClickhan} />
+                    </Modal>
                 </div>
             </div>
 
