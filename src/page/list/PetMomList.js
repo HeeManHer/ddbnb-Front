@@ -68,8 +68,11 @@ function PetMomList() {
     const handleClick = (petmom) => {
         setSelectedPetmom(petmom);
     };
+
+
     return (
         <div>
+
             <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
             <br />
             <div className="main">
@@ -172,7 +175,7 @@ function PetMomList() {
                 </div>
 
             ))}
-            <PageBtn />
+            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }
