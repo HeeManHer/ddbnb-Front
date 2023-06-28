@@ -67,8 +67,11 @@ function PetMomList() {
     const handleClick = (petmom) => {
         setSelectedPetmom(petmom);
     };
+
+
     return (
         <div>
+
             <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
             <br />
             <div className="main">
@@ -140,7 +143,7 @@ function PetMomList() {
 
                         <div className="textlist">
                             <div className="wheretext">
-                                <div className="dis-flex">경기도 성남시 분당구</div>
+                                <div className="dis-flex">{petmom.location}</div>
                                 <div>{petmom.boadrDate}</div>
                             </div>
                             <div>
@@ -171,7 +174,7 @@ function PetMomList() {
                 </div>
 
             ))}
-            <PageBtn />
+            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }

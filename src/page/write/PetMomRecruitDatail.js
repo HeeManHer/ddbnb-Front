@@ -84,15 +84,6 @@ function PetMomRecruitDatail() {
         []
     )
 
-    // const changeImage = (direction) => {
-    //     let newIndex = currentImageIndex + direction;
-    //     if (newIndex < 0) {
-    //         newIndex = totalImages - 1; // 마지막 이미지로 순환
-    //     } else if (newIndex >= totalImages) {
-    //         newIndex = 0; // 첫 번째 이미지로 순환
-    //     }
-    //     setCurrentImageIndex(newIndex);
-    // };
 
 
 
@@ -101,6 +92,7 @@ function PetMomRecruitDatail() {
             <div className="dateAndWriter">
                 <h1>게시판</h1>
                 <h3>작성자: {data.member && data.member.nickname}</h3>
+                <h4>작성일 : {data.boardDate}</h4>
 
 
                 <button className="declarationButton" onClick={openModal}>신고</button>

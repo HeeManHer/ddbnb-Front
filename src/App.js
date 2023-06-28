@@ -18,6 +18,7 @@ import PetMomList from "./page/list/PetMomList";
 import PetMomRecruit from "./page/write/PetMomRecruit";
 import PetMomRecruitDatail from "./page/write/PetMomRecruitDatail";
 
+
 import PetSitterList from "./page/list/PetSitterList";
 import PetSitterRecruit from "./page/write/PetSitterRecruit";
 import PetSitterRecruitDatail from "./page/write/PetSitterRecruitDatail";
@@ -45,6 +46,7 @@ import NaverPage from "./page/main/NaverPage";
 
 import LoginProfilePage from "./page/profile/LoginProfilePage";
 import ReviceProfilePage from "./page/profile/ReviseProfilePage";
+import PetMomModify from "./page/write/PetMomRecruit";
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
             <Route index element={<PetMomList />} />
             <Route path="recruit" element={<PetMomRecruit />} />\
             <Route path=":boardId" element={<PetMomRecruitDatail />} />
+            <Route path="modify" element={<PetMomModify />} />
+
           </Route>
 
           <Route path="petSitter" >
