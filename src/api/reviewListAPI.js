@@ -91,8 +91,6 @@ export const registNewReview = (form, close) => {
             body: form
         }).then(response => response.json())
 
-        console.log(result.message)
-        console.log(result.data)
         if (result.status = 200) {
             alert(result.message);
             close();

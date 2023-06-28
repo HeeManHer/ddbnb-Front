@@ -17,10 +17,6 @@
 
 }
 
-.cardList>.card {
-    flex-wrap: wrap;
-}
-
 .card {
     display: flex;
     justify-content: space-between;

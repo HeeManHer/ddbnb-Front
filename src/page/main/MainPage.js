@@ -64,8 +64,8 @@ function MainPage() {
                     <span>{">"}최신 펫시터 모집글</span>
                     <button className="more back-color" onClick={goPetSitter} >더보기+</button>
                 </div>
-                <div className='card dis-flex justify-between'>
-                    {Array.isArray(petSitter) && petSitter.map(item => <LastedCard key={item.boardId} category="petSitter" item={item} />)}
+                <div className='card'>
+                    {Array.isArray(petSitter) ? petSitter.map(item => <LastedCard key={item.boardId} category="petSitter" item={item} />) : <div>최근 등록된 게시글이 없습니다.</div>}
                 </div>
             </div>
             <div className="cardList">
@@ -73,8 +73,8 @@ function MainPage() {
                     <span>{">"}최신 펫맘 모집글</span>
                     <button className="more back-color" onClick={goPetMom} >더보기+</button>
                 </div>
-                <div className='card dis-flex justify-between'>
-                    {Array.isArray(petMom) && petMom.map(item => <LastedCard key={item.boardId} category="petMom" item={item} />)}
+                <div className='card'>
+                    {Array.isArray(petMom) ? petMom.map(item => <LastedCard key={item.boardId} category="petMom" item={item} />) : <div>최근 등록된 게시글이 없습니다.</div>}
                 </div>
             </div>
         </div >

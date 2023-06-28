@@ -61,18 +61,17 @@ function PetMomRecruitDatail() {
     };
 
     const data = useSelector(state => state.petDetailReducer);
-    console.log(data);
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
 
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집취소"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집마감"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집마감" }));
         closeModal();
         window.location.reload();
     }
@@ -111,7 +110,7 @@ function PetMomRecruitDatail() {
 
                 <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
-                    <PetMomCollectCancle  onClickhandle={onClickhandle}/>
+                    <PetMomCollectCancle onClickhandle={onClickhandle} />
                 </Modal>
             </div>
 
@@ -208,8 +207,8 @@ function PetMomRecruitDatail() {
                     >신청자 목록</button>
                     <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
                     <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>
-                    <PetMomCollectFinish  onClickhan={onClickhan}/>
-                </Modal>
+                        <PetMomCollectFinish onClickhan={onClickhan} />
+                    </Modal>
                 </div>
             </div>
 

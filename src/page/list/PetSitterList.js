@@ -166,7 +166,7 @@ function PetSitterList() {
                     </div>
                 </div>
             ))}
-            <PageBtn />
+            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }
