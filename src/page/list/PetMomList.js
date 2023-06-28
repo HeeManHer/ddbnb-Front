@@ -60,6 +60,7 @@ function PetMomList() {
             SIGUNGU: e.target.value
         })
     }
+    console.log(petmomList);
 
 
     const [selectedPetmom, setSelectedPetmom] = useState(null);
@@ -137,14 +138,14 @@ function PetMomList() {
 
             {Array.isArray(petmomList) && petmomList.map(petmom => (
                 <div key={petmom.boardId} onClick={() => navigate(`./${petmom.boardId}`)}>
-                    <div className="in" /*onClick={handleItemClick}*/ >
-
+                    <div className={`in ${petmom.momStatus === '모집 취소' ? 'gray' : ''}`}
+                    style={petmom.momStatus === '모집 취소' ? { backgroundColor: "#9D9D9D" } : {}} >
                         <img className="dogimg" src="../img/angrydog.png"></img>
 
                         <div className="textlist">
-                            <div className="wheretext">
-                                <div className="dis-flex">{petmom.location}</div>
-                                <div>{petmom.boadrDate}</div>
+                            <div className="wheretext" style={{justifyContent:"space-between"}}>
+                                <div className="dis-flex" >{petmom.location}</div>
+                                <div>{petmom.boardDate}</div>
                             </div>
                             <div>
                                 <h2>{petmom.boardTitle}</h2>

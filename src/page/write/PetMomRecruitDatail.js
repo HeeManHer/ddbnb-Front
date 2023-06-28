@@ -66,13 +66,13 @@ function PetMomRecruitDatail() {
     const { boardId } = useParams();
 
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
+        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집 취소"}));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집마감" }));
+        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집 마감"}));
         closeModal();
         window.location.reload();
     }
