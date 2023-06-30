@@ -21,21 +21,42 @@ function PetMomList() {
     const dispatch = useDispatch();
     const { data: petmomList, pageInfo } = useSelector(state => state.petMomReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const [searchValue, setSearchValue] = useState({})
 
+    const [searchValue, setSearchValue] = useState({
+        location: '',
+        startDate: '',
+        endDate: '',
+        petYN: '',
+        otherCondition: '',
+
+    });
+
+    const handleSearch = () => {
+        dispatch(getPetMomList(currentPage, searchValue));
+    };
 
     useEffect(
         () => {
             dispatch(getPetMomList(currentPage, searchValue));
         }
-        , []
+        , [currentPage, searchValue]
     )
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
+    const onChangeList = (e) => {
+        setSearchValue({
+            ...searchValue,
+            [e.target.name]: e.target.value
 
+        });
+    };
 
-
-
+    const onChangeHandler = (e) => {
+        setSearchValue({
+            ...searchValue,
+            [e.target.name]: e.target.value,
+        });
+    };
 
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
@@ -52,24 +73,38 @@ function PetMomList() {
             ...location,
             SIDO: e.target.value
         })
+
+        setSearchValue({
+            ...searchValue,
+
+            location: e.target.value
+        });
     }
+
 
     const onChangeSigunguHandler = (e) => {
         setLocation({
             ...location,
             SIGUNGU: e.target.value
         })
+
+        setSearchValue({
+            ...searchValue,
+            location: location.SIDO + ' ' + e.target.value
+        });
     }
+
+
+    // const [selectedPetmom, setSelectedPetmom] = useState(null);
+
+    // const handleClick = (petmom) => {
+    //     setSelectedPetmom(petmom);
+    // };
+
+
+    console.log(searchValue);
     console.log(petmomList);
-
-
-    const [selectedPetmom, setSelectedPetmom] = useState(null);
-
-    const handleClick = (petmom) => {
-        setSelectedPetmom(petmom);
-    };
-
-
+    // console.log(currentPage);
     return (
         <div>
 
@@ -80,8 +115,8 @@ function PetMomList() {
                 <div className="mainpagebox">
                     <div className="wherewhen">
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
-                            <option value="">시/도</option>
-                            <option value="서울">서울특별시</option>
+                            <option value="" >시/도</option>
+                            <option value="서울" onClick={onChangeList}>서울특별시</option>
                             <option value="부산">부산광역시</option>
                             <option value="대구">대구광역시</option>
                             <option value="인천">인천광역시</option>
@@ -102,7 +137,7 @@ function PetMomList() {
 
                         <div className="sidogu">
                             <select className="secondselect" id="sigungu" onChange={onChangeSigunguHandler} readOnly>
-                                <option value="">시 / 군 / 구</option>
+                                <option value="" >시 / 군 / 구 </option>
                                 {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                             </select>
 
@@ -111,8 +146,21 @@ function PetMomList() {
 
                             <h4 className="when">언제 맡기길 원하시나요?</h4>
                             <div>
-                                <input className="dateselect" type="date" />~<input className="dateselect" type="date" />
-                            </div>
+                                <input
+                                    className="dateselect"
+                                    type="date"
+                                    name="startDate"
+                                    value={searchValue.startDate}
+                                    onChange={onChangeHandler}
+                                />
+                                ~
+                                <input
+                                    className="dateselect"
+                                    type="date"
+                                    name="endDate"
+                                    value={searchValue.endDate}
+                                    onChange={onChangeHandler}
+                                /> </div>
                         </section>
                     </div>
                     <div>
@@ -120,39 +168,36 @@ function PetMomList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            <button className="petmombtn">반려동물 없음</button>
-                            <button className="petmombtn">픽업 가능</button>
-                            <button className="petmombtn">대형견 가능</button>
-                            <button className="petmombtn">노견 케어</button>
+                            <button className="petmombtn" name='petYN' value="반려동물 없어요" onClick={onChangeList}>반려동물 없음</button>
+                            <button className="petmombtn" name='otherCondition' value="픽업가능" onClick={onChangeList}>픽업 가능</button>
+                            <button className="petmombtn" name='otherCondition' value="대형견 가능" onClick={onChangeList}>대형견 가능</button>
+                            <button className="petmombtn" name='otherCondition' value="노견케어" onClick={onChangeList}>노견 케어</button>
+
                         </div>
-                        <button className="searchinfo">
-                            <img src="../img/readingglasses.png"></img>
-                            검색
-                        </button>
                     </div>
 
                 </div>
-                <h5 className="statecheck">최신순  평점순  리뷰순 가격순 <img src="../img/check.png" /></h5>
             </div>
 
 
             {Array.isArray(petmomList) && petmomList.map(petmom => (
                 <div key={petmom.boardId} onClick={() => navigate(`./${petmom.boardId}`)}>
-                    <div className={`in ${petmom.momStatus === '모집 취소' ? 'gray' : ''}`}
-                    style={petmom.momStatus === '모집 취소' ? { backgroundColor: "#9D9D9D" } : {}} >
+                    <div className="in" /*onClick={handleItemClick}*/ >
+
                         <img className="dogimg" src="../img/angrydog.png"></img>
 
                         <div className="textlist">
-                            <div className="wheretext" style={{justifyContent:"space-between"}}>
-                                <div className="dis-flex" >{petmom.location}</div>
-                                <div>{petmom.boardDate}</div>
+                            <div className="wheretext">
+                                <div className="dis-flex">{petmom.location}</div>
+                                <div>{petmom.boadrDate}</div>
                             </div>
                             <div>
                                 <h2>{petmom.boardTitle}</h2>
                                 <hr className="line"></hr>
                             </div>
                             <div className="columncss">
-                                <div>{petmom.houseType} {petmom.petYN ? "반려동물 있어요" : "반려동물 없어요"} {petmom.care}</div>
+
+                                <div>{petmom.houseType} {petmom.petYN} {petmom.care}</div>
                                 <div>기간: {petmom.startDate} ~ {petmom.endDate}</div>
                                 <div className="stardivbtn">
                                     <div className="dis-flex">
@@ -175,7 +220,7 @@ function PetMomList() {
                 </div>
 
             ))}
-            <PageBtn pageInfo={pageInfo}/>
+            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }
