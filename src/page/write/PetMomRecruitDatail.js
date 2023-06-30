@@ -14,6 +14,8 @@ import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFini
 import { getPetMomDetail } from '../../api/petDetailAPI';
 import { useParams } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
+import { NavLink } from 'react-router-dom';
+import { getMomApplicantList } from '../../api/applicantAPI';
 
 
 
@@ -65,13 +67,13 @@ function PetMomRecruitDatail() {
     const { boardId } = useParams();
 
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집 취소"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, {momStatus:"모집 마감"}));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 마감" }));
         closeModal();
         window.location.reload();
     }
@@ -79,6 +81,8 @@ function PetMomRecruitDatail() {
     useEffect(
         () => {
             dispatch(getPetMomDetail(boardId));
+            dispatch(getMomApplicantList(boardId));
+
         },
         []
     )
@@ -98,7 +102,8 @@ function PetMomRecruitDatail() {
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
-                <button className="declarationButton">수정</button>
+                <NavLink className="declarationButton" to={`/petmom/modify/${data.boardId}`}>수정</NavLink>
+
 
                 <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>

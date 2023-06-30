@@ -17,6 +17,7 @@ import MainPage from "./page/main/MainPage";
 import PetMomList from "./page/list/PetMomList";
 import PetMomRecruit from "./page/write/PetMomRecruit";
 import PetMomRecruitDatail from "./page/write/PetMomRecruitDatail";
+import PetMomModify from "./page/write/PetMomModify";
 
 
 import PetSitterList from "./page/list/PetSitterList";
@@ -46,7 +47,6 @@ import NaverPage from "./page/main/NaverPage";
 
 import LoginProfilePage from "./page/profile/LoginProfilePage";
 import ReviceProfilePage from "./page/profile/ReviseProfilePage";
-import PetMomModify from "./page/write/PetMomRecruit";
 
 
 function App() {
