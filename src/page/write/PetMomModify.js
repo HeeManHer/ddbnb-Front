@@ -142,10 +142,10 @@ function PetMomModify() {
     };
 
 
-    const registPetMom = () => {
-        dispatch(postPetMomPage(form));
+    // const registPetMom = () => {
+    //     dispatch(postPetMomPage(form));
 
-    };
+    // };
 
 
 
@@ -181,7 +181,7 @@ function PetMomModify() {
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
                     <button className="insertwriter">수정</button>
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        <RegistPost regist={registPetMom} />
+                        {/* <RegistPost regist={registPetMom} /> */}
                     </Modal>
                     <button onClick={() => openModal("canclepost")}>취소</button>
                     <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>

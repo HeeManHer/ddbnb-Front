@@ -66,6 +66,11 @@ function LoginProfilePage() {
     }
 
     const onChangeHandler = (e) => {
+        let value = e.target.value;
+        // 닉네임 글자수 제한을 5글자로 설정
+        if (e.target.name === 'nickname') {
+            value = value.substring(0, 5);
+        }
         setForm({
             ...form,
             [e.target.name]: e.target.value
@@ -125,7 +130,10 @@ function LoginProfilePage() {
                     type="text" 
                     name='nickname' 
                     onChange={onChangeHandler} 
-                    placeholder="닉네임을 입력해주세요" />
+                    placeholder="닉네임을 입력해주세요" 
+                    maxLength={5}
+                    />
+                    
                 </div>
             </div>
 
