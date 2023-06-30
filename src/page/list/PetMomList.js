@@ -182,8 +182,11 @@ function PetMomList() {
 
             {Array.isArray(petmomList) && petmomList.map(petmom => (
                 <div key={petmom.boardId} onClick={() => navigate(`./${petmom.boardId}`)}>
-                    <div className="in" /*onClick={handleItemClick}*/ >
-
+                    <div
+                        className={`in ${petmom.momStatus === '모집 취소' ? 'gray' : ''}`}
+                        style={petmom.momStatus === '모집 취소' ? { backgroundColor: "#9D9D9D" } : {}}
+                        onClick={() => navigate(`./${petmom.boardId}`)}
+                    >
                         <img className="dogimg" src="../img/angrydog.png"></img>
 
                         <div className="textlist">

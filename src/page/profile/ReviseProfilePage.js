@@ -21,7 +21,7 @@ function ReviseProfilePage() {
         preferredArea: "",
         detailedHistory: "",
         petSitterCareer: "",
-    
+
     });
 
     const [image, setImage] = useState()
@@ -49,10 +49,10 @@ function ReviseProfilePage() {
 
         const formData = new FormData();
 
-        formData.append("newProfile", new Blob([JSON.stringify(form)], { type: "application/json"}));
+        formData.append("newProfile", new Blob([JSON.stringify(form)], { type: "application/json" }));
 
-        if(image) {
-            formData.append("image",image);
+        if (image) {
+            formData.append("image", image);
         }
 
         dispatch(getUpdateMember(memberId, formData));
@@ -105,7 +105,7 @@ function ReviseProfilePage() {
                 <hr />
             </div>
             <div className={style.profileBox}>
-                <img src={previewImage || members?.profileImage} alt='profile' className={style.profileImageBox}/>
+                <img src={previewImage || members?.profileImage} alt='profile' className={style.profileImageBox} />
                 <div className={style.profileImageContent}>
                     <label>{members?.nickname}</label>
                     &nbsp;
@@ -117,7 +117,7 @@ function ReviseProfilePage() {
                             type="file"
                             id="imageUpload"
                             accept='image/jpg,image/png,image/jpeg,image/gif'
-                            style={{ display: "none"}}
+                            style={{ display: "none" }}
                             onChange={handleImageUpload}
                         />
                         <label className="yellow reviewmodal-imgbtn" htmlFor="imageUpload">

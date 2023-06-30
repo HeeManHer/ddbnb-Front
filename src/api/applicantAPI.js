@@ -24,11 +24,11 @@ export const getApplicantListAPI = (applicantId) => {
     }
 }
 
-export const getMyApplyListAPI =  ({ currentPage }) => {
+export const getMyApplyListAPI = ({ currentPage }) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL;   
-    
+    let URL;
+
     if (currentPage !== undefined || currentPage !== null) {
         URL = `http://localhost:8080/api/v1/applicant/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
     } else {
@@ -71,6 +71,7 @@ export const getMomApplicantList = (applicantId) => {
             dispatch({ type: GET_APPLICANT, payload: result.data });
         }
     }
+}
 
 export const registMomApplicantAPI = (form) => {
     const URL = `http://localhost:8080/api/v1/momApplicant/regist`;
