@@ -29,7 +29,7 @@ function ReviewCardBoard() {
 
 
     //리뷰리스트 출력
-    // console.log(reviews);
+    console.log(reviews);
 
     /* 리뷰명 */
     // const REVIEW_NAME = reviewList.reviewTitle;
@@ -43,7 +43,7 @@ function ReviewCardBoard() {
                     <Link to={`/reviews/${review.reviewId}`} key={index}>
                         <button className={style.review} >
                             <div className={style.Image}>
-                                <img src={review.reviewImageUrl} />
+                                <img src={review.reviewImage[0]?.imageUrl} />
                             </div>
                             <div className={style.context}>
                                 <div style={{ display: "flex" }}>

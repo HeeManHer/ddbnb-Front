@@ -191,7 +191,7 @@ function PetMomRecruitDatail() {
                     <button className="wantbtn2" onClick={openModaljoin}>신청하기</button>
 
                     <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
-                        <PetMomApply />
+                        <PetMomApply boardId={boardId}/>
                     </Modal>
 
                     <button className="wantbtn2"

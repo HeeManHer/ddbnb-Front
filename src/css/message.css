@@ -1,8 +1,17 @@
 .postMessageList {
-    width: 600px;
+    width: 500px;
     height: 450px;
 
     padding: 30px;
+}
+
+.msgMenu {
+    width: 40%;
+}
+
+.postMessageList>*,
+.msgMenu>* {
+    margin: 0;
 }
 
 .postMessageList>div>div>* {
@@ -25,6 +34,7 @@
 
 .postMessageList>table {
     width: 100%;
+    /* height: 100%; */
     text-align: left;
     border-collapse: collapse;
 }
@@ -39,23 +49,18 @@
 }
 
 .postMessageList>table>tbody>tr>td {
+    height: 20%;
     border-bottom: 1px solid black;
 }
 
 .postMessage {
-    min-width: 400px;
-    min-height: 400px;
-
-    max-width: 950px;
-    max-height: 950px;
-
-    width: 87.9vw;
-    height: 87.9vh;
+    width: 450px;
+    height: 450px;
 
     border-radius: 5px;
     padding: 30px;
 
-    margin: auto;
+    /* margin: auto; */
 }
 
 .recipientInfo {

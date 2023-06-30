@@ -69,7 +69,7 @@ export async function findMemberBySignDayIsToday() {
 
 export function getBoardList(category, page) {
 
-    let url = `http://localhost:8080/api/v1/${category}/list?page=${page}`;
+    let url = `http://localhost:8080/api/v1/${category}/list?page=${page}&size=20`;
 
 
     return async function (dispatch, getState) {

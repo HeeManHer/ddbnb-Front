@@ -77,14 +77,18 @@ function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Array.isArray(signDayIsToday) && signDayIsToday.map(member => (
-                                        <tr key={member.memberId}>
-                                            <td>{member.memberId}</td>
-                                            <td>{member.nickname}</td>
-                                            <td>{member.preferredArea}</td>
-                                            <td>{member.signDate}</td>
-                                        </tr>
-                                    ))}
+                                    {Array.isArray(signDayIsToday) && signDayIsToday.length > 0 ?
+                                        signDayIsToday.map(member => (
+                                            <tr key={member.memberId}>
+                                                <td>{member.memberId}</td>
+                                                <td>{member.nickname}</td>
+                                                <td>{member.preferredArea}</td>
+                                                <td>{member.signDate}</td>
+                                            </tr>
+                                        ))
+                                        :
+                                        <div>신규 회원이 없습니다.</div>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -101,17 +105,21 @@ function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Array.isArray(report) && report.map(report =>
-                                        report.reportCategory === '회원' &&
-                                        (
-                                            <tr key={report.reportId}>
-                                                <td>{report.reportDate}</td>
-                                                <td>{report.currentUser.memberId}</td>
-                                                <td>{report.otherUser.memberId}</td>
-                                                <td>{report.reportReason}</td>
-                                                <td>{report.reportState}</td>
-                                            </tr>
-                                        ))}
+                                    {Array.isArray(report) && report.length > 0 ?
+                                        report.map(report =>
+                                            report.reportCategory === '회원' &&
+                                            (
+                                                <tr key={report.reportId}>
+                                                    <td>{report.reportDate}</td>
+                                                    <td>{report.currentUser.memberId}</td>
+                                                    <td>{report.otherUser.memberId}</td>
+                                                    <td>{report.reportReason}</td>
+                                                    <td>{report.reportState}</td>
+                                                </tr>
+                                            ))
+                                        :
+                                        <div>새로운 신고가 없습니다.</div>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -128,17 +136,21 @@ function Dashboard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Array.isArray(report) && report.map(report =>
-                                        report.reportCategory === '게시글' &&
-                                        (
-                                            <tr key={report.reportId}>
-                                                <td>{report.reportDate}</td>
-                                                <td>{report.currentUser.memberId}</td>
-                                                <td>{report.otherUser.memberId}</td>
-                                                <td>{report.reportReason}</td>
-                                                <td>{report.reportState}</td>
-                                            </tr>
-                                        ))}
+                                    {Array.isArray(report) && report.length > 0 ?
+                                        report.map(report =>
+                                            report.reportCategory === '게시글' &&
+                                            (
+                                                <tr key={report.reportId}>
+                                                    <td>{report.reportDate}</td>
+                                                    <td>{report.currentUser.memberId}</td>
+                                                    <td>{report.otherUser.memberId}</td>
+                                                    <td>{report.reportReason}</td>
+                                                    <td>{report.reportState}</td>
+                                                </tr>
+                                            ))
+                                        :
+                                        <div>새로운 신고가 없습니다.</div>
+                                    }
                                 </tbody>
                             </table>
                         </div>

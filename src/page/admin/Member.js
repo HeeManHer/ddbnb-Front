@@ -58,8 +58,8 @@ function Member() {
                 <button className="searchbutton" onClick={search}>검색</button>
             </div>
             <div className="buttonlist">
-                <button className="changebutton">상태 변경</button>
-                <button className="changebutton">탈퇴 처리</button>
+                {/* <button className="changebutton">상태 변경</button>
+                <button className="changebutton">탈퇴 처리</button> */}
             </div>
 
             <table className="adminTable">

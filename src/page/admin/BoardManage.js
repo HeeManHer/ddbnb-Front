@@ -61,9 +61,9 @@ function BoardManage() {
                             </td>
                             <td >{item.boardId}</td>
                             <td >{item.boardTitle}</td>
-                            <td >{item.memberId?.nickname}</td>
+                            <td >{item.member?.nickname}</td>
                             <td >{item.boardDate}</td>
-                            <td >{item.boardStatus}</td>
+                            <td >{item.sitterStatus || item.momStatus}</td>
                         </tr>
                     ))}
                 </tbody>
