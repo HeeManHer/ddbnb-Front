@@ -8,6 +8,7 @@ export const GET_PETSITTERLIST = 'petsitter/GET_PETSITTERLIST';
 export const POST_PETSITTER = 'petsitter/POST_PETSITTER';
 export const GET_PETSITTERDETAIL = 'petsitter/PETSITTERDETAIL';
 export const PUT_PETSITTER = 'petsitter/PUT_PETSITTER';
+export const PUT_PETSITTERDETAIL = 'petsitter/PUT_PETSITTERDETAIL';
 
 const actions = createActions({
     [SET_PETSITTER]: () => { },
@@ -15,6 +16,7 @@ const actions = createActions({
     [POST_PETSITTER]: () => { },
     [GET_PETSITTERDETAIL]: () => { },
     [PUT_PETSITTER]: () => { },
+    [PUT_PETSITTERDETAIL]: () => { },
 });
 
 const petSitterReducer = handleActions({
@@ -31,9 +33,11 @@ const petSitterReducer = handleActions({
     [PUT_PETSITTER]: (state, { payload }) => {
         return payload;
     },
+    [PUT_PETSITTERDETAIL]: (state, { payload }) => {
+        return payload;
+    },
 },
     initialState
-
 );
 
 export default petSitterReducer; 

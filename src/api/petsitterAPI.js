@@ -1,4 +1,4 @@
-import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER } from '../modules/petSitter';
+import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER, PUT_PETSITTERDETAIL } from '../modules/petSitter';
 
 
 export const callPetsitterListAPI = (currentPage) => {
@@ -69,11 +69,31 @@ export function getPetsitterdetailAPI(boardId) {
         })
             .then(response => response.json());
         dispatch({ type: GET_PETSITTERDETAIL, payload: result.data });
-    }
-};
+    };
+}
+
+export function putPetsitterAPI(boardId, form) {
+
+    let URL = "http://localhost:8080/api/v1/petsitter/modify";
+
+    return async function (dispatch, getState) {
+
+        const result = await fetch(URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            },
+            body: JSON.stringify(form)
+        })
+            .then(response => response.json());
+        alert(result.message);
+        dispatch({ type: PUT_PETSITTERDETAIL, patload: result.data });
+    };
+}
 
 
-export const putMypetSitterCancle = (boardId,form) => {
+export const putMypetSitterCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
@@ -96,33 +116,33 @@ export const putMypetSitterCancle = (boardId,form) => {
     };
 }
 
-    export const getMyPetSitterList = ({currentPage}) => {
-        const token = JSON.parse(window.localStorage.getItem('accessToken'));
+export const getMyPetSitterList = ({ currentPage }) => {
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-        let URL;
+    let URL;
 
-        if (currentPage !== undefined || currentPage !== null) {
-            URL = `http://localhost:8080/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
-        } else {
-            URL = 'http://localhost:8080/api/v1/petsitter/mypetsitters';
-        }
+    if (currentPage !== undefined || currentPage !== null) {
+        URL = `http://localhost:8080/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
+    } else {
+        URL = 'http://localhost:8080/api/v1/petsitter/mypetsitters';
+    }
 
-        return async (dispatch, getState) => {
+    return async (dispatch, getState) => {
 
-            const result = await fetch(URL, {
-                method: "GET",
-                headers: {
-                    "Content-type": "application/json",
-                    "Accept": "*/*",
-                    // "Auth": token
-                }
-            })
-                .then(response => response.json());
-    
-            if (result.status === 200) {
-                dispatch({ type: GET_PETSITTERLIST, payload: result.data });
-                console.log(result);
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Accept": "*/*",
+                // "Auth": token
             }
-        };
+        })
+            .then(response => response.json());
+
+        if (result.status === 200) {
+            dispatch({ type: GET_PETSITTERLIST, payload: result.data });
+            console.log(result);
+        }
     };
+};
 

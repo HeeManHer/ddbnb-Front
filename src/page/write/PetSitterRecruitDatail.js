@@ -8,8 +8,8 @@ import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 import PetSitterCollectFinish from '../../component/modal/collect/PetSitterCollectFinish';
-import { getPetsitterdetailAPI, putMypetSitterCancle } from "../../api/petsitterAPI";
-import { useParams } from 'react-router-dom';
+import { getPetsitterdetailAPI, putMypetSitterCancle, putPetsitterAPI } from "../../api/petsitterAPI";
+import { useNavigate, useParams } from 'react-router-dom';
 import style from './PetSitterRecruitDatail.module.css';
 import { getApplicantListAPI } from '../../api/applicantAPI';
 import Declaration from '../../component/modal/declaration/Declaration';
@@ -20,7 +20,7 @@ function PetSitterRecruitDatail() {
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
 
-
+    const navigate = useNavigate()
 
     const { declaration: showModal, petsittercollectcancle, petsitterapply, petsittercollectfinish, petsitterreport } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
@@ -83,14 +83,20 @@ function PetSitterRecruitDatail() {
     )
     // console.log(boardId);
 
+    // const modifypetsitter = () => {
+    //     dispatch(putPetsitterAPI(boardId, form));
+    //     navigate("./modify");
+    // };
+
+
     const onClickhandle = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집 취소"}));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집 마감"}));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 마감" }));
         closeModal();
         window.location.reload();
     }
@@ -116,7 +122,7 @@ function PetSitterRecruitDatail() {
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                         <Declaration category="게시글 신고" />
                     </Modal>
-                    <button className="declarationButton">수정</button>
+                    <button className="declarationButton" onClick={() => navigate("./modify")}>수정</button>
                     <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
                 </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
