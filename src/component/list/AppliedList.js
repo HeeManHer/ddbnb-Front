@@ -3,7 +3,8 @@ import AppliedCardBoard from '../item/AppliedCardBoard';
 import ReviewCardBoard from '../item/ReviewCardBoard';
 import MyPetSitterCardBoard from '../item/MyPetSitterCardBoard';
 import MyPetMomCardBoard  from '../item/MyPetMomCardBoard';
-
+import PetMomAppliedCardBoard from '../item/PetMomAppliedCardBoard'
+import PetSitterAppliedCardBoard from '../item/PetSitterAppliedCardBoard';
 
 function MyCardList({ buttonId }) {
     let cardBoardComponent;
@@ -16,7 +17,11 @@ function MyCardList({ buttonId }) {
         cardBoardComponent = <MyPetSitterCardBoard />;
     } else if (buttonId === 4) { 
         cardBoardComponent = <MyPetMomCardBoard />;
-    } 
+    } else if(buttonId === 5) {
+        cardBoardComponent = <PetSitterAppliedCardBoard />;
+    }else if(buttonId === 6) {
+        cardBoardComponent = <PetMomAppliedCardBoard />;
+    }
 
     return <>{cardBoardComponent}</>;
 }

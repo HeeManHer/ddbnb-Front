@@ -1,18 +1,27 @@
 import style from './AppliedCardBoard.module.css';
+import { useEffect, useState } from "react";
+import MyCardList from "../../component/list/AppliedList";
 
 function AppliedCardBoard() {
 
-    return (
-        <section className={style.section}>
-            <article className={style.category}>
-                <div>전체</div>
-                <div>지역</div>
-                <div>견종</div>
-                <div>게시글명</div>
-            </article>
-        </section>
-    );
+    
+    const [buttonId, setButtonId] = useState(5);
 
+    const handleButtonClick = (id) => {
+        setButtonId(id);
+    };
+
+    return (
+<>
+        <div className={style.bottomBoard}>
+        <div className={style.careerTitle}>
+            <button onClick={() => handleButtonClick(5)}>펫시터 신청 내역</button>
+            <button onClick={() => handleButtonClick(6)}>펫맘 신청 내역</button>
+        </div>
+        {buttonId && <MyCardList buttonId={buttonId} />}
+    </div>
+    </>
+    );
 }
 
 export default AppliedCardBoard;
