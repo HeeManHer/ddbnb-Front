@@ -65,7 +65,6 @@ function PetMomRecruitDatail() {
     const data = useSelector(state => state.petDetailReducer);
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
-
     const onClickhandle = () => {
         dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 취소" }));
         closeModal();
