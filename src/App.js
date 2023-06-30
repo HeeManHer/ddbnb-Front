@@ -23,6 +23,8 @@ import PetMomModify from "./page/write/PetMomModify";
 import PetSitterList from "./page/list/PetSitterList";
 import PetSitterRecruit from "./page/write/PetSitterRecruit";
 import PetSitterRecruitDatail from "./page/write/PetSitterRecruitDatail";
+import PetSitterModify from "./page/write/PetSitterModify";
+
 
 import AboutPage from "./page/main/AboutPage";
 import MyPageMain from "./page/mypage/MyPageMain";
@@ -75,6 +77,7 @@ function App() {
             <Route index element={<PetSitterList />} />
             <Route path="recruit" element={<PetSitterRecruit />} />\
             <Route path=":boardId" element={<PetSitterRecruitDatail />} />
+            <Route path=":boardId/modify" element={<PetSitterModify />} />
           </Route>
 
           <Route path="about" element={<AboutPage />} />

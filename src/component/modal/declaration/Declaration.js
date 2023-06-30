@@ -14,7 +14,7 @@ function Declaration({ category }) {
         dispatch({ type: CLOSE_MODAL });
     }
 
-    const { boardId } = useParams();
+    // const { boardId } = useParams();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
