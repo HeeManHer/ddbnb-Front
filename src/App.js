@@ -89,7 +89,6 @@ function App() {
             <Route path=":userNo" element={<UserProfile />} />
           </Route>
 
-          <Route path="postMessageList" element={<PostMessageList />} />
         </Route>
 
         <Route path="manage" element={<AdminLayout />}>
@@ -101,8 +100,9 @@ function App() {
         </Route>
 
         <Route path="applicant" element={<ApplicantsList />} />
-        <Route path="postMessage" element={<PostMessage />} />
-        <Route path="sendMessage" element={<SendMessage />} />
+        <Route path="postMessageList" element={<PostMessageList />} />
+        <Route path="postMessage/:messageId" element={<PostMessage />} />
+        <Route path="sendMessage/:memberId" element={<SendMessage />} />
         <Route path="calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>

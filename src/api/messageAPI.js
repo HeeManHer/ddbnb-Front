@@ -1,8 +1,8 @@
 import { SET_MESSAGELIST } from '../modules/message';
 
-export function getMessageList(page, memberId) {
+export function getMessageList(page, category, memberId) {
 
-    const url = `http://localhost:8080/api/v1/message/${memberId}?page=${page}`;
+    const url = `http://localhost:8080/api/v1/messages/${category}/${memberId}?page=${page}`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -17,16 +17,14 @@ export function getMessageList(page, memberId) {
             dispatch({ type: SET_MESSAGELIST, payload: result.data });
         }
     }
-
 }
+export function getMessageDetail(messageId) {
 
-export function deleteMessage(page, memberId) {
-
-    const url = `http://localhost:8080/api/v1/message`;
+    const url = `http://localhost:8080/api/v1/message/${messageId}`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
-            method: 'DELETE',
+            method: 'GET',
             headers: {
                 "Content-Type": 'application/json',
                 "Accept": '*/*'
@@ -35,6 +33,47 @@ export function deleteMessage(page, memberId) {
 
         if (result.status === 200) {
             dispatch({ type: SET_MESSAGELIST, payload: result.data });
+        }
+    }
+}
+export function registMessageDetail(form) {
+    console.log(form);
+    const url = `http://localhost:8080/api/v1/message`;
+
+    return async function (dispatch, getState) {
+        const result = await fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            },
+            body: JSON.stringify(form)
+        }).then(res => res.json());
+
+        if (result.status === 201) {
+            alert(result.message);
+            window.location.href = '/postMessageList';
+        }
+    }
+}
+
+export function deleteMessage(deleteList) {
+
+    const url = `http://localhost:8080/api/v1/messages`;
+
+    return async function (dispatch, getState) {
+        const result = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": '*/*'
+            },
+            body: JSON.stringify(deleteList)
+        }).then(res => res.json());
+
+        if (result.status === 204) {
+            alert(result.message);
+            window.location.reload();
         }
     }
 

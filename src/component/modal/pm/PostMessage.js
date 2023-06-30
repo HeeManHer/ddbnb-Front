@@ -1,45 +1,72 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { getMessageDetail } from "../../../api/messageAPI";
+import StarPoint from "../../item/StarPoint";
+
 function PostMessage() {
-    const value = '안녕하세요 허희만 입니다.\n이것은 쪽지 테스트 입니다.'
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { messageId } = useParams();
+    const message = useSelector(state => state.messageReducer);
+    const [category, setCategory] = useState('receive');
+    const [member, setMember] = useState({})
+
+    useEffect(
+        () => {
+            dispatch(getMessageDetail(messageId));
+        },
+        []
+    );
+
+    useEffect(
+        () => {
+            const token = JSON.parse(window.localStorage.getItem('accessToken'));
+            if (message.who?.memberId == token.memberId) {
+                setCategory('send');
+                setMember(message.whom);
+            } else {
+                setCategory('receive');
+                setMember(message.who);
+            }
+        },
+        [message]
+    );
 
     const openModal = () => {
-        // window.close();
-
-        const modal_width = '500';
-        const modal_height = '500';
-
-        const window_width = (window.screen.width - modal_width) / 2;
-        const window_height = (window.screen.height - modal_height) / 2;
-
-        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
-
-        window.open('/sendMessage', 'message', option);
+        window.open(`/sendMessage/${member?.memberId}`, 'message');
     }
-
+    console.log(message.who)
     return (
-        <div className="postMessage back-color dis-flex flex-column justify-between">
+        <div className="postMessage center back-color dis-flex flex-column justify-between">
             <div className='recipientInfo dis-flex align-center justify-between'>
                 <div className="userInfo dis-flex align-center flex-column">
-                    <img src="/img/댕댕이.png" />
-                    <div>기묭민</div>
+                    <img src={member?.profileImage} />
+                    <div>{member?.nickname}</div>
                 </div>
                 <div className='dis-flex align-center recordInfo'>
                     <div>
                         <div className="dis-flex align-center justify-between ">
-                            <div>견주 모집 기록</div>
-                            <div>{1}회</div>
+                            <StarPoint starPoint={member?.starPoint} />
+                            <div>{member?.starPoint}점</div>
                         </div>
                         <div className="dis-flex align-center justify-between ">
-                            <div>펫시터 참여 기록</div>
-                            <div>{2}회</div>
+                            <div>펫시터 경력</div>
+                            <div>{member?.petSitterCareer}</div>
                         </div>
                     </div>
                     <div className='messageBtn'>
-                        <button className="back-color" onClick={openModal}>답장</button>
-                        <button className="back-color" onClick={() => window.close()}>취소</button>
+                        {category == 'receive' ?
+                            <button className="back-color" onClick={openModal}>답장</button> :
+                            <button style={{ backgroundColor: 'white' }}></button>
+                        }
+                        <button className="back-color" onClick={() => navigate('/postMessageList')}>닫기</button>
                     </div>
                 </div>
             </div>
-            <textarea className='message' value={value} placeholder="내용을 입력해 주세요." readOnly />
+            <textarea className='message' value={message.msgContent} />
         </div>
     )
 }

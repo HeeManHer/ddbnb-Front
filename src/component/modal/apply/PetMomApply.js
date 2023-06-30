@@ -3,22 +3,24 @@ import "../../../css/modaltest.css";
 import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
+import { registMomApplicantAPI } from '../../../api/applicantAPI';
 
 
-function PetMomApply() {
-
+function PetMomApply({ boardId }) {
     const dispatch = useDispatch();
 
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
-    const [isOpen, setIsOpen] = useState(false);
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const openModal = () => {
-        setIsOpen(true);
-    };
+    const form = {
+        member: { memberId: token.memberId },
+        boardId: boardId
+    }
 
-    const closeModal = () => {
+    const commit = () => {
+        dispatch(registMomApplicantAPI(form));
+    }
+
+    const rollback = () => {
         dispatch({ type: CLOSE_MODAL });
     };
 
@@ -38,10 +40,10 @@ function PetMomApply() {
 
 
                 <div className="button2list">
-                    <button className="modalsize-button2" onClick={closeModal}>
+                    <button className="modalsize-button2" onClick={commit}>
                         예
                     </button>
-                    <button className="modalsize-button2" onClick={closeModal}>
+                    <button className="modalsize-button2" onClick={rollback}>
                         아니요
                     </button>
                 </div>

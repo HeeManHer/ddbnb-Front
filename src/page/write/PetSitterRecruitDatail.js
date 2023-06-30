@@ -22,7 +22,7 @@ function PetSitterRecruitDatail() {
 
 
 
-    const { declaration: showModal, petsittercollectcancle, petsitterapply, petsittercollectfinish, petsitterreport } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, petsitterApply, petsittercollectfinish, petsitterreport } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModals = () => {
@@ -84,13 +84,13 @@ function PetSitterRecruitDatail() {
     // console.log(boardId);
 
     const onClickhandle = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집 취소"}));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, {sitterStatus:"모집 마감"}));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 마감" }));
         closeModal();
         window.location.reload();
     }
@@ -211,8 +211,8 @@ function PetSitterRecruitDatail() {
                     </Modal>
 
                     <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
-                    <Modal className="modal-backdrop" isOpen={petsitterapply} onRequestClose={closeModal}>
-                        <PetSitterApply />
+                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                        <PetSitterApply boardId={boardId} />
                     </Modal>
 
                     <button className="wantbtn2"

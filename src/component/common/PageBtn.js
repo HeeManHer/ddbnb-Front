@@ -27,7 +27,7 @@ function PageBtn({ pageInfo }) {
     }
 
     return (
-        <div className="pageBtnBox dis-flex align-center">
+        <div className="pageBtnBox">
             <button className="shiftBtn" onClick={prevPage}>&lt;</button>
             {pageAmount.map(page => (
                 <button

@@ -18,7 +18,8 @@ function MyPageMain() {
     const member = useSelector(state => state.memberReducer);
 
     useEffect(() => {
-        dispatch(getCurrentMember());
+        const token = JSON.parse(window.localStorage.getItem('accessToken'));
+        dispatch(getCurrentMember(token.memberId));
     }, []
     );
     const handleDelete = () => {
@@ -86,7 +87,7 @@ function MyPageMain() {
                         <article>
                             <div className={style.profileSub}>
                                 <div>성별</div>
-                                <h3 style={{ fontSize:"1.10em"}}> {genderSet()}</h3>
+                                <h3 style={{ fontSize: "1.10em" }}> {genderSet()}</h3>
                             </div>
 
                             <div className={style.profileSub}>

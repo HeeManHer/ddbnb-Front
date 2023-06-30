@@ -1,16 +1,8 @@
+import StarPoint from "./StarPoint";
+
 function ApplicantBox({ user }) {
 
-    const starPoint = [];
-
-    starPoint.length = 5;
-
-    for (let i = 0; i < user.point; i++) {
-        starPoint.push("★");
-    }
-    for (let i = 4; i >= user.point; i--) {
-        starPoint.push("☆");
-    }
-
+    
     const openModal = () => {
         // window.close();
 
@@ -39,16 +31,16 @@ function ApplicantBox({ user }) {
             </div>
 
             <div className="evaluation" >
-                <div className="record">
+                {/* <div className="record">
                     <div className="dis-flex align-center">펫시터 참여 기록</div>
                     <span>{user.record}회</span>
                 </div>
                 <div className="record">
                     <div className="dis-flex align-center">펫맘 참여 기록</div>
                     <span>{user.record}회</span>
-                </div>
+                </div> */}
                 <div className="point">
-                    <div className="star">{starPoint}</div>
+                    <StarPoint starPoint={user.point} />
                     <span>({user.point}점)</span>
                 </div>
             </div>
