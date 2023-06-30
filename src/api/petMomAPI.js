@@ -114,7 +114,7 @@ export const putMypetMomCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://localhost:8080/api/v1/list/${token.boardId}/collectcancle`;
+    const requestURL = `http://localhost:8080/api/v1/petmom/list/${boardId}/status`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
