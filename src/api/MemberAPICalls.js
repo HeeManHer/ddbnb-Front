@@ -57,11 +57,10 @@ export const getUpdateMember = (memberId, form) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
             headers: {
-                "Content-Type": 'application/json',
                 "Accept": '*/*',
                 "Auth": token
             },
-            body: JSON.stringify(form) // 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
+            body: form// 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
         }).then(res => res.json());
         console.log(result);
 

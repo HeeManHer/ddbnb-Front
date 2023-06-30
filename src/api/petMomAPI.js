@@ -4,16 +4,31 @@ import { GET_PETMOM } from "../modules/petMom";
 
 
 //펫맘 리스트 조회
-export const getPetMomList = (currentPage) => {
+export const getPetMomList = (currentPage, searchValue) => {
 
-    let URL;
+    let URL = `http://localhost:8080/api/v1/petmom/list?page=${currentPage}`;
 
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/petmom/list?page=${currentPage}`;
-    } else {
-        URL = 'http://localhost:8080/api/v1/petmom/list';
+    if (searchValue?.location != '') {
+        console.log(searchValue?.location)
+        URL += `&location=${searchValue?.location}`;
     }
 
+    if (searchValue?.petYN != '') {
+        URL += `&petYN=${searchValue?.petYN}`;
+    }
+
+    if (searchValue?.startDate != '') {
+        URL += `&startDate=${searchValue?.startDate}`;
+    }
+
+    if (searchValue?.endDate != '') {
+        URL += `&endDate=${searchValue?.endDate}`;
+    }
+
+    if (searchValue?.otherCondition != '') {
+        URL += `&otherCondition=${searchValue?.otherCondition}`;
+    }
+    console.log(URL);
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
@@ -114,7 +129,7 @@ export const putMypetMomCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://localhost:8080/api/v1/list/${token.boardId}/collectcancle`;
+    const requestURL = `http://localhost:8080/api/v1/petmom/list/${boardId}/status`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',

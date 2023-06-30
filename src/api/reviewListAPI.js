@@ -14,7 +14,7 @@ export function getReviewList(page) {
 
 
 
-// 전체 리뷰 리스트 조회
+//내 리뷰 리스트 조회
 export const callReviewListAPI = ({ currentPage }) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 

@@ -73,7 +73,7 @@ function MyPageMain() {
                 <section className={style.profileMain}>
                     {/* 왼쪽프로필 */}
                     <article className={style.profileBoard}>
-                        <div className={style.image}>프로필 사진</div>
+                        <img src={member?.profileImage} alt='profile' className={style.image}/>
                         <div style={{ fontWeight: 'bold' }}>
                             {member.nickname}
                         </div>

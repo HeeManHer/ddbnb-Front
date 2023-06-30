@@ -20,16 +20,115 @@
 }
 
 .category div:nth-child(1) {
-    flex-grow: 1.5;
+    width: 10%;
 }
 .category div:nth-child(2) {
-    flex-grow: 2.5;
+    width: 17%;
 }
 
 .category div:nth-child(3) {
-    flex-grow: 1.5;
+    width: 13%;
 }
 
 .category div:nth-child(4) {
-    flex-grow: 6.5;
+    width: 49%;
+}
+.category div:nth-child(5) {
+    width: 11%
+}
+.careerTitle {
+    width: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #2d2d2d;
+    /* box-shadow: 5px 5px 5px -5px #8d8d8d; */
+}
+
+.careerTitle button {
+    width :130px;
+    height: 35px;
+    /* border: none; */
+    background-color: white ;
+    font-weight: bold;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+.careerTitle button:focus,
+.careerTitle button:active {
+    background-color: #fab7a2;
+}
+
+.careerTitle button:nth-child(1){
+    margin-left: 140px;
+}
+.category2 {
+    margin-inline: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 14px;
+    /* margin-top: 5px; */
+    height: 35px;
+    border-bottom: 1px solid #2d2d2d;
+    color: #2d2d2d;
+    font-weight: bold;
+
+}.category2 div:nth-child(1) {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.category2 div:nth-child(2) {
+    width: 17%;
+}
+
+.category2 div:nth-child(3) {
+    width: 13%;
+    /* background-color: #2d2d2d; */
+}
+.category2 div:nth-child(4) {
+    width: 49%;
+    
+}
+.category2 div:nth-child(5) {
+    width: 11%;
+}
+
+.category2 button{
+    height: 30px;
+    width: 80px;
+    background-color: white;
+    border: 1px solid #8d8d8d;
+    border-radius: 5px;
+}
+
+.category2 section{
+    /* border: 1px solid #2d2d2d; */
+    width: 60px;
+    height: 25px;
+    border-radius: 3px;
+    background-color:#FAB7A2 ;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.sectionN{
+    /* border: 1px solid #2d2d2d; */
+    width: 60px;
+    height: 25px;
+    border-radius: 3px;
+    background-color:#8d8d8d ;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
 }
