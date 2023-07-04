@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getApplicantsList } from "../../../api/memberAPI"
+// import { getApplicantsList } from "../../../api/memberAPI"
 import ApplicantBox from "../../item/ApplicantBox";
 import "../../../css/applicant.css";
 import PageBtn from "../../common/PageBtn";
@@ -14,7 +14,7 @@ function ApplicantsList() {
 
     useEffect(
         () => {
-            dispatch(getApplicantsList(currentPage));
+            // dispatch(getApplicantsList(currentPage));
         },
         [currentPage]
     );

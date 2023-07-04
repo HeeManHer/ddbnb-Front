@@ -216,9 +216,8 @@ function PetMomModify() {
             </div>
             <hr className="line"></hr>
 
-            <div className="petsitterrecruitwrite">게시판
-                <h2>펫맘 모집 게시판</h2>
-            </div>
+
+            <h2>펫맘 모집 게시판</h2>
 
             <hr className="line"></hr>
             <div className="inputname">
@@ -272,7 +271,8 @@ function PetMomModify() {
             <hr className="line"></hr>
             <div>
                 기간
-                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" defaultValue={petmomdetail.startDate} />~<input className="dateselect2" type="date" name="endDate" defaultValue={petmomdetail.endDate} onChange={onChangeHandler} />
+                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" defaultValue={petmomdetail.startDate} /><div className="wave22">~</div><input className="dateselect2" type="date" name="endDate" defaultValue={petmomdetail.endDate} onChange={onChangeHandler} />
+
                 1박
                 <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" defaultValue={petmomdetail.dateRate} placeholder="사례금을 작성해 주세요." />
                 시간당

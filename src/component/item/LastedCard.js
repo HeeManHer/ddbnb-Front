@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 function LastedCard({ category, item }) {
 
     const navigate = useNavigate();
+
+    const url = item.boardImage && item.boardImage[0];
+
     return (
         <div className="lastedCard" onClick={() => navigate(`/${category}/${item.boardId}`)}>
             <div className="lastedCard-inner card center-top">
-                <img src={item.img} alt="개 사진" />
+                <img src={url?.imageUrl} alt="개 사진" height='50%' />
                 <div>{item.boardTitle}</div>
                 <div className="dis-flex align-center date">
                     <img src="/img/Calendar.png" alt="달력 사진" />

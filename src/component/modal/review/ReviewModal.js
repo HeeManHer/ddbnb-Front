@@ -145,7 +145,7 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                         accept='image/jpg,image/png,image/jpeg,image/gif'
                         style={{ display: "none" }}
                         onChange={handleImageSelect}
-                    // disabled={images.length === 4} // 이미지 개수가 4개에 도달하면 비활성화
+                        disabled={image.length === 4} // 이미지 개수가 4개에 도달하면 비활성화
                     />
                     <label className="yellow reviewmodal-imgbtn" htmlFor="imageUpload">
                         +

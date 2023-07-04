@@ -101,7 +101,7 @@ function ReviseProfilePage() {
     return (
         <div className={style.profileContainer}>
             <div>
-                <h2>{SocialIcon()} 프로필등록  </h2>
+                <h2>{SocialIcon()} 프로필 수정  </h2>
                 <hr />
             </div>
             <div className={style.profileBox}>

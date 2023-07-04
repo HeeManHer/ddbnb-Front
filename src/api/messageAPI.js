@@ -2,7 +2,7 @@ import { SET_MESSAGELIST } from '../modules/message';
 
 export function getMessageList(page, category, memberId) {
 
-    const url = `http://localhost:8080/api/v1/messages/${category}/${memberId}?page=${page}`;
+    const url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/messages/${category}/${memberId}?page=${page}`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -20,7 +20,7 @@ export function getMessageList(page, category, memberId) {
 }
 export function getMessageDetail(messageId) {
 
-    const url = `http://localhost:8080/api/v1/message/${messageId}`;
+    const url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/message/${messageId}`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -37,8 +37,7 @@ export function getMessageDetail(messageId) {
     }
 }
 export function registMessageDetail(form) {
-    console.log(form);
-    const url = `http://localhost:8080/api/v1/message`;
+    const url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/message`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -59,7 +58,7 @@ export function registMessageDetail(form) {
 
 export function deleteMessage(deleteList) {
 
-    const url = `http://localhost:8080/api/v1/messages`;
+    const url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/messages`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {

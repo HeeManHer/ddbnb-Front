@@ -168,14 +168,9 @@ function PetSitterModify() {
                 <div className="littlebitsmall">
 
                     <div>
-                        <div className="petsitterrecruitwrite">게시판
-                            <select className="firstselect">
-                                <option value="">펫시터 모집 게시판</option>
-                            </select>
-                        </div>
+                        <h2>펫시터 모집 게시판</h2>
                         <hr className="line"></hr>
                     </div>
-
                     <div className="inputname">
                         <div>
                             제목
@@ -189,7 +184,7 @@ function PetSitterModify() {
 
                     <div>
                         지역
-                        <select className="firstselect" onChange={onChangeSidoHandler} id="sido" readOnly value={location.sido}>
+                        <select className="firstselect1" onChange={onChangeSidoHandler} id="sido" readOnly value={location.sido}>
                             <option value="">시/도 </option>
                             <option value="서울">서울특별시</option>
                             <option value="부산">부산광역시</option>
@@ -211,7 +206,7 @@ function PetSitterModify() {
                         </select>
 
                         <div className="sidogu">
-                            <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly value={location.sigungu}>
+                            <select className="secondselect1" id="sigungu" onChange={onChangeSidoHandler} readOnly value={location.sigungu}>
                                 <option value="">시 / 군 / 구</option>
                                 {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                             </select>
@@ -229,14 +224,16 @@ function PetSitterModify() {
 
                     <hr className="line"></hr>
 
-                    <div>
+                    <div className="moneydate">
                         기간
-                        <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} />~<input className="dateselect2" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
-                        사례금
+                        <input className="dateselect3" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} /><div className="wave1">~</div><input className="dateselect4" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
+                        <div className="givemoney">
+                            사례금
+                        </div>
                         <input className="moneygive" type="text" onChange={onChangeHandler} name="rate" value={petsdetail.rate} placeholder="사례금을 작성해 주세요." />
                     </div>
 
-                    <hr className="line"></hr>
+                    <hr className="line123"></hr>
 
                     <div className="imgbtndiv">
                         <div className="image-container">
@@ -257,7 +254,7 @@ function PetSitterModify() {
                             </div>
                         </div>
 
-                        <div >
+                        <div className="abc123">
                             <div className="abc">
                                 <button className="petsitterrecruitbtn">이름</button>
                                 <input className="cruittext" type="text" onChange={onChangeHandler} name="petName" defaultValue={petsdetail.petName} />
@@ -278,14 +275,14 @@ function PetSitterModify() {
 
                             <div className="gender">
                                 성별
-                                <select className="firstselect1" onChange={onChangeHandler} name="petGender" defaultValue={petsdetail.petGender}>
+                                <select className="firstselect5" onChange={onChangeHandler} name="petGender" defaultValue={petsdetail.petGender}>
                                     <option value="" >남/여</option>
                                     <option value="남">남</option>
                                     <option value="여">여</option>
                                     <hr className="line"></hr>
                                 </select>
                                 크기
-                                <select className="secondselect1" onChange={onChangeHandler} name="petSize" defaultValue={petsdetail.petSize}>
+                                <select className="secondselect2" onChange={onChangeHandler} name="petSize" defaultValue={petsdetail.petSize}>
                                     <option value="">소/중/대   </option>
                                     <option value="소형">소형</option>
                                     <option value="중형">중형</option>
@@ -296,7 +293,7 @@ function PetSitterModify() {
                             </div>
                             <div className="acb">
                                 <button className="significantbtn">특이사항</button>
-                                <input className="significant" type="text" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.applicant} />
+                                <input className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.applicant} />
                             </div>
                         </div>
                     </div>
@@ -309,7 +306,7 @@ function PetSitterModify() {
                     </textarea>
                 </div>
             </div>
-        </div>
+        </div >
 
 
 

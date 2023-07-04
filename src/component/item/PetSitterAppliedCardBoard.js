@@ -1,6 +1,5 @@
 import style from './AppliedCardBoard.module.css';
-import { useEffect, useState } from "react";
-import MyCardList from "../../component/list/AppliedList";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { Link } from 'react-router-dom';
@@ -15,11 +14,10 @@ function PetSitterAppliedCardBoard() {
     const { data: applys, pageInfo } = apply;
 
     useEffect(() => {
-        dispatch(getMyApplyListAPI({ currentPage: currentPage }));
+        dispatch(getMyApplyListAPI(currentPage));
 
     }, [currentPage]);
 
-    // console.log(apply);
     return (
         <>
             <section className={style.section}>
@@ -34,7 +32,7 @@ function PetSitterAppliedCardBoard() {
 
 
             {Array.isArray(applys) && applys.map((apply, index) =>
-                <Link to={`/petsitter/${apply.boardId.sitterStatus}`} style={{ textDecoration: 'none', color: '#202020' }} key = {index}>
+                <Link to={`/petsitter/${apply.boardId.sitterStatus}`} style={{ textDecoration: 'none', color: '#202020' }} key={index}>
                     <section className={`${style.category2} ${style.flex_center}`}>
                         <div>
                             <section style={apply.sitterStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>

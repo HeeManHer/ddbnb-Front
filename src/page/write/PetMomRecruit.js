@@ -24,6 +24,7 @@ function PetMomRecruit() {
 
     const [form, setform] = useState({
         boardTitle: '',
+        boardCategory: '펫맘 모집 게시판',
         location: '',
         care: '',
         startDate: '',
@@ -35,7 +36,7 @@ function PetMomRecruit() {
         petYN: '',
         signficant: '',
         request: '',
-        member: { memberId: token.memberId },
+        member: { memberId: token.memberId }
     });
 
 
@@ -101,8 +102,33 @@ function PetMomRecruit() {
 
     console.log(form)
 
+    const [image, setImage] = useState();
+    const [imagesUrl, setImagesUrl] = useState([]);
     const [images, setImages] = useState([]);
-    const [images2, setImages2] = useState([]);
+
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        setImage(selectedImage); // 선택된 이미지를 큰 이미지 배열에 저장
+    };
+
+    useEffect(
+        () => {
+            // 이미지 업로드시 미리보기 세팅
+            if (image) {
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if (result) {
+                        setImagesUrl([result, ...imagesUrl]);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+                if (images.length < 4) {
+                    setImages([...images, image]);
+                }
+            }
+        }, [image]
+    );
 
     const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
@@ -145,7 +171,18 @@ function PetMomRecruit() {
 
 
     const registPetMom = () => {
-        dispatch(postPetMomPage(form));
+
+        const formData = new FormData();
+
+        formData.append('newPetMom', new Blob([JSON.stringify(form)], { type: "application/json" }))
+
+        if (images) {
+            for (let index in images) {
+                formData.append("image", images[index])
+            }
+        }
+
+        dispatch(postPetMomPage(formData));
 
     };
 
@@ -163,15 +200,6 @@ function PetMomRecruit() {
     //     setInputmoney1(selectedValue); // inputmoney1 업데이트
     // };
 
-    const handleImageSelect = (event) => {
-        const selectedImage = event.target.files[0];
-        if (images.length < 1) {
-            setImages([selectedImage]); // 선택된 이미지를 큰 이미지 배열에 저장
-        } else if (images2.length < 3) {
-            setImages2((prevImages) => [...prevImages, selectedImage]); // 선택된 이미지를 작은 이미지 배열에 추가
-        }
-    };
-
     return (
         <div className="height-auto">
             <div className="petsitterrecruitcontainer">
@@ -181,7 +209,6 @@ function PetMomRecruit() {
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
-
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                         <RegistPost regist={registPetMom} />
                     </Modal>
@@ -217,7 +244,7 @@ function PetMomRecruit() {
 
             <div>
                 지역
-                <select className="firstselect" onChange={onChangeSidoHandler} id="sido" readOnly>
+                <select className="firstselect1" onChange={onChangeSidoHandler} id="sido" readOnly>
                     <option value="">시/도</option>
                     <option value="서울">서울특별시</option>
                     <option value="부산">부산광역시</option>
@@ -239,7 +266,7 @@ function PetMomRecruit() {
                 </select>
 
                 <div className="sidogu">
-                    <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+                    <select className="secondselect1" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                         <option value="">시 / 군 / 구</option>
                         {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                     </select>
@@ -255,17 +282,22 @@ function PetMomRecruit() {
             </div>
 
             <hr className="line"></hr>
-            <div>
+            <div className="datemoneygive">
                 기간
-                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" value={form.startDate} />~<input className="dateselect2" type="date" name="endDate" value={form.endDate} onChange={onChangeHandler} />
-                1박
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" value={form.dateRate} placeholder="사례금을 작성해 주세요." />
-                시간당
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="hourlyRate" value={form.hourlyRate} placeholder="사례금을 작성해 주세요." />
+                <input className="dateselect5" type="date" onChange={onChangeHandler} name="startDate" value={form.startDate} /><div className="wave2
+                ">~</div><input className="dateselect6" type="date" name="endDate" value={form.endDate} onChange={onChangeHandler} />
+                <div className="park">
+                    1박
+                </div>
+                <input className="moneygive12" type="text" onChange={onChangeHandler} name="hourlyRate" value={form.hourlyRate} placeholder="사례금을 작성해 주세요." />
+                <div className="time">
+                    시간당
+                </div>
+                <input className="moneygive11" type="text" onChange={onChangeHandler} name="dateRate" value={form.dateRate} placeholder="사례금을 작성해 주세요." />
             </div>
 
 
-            <hr className="line"></hr>
+            <hr className="line10000"></hr>
             <div className="formsize">
                 <div className="doginfo-petmom">
                     <div>
@@ -275,31 +307,30 @@ function PetMomRecruit() {
                             <input
                                 type="file"
                                 id="imageUpload"
-                                accept="image/*"
+                                accept='image/jpg,image/png,image/jpeg,image/gif'
                                 style={{ display: "none" }}
                                 onChange={handleImageSelect}
-                                disabled={images.length === 1 && images2.length === 3} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
+                                disabled={images.length === 4} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
                             />
-                            <label htmlFor="imageUpload" className="plusbtn">
+                            <label htmlFor="imageUpload" className="plusbtn" style={images.length >= 4 ? { display: 'none' } : null}>
                                 +
                             </label>
 
                             {/* 이미지 미리보기 */}
                             <div className="image-preview-container">
-                                {images.map((image, index) => (
-                                    <img
-                                        key={index}
-                                        src={URL.createObjectURL(image)}
-                                        alt={`첨부 이미지 ${index}`}
-                                        className="reviewmodal-image1"
-                                    />
-                                ))}
+                                <img
+                                    key='0'
+                                    src={imagesUrl[0]}
+                                    alt='첨부 이미지'
+                                    className="reviewmodal-image1"
+                                    style={images.length == 0 ? { display: 'none' } : null}
+                                />
                             </div>
                             <div className="image-preview-container2">
-                                {images2.map((image2, index) => (
+                                {imagesUrl.map((url, index) => index !== 0 && (
                                     <img
                                         key={index}
-                                        src={URL.createObjectURL(image2)}
+                                        src={url}
                                         alt={`첨부 이미지 ${index + 1}`}
                                         className="reviewmodal-image"
                                     />
@@ -310,32 +341,34 @@ function PetMomRecruit() {
                 </div>
                 <div className="momplz">
                     <div>
+                        <div className="livecare">
 
-                        <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
-                        <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
-                        <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
-
-
-
-                        <hr className="line2"></hr>
-
-                        <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
-                        <hr className="line2"></hr>
-                        <button className={`choice-box2 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
-                        <button className={`choice-box2 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
+                            <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
+                            <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
+                            <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
 
 
-                        <hr className="line2"></hr>
+
+                            <hr className="line2"></hr>
+
+                            <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
+                            <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
+                            <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
+                            <hr className="line2"></hr>
+                            <button className={`choice-box3 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
+                            <button className={`choice-box3 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
+                            <hr className="line2"></hr>
+
+                        </div>
+
                         <div className="dateAndWriter">
-                            <h2>특이사항</h2>
-                            <input className="significant" type="text" onChange={onChangeHandler} name="signficant" />
+                            <h2 className="signficanttext">특이사항</h2>
+                            <input className="significantmom" type="text" onChange={onChangeHandler} name="signficant" />
 
                         </div>
                     </div>
-                    <h2> 강아지를 맡아줄게요</h2>
-                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" />
+                    <h2 className="caredog"> 강아지를 맡아줄게요</h2>
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite333" onChange={onChangeHandler} name="request" />
                 </div>
             </div>
             <div>
