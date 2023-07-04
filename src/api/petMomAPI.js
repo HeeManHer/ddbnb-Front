@@ -1,4 +1,3 @@
-import { POST_PETMOM, PUT_PETMOM, SET_PETMOM } from "../modules/petMom";
 import { GET_PETMOM, PUT_PETMOMDETAIL, PUT_PETMOM } from "../modules/petMom";
 
 //펫맘 리스트 조회
@@ -45,7 +44,7 @@ export const getPetMomList = (currentPage, searchValue) => {
 }
 
 export function putPetMomPage(boardId, form) {
-  
+
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/modify`;
 
     return async function (dispatch, getState) {

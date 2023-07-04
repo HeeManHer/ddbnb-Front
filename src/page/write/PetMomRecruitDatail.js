@@ -8,7 +8,6 @@ import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
-import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
 import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFinish';
 import { getPetMomDetail } from '../../api/petDetailAPI';

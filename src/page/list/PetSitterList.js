@@ -34,12 +34,9 @@ function PetSitterList() {
         endDate: '',
 
     });
+    console.log(searchValue)
 
-    const handleSearch = () => {
-        dispatch(callPetsitterListAPI(currentPage, searchValue));
-    };
-
-    console.log(petsitterList);
+    // console.log(petsitterList);
     useEffect(
         () => {
             dispatch(callPetsitterListAPI(currentPage, searchValue));
@@ -58,7 +55,7 @@ function PetSitterList() {
         SIDO: '',
         SIGUNGU: ''
     });
-
+    console.log(location)
     const onChangeSidoHandler = (e) => {
         setSigList(searchSig(e.target.value));
         setLocation({

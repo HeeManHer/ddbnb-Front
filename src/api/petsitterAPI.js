@@ -110,7 +110,7 @@ export const putMypetSitterCancle = (boardId, form) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}/status`;
-  
+
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
