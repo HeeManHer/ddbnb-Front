@@ -24,9 +24,10 @@ function Sigoon({ sig }) {
 
 
 function PetSitterRecruit() {
-
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const [form, setForm] = useState({
         boardTitle: '',
+        boardCategory: '펫시터 모집 게시판',
         location: '',
         care: '',
         startDate: '',
@@ -38,7 +39,8 @@ function PetSitterRecruit() {
         petGender: '',
         petSize: '',
         signficant: '',
-        request: ''
+        request: '',
+        member: { memberId: token.memberId }
     });
 
     // 시도 선택시 시군구 리스트 담음
@@ -75,7 +77,6 @@ function PetSitterRecruit() {
             [e.target.name]: e.target.value
         });
     };
-    console.log(form);
 
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -99,26 +100,48 @@ function PetSitterRecruit() {
 
 
     const regpetsitter = () => {
-        console.log("regpetsitter");
-        dispatch(registPetsitterAPI(form));
 
-    };
+        const formData = new FormData();
 
+        formData.append('newPetSitter', new Blob([JSON.stringify(form)], { type: "application/json" }))
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                setSelectedImage(reader.result);
-            };
-
-            reader.readAsDataURL(file);
+        if (images) {
+            for (let index in images) {
+                formData.append("image", images[index])
+            }
         }
+        dispatch(registPetsitterAPI(formData));
+
     };
 
+    const [image, setImage] = useState();
+    const [imagesUrl, setImagesUrl] = useState([]);
+    const [images, setImages] = useState([]);
+
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        setImage(selectedImage); // 선택된 이미지를 큰 이미지 배열에 저장
+    };
+
+    useEffect(
+        () => {
+            // 이미지 업로드시 미리보기 세팅
+            if (image) {
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if (result) {
+                        setImagesUrl([result, ...imagesUrl]);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+                if (images.length < 4) {
+                    setImages([...images, image]);
+                }
+            }
+        }, [image]
+    );
+    console.log(images);
     return (
         <div className="petsitterrecruitcontainer">
 
@@ -219,23 +242,27 @@ function PetSitterRecruit() {
 
                 <div className="imgbtndiv">
                     <div className="image-container">
-                        {selectedImage && (
-                            <img
-                                src={selectedImage}
-                                alt="첨부된 이미지"
-                                className="attached-image"
-                            />
-                        )}
                         <div>
                             <input
-                                id="image-upload"
                                 type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
+                                id="imageUpload"
+                                accept='image/jpg,image/png,image/jpeg,image/gif'
+                                onChange={handleImageSelect}
+                                disabled={images.length === 4} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
                             />
-                        </div>
+                          </div>
+                          <div className="image-preview-container2">
+                              {imagesUrl.map((url, index) => index !== 0 && (
+                                  <img
+                                      key={index}
+                                      src={url}
+                                      alt={`첨부 이미지 ${index + 1}`}
+                                      className="attached-image"
+                                  />
+                              ))}
+                          </div>
                     </div>
-
+                    
                     <div className="abc123">
                         <div className="abc">
                             <button className="petsitterrecruitbtn">이름</button>
@@ -261,7 +288,6 @@ function PetSitterRecruit() {
                                 <option value="" >남/여</option>
                                 <option value="남">남</option>
                                 <option value="여">여</option>
-                                <hr className="line"></hr>
                             </select>
                             크기
                             <select className="secondselect2" onChange={onChangeHandler} name="petSize" defaultValue={form.petSize}>
@@ -269,7 +295,6 @@ function PetSitterRecruit() {
                                 <option value="소형">소형</option>
                                 <option value="중형">중형</option>
                                 <option value="대형">대형</option>
-                                <hr className="line"></hr>
                             </select>
                             <hr className="line"></hr>
                         </div>

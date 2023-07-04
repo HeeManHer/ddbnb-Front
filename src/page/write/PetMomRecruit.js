@@ -20,9 +20,10 @@ function Sigoon({ sig }) {
 }
 
 function PetMomRecruit() {
-
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const [form, setform] = useState({
         boardTitle: '',
+        boardCategory: '펫맘 모집 게시판',
         location: '',
         care: '',
         startDate: '',
@@ -34,6 +35,7 @@ function PetMomRecruit() {
         petYN: '',
         signficant: '',
         request: '',
+        member: { memberId: token.memberId }
     });
 
 
@@ -99,8 +101,33 @@ function PetMomRecruit() {
 
     console.log(form)
 
+    const [image, setImage] = useState();
+    const [imagesUrl, setImagesUrl] = useState([]);
     const [images, setImages] = useState([]);
-    const [images2, setImages2] = useState([]);
+
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        setImage(selectedImage); // 선택된 이미지를 큰 이미지 배열에 저장
+    };
+
+    useEffect(
+        () => {
+            // 이미지 업로드시 미리보기 세팅
+            if (image) {
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if (result) {
+                        setImagesUrl([result, ...imagesUrl]);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+                if (images.length < 4) {
+                    setImages([...images, image]);
+                }
+            }
+        }, [image]
+    );
 
     const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
@@ -143,7 +170,18 @@ function PetMomRecruit() {
 
 
     const registPetMom = () => {
-        dispatch(postPetMomPage(form));
+
+        const formData = new FormData();
+
+        formData.append('newPetMom', new Blob([JSON.stringify(form)], { type: "application/json" }))
+
+        if (images) {
+            for (let index in images) {
+                formData.append("image", images[index])
+            }
+        }
+
+        dispatch(postPetMomPage(formData));
 
     };
 
@@ -159,15 +197,6 @@ function PetMomRecruit() {
         const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
 
         setInputmoney1(selectedValue); // inputmoney1 업데이트
-    };
-
-    const handleImageSelect = (event) => {
-        const selectedImage = event.target.files[0];
-        if (images.length < 1) {
-            setImages([selectedImage]); // 선택된 이미지를 큰 이미지 배열에 저장
-        } else if (images2.length < 3) {
-            setImages2((prevImages) => [...prevImages, selectedImage]); // 선택된 이미지를 작은 이미지 배열에 추가
-        }
     };
 
     return (
@@ -277,31 +306,30 @@ function PetMomRecruit() {
                             <input
                                 type="file"
                                 id="imageUpload"
-                                accept="image/*"
+                                accept='image/jpg,image/png,image/jpeg,image/gif'
                                 style={{ display: "none" }}
                                 onChange={handleImageSelect}
-                                disabled={images.length === 1 && images2.length === 3} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
+                                disabled={images.length === 4} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
                             />
-                            <label htmlFor="imageUpload" className="plusbtn">
+                            <label htmlFor="imageUpload" className="plusbtn" style={images.length >= 4 ? { display: 'none' } : null}>
                                 +
                             </label>
 
                             {/* 이미지 미리보기 */}
                             <div className="image-preview-container">
-                                {images.map((image, index) => (
-                                    <img
-                                        key={index}
-                                        src={URL.createObjectURL(image)}
-                                        alt={`첨부 이미지 ${index}`}
-                                        className="reviewmodal-image1"
-                                    />
-                                ))}
+                                <img
+                                    key='0'
+                                    src={imagesUrl[0]}
+                                    alt='첨부 이미지'
+                                    className="reviewmodal-image1"
+                                    style={images.length == 0 ? { display: 'none' } : null}
+                                />
                             </div>
                             <div className="image-preview-container2">
-                                {images2.map((image2, index) => (
+                                {imagesUrl.map((url, index) => index !== 0 && (
                                     <img
                                         key={index}
-                                        src={URL.createObjectURL(image2)}
+                                        src={url}
                                         alt={`첨부 이미지 ${index + 1}`}
                                         className="reviewmodal-image"
                                     />
