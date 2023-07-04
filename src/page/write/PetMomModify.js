@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
-import { putPetMomPage } from "../../api/petMomAPI";
+import { putPetMomPage, getPetMomList } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
+import { useParams } from "react-router-dom";
 
 function searchSig(sido) {
 
@@ -21,7 +22,10 @@ function Sigoon({ sig }) {
 
 function PetMomModify() {
 
+    const { boardId } = useParams();
+
     const [form, setform] = useState({
+        boardId,
         boardTitle: '',
         location: '',
         care: '',
@@ -36,7 +40,7 @@ function PetMomModify() {
         request: '',
     });
 
-
+    const petmomdetail = useSelector(state => state.petDetailReducer);
 
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
@@ -54,13 +58,13 @@ function PetMomModify() {
             [e.target.id]: e.target.value
         });
     };
-    useEffect(() => {
-        setform({
-            ...form,
-            location: location.sido + " " + location.sigungu
-        })
-    }, [location]
-    )
+
+    const modifypetMom = () => {
+        dispatch(putPetMomPage(boardId, form));
+
+    };
+
+
     const onChangeHandler = (e) => {
 
         setform({
@@ -68,6 +72,18 @@ function PetMomModify() {
             [e.target.name]: e.target.value
         });
     };
+
+
+    useEffect(() => {
+        setform({
+            ...form,
+            location: location.sido + " " + location.sigungu
+        })
+    }, [location]
+    )
+
+
+
     const onChangeHandlerOther = (e) => {
         const value = e.target.value;
         const existingIndex = form.otherCondition.findIndex((item) => item.typeId === value.trim());
@@ -140,17 +156,27 @@ function PetMomModify() {
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
     };
+    useEffect(
+        () => {
+            dispatch(getPetMomList(boardId));
+        },
+        []
+    )
+
+    useEffect(
+        () => {
+            if (petmomdetail && petmomdetail.location) {
+                const arr = petmomdetail.location.split(" ");
+                setLocation({
+                    sido: arr[0],
+                    sigungu: arr[1],
+                })
+                setSigList(searchSig(arr[0]));
+            }
+        }, [petmomdetail]
+    )
 
 
-    // const registPetMom = () => {
-    //     dispatch(postPetMomPage(form));
-
-    // };
-
-
-
-
-    const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
 
     const handleDatetimeChange = (event) => {
         const selectedIndex = event.target.selectedIndex; // 선택된 옵션의 인덱스 가져오기
@@ -158,7 +184,7 @@ function PetMomModify() {
         const selectedValue = selectedOption.value; // 선택된 옵션의 값 가져오기
         const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
 
-        setInputmoney1(selectedValue); // inputmoney1 업데이트
+
     };
 
     const handleImageSelect = (event) => {
@@ -178,21 +204,13 @@ function PetMomModify() {
 
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
-                    <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
-                    <button className="insertwriter">수정</button>
-                    <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        {/* <RegistPost regist={registPetMom} /> */}
-                    </Modal>
-                    <button onClick={() => openModal("canclepost")}>취소</button>
-                    <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
-                        <CancelPost />
-                    </Modal>
+                    <button className="insertwrite" onClick={modifypetMom}>수정</button>
                 </div>
 
                 <div className="yongdate">
 
-                    <h3 className="writeryong">작성자 : {form.nickname}</h3>
-                    <div className="writedate">작성일 : {form.boardDate}
+                    <h3 className="writeryong">작성자 : {petmomdetail?.memberId?.nickname}</h3>
+                    <div className="writedate">작성일 : {petmomdetail.boardDate}
                     </div>
                 </div>
             </div>
@@ -206,8 +224,7 @@ function PetMomModify() {
                 <div>
                     제목
                 </div>
-                <input className="textinput" type="text" value={form.boardTitle} onChange={e => setform({ ...form, boardTitle: e.target.value })} placeholder="제목을 입력해 주세요." ></input>
-                {/* <textarea placeholder="제목을 입력해 주세요." /> */}
+                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
             </div>
             <hr className="line"></hr>
 
@@ -236,7 +253,7 @@ function PetMomModify() {
                 </select>
 
                 <div className="sidogu">
-                    <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+                    <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly alue={location.sigungu}>
                         <option value="">시 / 군 / 구</option>
                         {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                     </select>
@@ -254,11 +271,12 @@ function PetMomModify() {
             <hr className="line"></hr>
             <div>
                 기간
-                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" value={form.startDate} /><div className="wave22">~</div><input className="dateselect2" type="date" name="endDate" value={form.endDate} onChange={onChangeHandler} />
+                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" defaultValue={petmomdetail.startDate} /><div className="wave22">~</div><input className="dateselect2" type="date" name="endDate" defaultValue={petmomdetail.endDate} onChange={onChangeHandler} />
+
                 1박
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" value={form.dateRate} placeholder="사례금을 작성해 주세요." />
+                <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" defaultValue={petmomdetail.dateRate} placeholder="사례금을 작성해 주세요." />
                 시간당
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="hourlyRate" value={form.hourlyRate} placeholder="사례금을 작성해 주세요." />
+                <input className="moneygive" type="text" onChange={onChangeHandler} name="hourlyRate" defaultValue={petmomdetail.hourlyRate} placeholder="사례금을 작성해 주세요." />
             </div>
 
 
@@ -327,12 +345,12 @@ function PetMomModify() {
                         <hr className="line2"></hr>
                         <div className="dateAndWriter">
                             <h2>특이사항</h2>
-                            <input className="significant" type="text" onChange={onChangeHandler} name="signficant" />
+                            <input className="significant" type="text" onChange={onChangeHandler} name="signficant" defaultValue={petmomdetail.signficant} />
 
                         </div>
                     </div>
                     <h2> 강아지를 맡아줄게요</h2>
-                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" />
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" defaultValue={petmomdetail.request} />
                 </div>
             </div>
             <div>

@@ -44,11 +44,11 @@ function PetMomList() {
     const navigate = useNavigate();
 
     const onChangeList = (e) => {
-        setSearchValue({
-            ...searchValue,
-            [e.target.name]: e.target.value
-
-        });
+        const { name, value } = e.target;
+        setSearchValue(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
     const onChangeHandler = (e) => {
@@ -95,16 +95,11 @@ function PetMomList() {
     }
 
 
-    // const [selectedPetmom, setSelectedPetmom] = useState(null);
-
-    // const handleClick = (petmom) => {
-    //     setSelectedPetmom(petmom);
-    // };
 
 
     console.log(searchValue);
     console.log(petmomList);
-    // console.log(currentPage);
+
     return (
         <div>
 
@@ -117,8 +112,8 @@ function PetMomList() {
 
                         <h4 className="where">어디에 사시나요?</h4>
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
-                            <option value="" >시/도</option>
-                            <option value="서울" onClick={onChangeList}>서울특별시</option>
+                            <option value="" onClick={onChangeList}>시/도</option>
+                            <option value="서울" >서울특별시</option>
                             <option value="부산">부산광역시</option>
                             <option value="대구">대구광역시</option>
                             <option value="인천">인천광역시</option>

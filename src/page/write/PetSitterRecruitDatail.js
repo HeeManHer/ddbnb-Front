@@ -88,6 +88,9 @@ function PetSitterRecruitDatail() {
     //     navigate("./modify");
     // };
 
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+    const postUser = token !== null && token.memberId == petsdetail.member?.memberId ? true : false;
+
 
     const onClickhandle = () => {
         dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 취소" }));
@@ -118,12 +121,15 @@ function PetSitterRecruitDatail() {
             <div className="dateAndWriter">
                 <h1>게시판</h1>
                 <div>
-                    <button className="declarationButton" onClick={openModals}>신고</button>
+                    {postUser ?
+                        (<>
+                            <button className="declarationButton" onClick={() => navigate("./modify")}>수정</button>
+                            <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                        </>) :
+                        <button className="declarationButton" onClick={openModals}>신고</button>}
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                         <Declaration category="게시글 신고" />
                     </Modal>
-                    <button className="declarationButton" onClick={() => navigate("./modify")}>수정</button>
-                    <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
                 </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
                     <PetSitterCollectCancle onClickhandle={onClickhandle} />
@@ -211,20 +217,19 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
-                    <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                    {postUser ? (<>
+                        <button className="wantbtn2" onClick={openModalList}>신청자 목록</button>
+                        <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                    </>) :
+                        <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>}
+
                     <Modal className="modal-backdrop" isOpen={petsittercollectfinish} onRequestClose={closeModal}>
                         <PetSitterCollectFinish onClickhan={onClickhan} />
                     </Modal>
-
-                    <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
                     <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
                         <PetSitterApply boardId={boardId} />
                     </Modal>
 
-                    <button className="wantbtn2"
-                        onClick={openModalList}
-                    >신청자 목록</button>
-                    <button className="wantbtn2">모집마감</button>
 
 
                     {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}

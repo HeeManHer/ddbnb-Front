@@ -1,4 +1,4 @@
-import { GET_APPLICANT } from '../modules/applycant';
+import { GET_APPLICANT, GET_MOMAPPLICANT } from '../modules/applycant';
 import { CLOSE_MODAL } from '../modules/petSittermodal';
 
 //전체 참가자 조회
