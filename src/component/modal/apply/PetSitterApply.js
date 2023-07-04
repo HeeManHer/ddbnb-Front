@@ -13,7 +13,7 @@ function PetSitterApply({ boardId }) {
 
     const form = {
         member: { memberId: token.memberId },
-        boardId: boardId
+        boardId: { boardId: boardId }
     }
 
     const commit = () => {

@@ -96,6 +96,17 @@
     font-size: large;
 }
 
+.choice-box3 {
+    background-color: white;
+    color: black;
+    width: 30%;
+    height: 40px;
+    margin: 2%;
+    user-select: none;
+    font-weight: bold;
+    font-size: large;
+}
+
 .choice-box2.selected {
     background-color: #FAB7A2;
     color: black;
@@ -143,8 +154,8 @@
     box-sizing: border-box;
     height: 550px;
     position: relative;
-    bottom: 10px;
-    right: 10px;
+    bottom: 200px;
+    left: 50px;
 }
 
 .doginfo3 {
@@ -479,4 +490,71 @@
     border-radius: 3%;
     position: relative;
     left: 100px;
+}
+
+.timepark {
+    position: relative;
+    left: 400px;
+    bottom: 85px;
+
+}
+
+.moneygive12 {
+    position: relative;
+    left: 580px;
+    height: 25px;
+    bottom: 110px;
+}
+
+.moneygive11 {
+    position: relative;
+    left: 870px;
+    height: 25px;
+    bottom: 162px;
+}
+
+.park {
+    position: relative;
+    left: 800px;
+    bottom: 85px;
+}
+
+.time {
+    position: relative;
+    left: 500px;
+    bottom: 135px;
+}
+
+.line10000 {
+    position: relative;
+    bottom: 150px;
+}
+
+.livecare {
+    position: relative;
+    bottom: 130px;
+}
+
+.signficanttext {
+    position: relative;
+    bottom: 130px;
+}
+
+.significantmom {
+    position: relative;
+    bottom: 130px;
+    right: 250px;
+}
+
+.caredog {
+    position: relative;
+    bottom: 130px;
+}
+
+.dogwrite333 {
+    resize: none;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    bottom: 130px;
 }

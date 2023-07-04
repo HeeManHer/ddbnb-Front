@@ -7,6 +7,7 @@
     margin: auto;
     padding: 20px;
     border: solid #D8D8D8 1px;
+    height: 200px;
 }
 
 .write {
@@ -24,6 +25,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    position: relative;
+    bottom: 60px;
+
 }
 
 .searchinfo {
@@ -42,14 +46,29 @@
 
 }
 
+.where {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    position: relative;
+    bottom: 5px;
+}
 
 .wherewhen {
     display: flex;
+    position: relative;
+    top: 10px;
+    left: 40px;
 }
 
 .wherewhen section:nth-child(1) {
     margin-right: 300px;
     margin-left: 30px;
+}
+
+.whenrate {
+    position: relative;
+    right: 130px;
 }
 
 
@@ -72,19 +91,28 @@
 
 .title {
     margin-left: 30px;
+    position: relative;
+    bottom: 70px;
+    left: 5px;
 }
 
 .when {
-    /* position: relative; */
+    position: relative;
     display: flex;
+    width: 200px;
+    bottom: 5px;
+    right: 210px;
 }
 
 .firstselect {
-    margin-right: 10px;
+    /* margin-right: 10px; */
     background-color: #D8D8D8;
     height: 30px;
     /* padding: 1px 20px; */
     width: 100px;
+    position: relative;
+    top: 10px;
+    right: 35px;
 }
 
 .secondselect {
@@ -92,7 +120,30 @@
     height: 30px;
     /* padding: 1px 20px; */
     width: 100px;
+    position: relative;
+    top: 10px;
+    right: 30px;
+}
 
+.firstselect1 {
+    /* margin-right: 10px; */
+    background-color: #D8D8D8;
+    height: 30px;
+    /* padding: 1px 20px; */
+    width: 100px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.secondselect1 {
+    background-color: #D8D8D8;
+    height: 30px;
+    /* padding: 1px 20px; */
+    width: 100px;
+    position: relative;
+    bottom: 20px;
+    left: 150px;
 }
 
 .doglist {
@@ -201,19 +252,158 @@
     color: #EFF244;
 }
 
-.dateselect {
+.dateselect1 {
     height: 30px;
+    position: relative;
+    bottom: 55px;
     /* background-color: #EFF244; */
     /* width: 40%; */
 }
 
-.section1{
+.dateselect2 {
+    height: 30px;
+    position: relative;
+    bottom: 110px;
+    left: 150px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}
+
+.dateselect3 {
+    height: 30px;
+    position: relative;
+    left: 150px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}
+
+.dateselect4 {
+    height: 30px;
+    position: relative;
+    left: 45px;
+    bottom: 55px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}
+
+.dateselect5 {
+    height: 30px;
+    position: relative;
+    left: 10px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}
+
+.dateselect6 {
+    height: 30px;
+    position: relative;
+    left: 180px;
+    bottom: 55px;
+    /* background-color: #EFF244; */
+    /* width: 40%; */
+}
+
+.wave1 {
+    position: relative;
+    left: 165px;
+    bottom: 30px;
+}
+
+.wave2 {
+    position: relative;
+    left: 163px;
+    bottom: 30px;
+}
+
+.wave3 {
+    position: relative;
+    left: 163px;
+    bottom: 30px;
+}
+
+.section1 {
     /* border: 1px solid #2d2d2d; */
     width: 85px;
     height: 30px;
     border-radius: 3px;
-    background-color:#FAB7A2 ;
+    background-color: #FAB7A2;
     align-items: center;
     display: flex;
     justify-content: center;
+}
+
+.sidogu {
+    width: 600px;
+    position: relative;
+    left: 10px;
+}
+
+.wave {
+    position: relative;
+    left: 127px;
+    bottom: 85px;
+}
+
+.moneygive {
+    position: relative;
+    left: 500px;
+    bottom: 110px;
+}
+
+.givemoney {
+    position: relative;
+    left: 450px;
+    bottom: 85px;
+}
+
+.moneydate {
+    margin: 0;
+}
+
+.line123 {
+    border-top: 1px solid #8D8D8D;
+    position: relative;
+    bottom: 100px;
+}
+
+.image-container {
+    position: relative;
+    bottom: 60px;
+}
+
+.abc {
+    position: relative;
+    bottom: 70px;
+}
+
+.gender {
+    position: relative;
+    bottom: 60px;
+}
+
+.significantbtn {
+    position: relative;
+    bottom: 50px;
+}
+
+.significant {
+    position: relative;
+    bottom: 50px;
+    width: auto;
+    height: auto;
+}
+
+.dogdog {
+    position: relative;
+    bottom: 90px;
+}
+
+.dogwrite {
+    position: relative;
+    bottom: 80px;
+}
+
+.abc123 {
+    position: relative;
+    left: 100px;
 }
