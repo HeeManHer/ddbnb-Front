@@ -1,11 +1,10 @@
 import { GET_APPLICANT } from '../modules/applycant';
 import { CLOSE_MODAL } from '../modules/petSittermodal';
 
-
 //전체 참가자 조회
 export const getApplicantListAPI = (applicantId) => {
 
-    const URL = `http://localhost:8080/api/v1/applicant/${applicantId}`;
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}`;
 
     return async (dispatch, getState) => {
 
@@ -15,8 +14,7 @@ export const getApplicantListAPI = (applicantId) => {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
             }
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
 
         if (result.status === 200) {
             dispatch({ type: GET_APPLICANT, payload: result.data });
@@ -24,16 +22,11 @@ export const getApplicantListAPI = (applicantId) => {
     }
 }
 
-export const getMyApplyListAPI = ({ currentPage }) => {
+export const getMyApplyListAPI = (currentPage) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
 
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/applicant/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
-    } else {
-        URL = 'http://localhost:8080/api/v1/applicant/mypetsitters';
-    }
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
@@ -47,14 +40,13 @@ export const getMyApplyListAPI = ({ currentPage }) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_APPLICANT, payload: result.data });
-            console.log(result);
         }
     }
 }
 
-export const getMomApplicantList = (applicantId) => {
+export const getMomApplicantList = (boardId) => {
 
-    const URL = `http://localhost:8080/api/v1/momApplicant/${applicantId}`;
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${boardId}`;
 
     return async (dispatch, getState) => {
 
@@ -64,8 +56,7 @@ export const getMomApplicantList = (applicantId) => {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
             }
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
 
         if (result.status === 200) {
             dispatch({ type: GET_APPLICANT, payload: result.data });
@@ -74,7 +65,7 @@ export const getMomApplicantList = (applicantId) => {
 }
 
 export const registMomApplicantAPI = (form) => {
-    const URL = `http://localhost:8080/api/v1/momApplicant/regist`;
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/regist`;
 
     return async (dispatch, getState) => {
 
@@ -97,7 +88,7 @@ export const registMomApplicantAPI = (form) => {
 
 export const registApplicantAPI = (form) => {
 
-    const URL = `http://localhost:8080/api/v1/applicant/regist`;
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
 
     return async (dispatch, getState) => {
 

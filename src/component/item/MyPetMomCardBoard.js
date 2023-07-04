@@ -16,7 +16,7 @@ function MyPetMomCardBoard() {
     const { data: mypetMoms, pageInfo } = myPetMom;
 
     useEffect(() => {
-        dispatch(getMyPetMomList({ currentPage: currentPage }));
+        dispatch(getMyPetMomList(currentPage));
 
     }, [currentPage]);
 
@@ -37,7 +37,7 @@ function MyPetMomCardBoard() {
                 <Link to={`/petmom/${myPetMom.boardId}`} style={{ textDecoration: 'none', color: '#202020' }}>
                     <section className={`${style.category2} ${style.flex_center}`}>
                         <div>
-                            <section style={myPetMom.momStatus === "취소됨" ? { backgroundColor : "#8d8d8d", color:"white"} : {backgroundColor : "#FAB7A2"}}>
+                            <section style={myPetMom.momStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
                                 {myPetMom.momStatus}
                             </section>
                         </div>

@@ -65,7 +65,7 @@ function PetSitterRecruitDatail() {
     };
 
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
-
+    console.log(petsdetail)
 
     const applicantlist = useSelector(state => state.applicantsReducer);
 

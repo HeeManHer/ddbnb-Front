@@ -1,18 +1,10 @@
 import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER, PUT_PETSITTERDETAIL } from '../modules/petSitter';
 
-
 export const callPetsitterListAPI = (currentPage) => {
 
-    let URL;
-
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/petsitter/list?page=${currentPage}`;
-    } else {
-        URL = `http://localhost:8080/api/v1/petsitter/list`;
-    }
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?page=${currentPage}`;
 
     return async (dispatch, getState) => {
-
 
         const result = await fetch(URL, {
             method: "GET",
@@ -21,8 +13,7 @@ export const callPetsitterListAPI = (currentPage) => {
                 "Accept": "*/*",
                 // "Auth": token
             }
-        })
-            .then(response => response.json());
+        }).then(response => response.json());
 
         if (result.status === 200) {
             dispatch({ type: GET_PETSITTERLIST, payload: result.data });
@@ -31,32 +22,31 @@ export const callPetsitterListAPI = (currentPage) => {
 
 }
 
-export function registPetsitterAPI(petreg) {
+export function registPetsitterAPI(form) {
 
-    let URL = `http://localhost:8080/api/v1/petsitter/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/regist`;
 
     return async function (dispatch, getState) {
 
         const result = await fetch(URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Accept": "*/*"
-            }, body: JSON.stringify(petreg)
+            }, body: form
 
         }).then(res => res.json());
+
         if (result.status === 200) {
             alert(result.message);
+            dispatch({ type: POST_PETSITTER, payload: result.data });
         }
-        dispatch({ type: POST_PETSITTER, payload: result.data });
-
     };
 }
 
 
 export function getPetsitterdetailAPI(boardId) {
 
-    let URL = "http://localhost:8080/api/v1/petsitter/list/" + boardId;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}`;
 
     return async function (dispatch, getState) {
 
@@ -66,15 +56,14 @@ export function getPetsitterdetailAPI(boardId) {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
             }
-        })
-            .then(response => response.json());
+        }).then(response => response.json());
         dispatch({ type: GET_PETSITTERDETAIL, payload: result.data });
     };
 }
 
 export function putPetsitterAPI(boardId, form) {
 
-    let URL = "http://localhost:8080/api/v1/petsitter/modify";
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/modify`;
 
     return async function (dispatch, getState) {
 
@@ -85,8 +74,8 @@ export function putPetsitterAPI(boardId, form) {
                 "Accept": "*/*",
             },
             body: JSON.stringify(form)
-        })
-            .then(response => response.json());
+        }).then(response => response.json());
+
         alert(result.message);
         dispatch({ type: PUT_PETSITTERDETAIL, patload: result.data });
     };
@@ -97,7 +86,7 @@ export const putMypetSitterCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://localhost:8080/api/v1/petsitter/list/${boardId}/status`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}/status`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
@@ -108,7 +97,6 @@ export const putMypetSitterCancle = (boardId, form) => {
             },
             body: JSON.stringify(form) // 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
         }).then(res => res.json());
-        console.log(result);
 
         if (result.status === 200) {
             dispatch({ type: PUT_PETSITTER, payload: result.data });
@@ -119,13 +107,7 @@ export const putMypetSitterCancle = (boardId, form) => {
 export const getMyPetSitterList = ({ currentPage }) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL;
-
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
-    } else {
-        URL = 'http://localhost:8080/api/v1/petsitter/mypetsitters';
-    }
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
 
     return async (dispatch, getState) => {
 
@@ -136,12 +118,10 @@ export const getMyPetSitterList = ({ currentPage }) => {
                 "Accept": "*/*",
                 // "Auth": token
             }
-        })
-            .then(response => response.json());
+        }).then(response => response.json());
 
         if (result.status === 200) {
             dispatch({ type: GET_PETSITTERLIST, payload: result.data });
-            console.log(result);
         }
     };
 };

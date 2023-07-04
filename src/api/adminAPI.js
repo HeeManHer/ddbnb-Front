@@ -1,11 +1,10 @@
-import { GET_USER_REPORT, GET_MEMBER_LIST, GET_REPORTMEMBER_LIST } from "../modules/report";
-import { SET_PETMOM } from "../modules/petMom";
+import { GET_USER_REPORT, GET_REPORTMEMBER_LIST } from "../modules/report";
 import { SET_PETSITTER } from "../modules/petSitter";
 import { GET_MEMBER } from "../modules/MemberModule";
 
 export function getMemberList(page, { nickname, signDate }) {
 
-    let url = `http://localhost:8080/api/v1/member?page=${page}`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member?page=${page}`;
     if (nickname !== '') {
         url += `&nickname=${nickname}`;
     }
@@ -30,7 +29,7 @@ export function getMemberList(page, { nickname, signDate }) {
 
 export async function getMemberAmount() {
 
-    let url = `http://localhost:8080/api/v1/amount`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/amount`;
 
     return await fetch(url, {
         method: 'GET',
@@ -56,7 +55,7 @@ export async function findMemberBySignDayIsToday() {
         day = '0' + day;
     }
 
-    let url = `http://localhost:8080/api/v1/member?size=5&signDate=${year}-${month}-${day}`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member?size=5&signDate=${year}-${month}-${day}`;
 
     return await fetch(url, {
         method: 'GET',
@@ -69,8 +68,7 @@ export async function findMemberBySignDayIsToday() {
 
 export function getBoardList(category, page) {
 
-    let url = `http://localhost:8080/api/v1/${category}/list?page=${page}&size=20`;
-
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/${category}/list?page=${page}&size=20`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -82,7 +80,6 @@ export function getBoardList(category, page) {
         }).then(res => res.json());
 
         if (result.status === 200) {
-            console.log(result)
             dispatch({ type: SET_PETSITTER, payload: result.data });
         }
     }
@@ -90,7 +87,7 @@ export function getBoardList(category, page) {
 
 export function getReportList(category) {
 
-    let url = `http://localhost:8080/api/v1/report?size=20&category=${category}`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/report?size=20&category=${category}`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -102,7 +99,6 @@ export function getReportList(category) {
         }).then(res => res.json());
 
         if (result.status === 200) {
-
             dispatch({ type: GET_REPORTMEMBER_LIST, payload: result.data });
         }
     }
@@ -110,7 +106,7 @@ export function getReportList(category) {
 
 export function getNewReport() {
 
-    let url = `http://localhost:8080/api/v1/report/today`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/report/today`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -122,7 +118,6 @@ export function getNewReport() {
         }).then(res => res.json());
 
         if (result.status === 200) {
-
             dispatch({ type: GET_USER_REPORT, payload: result.data.data });
         }
     }
