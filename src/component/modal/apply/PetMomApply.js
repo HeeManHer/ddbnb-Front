@@ -3,8 +3,7 @@ import "../../../css/modaltest.css";
 import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
-import { registMomApplicantAPI } from '../../../api/applicantAPI';
-
+import { registMomApplicantAPI } from "../../../api/momApplicantAPI"
 
 function PetMomApply({ boardId }) {
     const dispatch = useDispatch();

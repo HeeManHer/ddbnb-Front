@@ -20,6 +20,7 @@ function Sigoon({ sig }) {
 }
 
 function PetMomRecruit() {
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const [form, setform] = useState({
         boardTitle: '',
@@ -34,6 +35,7 @@ function PetMomRecruit() {
         petYN: '',
         signficant: '',
         request: '',
+        member: { memberId: token.memberId },
     });
 
 
@@ -150,16 +152,16 @@ function PetMomRecruit() {
 
 
 
-    const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
+    // const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
 
-    const handleDatetimeChange = (event) => {
-        const selectedIndex = event.target.selectedIndex; // 선택된 옵션의 인덱스 가져오기
-        const selectedOption = event.target.options[selectedIndex]; // 선택된 옵션 가져오기
-        const selectedValue = selectedOption.value; // 선택된 옵션의 값 가져오기
-        const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
+    // const handleDatetimeChange = (event) => {
+    //     const selectedIndex = event.target.selectedIndex; // 선택된 옵션의 인덱스 가져오기
+    //     const selectedOption = event.target.options[selectedIndex]; // 선택된 옵션 가져오기
+    //     const selectedValue = selectedOption.value; // 선택된 옵션의 값 가져오기
+    //     const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
 
-        setInputmoney1(selectedValue); // inputmoney1 업데이트
-    };
+    //     setInputmoney1(selectedValue); // inputmoney1 업데이트
+    // };
 
     const handleImageSelect = (event) => {
         const selectedImage = event.target.files[0];
@@ -179,7 +181,7 @@ function PetMomRecruit() {
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
-                    <button className="insertwriter">수정</button>
+
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                         <RegistPost regist={registPetMom} />
                     </Modal>

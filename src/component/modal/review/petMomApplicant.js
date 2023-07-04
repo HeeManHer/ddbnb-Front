@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../review/review.css";
 import PageBtn from "../../common/PageBtn";
-import { getMomApplicantList } from "../../../api/applicantAPI"
+import { getMomApplicantList } from "../../../api/momApplicantAPI"
 import ReviewModal from "./ReviewModal";
 import { useParams } from "react-router-dom";
 
-function ReviewList({ closeModalList }) {
+function PetMomApplicant({ closeModalList }) {
+
 
     const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
     const [isModalOpen, setIsModalOpen] = useState(false); // 추가
@@ -14,9 +15,10 @@ function ReviewList({ closeModalList }) {
 
     const dispatch = useDispatch();
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: getapplicant, pageInfo } = useSelector(state => state.applicantsReducer);
+    const { data: getapplicant, pageInfo } = useSelector(state => state.momApplicantsReducer);
 
     const { boardId } = useParams();
+
 
 
 
@@ -30,7 +32,7 @@ function ReviewList({ closeModalList }) {
 
 
 
-    console.log(getapplicant);
+
 
 
 
@@ -57,6 +59,7 @@ function ReviewList({ closeModalList }) {
         }
     };
 
+    console.log(getapplicant);
 
 
     return (
@@ -102,4 +105,4 @@ function ReviewList({ closeModalList }) {
     )
 }
 
-export default ReviewList;
+export default PetMomApplicant;

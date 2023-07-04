@@ -11,6 +11,7 @@ import petDetailReducer from "./petdetail";
 import loginReducer from './LoginModule';
 import reviewReducer from './ReviewModule';
 import memberReducer from './MemberModule';
+import momApplicantsReducer from './momApplicant';
 
 const rootReducer = combineReducers({
     applicantsReducer,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     petDetailReducer,
     modalsReducer,
     reviewReducer,
-    memberReducer
+    memberReducer,
+    momApplicantsReducer
 });
 
 export default rootReducer;

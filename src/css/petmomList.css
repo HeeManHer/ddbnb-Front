@@ -15,7 +15,13 @@
 }
 
 .petmombtn:focus,
+
 .petmombtn:active {
+    background-color: #fab7a2;
+    color: black;
+}
+
+.petmombtn.select {
     background-color: #fab7a2;
     color: black;
 }

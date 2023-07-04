@@ -69,7 +69,7 @@ function App() {
             <Route index element={<PetMomList />} />
             <Route path="recruit" element={<PetMomRecruit />} />\
             <Route path=":boardId" element={<PetMomRecruitDatail />} />
-            <Route path="modify" element={<PetMomModify />} />
+            <Route path=":boardId/modify" element={<PetMomModify />} />
 
           </Route>
 

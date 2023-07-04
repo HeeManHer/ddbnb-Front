@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
-import ReviewList from "../../component/modal/review/ReviewList";
+import PetMomApplicant from "../../component/modal/review/PetMomApplicant";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
@@ -12,18 +12,16 @@ import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
 import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFinish';
 import { getPetMomDetail } from '../../api/petDetailAPI';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
-import { NavLink } from 'react-router-dom';
-import { getMomApplicantList } from '../../api/applicantAPI';
-
+import { getMomApplicantList } from '../../api/momApplicantAPI';
 
 
 function PetMomRecruitDatail() {
     const toggleSelected = (event) => {
         event.target.classList.toggle("selected");
     };
-
+    const navigate = useNavigate()
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -79,6 +77,7 @@ function PetMomRecruitDatail() {
 
     useEffect(
         () => {
+
             dispatch(getPetMomDetail(boardId));
             dispatch(getMomApplicantList(boardId));
 
@@ -87,8 +86,13 @@ function PetMomRecruitDatail() {
     )
 
 
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+    const postUser = token !== null && token.memberId == data.member?.memberId ? true : false;
 
 
+
+
+    console.log(data)
     return (
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
@@ -97,14 +101,18 @@ function PetMomRecruitDatail() {
                 <h4>작성일 : {data.boardDate}</h4>
 
 
-                <button className="declarationButton" onClick={openModal}>신고</button>
+                {postUser ?
+                    (<>
+                        <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
+                        <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
+                    </>)
+                    :
+                    <button className="declarationButton" onClick={openModal}>신고</button>}
+
+
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration />
                 </Modal>
-                <NavLink className="declarationButton" to={`/petmom/modify/${data.boardId}`}>수정</NavLink>
-
-
-                <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
                     <PetMomCollectCancle onClickhandle={onClickhandle} />
                 </Modal>
@@ -192,26 +200,38 @@ function PetMomRecruitDatail() {
             <div>
                 <div>
                     <hr className="line"></hr>
-                    <button className="wantbtn2" onClick={openModaljoin}>신청하기</button>
 
-                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
-                        <PetMomApply boardId={boardId} />
-                    </Modal>
 
-                    <button className="wantbtn2"
-                        onClick={openModalList}
-                    >신청자 목록</button>
-                    <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                    {postUser ? (<><button className="wantbtn2" onClick={openModalList}>신청자 목록</button>
+                        <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+
+                    </>) :
+                        <button className="wantbtn2" onClick={openModaljoin}>신청하기</button>
+                    }
                     <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>
                         <PetMomCollectFinish onClickhan={onClickhan} />
+                    </Modal>
+                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                        <PetMomApply boardId={boardId} />
                     </Modal>
                 </div>
             </div>
 
+
+            {/* {postUser ?
+                    (<>
+                        <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
+                        <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
+                    </>)
+                    :
+                    <button className="declarationButton" onClick={openModal}>신고</button>} */}
+
+
+
             {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
             {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
 
-            {showModalList && <ReviewList closeModalList={closeModalList} />}
+            {showModalList && <PetMomApplicant closeModalList={closeModalList} />}
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
         </div >
