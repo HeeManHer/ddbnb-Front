@@ -193,11 +193,13 @@
 }
 
 .significant {
-    height: 50px;
-    width: 200px;
+    height: 100px;
+    width: 230px;
     margin-left: 3%;
     display: flex;
     justify-content: space-between;
+    overflow-y: auto;
+    resize: none;
 }
 
 .significanttext {

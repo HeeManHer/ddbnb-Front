@@ -1,8 +1,31 @@
 import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER, PUT_PETSITTERDETAIL } from '../modules/petSitter';
 
-export const callPetsitterListAPI = (currentPage) => {
+export const callPetsitterListAPI = (currentPage, searchValue) => {
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?page=${currentPage}`;
+
+    if (searchValue?.location != '') {
+        console.log(searchValue?.location)
+        URL += `&location=${searchValue?.location}`;
+    }
+
+    if (searchValue?.petSize != '') {
+        console.log(searchValue?.petSize)
+        URL += `&petSize=${searchValue?.petSize}`;
+    }
+
+    if (searchValue?.care != '') {
+        console.log(searchValue?.care)
+        URL += `&care=${searchValue?.care}`;
+    }
+
+    if (searchValue?.startDate != '') {
+        URL += `&startDate=${searchValue?.startDate}`;
+    }
+
+    if (searchValue?.endDate != '') {
+        URL += `&endDate=${searchValue?.endDate}`;
+    }
 
     return async (dispatch, getState) => {
 
@@ -87,6 +110,7 @@ export const putMypetSitterCancle = (boardId, form) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}/status`;
+  
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
             method: 'PUT',
