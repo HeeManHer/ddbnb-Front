@@ -114,6 +114,8 @@ function PetMomList() {
 
                 <div className="mainpagebox">
                     <div className="wherewhen">
+
+                        <h4 className="where">어디에 사시나요?</h4>
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                             <option value="" >시/도</option>
                             <option value="서울" onClick={onChangeList}>서울특별시</option>
@@ -142,20 +144,20 @@ function PetMomList() {
                             </select>
 
                         </div>
-                        <section>
+                        <section className="whenrate">
 
                             <h4 className="when">언제 맡기길 원하시나요?</h4>
                             <div>
                                 <input
-                                    className="dateselect"
+                                    className="dateselect1"
                                     type="date"
                                     name="startDate"
                                     value={searchValue.startDate}
                                     onChange={onChangeHandler}
                                 />
-                                ~
+                                <div className="wave">~</div>
                                 <input
-                                    className="dateselect"
+                                    className="dateselect2"
                                     type="date"
                                     name="endDate"
                                     value={searchValue.endDate}
@@ -177,6 +179,7 @@ function PetMomList() {
                     </div>
 
                 </div>
+                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
             </div>
 
 
@@ -195,7 +198,7 @@ function PetMomList() {
                                 <div>{petmom.boadrDate}</div>
                             </div>
                             <div>
-                                <h2>{petmom.boardTitle}</h2>
+                                <div>{petmom.boardTitle}</div>
                                 <hr className="line"></hr>
                             </div>
                             <div className="columncss">

@@ -1,15 +1,34 @@
 import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER, PUT_PETSITTERDETAIL } from '../modules/petSitter';
 
 
-export const callPetsitterListAPI = (currentPage) => {
+export const callPetsitterListAPI = (currentPage, searchValue) => {
 
-    let URL;
 
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/petsitter/list?page=${currentPage}`;
-    } else {
-        URL = `http://localhost:8080/api/v1/petsitter/list`;
+    let URL = `http://localhost:8080/api/v1/petsitter/list?page=${currentPage}`;
+
+    if (searchValue?.location != '') {
+        console.log(searchValue?.location)
+        URL += `&location=${searchValue?.location}`;
     }
+
+    if (searchValue?.petSize != '') {
+        console.log(searchValue?.petSize)
+        URL += `&petSize=${searchValue?.petSize}`;
+    }
+
+    if (searchValue?.care != '') {
+        console.log(searchValue?.care)
+        URL += `&care=${searchValue?.care}`;
+    }
+
+    if (searchValue?.startDate != '') {
+        URL += `&startDate=${searchValue?.startDate}`;
+    }
+
+    if (searchValue?.endDate != '') {
+        URL += `&endDate=${searchValue?.endDate}`;
+    }
+    console.log(searchValue);
 
     return async (dispatch, getState) => {
 

@@ -5,6 +5,7 @@ import sigunguList from '../../data/sigoongu.json';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PageBtn from "../../component/common/PageBtn";
+import StarPoint from "../../component/item/StarPoint";
 
 function searchSig(sido) {
 
@@ -18,19 +19,32 @@ function Sigoon({ sig }) {
 
 
 
+
 function PetSitterList() {
 
     const dispatch = useDispatch();
     const { data: petsitterList, pageInfo } = useSelector(state => state.petSitterReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const [searchValue, setSearchValue] = useState({})
+
+    const [searchValue, setSearchValue] = useState({
+        location: '',
+        petSize: [],
+        care: '',
+        startDate: '',
+        endDate: '',
+
+    });
+
+    const handleSearch = () => {
+        dispatch(callPetsitterListAPI(currentPage, searchValue));
+    };
 
     console.log(petsitterList);
     useEffect(
         () => {
             dispatch(callPetsitterListAPI(currentPage, searchValue));
         }
-        , []
+        , [currentPage, searchValue]
     )
 
 
@@ -52,6 +66,30 @@ function PetSitterList() {
             SIDO: e.target.value
         })
     }
+
+    const onChangeList = (e) => {
+        if (e.target.name === "petSize") {
+            const petSizes = e.target.value.split(",");
+            setSearchValue({
+                ...searchValue,
+                [e.target.name]: petSizes
+            });
+        } else {
+            setSearchValue({
+                ...searchValue,
+                [e.target.name]: e.target.value
+            });
+        }
+    };
+
+
+    const onChangeHandler = (e) => {
+        setSearchValue({
+            ...searchValue,
+            [e.target.name]: e.target.value,
+        });
+    };
+
 
     const onChangeSigunguHandler = (e) => {
         setLocation({
@@ -78,7 +116,7 @@ function PetSitterList() {
 
                         <h4 className="where">어디에 사시나요?</h4>
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
-                            <option value="">시/도</option>
+                            <option value="" onClick={onChangeList}>시/도</option>
                             <option value="서울">서울특별시</option>
                             <option value="부산">부산광역시</option>
                             <option value="대구">대구광역시</option>
@@ -105,11 +143,24 @@ function PetSitterList() {
                             </select>
 
                         </div>
-                        <section>
+                        <section className="whenrate">
                             <h4 className="when">언제 맡기길 원하시나요?</h4>
                             <div>
-                                <input className="dateselect" type="date" />~<input className="dateselect" type="date" />
-                            </div>
+                                <input
+                                    className="dateselect1"
+                                    type="date"
+                                    name="startDate"
+                                    value={searchValue.startDate}
+                                    onChange={onChangeHandler}
+                                />
+                                <div className="wave">~</div>
+                                <input
+                                    className="dateselect2"
+                                    type="date"
+                                    name="endDate"
+                                    value={searchValue.endDate}
+                                    onChange={onChangeHandler}
+                                /></div>
                         </section>
                     </div>
                     <div>
@@ -117,15 +168,12 @@ function PetSitterList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            <button className="petmombtn">소/중형견</button>
-                            <button className="petmombtn">대형견</button>
-                            <button className="petmombtn">산책</button>
-                            <button className="petmombtn">방문/출장</button>
+                            <button className="petmombtn" name="petSize" onClick={onChangeList} value={"소형,중형"}>소/중형</button>
+                            <button className="petmombtn" name="petSize" onClick={onChangeList} value="대형">대형</button>
+                            <button className="petmombtn" name="care" onClick={onChangeList} value="care">산책</button>
+                            <button className="petmombtn" name="care" onClick={onChangeList} value="care">방문/출장</button>
                         </div>
-                        <button className="searchinfo">
-                            <img src="../img/readingglasses.png"></img>
-                            검색
-                        </button>
+
                     </div>
 
                 </div>
@@ -144,7 +192,7 @@ function PetSitterList() {
                     <img className="dogimg" src="../img/angrydog.png"></img>
                     <div className="textlist">
                         <div className="wheretext">
-                            <div>{petsitter.boardId}</div>
+                            <div>{petsitter.location}</div>
                             <div>{petsitter.boardDate}</div>
                         </div>
                         <div>
@@ -155,7 +203,7 @@ function PetSitterList() {
                             <div>{petsitter.petSize},{petsitter.care}</div>
                             <div>기간: {petsitter.startDate} ~ {petsitter.endDate}</div>
                             <div className="stardivbtn">
-                                <div className="star">★★★★★</div>
+                                <StarPoint starPoint={petsitter.member?.starPoint} />
                                 {/* <img className="star" src="../img/star.png"></img> */}
                                 <div className="divbtn">
                                     <div>사례 : {petsitter.rate}</div>
