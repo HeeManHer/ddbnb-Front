@@ -37,8 +37,8 @@ jobs:
       - name: Install Dependencies    # 의존 파일 설치
         run: npm install
 
-      - name: Build                   # React Build
-        run: npm run build
+#       - name: Build                   # React Build
+#         run: npm run build
 
       - name: Deploy                  # S3에 배포하기
         env:
