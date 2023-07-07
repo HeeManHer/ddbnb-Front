@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../review/review.css";
 import PageBtn from "../../common/PageBtn";
-import { getMomApplicantList } from "../../../api/momApplicantAPI"
+import { getMomApplicantList } from "../../../api/applicantAPI";
 import ReviewModal from "./ReviewModal";
 import { useParams } from "react-router-dom";
 
