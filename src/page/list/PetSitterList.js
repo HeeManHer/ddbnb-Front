@@ -181,8 +181,8 @@ function PetSitterList() {
 
 
                 <div
-                    className={`in ${petsitter.sitterStatus === '모집 취소' ? 'gray' : ''}`}
-                    style={petsitter.sitterStatus === '모집 취소' ? { backgroundColor: "#9D9D9D" } : {}}
+                    className={`in ${petsitter.sitterStatus === '모집취소' ? 'gray' : ''}`}
+                    style={petsitter.sitterStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
                     key={petsitter.boardId}
                     onClick={() => navigate(`./${petsitter.boardId}`)}
                 >

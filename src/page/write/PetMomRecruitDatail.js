@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
-import PetMomApplicant from "../../component/modal/review/PetMomApplicant";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import PetMomApplicant from "../../component/modal/review/PetMomApplicant";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
@@ -63,13 +63,13 @@ function PetMomRecruitDatail() {
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 취소" }));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 마감" }));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집마감" }));
         closeModal();
         window.location.reload();
     }

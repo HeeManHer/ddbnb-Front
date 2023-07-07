@@ -93,13 +93,13 @@ function PetSitterRecruitDatail() {
 
 
     const onClickhandle = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 취소" }));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집 마감" }));
+        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집마감" }));
         closeModal();
         window.location.reload();
     }
