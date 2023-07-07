@@ -4,7 +4,7 @@ import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import PetMomApplicant from "../../component/modal/review/PetMomApplicant";
+import PetMomApplicant from "../../component/modal/review/petMomApplicant";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
 import PetMomApply from "../../component/modal/apply/PetMomApply";
