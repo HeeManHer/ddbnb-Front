@@ -210,7 +210,9 @@ function PetMomRecruit() {
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        <RegistPost regist={registPetMom} />
+                        <RegistPost regist={registPetMom}
+                        />
+
                     </Modal>
                     <button onClick={() => openModal("canclepost")}>취소</button>
                     <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>
@@ -220,14 +222,11 @@ function PetMomRecruit() {
 
                 <div className="yongdate">
 
-                    <h3 className="writeryong">작성자 : {form.nickname}</h3>
-                    <div className="writedate">작성일 : {form.boardDate}
-                    </div>
                 </div>
             </div>
             <hr className="line"></hr>
 
-            <div className="petsitterrecruitwrite">게시판
+            <div>
                 <h2>펫맘 모집 게시판</h2>
             </div>
 

@@ -152,11 +152,13 @@
     width: 50%;
     float: left;
     box-sizing: border-box;
-    height: 550px;
+    height: 750px;
     position: relative;
-    bottom: 200px;
-    left: 50px;
+
+
 }
+
+
 
 .doginfo3 {
     width: 40%;
@@ -310,6 +312,28 @@
     position: relative;
     top: 60px;
     left: 500px;
+}
+
+.wantbtn2-wh {
+    display: flex;
+    position: relative;
+    bottom: 30px;
+    background-color: #FAB7A2;
+    color: white;
+    border: none;
+    width: 140px;
+    height: 64px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 3%;
+    position: relative;
+    top: 20px;
+    left: 500px;
+    cursor: pointer;
+}
+
+.formSize {
+    height: 160px;
 }
 
 .wantbtn2 {

@@ -1,16 +1,18 @@
 import "../../../css/modaltest.css";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
-import { registMomApplicantAPI } from "../../../api/momApplicantAPI"
+import { registMomApplicantAPI } from '../../../api/applicantAPI';
+import React, { useState } from "react";
 
 function PetMomApply({ boardId }) {
+    console.log(boardId)
     const dispatch = useDispatch();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const form = {
         member: { memberId: token.memberId },
-        boardId: boardId
+        boardId: { boardId: boardId }
     }
 
     const commit = () => {

@@ -3,12 +3,18 @@ import "../../../css/modaltest.css";
 import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function RegistPost({ regist }) {
     const dispatch = useDispatch();
 
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
+    };
+
+    const handleRegist = () => {
+        regist();
+        closeModal();
     };
 
     return (
@@ -24,11 +30,14 @@ function RegistPost({ regist }) {
 
 
             <div className="button2list">
-                <button className="modalsize-button3" onClick={() => {
-                    regist(); closeModal();
-                }}>
+                <NavLink
+                    to="/PetMom"
+                    className="modalsize-button3"
+                    onClick={handleRegist}
+
+                >
                     예
-                </button>
+                </NavLink>
                 <button className="modalsize-button3" onClick={closeModal}>
                     아니요
                 </button>
