@@ -128,7 +128,7 @@ function PetSitterRecruitDatail() {
                         </>) :
                         <button className="declarationButton" onClick={openModals}>신고</button>}
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        <Declaration category="게시글 신고" />
+                        <Declaration category="게시글" />
                     </Modal>
                 </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
