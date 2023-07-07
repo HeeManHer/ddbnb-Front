@@ -29,7 +29,7 @@ function PetSitterList() {
     const [searchValue, setSearchValue] = useState({
         location: '',
         petSize: [],
-        care: '',
+        care: [],
         startDate: '',
         endDate: '',
 
@@ -62,23 +62,32 @@ function PetSitterList() {
             ...location,
             SIDO: e.target.value
         })
+        setSearchValue({
+            ...searchValue,
+
+            location: e.target.value
+        });
     }
 
-    const onChangeList = (e) => {
-        if (e.target.name === "petSize") {
-            const petSizes = e.target.value.split(",");
-            setSearchValue({
-                ...searchValue,
-                [e.target.name]: petSizes
-            });
-        } else {
-            setSearchValue({
-                ...searchValue,
-                [e.target.name]: e.target.value
-            });
-        }
-    };
+    const handleButtonClick = (name, value) => {
+        setSearchValue((prevState) => {
+            const updatedValue = [...prevState[name]];
 
+            if (updatedValue.includes(value)) {
+                // 이미 선택된 버튼을 클릭한 경우
+                const index = updatedValue.indexOf(value);
+                updatedValue.splice(index, 1);
+            } else {
+                // 새로운 버튼을 클릭한 경우
+                updatedValue.push(value);
+            }
+
+            return {
+                ...prevState,
+                [name]: updatedValue,
+            };
+        });
+    };
 
     const onChangeHandler = (e) => {
         setSearchValue({
@@ -93,12 +102,18 @@ function PetSitterList() {
             ...location,
             SIGUNGU: e.target.value
         })
+
+        setSearchValue({
+            ...searchValue,
+            location: location.SIDO + ' ' + e.target.value
+        });
     }
     const [selectedPetsitter, setSelectedPetsitter] = useState(null);
 
     const handleClick = (petsitter) => {
         setSelectedPetsitter(petsitter);
     };
+
 
     return (
         <div>
@@ -113,7 +128,7 @@ function PetSitterList() {
 
                         <h4 className="where">어디에 사시나요?</h4>
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
-                            <option value="" onClick={onChangeList}>시/도</option>
+                            <option value="">시/도</option>
                             <option value="서울">서울특별시</option>
                             <option value="부산">부산광역시</option>
                             <option value="대구">대구광역시</option>
@@ -165,12 +180,31 @@ function PetSitterList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            <button className="petmombtn" name="petSize" onClick={onChangeList} value={"소형,중형"}>소/중형</button>
-                            <button className="petmombtn" name="petSize" onClick={onChangeList} value="대형">대형</button>
-                            <button className="petmombtn" name="care" onClick={onChangeList} value="care">산책</button>
-                            <button className="petmombtn" name="care" onClick={onChangeList} value="care">방문/출장</button>
+                            <button
+                                className={`petmombtn ${searchValue.petSize.includes("소형,중형") ? "active" : ""}`}
+                                onClick={() => handleButtonClick("petSize", "소형,중형")}
+                            >
+                                소/중형
+                            </button>
+                            <button
+                                className={`petmombtn ${searchValue.petSize.includes("대형") ? "active" : ""}`}
+                                onClick={() => handleButtonClick("petSize", "대형")}
+                            >
+                                대형
+                            </button>
+                            <button
+                                className={`petmombtn ${searchValue.care.includes("산책") ? "active" : ""}`}
+                                onClick={() => handleButtonClick("care", "산책")}
+                            >
+                                산책
+                            </button>
+                            <button
+                                className={`petmombtn ${searchValue.care.includes("방문,출장") ? "active" : ""}`}
+                                onClick={() => handleButtonClick("care", "방문,출장")}
+                            >
+                                방문/출장
+                            </button>
                         </div>
-
                     </div>
 
                 </div>
@@ -186,7 +220,7 @@ function PetSitterList() {
                     key={petsitter.boardId}
                     onClick={() => navigate(`./${petsitter.boardId}`)}
                 >
-                    <img className="dogimg" src="../img/angrydog.png"></img>
+                    {/* <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} /> */}
                     <div className="textlist">
                         <div className="wheretext">
                             <div>{petsitter.location}</div>

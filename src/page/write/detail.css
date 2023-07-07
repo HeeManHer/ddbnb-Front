@@ -192,6 +192,13 @@
     resize: none;
 }
 
+.dogplzz {
+    width: 410px;
+    height: 390px;
+    resize: none;
+    position: relative;
+}
+
 .momplz-textarea1 {
     width: 370px;
     height: 100px;
