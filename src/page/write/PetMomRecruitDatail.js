@@ -13,7 +13,7 @@ import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFini
 import { getPetMomDetail } from '../../api/petDetailAPI';
 import { useParams, useNavigate } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
-import { getMomApplicantList } from '../../api/momApplicantAPI';
+import { getMomApplicantList } from '../../api/applicantAPI';
 
 
 function PetMomRecruitDatail() {
@@ -25,7 +25,7 @@ function PetMomRecruitDatail() {
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { declaration: showModal, petsitterApply, petmomcollectcancle, petmomcollectfinish } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petMomApply, petmomcollectcancle, petmomcollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModal = () => {
@@ -36,7 +36,7 @@ function PetMomRecruitDatail() {
     };
 
     const openModaljoin = () => {
-        dispatch({ type: OPEN_MODAL, payload: "petsitterApply" })
+        dispatch({ type: OPEN_MODAL, payload: "petMomApply" })
     }
 
     const openCollectCancleModal = () => {
@@ -63,13 +63,13 @@ function PetMomRecruitDatail() {
     // const totalImages = petdetail.img ? petdetail.img.length : 0;
     const { boardId } = useParams();
     const onClickhandle = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 취소" }));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
         closeModal();
         window.location.reload();
     }
 
     const onClickhan = () => {
-        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집 마감" }));
+        dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집마감" }));
         closeModal();
         window.location.reload();
     }
@@ -197,7 +197,7 @@ function PetMomRecruitDatail() {
                     <textarea className="momplz-textarea2" value={data.request}></textarea> </div>
             </div>
             <div>
-                <div>
+                <div className='formSize'>
                     <hr className="line"></hr>
 
 
@@ -210,20 +210,14 @@ function PetMomRecruitDatail() {
                     <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>
                         <PetMomCollectFinish onClickhan={onClickhan} />
                     </Modal>
-                    <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
+                    <Modal className="modal-backdrop" isOpen={petMomApply} onRequestClose={closeModal}>
                         <PetMomApply boardId={boardId} />
                     </Modal>
                 </div>
             </div>
 
 
-            {/* {postUser ?
-                    (<>
-                        <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
-                        <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
-                    </>)
-                    :
-                    <button className="declarationButton" onClick={openModal}>신고</button>} */}
+
 
 
 

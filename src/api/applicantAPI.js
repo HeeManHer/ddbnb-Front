@@ -44,9 +44,9 @@ export const getMyApplyListAPI = (currentPage) => {
     }
 }
 
-export const getMomApplicantList = (boardId) => {
+export const getMomApplicantList = (applicantId) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${boardId}`;
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}`;
 
     return async (dispatch, getState) => {
 
@@ -59,7 +59,7 @@ export const getMomApplicantList = (boardId) => {
         }).then(response => response.json())
 
         if (result.status === 200) {
-            dispatch({ type: GET_APPLICANT, payload: result.data });
+            dispatch({ type: GET_MOMAPPLICANT, payload: result.data });
         }
     }
 }
