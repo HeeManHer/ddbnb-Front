@@ -53,11 +53,11 @@ function ReviewCardBoard() {
                                     </div>
                                 </div>
                                 <div className={style.ReviewName}>
-                                    {review.reviewTitle}
+                                    {review.reviewTitle.length > 10? review.reviewTitle.substring(0, 10)+ "...":review.reviewTitle}
                                 </div>
                                 <div className={style.write}>
                                     <div>{review.reviewerId}</div>
-                                    <div>{new Date(review.reviewWriteDate).toLocaleDateString().slice(0, -1)}</div>
+                                    <div>{review.reviewWriteDate}</div>
                                 </div>
                             </div>
                         </button>

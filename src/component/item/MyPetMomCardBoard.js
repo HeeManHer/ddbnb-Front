@@ -43,7 +43,7 @@ function MyPetMomCardBoard() {
                         </div>
                         <div>{myPetMom.location}</div>
                         <div>{myPetMom.boardTitle}</div>
-                        <div>{new Date(myPetMom.boardDate).toLocaleDateString().slice(0, -1)}</div>
+                        <div>{myPetMom.boardDate}</div>
                         {/* <div>{REVIEW_DATE}</div> */}
                     </section>
                 </Link>
