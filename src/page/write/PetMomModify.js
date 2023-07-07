@@ -233,7 +233,7 @@ function PetMomModify() {
                 <div>
                     제목
                 </div>
-                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
+                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" />
             </div>
             <hr className="line"></hr>
 
