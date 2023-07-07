@@ -136,7 +136,7 @@ function PetSitterRecruitDatail() {
                 </Modal>
             </div>
             <div className="dateAndWriter">
-                <h5>작성자 : {petsdetail?.member?.nickname}</h5>
+                <h5>작성자 : {petsdetail?.memberId?.nickname}</h5>
                 <h5>작성일: {petsdetail.boardDate}</h5>
             </div>
             <hr className="line"></hr>

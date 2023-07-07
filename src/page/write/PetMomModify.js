@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Calendar from "../../component/item/Calendar";
 import "./detail.css"
+import Modal from 'react-modal';
 import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import RegistPost from "../../component/modal/post/RegistPost";
+import CancelPost from "../../component/modal/post/CancelPost";
 import { putPetMomPage, getPetMomList } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 import { useParams } from "react-router-dom";
@@ -229,7 +233,7 @@ function PetMomModify() {
                 <div>
                     제목
                 </div>
-                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" />
+                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
             </div>
             <hr className="line"></hr>
 
