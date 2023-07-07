@@ -1,4 +1,5 @@
 name: React build
+
 on: 
   push:
     branches: [ "master" ]
@@ -25,13 +26,13 @@ jobs:
         env:
           REACT_APP_KAKAO_REST_API_KEY: ${{ secrets.REACT_APP_KAKAO_REST_API_KEY }}
           REACT_APP_KAKAO_JS_KEY: ${{ secrets.REACT_APP_KAKAO_JS_KEY }}
-          REACT_APP_NAVER_REST_API_KEY: ${{ secrets.REACT_APP_NAVER_REST_API_KEY }}
-          REACT_APP_NAVER_JS_KEY: ${{ secrets.REACT_APP_NAVER_JS_KEY }}
+          # REACT_APP_NAVER_REST_API_KEY: ${{ secrets.REACT_APP_NAVER_REST_API_KEY }}
+          # REACT_APP_NAVER_JS_KEY: ${{ secrets.REACT_APP_NAVER_JS_KEY }}
         run: |
           echo "REACT_APP_KAKAO_REST_API_KEY=$REACT_APP_KAKAO_REST_API_KEY">> .env.production
           echo "REACT_APP_KAKAO_JS_KEY=$REACT_APP_KAKAO_JS_KEY" >> .env.production
-          echo "REACT_APP_NAVER_REST_API_KEY=$REACT_APP_NAVER_REST_API_KEY">> .env.production
-          echo "REACT_APP_NAVER_JS_KEY=$REACT_APP_NAVER_JS_KEY" >> .env.production
+          # echo "REACT_APP_NAVER_REST_API_KEY=$REACT_APP_NAVER_REST_API_KEY">> .env.production
+          # echo "REACT_APP_NAVER_JS_KEY=$REACT_APP_NAVER_JS_KEY" >> .env.production
           echo "hi ??"
 
       - name: Install Dependencies    # 의존 파일 설치
