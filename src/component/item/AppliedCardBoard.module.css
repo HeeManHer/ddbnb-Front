@@ -31,10 +31,12 @@
 }
 
 .category div:nth-child(4) {
-    width: 49%;
+    width: 42%;
 }
 .category div:nth-child(5) {
-    width: 11%
+    width: 22%
+}.category div:nth-child(6) {
+    width: 13%
 }
 .careerTitle {
     width: auto;
@@ -86,7 +88,7 @@
     text-align: center;
 }
 .category2 div:nth-child(2) {
-    width: 17%;
+    width: 18%;
 }
 
 .category2 div:nth-child(3) {
@@ -94,11 +96,14 @@
     /* background-color: #2d2d2d; */
 }
 .category2 div:nth-child(4) {
-    width: 49%;
+    width: 42%;
     
 }
 .category2 div:nth-child(5) {
-    width: 11%;
+    width: 22%;
+}
+.category2 div:nth-child(6) {
+    width: 13%;
 }
 
 .category2 button{

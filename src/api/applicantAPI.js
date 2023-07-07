@@ -40,6 +40,7 @@ export const getMyApplyListAPI = (currentPage) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_APPLICANT, payload: result.data });
+            console.log(result);
         }
     }
 }
