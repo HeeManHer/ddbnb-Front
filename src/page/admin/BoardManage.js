@@ -47,9 +47,9 @@ function BoardManage() {
                     <tr>
                         <th style={{ "width": "5%" }}></th>
                         <th style={{ "width": "5%" }}>번호</th>
-                        <th style={{ "width": "35%" }}>게시글 제목</th>
-                        <th style={{ "width": "10%" }}>작성자</th>
-                        <th style={{ "width": "10%" }}>게시글 등록일</th>
+                        <th style={{ "width": "45%" }}>게시글 제목</th>
+                        <th style={{ "width": "20%" }}>작성자</th>
+                        <th style={{ "width": "15%" }}>게시글 등록일</th>
                         <th style={{ "width": "10%" }}>게시 상태</th>
                     </tr>
                 </thead>

@@ -26,6 +26,7 @@ function PetSitterAppliedCardBoard() {
                     <div>지역</div>
                     <div>견종</div>
                     <div>게시글명</div>
+                    <div>신청일</div>
                     <div>취소</div>
                 </article>
             </section>
@@ -41,8 +42,8 @@ function PetSitterAppliedCardBoard() {
                         </div>
                         <div>{apply.boardId.location}</div>
                         <div>{apply.boardId.petShape}</div>
-                        {/* <div>{new Date(myPetMom.boardDate).toLocaleDateString().slice(0, -1)}</div> */}
                         <div>{apply.boardId.boardTitle}</div>
+                        <div>{apply.appliedDate}</div>
                         <div><button>신청취소</button></div>
                     </section>
                 </Link>

@@ -19,6 +19,8 @@ function MyPetSitterCardBoard() {
 
     }, [currentPage]);
 
+
+    // console.log(myPetSitter)
     return (
         <>
         <section className={style.section}>
@@ -42,7 +44,7 @@ function MyPetSitterCardBoard() {
                     <div>{myPetSitter.location}</div>
                     <div>{myPetSitter.petShape}</div>
                     <div>{myPetSitter.boardTitle}</div>
-                    <div>{new Date(myPetSitter.boardDate).toLocaleDateString().slice(0, -1)}</div>
+                    <div>{myPetSitter.boardDate}</div>
                     {/* <div>{REVIEW_DATE}</div> */}
                 </section>
             </Link>

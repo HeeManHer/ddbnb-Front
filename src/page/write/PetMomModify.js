@@ -9,6 +9,8 @@ import CancelPost from "../../component/modal/post/CancelPost";
 import { putPetMomPage, getPetMomList } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 function searchSig(sido) {
 
@@ -21,6 +23,7 @@ function Sigoon({ sig }) {
 }
 
 function PetMomModify() {
+
 
     const { boardId } = useParams();
 
@@ -61,6 +64,7 @@ function PetMomModify() {
 
     const modifypetMom = () => {
         dispatch(putPetMomPage(boardId, form));
+
 
     };
 
@@ -159,9 +163,11 @@ function PetMomModify() {
     useEffect(
         () => {
             dispatch(getPetMomList(boardId));
+
         },
         []
     )
+
 
     useEffect(
         () => {
@@ -204,8 +210,11 @@ function PetMomModify() {
 
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
-                    <button className="insertwrite" onClick={modifypetMom}>수정</button>
+                    <NavLink to="/petmom" className="insertwrite" onClick={modifypetMom} >수정</NavLink>
+
                 </div>
+
+
 
                 <div className="yongdate">
 

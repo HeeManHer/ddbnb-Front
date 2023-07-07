@@ -14,17 +14,13 @@
     display: flex;
 }
 
-.petmombtn:focus,
 
-.petmombtn:active {
+
+.petmombtn.active {
     background-color: #fab7a2;
     color: black;
 }
 
-.petmombtn.select {
-    background-color: #fab7a2;
-    color: black;
-}
 
 .asin {
     color: #FFC0F1;

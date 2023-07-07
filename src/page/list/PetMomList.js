@@ -1,3 +1,4 @@
+
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../../css/petsitterList.css";
@@ -6,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../css/petmomList.css";
 import PageBtn from "../../component/common/PageBtn";
 import { getPetMomList } from "../../api/petMomAPI";
+import StarPoint from "../../component/item/StarPoint";
 
 function searchSig(sido) {
 
@@ -21,34 +23,98 @@ function PetMomList() {
     const dispatch = useDispatch();
     const { data: petmomList, pageInfo } = useSelector(state => state.petMomReducer);
     const currentPage = useSelector(state => state.pageReducer);
-
+    const [selectedOtherButton, setSelectedOtherButton] = useState([]);
+    const [selectedPetButton, setSelectedPetButton] = useState([]);
     const [searchValue, setSearchValue] = useState({
         location: '',
         startDate: '',
         endDate: '',
         petYN: '',
         otherCondition: '',
+        // boardImage: [],
+
 
     });
 
-    const handleSearch = () => {
-        dispatch(getPetMomList(currentPage, searchValue));
+    const handlePageReload = () => {
+        window.location.reload();
     };
+
+    const toggleSelectedOther = (e) => {
+        const value = e.target.value;
+        const isOtherConditionButton = e.target.name === 'otherCondition';
+
+        if (isOtherConditionButton) {
+            setSelectedOtherButton(prevState => {
+                if (prevState.includes(value)) {
+                    // 선택된 "otherCondition" 버튼이 이미 선택된 상태인 경우, 선택을 해제합니다.
+                    return prevState.filter(item => item !== value);
+                } else {
+                    // 선택된 "otherCondition" 버튼이 선택되지 않은 상태인 경우, 선택합니다.
+                    return [value];
+                }
+            });
+
+            // 현재 버튼의 선택 상태를 토글합니다.
+            e.target.classList.toggle('active');
+
+            // 다른 "otherCondition" 버튼의 선택 상태를 해제합니다.
+            const otherConditionButtons = document.querySelectorAll('.petmombtn[name="otherCondition"]');
+            otherConditionButtons.forEach(button => {
+                if (button !== e.target) {
+                    button.classList.remove('active');
+                }
+            });
+        }
+    };
+
+
+    const toggleSelectedPet = (e) => {
+        const value = e.target.value;
+        const isPetButton = e.target.name === 'petYN';
+
+        if (isPetButton) {
+            setSelectedPetButton(prevState => {
+                if (prevState.includes('반려동물 없어요')) {
+                    // "반려동물 없어요" 버튼이 이미 선택된 상태인 경우, 선택을 해제합니다.
+                    return prevState.filter(item => item !== '반려동물 없어요');
+                } else {
+                    // "반려동물 없어요" 버튼이 선택되지 않은 상태인 경우, 선택합니다.
+                    return ['반려동물 없어요', ...prevState];
+                }
+            });
+
+            // 현재 버튼의 선택 상태를 토글합니다.
+            e.target.classList.toggle('active');
+        }
+    };
+
+
 
     useEffect(
         () => {
             dispatch(getPetMomList(currentPage, searchValue));
+
         }
         , [currentPage, searchValue]
     )
+
+
     const navigate = useNavigate();
 
     const onChangeList = (e) => {
         const { name, value } = e.target;
-        setSearchValue(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (searchValue[name] === value) {
+            setSearchValue(prevState => ({
+                ...prevState,
+                [name]: ''
+            }));
+        } else {
+            setSearchValue(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const onChangeHandler = (e) => {
@@ -97,9 +163,10 @@ function PetMomList() {
 
 
 
+
     console.log(searchValue);
     console.log(petmomList);
-
+    // console.log(currentPage);
     return (
         <div>
 
@@ -109,7 +176,6 @@ function PetMomList() {
 
                 <div className="mainpagebox">
                     <div className="wherewhen">
-
                         <h4 className="where">어디에 사시나요?</h4>
                         <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
                             <option value="" onClick={onChangeList}>시/도</option>
@@ -141,6 +207,7 @@ function PetMomList() {
                         </div>
                         <section className="whenrate">
 
+
                             <h4 className="when">언제 맡기길 원하시나요?</h4>
                             <div>
                                 <input
@@ -148,8 +215,7 @@ function PetMomList() {
                                     type="date"
                                     name="startDate"
                                     value={searchValue.startDate}
-                                    onChange={onChangeHandler}
-                                />
+                                    onChange={onChangeHandler} />
                                 <div className="wave">~</div>
                                 <input
                                     className="dateselect2"
@@ -165,16 +231,20 @@ function PetMomList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            <button className="petmombtn" name='petYN' value="반려동물 없어요" onClick={onChangeList}>반려동물 없음</button>
+                            {/* {/* <button className="petmombtn" name='petYN' value="반려동물 없어요" onClick={onChangeList}>반려동물 없음</button>
                             <button className="petmombtn" name='otherCondition' value="픽업가능" onClick={onChangeList}>픽업 가능</button>
-                            <button className="petmombtn" name='otherCondition' value="대형견 가능" onClick={onChangeList}>대형견 가능</button>
-                            <button className="petmombtn" name='otherCondition' value="노견케어" onClick={onChangeList}>노견 케어</button>
+                            <button className="petmombtn" name='otherCondition' value="대형견 가능" onClick={onChangeList}>대형견 가능</button> */}
+                            <button className={`petmombtn ${selectedOtherButton.includes('반려동물 없어요') ? 'active' : ''}`} name="petYN" value="반려동물 없어요" onClick={(e) => { onChangeList(e); toggleSelectedPet(e); }}>반려동물 없어요</button>
+                            <button className={`petmombtn ${selectedOtherButton.includes('픽업가능') ? 'active' : ''}`} name="otherCondition" value="픽업가능" onClick={(e) => { onChangeList(e); toggleSelectedOther(e); }}>픽업 가능</button>
+                            <button className={`petmombtn ${selectedOtherButton.includes('대형견 가능') ? 'active' : ''}`} name="otherCondition" value="대형견 가능" onClick={(e) => { onChangeList(e); toggleSelectedOther(e); }}> 대형견 가능</button>
+                            <button className={`petmombtn ${selectedOtherButton.includes('노견케어') ? 'active' : ''}`} name="otherCondition" value="노견케어" onClick={(e) => { onChangeList(e); toggleSelectedOther(e); }}> 노견 케어</button>
 
                         </div>
                     </div>
 
                 </div>
                 <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
+
             </div>
 
 
@@ -185,7 +255,7 @@ function PetMomList() {
                         style={petmom.momStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
                         onClick={() => navigate(`./${petmom.boardId}`)}
                     >
-                        <img className="dogimg" src="../img/angrydog.png"></img>
+                        {/* <img className="dogimg" src={petmom?.boardImage[0]?.imageUrl} /> */}
 
                         <div className="textlist">
                             <div className="wheretext">
@@ -193,7 +263,7 @@ function PetMomList() {
                                 <div>{petmom.boadrDate}</div>
                             </div>
                             <div>
-                                <div>{petmom.boardTitle}</div>
+                                <h2>{petmom.boardTitle}</h2>
                                 <hr className="line"></hr>
                             </div>
                             <div className="columncss">
@@ -203,13 +273,15 @@ function PetMomList() {
                                 <div className="stardivbtn">
                                     <div className="dis-flex">
                                     </div>
+                                    <StarPoint starPoint={petmom.member?.starPoint} />
                                     {/* <img className="star" src="../img/star.png"></img> */}
                                     <div className="divbtn flex-column">
                                         <div>{petmom.dateRate}￦
-                                            <button>1박</button>
+                                            <button>하루당</button>
                                         </div>
                                         <div>{petmom.hourlyRate}￦
                                             <button>시간당</button>
+                                            <button className="section1">{petmom.momStatus}</button>
                                         </div>
                                     </div>
                                 </div>

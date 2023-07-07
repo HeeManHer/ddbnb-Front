@@ -128,7 +128,7 @@ function PetSitterRecruitDatail() {
                         </>) :
                         <button className="declarationButton" onClick={openModals}>신고</button>}
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        <Declaration category="게시글 신고" />
+                        <Declaration category="게시글" />
                     </Modal>
                 </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
@@ -180,6 +180,7 @@ function PetSitterRecruitDatail() {
                 <h3 className="comment-content4">{petsdetail.rate}</h3>
             </div>
             <hr className="line"></hr>
+            {/* <img className="dogimg" src={petsdetail?.boardImage[0]?.imageUrl} /> */}
             <div className="formsize">
                 <div className="doginfo3">
                     <div className="size">
