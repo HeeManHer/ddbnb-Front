@@ -142,8 +142,8 @@ function Dashboard() {
                                             (
                                                 <tr key={report.reportId}>
                                                     <td>{report.reportDate}</td>
-                                                    <td>{report.currentUser.memberId}</td>
-                                                    <td>{report.otherUser.memberId}</td>
+                                                    <td>{report.currentUser?.memberId}</td>
+                                                    <td>{report.otherUser?.memberId}</td>
                                                     <td>{report.reportReason}</td>
                                                     <td>{report.reportState}</td>
                                                 </tr>

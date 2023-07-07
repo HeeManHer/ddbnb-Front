@@ -110,7 +110,7 @@ function PetMomRecruitDatail() {
 
 
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                    <Declaration />
+                    <Declaration category="게시글" />
                 </Modal>
                 <Modal className="modal-backdrop" isOpen={petmomcollectcancle} onRequestClose={closeModal}>
                     <PetMomCollectCancle onClickhandle={onClickhandle} />
