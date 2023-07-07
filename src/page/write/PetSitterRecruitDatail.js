@@ -180,6 +180,7 @@ function PetSitterRecruitDatail() {
                 <h3 className="comment-content4">{petsdetail.rate}</h3>
             </div>
             <hr className="line"></hr>
+            {/* <img className="dogimg" src={petsdetail?.boardImage[0]?.imageUrl} /> */}
             <div className="formsize">
                 <div className="doginfo3">
                     <div className="size">

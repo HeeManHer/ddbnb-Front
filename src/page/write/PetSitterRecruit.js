@@ -131,7 +131,7 @@ function PetSitterRecruit() {
                 fileReader.onload = (e) => {
                     const { result } = e.target;
                     if (result) {
-                        setImagesUrl([result, ...imagesUrl]);
+                        setImagesUrl([...imagesUrl, result]);
                     }
                 }
                 fileReader.readAsDataURL(image);
@@ -241,7 +241,7 @@ function PetSitterRecruit() {
                 <hr className="line123"></hr>
 
                 <div className="imgbtndiv">
-                    <div className="image-container">
+                    {/* <div className="image-container">
                         <div>
                             <input
                                 type="file"
@@ -250,19 +250,46 @@ function PetSitterRecruit() {
                                 onChange={handleImageSelect}
                                 disabled={images.length === 4} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
                             />
-                          </div>
-                          <div className="image-preview-container2">
-                              {imagesUrl.map((url, index) => index !== 0 && (
-                                  <img
-                                      key={index}
-                                      src={url}
-                                      alt={`첨부 이미지 ${index + 1}`}
-                                      className="attached-image"
-                                  />
-                              ))}
-                          </div>
+                        </div>
+                        <div className="image-preview-container2">
+                            {imagesUrl.map((url, index) => index !== 0 && (
+                                <img
+                                    key={index}
+                                    src={url}
+                                    alt={`첨부 이미지 ${index + 1}`}
+                                    className="attached-image"
+                                />
+                            ))}
+                        </div>
+                    </div> */}
+                    <div className="image-container">
+                        <div>
+                            <input
+                                type="file"
+                                id="imageUpload"
+                                accept="image/jpg,image/png,image/jpeg,image/gif"
+                                onChange={handleImageSelect}
+                                disabled={images.length === 4}
+                            />
+                        </div>
+                        <div className="image-preview-container2">
+                            {imagesUrl.slice(1).map((url, index) => ( // 이미지 배열에서 첫 번째 이미지를 제외한 나머지 이미지를 사용
+                                <img
+                                    key={index}
+                                    src={url}
+                                    alt={`첨부 이미지 ${index + 2}`} // index + 2로 수정하여 첨부 이미지 1부터 시작하도록 설정
+                                    className="attached-image small-image" // 모든 이미지에 작은 크기로 적용
+                                />
+                            ))}
+                            {imagesUrl.length > 0 && ( // 이미지가 적어도 1장 이상일 때만 첫 번째 이미지를 추가
+                                <img
+                                    src={imagesUrl[0]}
+                                    alt="첨부 이미지 1"
+                                    className="attached-image big-image" // 첨부 이미지 1에 큰 크기 적용
+                                />
+                            )}
+                        </div>
                     </div>
-                    
                     <div className="abc123">
                         <div className="abc">
                             <button className="petsitterrecruitbtn">이름</button>
