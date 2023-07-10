@@ -84,7 +84,7 @@ export function getPetsitterdetailAPI(boardId) {
     };
 }
 
-export function putPetsitterAPI(boardId, form) {
+export function putPetsitterAPI(form) {
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/modify`;
 
@@ -93,10 +93,9 @@ export function putPetsitterAPI(boardId, form) {
         const result = await fetch(URL, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
                 "Accept": "*/*",
             },
-            body: JSON.stringify(form)
+            body: form
         }).then(response => response.json());
 
         alert(result.message);

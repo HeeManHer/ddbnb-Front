@@ -57,14 +57,12 @@ function MyPageMain() {
     const handleButtonClick = (id) => {
         setButtonId(id);
     };
+
     return (
         <section className={style.board}>
             {/* 프로필블록 */}
             <div className={style.topBoard}>
-                <article className={style.editLine}>
-                    <div>
-                        <button>쪽지함</button>
-                    </div>
+                <article className={style.editLine}>                   
                     <div>
                         <button onClick={ClickHandler}>프로필수정</button>
                         {/* <button>경력수정</button> */}
@@ -73,7 +71,7 @@ function MyPageMain() {
                 <section className={style.profileMain}>
                     {/* 왼쪽프로필 */}
                     <article className={style.profileBoard}>
-                        <img src={member?.profileImage} alt='profile' className={style.image}/>
+                        <img src={member?.profileImage} alt='profile' className={style.image} />
                         <div style={{ fontWeight: 'bold' }}>
                             {member.nickname}
                         </div>
