@@ -272,7 +272,6 @@
 .dateselect3 {
     height: 30px;
     position: relative;
-    left: 150px;
     /* background-color: #EFF244; */
     /* width: 40%; */
 }
@@ -280,8 +279,6 @@
 .dateselect4 {
     height: 30px;
     position: relative;
-    left: 45px;
-    bottom: 55px;
     /* background-color: #EFF244; */
     /* width: 40%; */
 }
@@ -373,34 +370,28 @@
 
 .abc {
     position: relative;
-    bottom: 70px;
 }
 
 .gender {
     position: relative;
-    bottom: 60px;
 }
 
 .significantbtn {
     position: relative;
-    bottom: 50px;
 }
 
 .significant {
     position: relative;
-    bottom: 50px;
     width: auto;
     height: auto;
 }
 
 .dogdog {
     position: relative;
-    bottom: 90px;
 }
 
 .dogwrite {
     position: relative;
-    bottom: 80px;
 }
 
 .abc123 {

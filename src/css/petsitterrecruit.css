@@ -1,10 +1,10 @@
 .petsitterrecruitcontainer {
-    width: 80vn;
+    width: auto;
     height: auto;
 }
 
 .smallcontainer {
-    width: 80%;
+    width: 85%;
     margin: auto;
     padding: 10px;
 }
@@ -34,6 +34,8 @@
     /* overflow-x: auto; */
     padding-bottom: 10px;
     width: 40%;
+    position: relative;
+    top: 100px;
     /* 가로 스크롤이 생길 경우 하단 여백 추가 */
 }
 

@@ -61,7 +61,7 @@ export function registPetsitterAPI(form) {
 
         if (result.status === 200) {
             alert(result.message);
-            dispatch({ type: POST_PETSITTER, payload: result.data });
+            // dispatch({ type: POST_PETSITTER, payload: result.data });
         }
     };
 }
@@ -100,7 +100,8 @@ export function putPetsitterAPI(boardId, form) {
         }).then(response => response.json());
 
         alert(result.message);
-        dispatch({ type: PUT_PETSITTERDETAIL, patload: result.data });
+        window.location.href = "../";
+        // dispatch({ type: PUT_PETSITTERDETAIL, patload: result.data });
     };
 }
 

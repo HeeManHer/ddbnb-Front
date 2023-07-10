@@ -88,6 +88,7 @@ function PetSitterRecruitDatail() {
     //     navigate("./modify");
     // };
 
+
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const postUser = token !== null && token.memberId == petsdetail.member?.memberId ? true : false;
 
@@ -105,16 +106,17 @@ function PetSitterRecruitDatail() {
     }
 
 
+    const totalImages = petsdetail.boardImage ? petsdetail.boardImage.length : 0;
 
-    // const changeImage = (direction) => {
-    //     let newIndex = currentImageIndex + direction;
-    //     if (newIndex < 0) {
-    //         newIndex = totalImages - 1; // 마지막 이미지로 순환
-    //     } else if (newIndex >= totalImages) {
-    //         newIndex = 0; // 첫 번째 이미지로 순환
-    //     }
-    //     setCurrentImageIndex(newIndex);
-    // };
+    const changeImage = (direction) => {
+        let newIndex = currentImageIndex + direction;
+        if (newIndex < 0) {
+            newIndex = totalImages - 1; // 마지막 이미지로 순환
+        } else if (newIndex >= totalImages) {
+            newIndex = 0; // 첫 번째 이미지로 순환
+        }
+        setCurrentImageIndex(newIndex);
+    };
 
     return (
         <div className={style.heightauto}>
@@ -136,18 +138,18 @@ function PetSitterRecruitDatail() {
                 </Modal>
             </div>
             <div className="dateAndWriter">
-                <h5>작성자 : {petsdetail?.memberId?.nickname}</h5>
+                <h5>작성자 : {petsdetail?.member?.nickname}</h5>
                 <h5>작성일: {petsdetail.boardDate}</h5>
             </div>
             <hr className="line"></hr>
-            {/* <div className="images">
+            <div className="images">
                 <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
-                {petsdetail.img && petsdetail.img.length > 0 ? (
-                    <img className='imgsize' src={petsdetail.img[currentImageIndex]} alt=" 사진이 없습니다!" />
+                {petsdetail.boardImage && petsdetail.boardImage.length > 0 ? (
+                    <img className='imgsize' src={petsdetail.boardImage[currentImageIndex].imageUrl} alt=" 사진이 없습니다!" />
                 ) : null}
                 <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
-            </div> */}
-            {/* <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2> */}
+            </div>
+            <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2>
             <div className="comment">
                 <h3 className="comment-content" style={{ right: '4%' }}>게시판</h3>
                 <h3 className="comment-content2" style={{ left: '13px' }} > 펫시터 모집  게시판</h3>
