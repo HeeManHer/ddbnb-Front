@@ -25,6 +25,19 @@ function Header() {
 
     }
 
+    const openMessageList = () => {
+
+        const modal_width = '560';
+        const modal_height = '515';
+
+        const window_width = (window.screen.width - modal_width) / 2;
+        const window_height = (window.screen.height - modal_height) / 2;
+
+        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}`;
+
+        window.open('/postMessageList', 'message', option);
+    }
+
     if (token) {
         if (admin) {
             return (
@@ -37,12 +50,13 @@ function Header() {
         } else {
             return (
                 <header className="back-color dis-flex align-center">
+                    <span onClick={openMessageList}>쪽지함</span>
                     <span onClick={() => navigate("/mypage")} >마이페이지</span>
                     <span onClick={logout} >로그아웃</span>
                 </header>
             )
         }
-    } else{
+    } else {
         return (
             <header className="back-color dis-flex align-center">
                 <span onClick={() => navigate("/login")} >로그인</span>

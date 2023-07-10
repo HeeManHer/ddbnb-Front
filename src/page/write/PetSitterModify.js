@@ -104,7 +104,21 @@ function PetSitterModify() {
 
 
     const modifypetsitter = () => {
-        dispatch(putPetsitterAPI(boardId, form));
+
+        const formData = new FormData();
+
+        formData.append('modifyPetSitter', new Blob([JSON.stringify(form)], { type: "application/json" }))
+
+        // if (images) {
+        //     for (let index in images) {
+        //         formData.append("image", images[index])
+        //     }
+        // }
+        if (selectedImage) {
+            formData.append("image", selectedImage)
+        }
+
+        dispatch(putPetsitterAPI(formData));
 
     };
 
@@ -116,7 +130,7 @@ function PetSitterModify() {
     )
 
     const petsdetail = useSelector(state => state.petSitterReducer);
-
+    console.log(petsdetail)
     useEffect(
         () => {
             if (petsdetail && petsdetail.location) {
@@ -143,7 +157,7 @@ function PetSitterModify() {
             reader.readAsDataURL(file);
         }
     };
-    console.log(petsdetail.boardTitle);
+    // console.log(petsdetail.boardTitle);
     return (
         <div className="petsitterrecruitcontainer">
 
@@ -279,7 +293,7 @@ function PetSitterModify() {
                                     <option value="" >남/여</option>
                                     <option value="남">남</option>
                                     <option value="여">여</option>
-                                    <hr className="line"></hr>
+                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 크기
                                 <select className="secondselect2" onChange={onChangeHandler} name="petSize" defaultValue={petsdetail.petSize}>
@@ -287,7 +301,7 @@ function PetSitterModify() {
                                     <option value="소형">소형</option>
                                     <option value="중형">중형</option>
                                     <option value="대형">대형</option>
-                                    <hr className="line"></hr>
+                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 <hr className="line"></hr>
                             </div>

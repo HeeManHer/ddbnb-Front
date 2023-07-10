@@ -34,40 +34,8 @@ function MainPage() {
         navigate("/petMom");
     }
 
-
-    const openApplicantList = () => {
-
-        const modal_width = '500';
-        const modal_height = '750';
-
-        const window_width = (window.screen.width - modal_width) / 2;
-        const window_height = (window.screen.height - modal_height) / 2;
-
-        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}, scrollbars=no`;
-
-        window.open('/applicant', 'applicant', option);
-    }
-    const openMessageList = () => {
-
-        const modal_width = '560';
-        const modal_height = '515';
-
-        const window_width = (window.screen.width - modal_width) / 2;
-        const window_height = (window.screen.height - modal_height) / 2;
-
-        const option = `width=${modal_width},height=${modal_height}, left=${window_width}, top=${window_height}`;
-
-        window.open('/postMessageList', 'message', option);
-    }
-
     return (
         <div className="mainPage">
-
-            <div>
-                <button onClick={openApplicantList}>신청자 목록</button>
-                <button onClick={openMessageList}>쪽지함</button>
-            </div>
-
             <img src="/img/banner.png" alt="banner" className="banner center" />
             <div className="cardList">
                 <div className='dis-flex justify-between align-center cardName'>

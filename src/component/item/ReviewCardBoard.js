@@ -53,7 +53,7 @@ function ReviewCardBoard() {
                                     </div>
                                 </div>
                                 <div className={style.ReviewName}>
-                                    {review.reviewTitle.length > 10? review.reviewTitle.substring(0, 10)+ "...":review.reviewTitle}
+                                    {review.reviewTitle?.length > 10 ? review.reviewTitle.substring(0, 10) + "..." : review.reviewTitle}
                                 </div>
                                 <div className={style.write}>
                                     <div>{review.reviewerId}</div>
