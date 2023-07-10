@@ -220,7 +220,7 @@ function PetSitterList() {
                     key={petsitter.boardId}
                     onClick={() => navigate(`./${petsitter.boardId}`)}
                 >
-                    {/* <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} /> */}
+                    <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} />
                     <div className="textlist">
                         <div className="wheretext">
                             <div>{petsitter.location}</div>
