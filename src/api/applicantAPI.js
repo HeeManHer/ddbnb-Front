@@ -45,6 +45,31 @@ export const getMyApplyListAPI = (currentPage) => {
     }
 }
 
+//내가 신청한 맘
+export const getMyMomApplyListAPI = (currentPage) => {
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+            .then(response => response.json())
+
+        if (result.status === 200) {
+            dispatch({ type: GET_MOMAPPLICANT, payload: result.data });
+            console.log(result);
+        }
+    }
+}
+
+
 export const getMomApplicantList = (applicantId) => {
 
     const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}`;

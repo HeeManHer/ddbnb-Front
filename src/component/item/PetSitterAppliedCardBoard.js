@@ -2,7 +2,7 @@ import style from './AppliedCardBoard.module.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function PetSitterAppliedCardBoard() {
@@ -17,6 +17,8 @@ function PetSitterAppliedCardBoard() {
         dispatch(getMyApplyListAPI(currentPage));
 
     }, [currentPage]);
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -33,20 +35,18 @@ function PetSitterAppliedCardBoard() {
 
 
             {Array.isArray(applys) && applys.map((apply, index) =>
-                <Link to={`/petsitter/${apply.boardId.sitterStatus}`} style={{ textDecoration: 'none', color: '#202020' }} key={index}>
                     <section className={`${style.category2} ${style.flex_center}`}>
                         <div>
                             <section style={apply.sitterStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
                                 {apply.boardId.sitterStatus}
                             </section>
                         </div>
-                        <div>{apply.boardId.location}</div>
-                        <div>{apply.boardId.petShape}</div>
-                        <div>{apply.boardId.boardTitle}</div>
-                        <div>{apply.appliedDate}</div>
-                        <div><button>신청취소</button></div>
+                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
+                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
+                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
+                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
+                    <div><button>신청취소</button></div>
                     </section>
-                </Link>
             )}
 
 
