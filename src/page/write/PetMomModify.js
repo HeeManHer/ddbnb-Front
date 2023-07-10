@@ -210,7 +210,9 @@ function PetMomModify() {
 
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
-                    <NavLink to="/petmom" className="insertwrite" onClick={modifypetMom} >수정</NavLink>
+                    <NavLink to="/petmom" className="insertwrite" onClick={modifypetMom}>
+                        <button class="declarationButton">수정</button>
+                    </NavLink>
 
                 </div>
 
@@ -240,7 +242,7 @@ function PetMomModify() {
 
             <div>
                 지역
-                <select className="firstselect" onChange={onChangeSidoHandler} id="sido" readOnly>
+                <select className="firstselect1" onChange={onChangeSidoHandler} id="sido" readOnly>
                     <option value="">시/도</option>
                     <option value="서울">서울특별시</option>
                     <option value="부산">부산광역시</option>
@@ -262,7 +264,7 @@ function PetMomModify() {
                 </select>
 
                 <div className="sidogu">
-                    <select className="secondselect" id="sigungu" onChange={onChangeSidoHandler} readOnly alue={location.sigungu}>
+                    <select className="secondselect1" id="sigungu" onChange={onChangeSidoHandler} readOnly alue={location.sigungu}>
                         <option value="">시 / 군 / 구</option>
                         {sigList.map(sig => <Sigoon key={sig.id} sig={sig} />)}
                     </select>
@@ -278,18 +280,19 @@ function PetMomModify() {
             </div>
 
             <hr className="line"></hr>
-            <div>
+            <div className="datemoneygive">
                 기간
-                <input className="dateselect1" type="date" onChange={onChangeHandler} name="startDate" defaultValue={petmomdetail.startDate} /><div className="wave22">~</div><input className="dateselect2" type="date" name="endDate" defaultValue={petmomdetail.endDate} onChange={onChangeHandler} />
-
-                1박
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="dateRate" defaultValue={petmomdetail.dateRate} placeholder="사례금을 작성해 주세요." />
-                시간당
-                <input className="moneygive" type="text" onChange={onChangeHandler} name="hourlyRate" defaultValue={petmomdetail.hourlyRate} placeholder="사례금을 작성해 주세요." />
+                <input className="dateselect5" type="date" onChange={onChangeHandler} name="startDate" defaultValue={petmomdetail.startDate} /><div className="wave2">~</div><input className="dateselect6" type="date" name="endDate" defaultValue={petmomdetail.endDate} onChange={onChangeHandler} />
+                <div className="park">
+                    1박
+                </div>
+                <input className="moneygive12" type="text" onChange={onChangeHandler} name="dateRate" defaultValue={petmomdetail.dateRate} placeholder="사례금을 작성해 주세요." />
+                <div className="time">
+                    시간당
+                </div>
+                <input className="moneygive11" type="text" onChange={onChangeHandler} name="hourlyRate" defaultValue={petmomdetail.hourlyRate} placeholder="사례금을 작성해 주세요." />
             </div>
-
-
-            <hr className="line"></hr>
+            <hr className="line10000"></hr>
             <div className="formsize">
                 <div className="doginfo-petmom">
                     <div>
@@ -334,32 +337,34 @@ function PetMomModify() {
                 </div>
                 <div className="momplz">
                     <div>
+                        <div className="livecare">
 
-                        <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
-                        <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
-                        <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
-
-
-
-                        <hr className="line2"></hr>
-
-                        <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
-                        <hr className="line2"></hr>
-                        <button className={`choice-box2 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
-                        <button className={`choice-box2 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
+                            <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
+                            <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
+                            <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
 
 
-                        <hr className="line2"></hr>
+
+                            <hr className="line2"></hr>
+
+                            <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
+                            <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
+                            <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
+                            <hr className="line2"></hr>
+                            <button className={`choice-box3 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
+                            <button className={`choice-box3 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
+
+
+                            <hr className="line2"></hr>
+                        </div>
                         <div className="dateAndWriter">
-                            <h2>특이사항</h2>
-                            <input className="significant" type="text" onChange={onChangeHandler} name="signficant" defaultValue={petmomdetail.signficant} />
+                            <h2 className="signficanttext">특이사항</h2>
+                            <input className="signficanttext" type="text" onChange={onChangeHandler} name="signficant" defaultValue={petmomdetail.signficant} />
 
                         </div>
                     </div>
-                    <h2> 강아지를 맡아줄게요</h2>
-                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" defaultValue={petmomdetail.request} />
+                    <h2 className="caredog"> 강아지를 맡아줄게요</h2>
+                    <textarea placeholder="내용을 입력해 주세요." className="dogwrite333" onChange={onChangeHandler} name="request" defaultValue={petmomdetail.request} />
                 </div>
             </div>
             <div>

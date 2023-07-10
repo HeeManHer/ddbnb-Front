@@ -31,14 +31,11 @@ function PetMomList() {
         endDate: '',
         petYN: '',
         otherCondition: '',
-        // boardImage: [],
+        boardImage: [],
 
 
     });
 
-    const handlePageReload = () => {
-        window.location.reload();
-    };
 
     const toggleSelectedOther = (e) => {
         const value = e.target.value;
@@ -65,6 +62,7 @@ function PetMomList() {
                     button.classList.remove('active');
                 }
             });
+            // dispatch(currentPage(1));
         }
     };
 
@@ -86,6 +84,7 @@ function PetMomList() {
 
             // 현재 버튼의 선택 상태를 토글합니다.
             e.target.classList.toggle('active');
+            // dispatch(currentPage(1));
         }
     };
 
@@ -145,6 +144,7 @@ function PetMomList() {
 
             location: e.target.value
         });
+        // dispatch(currentPage(1));
     }
 
 
@@ -158,10 +158,13 @@ function PetMomList() {
             ...searchValue,
             location: location.SIDO + ' ' + e.target.value
         });
+        // dispatch(currentPage(1));
     }
 
 
 
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+    const postUser = token !== null ? true : false;
 
 
     console.log(searchValue);
@@ -169,8 +172,12 @@ function PetMomList() {
     // console.log(currentPage);
     return (
         <div>
-
-            <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
+            {postUser ?
+                (<>
+                    <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
+                </>)
+                :
+                ""}
             <br />
             <div className="main">
 
@@ -231,9 +238,6 @@ function PetMomList() {
                     </div>
                     <div className="btnlist">
                         <div className="doglistbtn">
-                            {/* {/* <button className="petmombtn" name='petYN' value="반려동물 없어요" onClick={onChangeList}>반려동물 없음</button>
-                            <button className="petmombtn" name='otherCondition' value="픽업가능" onClick={onChangeList}>픽업 가능</button>
-                            <button className="petmombtn" name='otherCondition' value="대형견 가능" onClick={onChangeList}>대형견 가능</button> */}
                             <button className={`petmombtn ${selectedOtherButton.includes('반려동물 없어요') ? 'active' : ''}`} name="petYN" value="반려동물 없어요" onClick={(e) => { onChangeList(e); toggleSelectedPet(e); }}>반려동물 없어요</button>
                             <button className={`petmombtn ${selectedOtherButton.includes('픽업가능') ? 'active' : ''}`} name="otherCondition" value="픽업가능" onClick={(e) => { onChangeList(e); toggleSelectedOther(e); }}>픽업 가능</button>
                             <button className={`petmombtn ${selectedOtherButton.includes('대형견 가능') ? 'active' : ''}`} name="otherCondition" value="대형견 가능" onClick={(e) => { onChangeList(e); toggleSelectedOther(e); }}> 대형견 가능</button>
@@ -255,7 +259,7 @@ function PetMomList() {
                         style={petmom.momStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
                         onClick={() => navigate(`./${petmom.boardId}`)}
                     >
-                        {/* <img className="dogimg" src={petmom?.boardImage[0]?.imageUrl} /> */}
+                        <img className="dogimg" src={petmom?.boardImage[0]?.imageUrl} />
 
                         <div className="textlist">
                             <div className="wheretext">
@@ -273,15 +277,18 @@ function PetMomList() {
                                 <div className="stardivbtn">
                                     <div className="dis-flex">
                                     </div>
-                                    <StarPoint starPoint={petmom.member?.starPoint} />
-                                    {/* <img className="star" src="../img/star.png"></img> */}
+                                    <div className="starpoint-size ">
+                                        <StarPoint starPoint={petmom.member?.starPoint} />
+                                    </div>
                                     <div className="divbtn flex-column">
                                         <div>{petmom.dateRate}￦
                                             <button>하루당</button>
                                         </div>
                                         <div>{petmom.hourlyRate}￦
                                             <button>시간당</button>
-                                            <button className="section1">{petmom.momStatus}</button>
+                                            <div className="button-w">
+                                                <button className="section1">{petmom.momStatus}</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

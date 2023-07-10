@@ -313,6 +313,7 @@
     position: relative;
     left: 163px;
     bottom: 30px;
+    width: 10px;
 }
 
 .wave3 {
@@ -330,6 +331,11 @@
     align-items: center;
     display: flex;
     justify-content: center;
+}
+
+.button-w {
+    display: flex;
+    justify-content: right;
 }
 
 .sidogu {
@@ -404,6 +410,12 @@
 }
 
 .abc123 {
+    position: relative;
+    left: 100px;
+}
+
+.starpoint-size {
+    display: flex;
     position: relative;
     left: 100px;
 }
