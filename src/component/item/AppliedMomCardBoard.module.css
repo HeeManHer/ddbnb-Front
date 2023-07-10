@@ -27,16 +27,16 @@
 }
 
 .category div:nth-child(3) {
-    width: 13%;
+    width: 57%;
+    margin-left: 18px;
 }
 
 .category div:nth-child(4) {
-    width: 42%;
+    width: 18%;
+    margin-left: 40px;
 }
 .category div:nth-child(5) {
-    width: 22%
-}.category div:nth-child(6) {
-    width: 13%
+    width: 14%
 }
 .careerTitle {
     width: auto;
@@ -80,44 +80,35 @@
     border-bottom: 1px solid #2d2d2d;
     color: #2d2d2d;
     font-weight: bold;
-}
-.category3 {
-    margin-inline: 10px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    font-size: 14px;
-    /* margin-top: 5px; */
-    height: 35px;
-    border-bottom: 1px solid #2d2d2d;
-    color: #2d2d2d;
-    font-weight: bold;
-}
 
-.category2 div:nth-child(1) {
+}.category2 div:nth-child(1) {
     width: 10%;
     display: flex;
     justify-content: center;
     text-align: center;
 }
 .category2 div:nth-child(2) {
-    width: 18%;
+    width: 17%;
 }
 
 .category2 div:nth-child(3) {
-    width: 13%;
+    width: 57%;
     /* background-color: #2d2d2d; */
 }
 .category2 div:nth-child(4) {
-    width: 42%;
+    width: 20%;
+    margin-left: 20px;
     
 }
 .category2 div:nth-child(5) {
-    width: 22%;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* margin-right: 10px; */
+    /* margin-left: 5px; */
 }
-.category2 div:nth-child(6) {
-    width: 13%;
-}
+
 
 .category2 button{
     height: 30px;
@@ -125,6 +116,7 @@
     background-color: white;
     border: 1px solid #8d8d8d;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .category2 section{
