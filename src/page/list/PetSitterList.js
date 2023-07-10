@@ -24,8 +24,8 @@ function PetSitterList() {
 
     const dispatch = useDispatch();
     const { data: petsitterList, pageInfo } = useSelector(state => state.petSitterReducer);
-    const currentPage = useSelector(state => state.pageReducer);
 
+    const currentPage = useSelector(state => state.pageReducer);
     const [searchValue, setSearchValue] = useState({
         location: '',
         petSize: [],
@@ -71,16 +71,13 @@ function PetSitterList() {
 
     const handleButtonClick = (name, value) => {
         setSearchValue((prevState) => {
-            const updatedValue = [...prevState[name]];
-
-            if (updatedValue.includes(value)) {
-                // 이미 선택된 버튼을 클릭한 경우
-                const index = updatedValue.indexOf(value);
-                updatedValue.splice(index, 1);
+            let updatedValue = [...prevState[name]];
+            if (updatedValue.indexOf(value) === -1) {
+                updatedValue = [value];
             } else {
-                // 새로운 버튼을 클릭한 경우
-                updatedValue.push(value);
+                updatedValue = updatedValue.filter(item => item !== value)
             }
+
 
             return {
                 ...prevState,

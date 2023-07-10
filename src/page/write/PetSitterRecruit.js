@@ -161,9 +161,6 @@ function PetSitterRecruit() {
 
             <div className="yongdate">
 
-                <h3 className="writeryong">작성자 : 김용민</h3>
-                <div className="writedate">작성일 : 2023-05-18
-                </div>
             </div>
 
             <hr className="line"></hr>

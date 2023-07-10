@@ -31,7 +31,7 @@ function RegistPost({ regist }) {
 
             <div className="button2list">
                 <NavLink
-                    to="/PetMom"
+                    to="../"
                     className="modalsize-button3"
                     onClick={handleRegist}
 

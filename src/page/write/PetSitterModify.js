@@ -226,14 +226,14 @@ function PetSitterModify() {
 
                     <div className="moneydate">
                         기간
-                        <input className="dateselect3" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} /><div className="wave1">~</div><input className="dateselect4" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
+                        <input className="dateselect3" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} />~<input className="dateselect4" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
                         <div className="givemoney">
                             사례금
                         </div>
-                        <input className="moneygive" type="text" onChange={onChangeHandler} name="rate" value={petsdetail.rate} placeholder="사례금을 작성해 주세요." />
+                        <input className="moneygive" type="text" onChange={onChangeHandler} name="rate" defaultValue={petsdetail.rate} placeholder="사례금을 작성해 주세요." />
                     </div>
 
-                    <hr className="line123"></hr>
+                    <hr className="line"></hr>
 
                     <div className="imgbtndiv">
                         <div className="image-container">
