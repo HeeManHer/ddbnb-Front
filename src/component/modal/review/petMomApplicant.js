@@ -71,9 +71,7 @@ function PetMomApplicant({ closeModalList }) {
                     <div className="reviewlist-people-line" key={getapplicant.applicantId}>
                         <div className="reviewlist-organize">
                             <div className="reviewlist-imgandName">
-                                <div className="reviewlist-img">
-                                    <img src={getapplicant.member.profileImage} />
-                                </div>
+                                <img className="reviewlist-img" src={getapplicant.member.profileImage} />
                                 <h6>{getapplicant.applicantId}</h6>
                             </div>
                             <div className="reviewList-line">

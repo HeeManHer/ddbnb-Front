@@ -60,7 +60,7 @@ function PetMomRecruitDatail() {
     };
 
     const data = useSelector(state => state.petDetailReducer);
-    // const totalImages = petdetail.img ? petdetail.img.length : 0;
+    const totalImages = data.boardImage ? data.boardImage.length : 0;
     const { boardId } = useParams();
     const onClickhandle = () => {
         dispatch(putMypetMomCancle(data.boardId, { momStatus: "모집취소" }));
@@ -84,29 +84,44 @@ function PetMomRecruitDatail() {
         []
     )
 
+    const changeImage = (direction) => {
+        let newIndex = currentImageIndex + direction;
+        if (newIndex < 0) {
+            newIndex = totalImages - 1; // 마지막 이미지로 순환
+        } else if (newIndex >= totalImages) {
+            newIndex = 0; // 첫 번째 이미지로 순환
+        }
+        setCurrentImageIndex(newIndex);
+    };
+
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const postUser = token !== null && token.memberId == data.member?.memberId ? true : false;
-
+    const isTokenNull = token === null;
 
 
 
     console.log(data)
+
     return (
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
             <div className="dateAndWriter">
                 <h1>게시판</h1>
-                <h3>작성자: {data.member && data.member.nickname}</h3>
-                <h4>작성일 : {data.boardDate}</h4>
+                <h3 className='writer-size'>작성자: {data.member && data.member.nickname}</h3>
+                <h4 >작성일 : {data.boardDate}</h4>
 
 
-                {postUser ?
-                    (<>
-                        <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
-                        <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
-                    </>)
-                    :
-                    <button className="declarationButton" onClick={openModal}>신고</button>}
+                {isTokenNull ?
+                    null :
+                    postUser ? (
+                        <>
+                            <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
+                            <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
+                        </>
+                    ) : (
+                        <button className="declarationButton" onClick={openModal}>신고</button>
+                    )
+                }
 
 
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
@@ -118,8 +133,6 @@ function PetMomRecruitDatail() {
             </div>
 
             <div className="dateAndWriter">
-                {/* <h5>작성자 : {data.name}</h5> */}
-                {/* <h5>작성일 : {data.boardDate}</h5> */}
             </div>
             <hr className="line"></hr>
 
@@ -160,15 +173,15 @@ function PetMomRecruitDatail() {
 
             </div>
             <hr className="line"></hr>
-            <div className="formsize">
+            <div className="formsize3">
                 <div className="doginfo-petmom">
-                    {/* <div className="images">
+                    <div className="images">
                         <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
-                        {data.img && data.img.length > 0 ? (
-                            <img className='imgsize' src={data.img[currentImageIndex]} alt=" 사진이 없습니다!" />
+                        {data.boardImage && data.boardImage.length > 0 ? (
+                            <img className='imgsize' src={data.boardImage[currentImageIndex].imageUrl} alt=" 사진이 없습니다!" />
                         ) : null}
                         <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
-                    </div> */}
+                    </div>
                     <div className="calendar">
                         <Calendar />
                     </div>

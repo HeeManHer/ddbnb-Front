@@ -4,6 +4,19 @@
     justify-content: space-between;
 }
 
+.dateAndWriter2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    bottom: 100px;
+}
+
+.plzpet {
+    display: flex;
+    position: relative;
+    bottom: 100px;
+}
 
 .imageBtn {
     display: flex;
@@ -152,8 +165,9 @@
     width: 50%;
     float: left;
     box-sizing: border-box;
-    height: 750px;
+    height: 500px;
     position: relative;
+    right: 35px;
 
 
 }
@@ -213,6 +227,15 @@
     width: 510px;
     height: 200px;
     resize: none;
+}
+
+.momplz-textarea3 {
+    width: 510px;
+    height: 200px;
+    resize: none;
+    display: flex;
+    position: relative;
+    bottom: 100px;
 }
 
 .doginfo-button {
@@ -354,6 +377,16 @@
 .formsize {
     height: 750px;
 }
+
+.formsize3 {
+    height: 880px;
+}
+
+.formsize2 {
+    height: 600px;
+}
+
+
 
 .endline {
     position: relative;
@@ -554,6 +587,7 @@
     position: relative;
     left: 500px;
     bottom: 135px;
+    width: 70px;
 }
 
 .line10000 {
@@ -588,4 +622,10 @@
     width: 100%;
     position: relative;
     bottom: 130px;
+}
+
+.writer-size {
+    display: flex;
+    position: relative;
+    top: 20px;
 }

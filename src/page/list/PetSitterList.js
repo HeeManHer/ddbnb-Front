@@ -111,12 +111,17 @@ function PetSitterList() {
         setSelectedPetsitter(petsitter);
     };
 
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+    const postUser = token !== null ? true : false;
 
     return (
         <div>
-
-
-            <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
+            {postUser ?
+                (<>
+                    <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>
+                </>)
+                :
+                ""}
             <br />
             <div className="main">
 
