@@ -47,23 +47,22 @@ function PetSitterAppliedCardBoard() {
 
 
             {Array.isArray(applys) && applys.map((apply, index) =>
-                    <section className={`${style.category2} ${style.flex_center}`}>
-                        <div>
-                            <section style={apply.sitterStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
-                                {apply.boardId.sitterStatus}
-                            </section>
-                        </div>
-                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
-                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
-                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
-                        <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
+                <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
                         <button onClick={() => { dispatch({ type: OPEN_MODAL , payload: 'cancel' })}}>신청취소</button>
                         <Modal back-drop = "static" isOpen={cancel} onRequestClose={closeModal}>
-                        {<CancelSitterRequest applicantId ={apply.appicantId}/>}
+                            {<CancelSitterRequest applicantId ={apply.appicantId}/>}
                         </Modal>
                     </div>
-                    </section>
+                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
+                    <div>
+                        <button onClick={() => { dispatch({ type: OPEN_MODAL, payload: 'cancel' }) }}>신청취소</button>
+                        {cancel && <CancelSitterRequest />}
+                    </div>
+                </section>
             )}
 
 

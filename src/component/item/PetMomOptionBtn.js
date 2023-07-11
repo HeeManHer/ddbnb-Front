@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SET_VALUE } from "../../modules/searchValue";
+import { RESET_PAGE } from "../../modules/currentPage";
 
 function PetMomOptionBtn() {
 
@@ -8,6 +9,8 @@ function PetMomOptionBtn() {
     const searchValue = useSelector(state => state.searchReducer);
 
     const handleButtonClick = e => {
+
+        dispatch({ type: RESET_PAGE });
 
         const { name, value } = e.target;
 
