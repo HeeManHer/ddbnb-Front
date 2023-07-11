@@ -14,6 +14,7 @@ import { getPetMomDetail } from '../../api/petDetailAPI';
 import { useParams, useNavigate } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
 import { getMomApplicantList } from '../../api/applicantAPI';
+import ApplicantsList from "../../component/modal/apply/ApplicantsList"
 
 
 function PetMomRecruitDatail() {
@@ -24,6 +25,7 @@ function PetMomRecruitDatail() {
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [showApplicant, setOpenApplicant] = useState(false);
 
     const { declaration: showModal, petMomApply, petmomcollectcancle, petmomcollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
@@ -53,6 +55,14 @@ function PetMomRecruitDatail() {
 
     const openModalList = () => {
         setShowModalList(true);
+    };
+
+    const openApplicant = () => {
+        setOpenApplicant(true);
+    };
+
+    const closeApplicant = () => {
+        setOpenApplicant(false);
     };
 
     const closeModalList = () => {
@@ -213,8 +223,8 @@ function PetMomRecruitDatail() {
                 <div className='formSize'>
                     <hr className="line"></hr>
 
-
-                    {postUser ? (<><button className="wantbtn2" onClick={openModalList}>신청자 목록</button>
+                    <button className='wantbtn2' onClick={openApplicant}>신청자 목록</button>
+                    {postUser ? (<><button className="wantbtn2" onClick={openModalList}>리뷰 작성</button>
                         <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
 
                     </>) :
@@ -239,6 +249,11 @@ function PetMomRecruitDatail() {
 
             {showModalList && <PetMomApplicant closeModalList={closeModalList} />}
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
+
+            {showApplicant && <ApplicantsList closeModalList={openApplicant} />}
+            {showApplicant && <div className="modal-backdrop" onClick={closeApplicant} />}
+
+
 
         </div >
     )

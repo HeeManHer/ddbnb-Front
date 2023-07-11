@@ -247,7 +247,7 @@ function PetMomList() {
                     </div>
 
                 </div>
-                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
+
 
             </div>
 
