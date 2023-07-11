@@ -3,9 +3,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { Link, useNavigate } from 'react-router-dom';
-
+import Modal from 'react-modal';
+import { OPEN_MODAL } from '../../modules/modalModules';
+import CancelSitterRequest from '../modal/mypage/CancelSitterRequest';
 
 function PetSitterAppliedCardBoard() {
+
+    //모달
+    const cancel = useSelector(state => state.modalsReducer.cancel);
 
     //리덕스
     const dispatch = useDispatch();
@@ -19,6 +24,8 @@ function PetSitterAppliedCardBoard() {
     }, [currentPage]);
 
     const navigate = useNavigate();
+
+
 
     return (
         <>
@@ -45,7 +52,10 @@ function PetSitterAppliedCardBoard() {
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
-                    <div><button>신청취소</button></div>
+                    <div>
+                        <button onClick={() => { dispatch({ type: OPEN_MODAL , payload: 'cancel' })}}>신청취소</button>
+                        {cancel && <CancelSitterRequest/>}
+                    </div>
                     </section>
             )}
 
@@ -54,4 +64,4 @@ function PetSitterAppliedCardBoard() {
     );
 }
 
-export default PetSitterAppliedCardBoard;
+export default PetSitterAppliedCardBoard;       

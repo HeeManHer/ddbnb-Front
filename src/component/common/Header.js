@@ -43,7 +43,7 @@ function Header() {
             return (
                 <header className="back-color dis-flex align-center">
                     <span onClick={() => navigate("/manage")} >관리자페이지</span>
-                    <span onClick={() => navigate("/mypage")} >마이페이지</span>
+                    <span onClick={() => navigate(`/mypage/${token.memberId}`)} >마이페이지</span>
                     <span onClick={logout} >로그아웃</span>
                 </header>
             )
@@ -51,7 +51,7 @@ function Header() {
             return (
                 <header className="back-color dis-flex align-center">
                     <span onClick={openMessageList}>쪽지함</span>
-                    <span onClick={() => navigate("/mypage")} >마이페이지</span>
+                    <span onClick={() => navigate(`/mypage/${token.memberId}`)} >마이페이지</span>
                     <span onClick={logout} >로그아웃</span>
                 </header>
             )

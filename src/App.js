@@ -87,10 +87,10 @@ function App() {
 
           <Route path="myReview" element={<MyReviewPage />} />
 
-          <Route path="mypage" element={<MyPageMain />} />
-          <Route path="userProfile">
+          <Route path="mypage/:memberId" element={<MyPageMain />} />
+          {/* <Route path="userProfile">
             <Route path=":userNo" element={<UserProfile />} />
-          </Route>
+          </Route> */}
 
         </Route>
 
