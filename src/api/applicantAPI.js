@@ -112,8 +112,9 @@ export const registMomApplicantAPI = (form) => {
 }
 
 export const registApplicantAPI = (form) => {
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
 
     return async (dispatch, getState) => {
 
@@ -132,4 +133,24 @@ export const registApplicantAPI = (form) => {
 
         }
     }
+}
+
+
+//삭제
+export const deleteApplicantAPI = ({ applicantId }) =>{
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/mypetsitters/${applicantId}`;
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        if (result.status === 204) {
+            window.location.replace('/mypage');
+        }
+    };
+    
 }

@@ -46,6 +46,22 @@
     justify-content: flex-end;
 }
 
+.out{
+    width: 100%;;
+    display: flex;
+    justify-content: flex-end;
+    /* background-color: #FAB7A2; */
+    height: 30px;
+    margin-bottom: 15px;   
+}
+
+.out button{
+    border: none;
+    background-color: white;
+    color: #8d8d8d;
+    margin: 10px;
+}
+
 .profileMain {
     display: flex;
     width: auto;

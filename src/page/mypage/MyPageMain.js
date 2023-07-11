@@ -17,11 +17,9 @@ function MyPageMain() {
     const navigate = useNavigate();
 
     const member = useSelector(state => state.memberReducer);
+    const {memberId} = useParams();
 
-    const { memberId } = useParams();
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-
-    console.log(memberId)
     useEffect(() => {
         dispatch(getCurrentMember(memberId));
     }, []
@@ -31,7 +29,6 @@ function MyPageMain() {
         dispatch(deleteMember(memberId));
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
-
     };
 
     //성별 구분
@@ -70,9 +67,10 @@ function MyPageMain() {
                     <div>
                         {token.memberId == memberId ?
                             <button onClick={ClickHandler}>프로필수정</button> :
-                            <button className={style.report} onClick={ClickHandler}>신고</button>}
+                            <button onClick={ClickHandler}>신고</button>}
                         {/* <button>경력수정</button> */}
                     </div>
+                    
                 </article>
                 <section className={style.profileMain}>
                     {/* 왼쪽프로필 */}
@@ -133,8 +131,10 @@ function MyPageMain() {
                 </div>
                 {buttonId && <MyCardList buttonId={buttonId} />}
             </div>
-            <button onClick={handleDelete} >사이트 탈퇴하기</button>
-
+            <div className={style.out}> 
+                {token.memberId == memberId && 
+                <button onClick={handleDelete} >사이트 탈퇴하기</button>}
+            </div>
         </section>
     );
 
