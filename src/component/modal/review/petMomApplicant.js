@@ -8,20 +8,13 @@ import { useParams } from "react-router-dom";
 
 function PetMomApplicant({ closeModalList }) {
 
-
     const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
     const [isModalOpen, setIsModalOpen] = useState(false); // 추가
 
-
     const dispatch = useDispatch();
-    const currentPage = useSelector(state => state.pageReducer);
     const { data: getapplicant, pageInfo } = useSelector(state => state.momApplicantsReducer);
 
     const { boardId } = useParams();
-
-
-
-
 
     useEffect(
         () => {
@@ -30,24 +23,9 @@ function PetMomApplicant({ closeModalList }) {
         , []
     )
 
-
-
-
-
-
-
-    const handleSubmit = () => {
-        closeModalList();
-    };
-
     const handleCancel = () => {
         closeModalList();
     };
-
-
-
-
-
 
     const handleCheckboxChange = (index) => {
         setSelectedCheckbox(index);
@@ -59,9 +37,6 @@ function PetMomApplicant({ closeModalList }) {
         }
     };
 
-    console.log(getapplicant);
-
-
     return (
         <div className="reviewmodal">
             <div className="reviewmodal-header">리뷰 작성</div>
@@ -71,11 +46,10 @@ function PetMomApplicant({ closeModalList }) {
                     <div className="reviewlist-people-line" key={getapplicant.applicantId}>
                         <div className="reviewlist-organize">
                             <div className="reviewlist-imgandName">
-                                <img className="reviewlist-img" src={getapplicant.member.profileImage} />
+                                <img className="reviewlist-img" src={getapplicant.member.profileImage} alt="리뷰 프로필 이미지" />
                                 <h6>{getapplicant.applicantId}</h6>
                             </div>
                             <div className="reviewList-line">
-
                             </div>
                         </div>
                         <div className="checkbox">

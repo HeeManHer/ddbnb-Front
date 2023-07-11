@@ -8,21 +8,23 @@ import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 import PetSitterCollectFinish from '../../component/modal/collect/PetSitterCollectFinish';
-import { getPetsitterdetailAPI, putMypetSitterCancle, putPetsitterAPI } from "../../api/petsitterAPI";
+import { getPetsitterdetailAPI, putMypetSitterCancle } from "../../api/petsitterAPI";
 import { useNavigate, useParams } from 'react-router-dom';
 import style from './PetSitterRecruitDatail.module.css';
 import { getApplicantListAPI } from '../../api/applicantAPI';
 import Declaration from '../../component/modal/declaration/Declaration';
+import ApplicantsList from '../../component/modal/apply/ApplicantsList';
 
 
 function PetSitterRecruitDatail() {
 
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
+    const [showApplicantList, setOpenApplicantList] = useState(false);
 
     const navigate = useNavigate()
 
-    const { declaration: showModal, petsittercollectcancle, petsitterApply, petsittercollectfinish, petsitterreport } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, petsitterApply, petsittercollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModals = () => {
@@ -36,10 +38,6 @@ function PetSitterRecruitDatail() {
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
     };
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-
-    };
 
     const openCollectCancleModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
@@ -48,10 +46,10 @@ function PetSitterRecruitDatail() {
     const openCollectFinishModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectfinish" });
     };
-    const openpetsitterreportModal = () => {
-        dispatch({ type: OPEN_MODAL, payload: "petsitterreport" });
-    }
 
+    const openApplicantList = () => {
+        setOpenApplicantList(true);
+    };
     const closeModalReview = () => {
         setShowModalReview(false);
     };
@@ -64,10 +62,13 @@ function PetSitterRecruitDatail() {
         setShowModalList(false);
     };
 
+    const closeApplicantList = () => {
+        setOpenApplicantList(false);
+    };
+
+
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
     console.log(petsdetail)
-
-    const applicantlist = useSelector(state => state.applicantsReducer);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -81,17 +82,9 @@ function PetSitterRecruitDatail() {
         },
         []
     )
-    // console.log(boardId);
-
-    // const modifypetsitter = () => {
-    //     dispatch(putPetsitterAPI(boardId, form));
-    //     navigate("./modify");
-    // };
-
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const postUser = token !== null && token.memberId == petsdetail.member?.memberId ? true : false;
-
+    const postUser = token !== null && token.memberId === petsdetail.member?.memberId ? true : false;
 
     const onClickhandle = () => {
         dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집취소" }));
@@ -104,7 +97,6 @@ function PetSitterRecruitDatail() {
         closeModal();
         window.location.reload();
     }
-
 
     const totalImages = petsdetail.boardImage ? petsdetail.boardImage.length : 0;
 
@@ -152,12 +144,12 @@ function PetSitterRecruitDatail() {
             <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2>
             <div className="comment">
                 <h3 className="comment-content" style={{ right: '4%' }}>게시판</h3>
-                <h3 className="comment-content2" style={{ left: '13px' }} > 펫시터 모집  게시판</h3>
+                <h3 className="comment-content2" style={{ left: '13px' }} > {petsdetail.boardCategory}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
                 <h3 className="comment-content">제목 </h3>
-                <h3 className="comment-content2" >{petsdetail.boardCategory}</h3>
+                <h3 className="comment-content2" >{petsdetail.boardTitle}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
@@ -220,8 +212,9 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
+                    <button className="wantbtn2" onClick={openApplicantList}>신청자 목록</button>
                     {postUser ? (<>
-                        <button className="wantbtn2" onClick={openModalList}>신청자 목록</button>
+                        <button className="wantbtn2" onClick={openModalList}>리뷰 목록</button>
                         <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
                     </>) :
                         <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>}
@@ -233,13 +226,14 @@ function PetSitterRecruitDatail() {
                         <PetSitterApply boardId={boardId} />
                     </Modal>
 
-
-
                     {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
                     {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
 
                     {showModalList && <ReviewList closeModalList={closeModalList} />}
                     {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
+
+                    {showApplicantList && <ApplicantsList closeModalList={openApplicantList} />}
+                    {showApplicantList && <div className="modal-backdrop" onClick={closeApplicantList} />}
                 </div>
             </div >
         </div >

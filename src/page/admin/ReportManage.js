@@ -2,13 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReportList } from "../../api/adminAPI";
 import PageBtn from "../../component/common/PageBtn";
-import { useNavigate } from "react-router-dom";
 
 function ReportManage() {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
     const { data: reportList, pageInfo } = useSelector(state => state.reportReducer);
     const currentPage = useSelector(state => state.pageReducer);
     const [category, setCategory] = useState('회원');

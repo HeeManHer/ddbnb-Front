@@ -12,6 +12,9 @@ import loginReducer from './LoginModule';
 import reviewReducer from './ReviewModule';
 import memberReducer from './MemberModule';
 import momApplicantsReducer from './momApplicant';
+import searchReducer from './searchValue';
+import locationReducer from './location';
+
 
 const rootReducer = combineReducers({
     applicantsReducer,
@@ -27,7 +30,9 @@ const rootReducer = combineReducers({
     modalsReducer,
     reviewReducer,
     memberReducer,
-    momApplicantsReducer
+    momApplicantsReducer,
+    searchReducer,
+    locationReducer
 });
 
 export default rootReducer;

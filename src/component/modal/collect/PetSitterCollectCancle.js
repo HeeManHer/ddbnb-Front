@@ -1,18 +1,11 @@
-import style from './collectModal.module.css';
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petCollectModule';
 import { useDispatch } from 'react-redux';
-
 
 function PetSitterCollectCancle({onClickhandle}) {
 
     const dispatch = useDispatch();
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
     
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petsittercollectcancle" });
@@ -27,8 +20,6 @@ function PetSitterCollectCancle({onClickhandle}) {
                 <h1 className="joinpet">모집을 취소하시겠습니까?</h1>
                 <div className="dis-flex flex-column align-center ">
                 </div>
-
-
 
                 <div className="button2list">
                     <button className="modalsize-button2" onClick={onClickhandle}>

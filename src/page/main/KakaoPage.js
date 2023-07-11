@@ -10,7 +10,6 @@ function KakaoPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("너야?");
         dispatch(callKakaoLoginAPI(code))
             .then(() => dispatch(getCurrentMember()))
             .then((member) => {

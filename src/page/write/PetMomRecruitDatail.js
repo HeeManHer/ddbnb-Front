@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
@@ -16,11 +15,7 @@ import { putMypetMomCancle } from '../../api/petMomAPI';
 import { getMomApplicantList } from '../../api/applicantAPI';
 import ApplicantsList from "../../component/modal/apply/ApplicantsList"
 
-
 function PetMomRecruitDatail() {
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
     const navigate = useNavigate()
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
@@ -88,8 +83,7 @@ function PetMomRecruitDatail() {
         () => {
 
             dispatch(getPetMomDetail(boardId));
-            dispatch(getMomApplicantList(boardId));
-
+            dispatch(getMomApplicantList(1, boardId));
         },
         []
     )
@@ -104,14 +98,9 @@ function PetMomRecruitDatail() {
         setCurrentImageIndex(newIndex);
     };
 
-
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const postUser = token !== null && token.memberId == data.member?.memberId ? true : false;
+    const postUser = token !== null && token.memberId === data.member?.memberId ? true : false;
     const isTokenNull = token === null;
-
-
-
-    console.log(data)
 
     return (
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
@@ -119,7 +108,6 @@ function PetMomRecruitDatail() {
                 <h1>게시판</h1>
                 <h3 className='writer-size'>작성자: {data.member && data.member.nickname}</h3>
                 <h4 >작성일 : {data.boardDate}</h4>
-
 
                 {isTokenNull ?
                     null :
@@ -132,7 +120,6 @@ function PetMomRecruitDatail() {
                         <button className="declarationButton" onClick={openModal}>신고</button>
                     )
                 }
-
 
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration category="게시글" />
@@ -192,9 +179,6 @@ function PetMomRecruitDatail() {
                         ) : null}
                         <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
                     </div>
-                    <div className="calendar">
-                        <Calendar />
-                    </div>
                 </div>
                 <div className="momplz">
                     <div>
@@ -239,22 +223,14 @@ function PetMomRecruitDatail() {
                 </div>
             </div>
 
-
-
-
-
-
             {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
             {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
 
             {showModalList && <PetMomApplicant closeModalList={closeModalList} />}
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
-            {showApplicant && <ApplicantsList closeModalList={openApplicant} />}
+            {showApplicant && <ApplicantsList category='mom' closeModalList={openApplicant} />}
             {showApplicant && <div className="modal-backdrop" onClick={closeApplicant} />}
-
-
-
         </div >
     )
 

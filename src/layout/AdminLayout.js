@@ -1,8 +1,6 @@
 import '../css/common.css';
 import '../css/admin.css';
 import '../css/dashboard.css';
-
-
 import { Outlet } from 'react-router-dom';
 import Footer from "../component/common/Footer";
 import AdminHeader from "../component/common/AdminHeader";

@@ -1,30 +1,30 @@
-import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, POST_PETSITTER, PUT_PETSITTER, PUT_PETSITTERDETAIL } from '../modules/petSitter';
+import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, PUT_PETSITTER } from '../modules/petSitter';
 
 export const callPetsitterListAPI = (currentPage, searchValue) => {
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?page=${currentPage}`;
 
-    if (searchValue?.location != '') {
+    if (searchValue?.location !== '') {
         console.log(searchValue?.location)
         URL += `&location=${searchValue?.location}`;
     }
 
-    if (searchValue?.petSize != '') {
+    if (searchValue?.startDate !== '') {
+        URL += `&startDate=${searchValue?.startDate}`;
+    }
+
+    if (searchValue?.endDate !== '') {
+        URL += `&endDate=${searchValue?.endDate}`;
+    }
+
+    if (searchValue?.petSize !== '') {
         console.log(searchValue?.petSize)
         URL += `&petSize=${searchValue?.petSize}`;
     }
 
-    if (searchValue?.care != '') {
+    if (searchValue?.care !== '') {
         console.log(searchValue?.care)
         URL += `&care=${searchValue?.care}`;
-    }
-
-    if (searchValue?.startDate != '') {
-        URL += `&startDate=${searchValue?.startDate}`;
-    }
-
-    if (searchValue?.endDate != '') {
-        URL += `&endDate=${searchValue?.endDate}`;
     }
 
     return async (dispatch, getState) => {
@@ -61,6 +61,7 @@ export function registPetsitterAPI(form) {
 
         if (result.status === 200) {
             alert(result.message);
+            window.location.href = "../";
             // dispatch({ type: POST_PETSITTER, payload: result.data });
         }
     };

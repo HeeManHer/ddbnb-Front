@@ -1,24 +1,15 @@
 import "../../../css/modaltest.css";
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petCollectModule';
-import { useDispatch, useSelector  } from 'react-redux';
-import { putMypetMomCancle } from '../../../api/petMomAPI';
+import { useDispatch  } from 'react-redux';
 function PetMomCollectCancle({onClickhandle}) {
     
     const dispatch = useDispatch();
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
-
+    
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petmomcollectcancle" });
     };
 
-
-    
     return (
         <div className="modalsize111">
             <div className="inmodalcolor">
@@ -28,8 +19,6 @@ function PetMomCollectCancle({onClickhandle}) {
                 <h1 className="joinpet">모집을 취소하시겠습니까?</h1>
                 <div className="dis-flex flex-column align-center ">
                 </div>
-
-
 
                 <div className="button2list">
                     <button className="modalsize-button2" onClick={onClickhandle}>

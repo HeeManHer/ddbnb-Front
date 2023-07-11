@@ -1,6 +1,5 @@
-import Modal from 'react-modal';
 import "../../../css/modaltest.css";
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -26,8 +25,6 @@ function RegistPost({ regist }) {
             <div className="dis-flex justify-between flex-column align-center">
                 <h1 className="joinpet">게시글을 등록하시겠습니까?</h1>
             </div>
-
-
 
             <div className="button2list">
                 <NavLink

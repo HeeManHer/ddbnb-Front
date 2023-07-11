@@ -1,6 +1,5 @@
-import Modal from 'react-modal';
 import "../../../css/modaltest.css";
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 
@@ -20,8 +19,6 @@ function CancelPost() {
             <div className="dis-flex justify-between flex-column align-center">
                 <h1 className="joinpet">게시글 등록을 취소하시겠습니까?</h1>
             </div>
-
-
 
             <div className="button2list">
                 <button className="modalsize-button3" onClick={closeModal}>

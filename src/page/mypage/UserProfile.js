@@ -1,5 +1,4 @@
 import style from "./MyPageMain.module.css";
-import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate } from "react-router-dom";
 
 function UserProfile() {
@@ -12,6 +11,7 @@ function UserProfile() {
     const onClickAllReviewHandler = () => {
         navigate("/allReview");
     };
+    
     return (
         <section className={style.board}>
             {/* 프로필블록 */}
@@ -60,7 +60,6 @@ function UserProfile() {
                         </article>
                     </article>
                 </section>
-
             </div>
             {/* 리스트 블록 */}
             <div className={style.bottomBoard}>
@@ -70,10 +69,7 @@ function UserProfile() {
                     <button>나의 펫시터 모집</button>
                     <button>나의 펫맘 모집</button>
                 </div>
-
-
             </div>
-
         </section>
     )
 }

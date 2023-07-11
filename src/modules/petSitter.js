@@ -19,6 +19,7 @@ const actions = createActions({
     [PUT_PETSITTERDETAIL]: () => { },
 });
 
+
 const petSitterReducer = handleActions({
     [SET_PETSITTER]: (state, { payload }) => {
         return payload;

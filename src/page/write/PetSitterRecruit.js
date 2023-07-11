@@ -1,4 +1,3 @@
-
 import "../../css/petsitterrecruit.css";
 import "./detail.css"
 import Modal from 'react-modal';
@@ -10,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { registPetsitterAPI } from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import "../../css/petsitterList.css";
-
 
 function searchSig(sido) {
 
@@ -54,7 +52,7 @@ function PetSitterRecruit() {
 
     const onChangeSidoHandler = (e) => {
 
-        if (e.target.id == "sido")
+        if (e.target.id === "sido")
             setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
@@ -71,24 +69,19 @@ function PetSitterRecruit() {
     )
 
     const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        const currentValue = form[name];
 
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
-
-
-    const [selectedImage, setSelectedImage] = useState(null);
+        if (currentValue === value) {
+            setForm({ ...form, [name]: '' });
+        } else {
+            setForm({ ...form, [name]: value });
+        };
+    }
 
     const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
 
     const dispatch = useDispatch();
-
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
-
 
     const openModal = (type) => {
         dispatch({ type: OPEN_MODAL, payload: type });
@@ -114,15 +107,24 @@ function PetSitterRecruit() {
 
     };
 
+
+    const [selectedCareButton, setSelectedCareButton] = useState(null);
     const [image, setImage] = useState();
     const [imagesUrl, setImagesUrl] = useState([]);
     const [images, setImages] = useState([]);
+
 
     const handleImageSelect = (event) => {
         const selectedImage = event.target.files[0];
         setImage(selectedImage); // 선택된 이미지를 큰 이미지 배열에 저장
     };
 
+    const toggleCareSelected = (event) => {
+        const buttonValue = event.target.value;
+        setSelectedCareButton((prevSelectedButton) => {
+            return prevSelectedButton !== buttonValue ? buttonValue : null;
+        });
+    };
     useEffect(
         () => {
             // 이미지 업로드시 미리보기 세팅
@@ -141,12 +143,10 @@ function PetSitterRecruit() {
             }
         }, [image]
     );
+    console.log(form)
     console.log(images);
     return (
         <div className="petsitterrecruitcontainer">
-
-
-
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
                 <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
@@ -179,7 +179,6 @@ function PetSitterRecruit() {
                         제목
                     </div>
                     <input className="textinput" vlaue={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" placeholder="제목을 입력해 주세요." />
-                    {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                 </div>
 
                 <hr className="line"></hr>
@@ -216,12 +215,10 @@ function PetSitterRecruit() {
                 </div>
 
                 <hr className="line"></hr>
-
                 <div>
-                    돌봄
-                    <button className="dolbombtn" onClick={onChangeHandler} name="care" value="방문">방문</button>
-                    <button className="dolbombtn" onClick={onChangeHandler} name="care" value="출장">출장</button>
-                    <button className="dolbombtn" onClick={onChangeHandler} name="care" value="산책">산책</button>
+                    <button className={`dolbombtn ${selectedCareButton === '방문' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleCareSelected(e); }} name="care" value="방문">방문</button>
+                    <button className={`dolbombtn ${selectedCareButton === '출장' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleCareSelected(e); }} name="care" value="출장">출장</button>
+                    <button className={`dolbombtn ${selectedCareButton === '산책' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleCareSelected(e); }} name="care" value="산책">산책</button>
                 </div>
 
                 <hr className="line"></hr>
@@ -238,27 +235,7 @@ function PetSitterRecruit() {
                 <hr className="line123"></hr>
 
                 <div className="imgbtndiv">
-                    {/* <div className="image-container">
-                        <div>
-                            <input
-                                type="file"
-                                id="imageUpload"
-                                accept='image/jpg,image/png,image/jpeg,image/gif'
-                                onChange={handleImageSelect}
-                                disabled={images.length === 4} // 큰 이미지가 1개이고 작은 이미지가 3개일 때 비활성화
-                            />
-                        </div>
-                        <div className="image-preview-container2">
-                            {imagesUrl.map((url, index) => index !== 0 && (
-                                <img
-                                    key={index}
-                                    src={url}
-                                    alt={`첨부 이미지 ${index + 1}`}
-                                    className="attached-image"
-                                />
-                            ))}
-                        </div>
-                    </div> */}
+
                     <div className="image-container">
                         <div>
                             <input

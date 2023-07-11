@@ -9,8 +9,6 @@ const initialState = {
     finishpost: false,
 };
 
-// export const OPEN_RECRUIT_LIST = 'modal/OPEN_RECRUIT_LIST';
-
 export const OPEN_MODAL = 'modal/OPEN_MODAL';
 export const CLOSE_MODAL = 'modal/CLOSE_MODAL';
 
@@ -19,13 +17,10 @@ const actions = createActions({
     [CLOSE_MODAL]: () => { },
 });
 
-
-
 const modalsReducer = handleActions({
     [OPEN_MODAL]: (state, { payload }) => ({ ...state, [payload]: true }),
     [CLOSE_MODAL]: (state, { payload }) => ({ ...initialState })
 }, initialState
 );
-
 
 export default modalsReducer;

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getLastedPetmom, getLastedPetsitter } from '../../api/mainAPI';
 import '../../css/mainPage.css';
-
 import LastedCard from "../../component/item/LastedCard";
 import { RESET_PAGE } from '../../modules/currentPage';
 
@@ -11,8 +10,6 @@ function MainPage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
     const { data: petMom } = useSelector(state => state.petMomReducer);
     const { data: petSitter } = useSelector(state => state.petSitterReducer);
 
@@ -20,8 +17,7 @@ function MainPage() {
         () => {
             dispatch(getLastedPetmom());
             dispatch(getLastedPetsitter());
-        },
-        []
+        }, []
     )
 
     const goPetSitter = () => {

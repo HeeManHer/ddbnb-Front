@@ -2,9 +2,13 @@ import { GET_APPLICANT, GET_MOMAPPLICANT } from '../modules/applycant';
 import { CLOSE_MODAL } from '../modules/petSittermodal';
 
 //전체 참가자 조회
-export const getApplicantListAPI = (applicantId) => {
+export const getApplicantListAPI = (currentPage, applicantId, size) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}?page=${currentPage}`;
+
+    if (size !== null) {
+        URL += `&size=${size}`;
+    }
 
     return async (dispatch, getState) => {
 
@@ -40,7 +44,6 @@ export const getMyApplyListAPI = (currentPage) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_APPLICANT, payload: result.data });
-            console.log(result);
         }
     }
 }
@@ -70,9 +73,13 @@ export const getMyMomApplyListAPI = (currentPage) => {
 }
 
 
-export const getMomApplicantList = (applicantId) => {
+export const getMomApplicantList = (currentPage, applicantId, size) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}?page=${currentPage}`;
+
+    if (size !== null) {
+        URL += `&size=${size}`;
+    }
 
     return async (dispatch, getState) => {
 
@@ -114,7 +121,7 @@ export const registMomApplicantAPI = (form) => {
 
 export const registApplicantAPI = (form) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
 
     return async (dispatch, getState) => {
 
@@ -133,4 +140,24 @@ export const registApplicantAPI = (form) => {
 
         }
     }
+}
+
+
+//삭제
+export const deleteApplicantAPI = ({ applicantId }) => {
+    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/mypetsitters/${applicantId}`;
+    return async (dispatch, getState) => {
+
+        const result = await fetch(URL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        if (result.status === 204) {
+            window.location.replace('/mypage');
+        }
+    };
+
 }

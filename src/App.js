@@ -25,10 +25,8 @@ import PetSitterRecruit from "./page/write/PetSitterRecruit";
 import PetSitterRecruitDatail from "./page/write/PetSitterRecruitDatail";
 import PetSitterModify from "./page/write/PetSitterModify";
 
-
 import AboutPage from "./page/main/AboutPage";
 import MyPageMain from "./page/mypage/MyPageMain";
-import UserProfile from "./page/mypage/UserProfile";
 
 import ReviewPage from "./page/review/ReviewPage";
 import MyReviewPage from "./page/review/MyReviewPage";
@@ -41,15 +39,12 @@ import ReportManage from "./page/admin/ReportManage";
 import PostMessage from "./component/modal/pm/PostMessage";
 import SendMessage from "./component/modal/pm/SendMessage";
 import ApplicantsList from "./component/modal/apply/ApplicantsList";
-import Calendar from "./component/item/Calendar";
 import PostMessageList from "./page/list/PostMessageList";
-import Temp from "./page/admin/Temp";
 import KakaoPage from "./page/main/KakaoPage";
 import NaverPage from "./page/main/NaverPage";
 
 import LoginProfilePage from "./page/profile/LoginProfilePage";
 import ReviceProfilePage from "./page/profile/ReviseProfilePage";
-
 
 function App() {
 
@@ -87,10 +82,10 @@ function App() {
 
           <Route path="myReview" element={<MyReviewPage />} />
 
-          <Route path="mypage" element={<MyPageMain />} />
-          <Route path="userProfile">
+          <Route path="mypage/:memberId" element={<MyPageMain />} />
+          {/* <Route path="userProfile">
             <Route path=":userNo" element={<UserProfile />} />
-          </Route>
+          </Route> */}
 
         </Route>
 
@@ -99,14 +94,12 @@ function App() {
           <Route path="member" element={<Member />} />
           <Route path="board" element={<BoardManage />} />
           <Route path="report" element={<ReportManage />} />
-          <Route path="modal" element={<Temp />} />
         </Route>
 
         <Route path="applicant" element={<ApplicantsList />} />
         <Route path="postMessageList" element={<PostMessageList />} />
         <Route path="postMessage/:messageId" element={<PostMessage />} />
         <Route path="sendMessage/:memberId" element={<SendMessage />} />
-        <Route path="calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,10 +2,9 @@ import "../../../css/modaltest.css";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 import { registMomApplicantAPI } from '../../../api/applicantAPI';
-import React, { useState } from "react";
+import React from "react";
 
 function PetMomApply({ boardId }) {
-    console.log(boardId)
     const dispatch = useDispatch();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
@@ -36,8 +35,6 @@ function PetMomApply({ boardId }) {
                     <h5 className="joinpost">모집자의 쪽지를 받을 수 있습니다.</h5>
                 </div>
 
-
-
                 <div className="button2list">
                     <button className="modalsize-button2" onClick={commit}>
                         예
@@ -48,7 +45,6 @@ function PetMomApply({ boardId }) {
                 </div>
             </div>
         </div>
-
     );
 }
 

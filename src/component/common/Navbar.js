@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RESET_PAGE } from "../../modules/currentPage";
+import { RESET_VALUE } from "../../modules/searchValue";
 
 function Navbar() {
 
@@ -9,11 +10,13 @@ function Navbar() {
 
     const goPetSitter = () => {
         dispatch({ type: RESET_PAGE });
+        // dispatch({ type: RESET_VALUE })
         navigate("/petSitter");
     }
 
     const goPetMom = () => {
         dispatch({ type: RESET_PAGE });
+        // dispatch({ type: RESET_VALUE })
         navigate("/petMom");
     }
 

@@ -8,6 +8,7 @@ const actions = createActions({
     [SET_MESSAGELIST]: () => { },
 });
 
+
 const messageReducer = handleActions({
     [SET_MESSAGELIST]: (state, { payload }) => payload
 }, initialState

@@ -17,14 +17,13 @@ function PostMessage() {
     useEffect(
         () => {
             dispatch(getMessageDetail(messageId));
-        },
-        []
+        }
     );
 
     useEffect(
         () => {
             const token = JSON.parse(window.localStorage.getItem('accessToken'));
-            if (message.who?.memberId == token.memberId) {
+            if (message.who?.memberId === token.memberId) {
                 setCategory('send');
                 setMember(message.whom);
             } else {
@@ -38,12 +37,12 @@ function PostMessage() {
     const openModal = () => {
         window.open(`/sendMessage/${member?.memberId}`, 'message');
     }
-    console.log(message.who)
+
     return (
         <div className="postMessage center back-color dis-flex flex-column justify-between">
             <div className='recipientInfo dis-flex align-center justify-between'>
                 <div className="userInfo dis-flex align-center flex-column">
-                    <img src={member?.profileImage} />
+                    <img src={member?.profileImage} alt="프로필 이미지" />
                     <div>{member?.nickname}</div>
                 </div>
                 <div className='dis-flex align-center recordInfo'>
@@ -58,7 +57,7 @@ function PostMessage() {
                         </div>
                     </div>
                     <div className='messageBtn'>
-                        {category == 'receive' ?
+                        {category === 'receive' ?
                             <button className="back-color" onClick={openModal}>답장</button> :
                             <button style={{ backgroundColor: 'white' }}></button>
                         }

@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoardList } from "../../api/adminAPI";
 import PageBtn from "../../component/common/PageBtn";
-import { useNavigate } from "react-router-dom";
 
 function BoardManage() {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const { data: boardList, pageInfo } = useSelector(state => state.petSitterReducer);
     const currentPage = useSelector(state => state.pageReducer);

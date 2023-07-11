@@ -1,8 +1,6 @@
 import style from "./MyPageMain.module.css";
-import MyReviewPage from "../review/MyReviewPage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MyCardList from "../../component/list/AppliedList";
-import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
 import { getCurrentMember, deleteMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,23 +9,23 @@ import StarPoint from "../../component/item/StarPoint";
 import { callNaverLogoutAPI } from "../../api/LoginAPI";
 
 function MyPageMain() {
-
     //리덕스
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const member = useSelector(state => state.memberReducer);
 
+    const member = useSelector(state => state.memberReducer);
+    const {memberId} = useParams();
+
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
     useEffect(() => {
-        const token = JSON.parse(window.localStorage.getItem('accessToken'));
-        dispatch(getCurrentMember(token.memberId));
+        dispatch(getCurrentMember(memberId));
     }, []
     );
+
     const handleDelete = () => {
-        const memberId = member?.memberId;
         dispatch(deleteMember(memberId));
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
-
     };
 
     //성별 구분
@@ -48,10 +46,6 @@ function MyPageMain() {
         navigate("/reviseprofile");
     }
 
-
-
-    // console.log(member);
-
     const [buttonId, setButtonId] = useState(1);
 
     const handleButtonClick = (id) => {
@@ -62,11 +56,13 @@ function MyPageMain() {
         <section className={style.board}>
             {/* 프로필블록 */}
             <div className={style.topBoard}>
-                <article className={style.editLine}>                   
+                <article className={style.editLine}>
                     <div>
-                        <button onClick={ClickHandler}>프로필수정</button>
-                        {/* <button>경력수정</button> */}
+                        {token.memberId === memberId ?
+                            <button onClick={ClickHandler}>프로필수정</button> :
+                            <button onClick={ClickHandler}>신고</button>}
                     </div>
+                    
                 </article>
                 <section className={style.profileMain}>
                     {/* 왼쪽프로필 */}
@@ -111,24 +107,27 @@ function MyPageMain() {
                         </article>
                     </article>
                 </section>
-
             </div>
             {/* 리스트 블록 */}
             <div className={style.bottomBoard}>
                 <div className={style.careerTitle}>
                     <button onClick={() => handleButtonClick(1)}>댕댕 리뷰 (n개)</button>
-                    <button onClick={() => handleButtonClick(2)}>신청 내역</button>
-                    <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
-                    <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
+                    {token.memberId === memberId &&
+                        <>
+                            <button onClick={() => handleButtonClick(2)}>신청 내역</button>
+                            <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
+                            <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
+                        </>
+                    }
                 </div>
                 {buttonId && <MyCardList buttonId={buttonId} />}
             </div>
-            <button onClick={handleDelete} >사이트 탈퇴하기</button>
-
+            <div className={style.out}> 
+                {token.memberId === memberId && 
+                <button onClick={handleDelete} >사이트 탈퇴하기</button>}
+            </div>
         </section>
     );
-
 }
-
 
 export default MyPageMain;

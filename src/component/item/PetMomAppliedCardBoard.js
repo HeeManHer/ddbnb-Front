@@ -1,30 +1,26 @@
 import style from './AppliedMomCardBoard.module.css';
-import { useEffect, useState } from "react";
-import MyCardList from "../../component/list/AppliedList";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyMomApplyListAPI } from '../../api/applicantAPI';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function PetMomAppliedCardBoard() {
-
 
     const dispatch = useDispatch();
     const apply = useSelector(state => state.momApplicantsReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: applys, pageInfo } = apply;
+    const { data: applys } = apply;
 
 
     useEffect(() => {
         dispatch(getMyMomApplyListAPI(currentPage));
+    }, [currentPage]
+    );
 
-    }, [currentPage]);
-
-
-    
     const navigate = useNavigate();
     return (
-<>
-<section className={style.section}>
+        <>
+            <section className={style.section}>
                 <article className={style.category}>
                     <div>전체</div>
                     <div>지역</div>
@@ -34,22 +30,20 @@ function PetMomAppliedCardBoard() {
                 </article>
             </section>
 
-
             {Array.isArray(applys) && applys.map((apply, index) =>
-                    <section className={`${style.category2} ${style.flex_center}`}>
-                        <div>
-                            <section style={apply.momStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
-                                {apply.boardId.momStatus}
-                            </section>
-                        </div>
-                        <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
-                        <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
-                        <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
-                        <div ><button>신청취소</button></div>
-                    </section>
+                <section className={`${style.category2} ${style.flex_center}`}>
+                    <div>
+                        <section style={apply.momStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
+                            {apply.boardId.momStatus}
+                        </section>
+                    </div>
+                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
+                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
+                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
+                    <div ><button>신청취소</button></div>
+                </section>
             )}
-
-    </>
+        </>
     );
 }
 

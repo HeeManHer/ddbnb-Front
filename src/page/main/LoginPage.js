@@ -1,7 +1,7 @@
 import style from './MainStyle.module.css';
 
 const KAKAO_REST_API_KEY = '202bf1013addf514255b52a8c9c69ebf';
-const KAKAO_REDIRECT_URI = `http://${process.env.REACT_APP_RESTAPI_URL}/kakao/callback`;
+const KAKAO_REDIRECT_URI = `http://localhost:3000/kakao/callback`;
 const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 
 const NAVER_CLIENT_ID = 'T0mWG2VjAfBH9cYz6Qrf';
@@ -22,10 +22,11 @@ const loginHandler = (platform) => {
         case 'K':
             window.location.href = KAKAO_AUTH_URI;
             break;
+        default :
+            break;
         // case 'G':
         //     window.location.href = GOOGLE_AUTH_URI;
         //     break;
-
     }
 }
 
@@ -38,10 +39,10 @@ function LoginPage() {
             {/* <div onClick={() => loginHandler('G')}><img src="../../../img/googleLogin.png" />
             </div>
             <br /> */}
-            <div onClick={() => loginHandler('N')}><img src="../../../img/naverLogin.png" />
+            <div onClick={() => loginHandler('N')}><img src="../../../img/naverLogin.png" alt="네이버 로그인"  />
             </div>
             <br />
-            <div onClick={() => loginHandler('K')}><img src="../../../img/kakaoLogin.png" />
+            <div onClick={() => loginHandler('K')}><img src="../../../img/kakaoLogin.png" alt="카카오 로그인" />
             </div>
         </div>
     )

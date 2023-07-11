@@ -1,11 +1,9 @@
-import Modal from 'react-modal';
 import "../../../css/modaltest.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import "../../../css/declaration.css";
 import { reportPostAPI } from '../../../api/reportAPI';
-import { useParams } from 'react-router-dom';
 
 function Declaration({ category }) {
     const dispatch = useDispatch();
@@ -14,8 +12,6 @@ function Declaration({ category }) {
         dispatch({ type: CLOSE_MODAL });
     }
 
-    // const { boardId } = useParams();
-
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const [form, setForm] = useState({
@@ -23,9 +19,8 @@ function Declaration({ category }) {
         reportDetail: '',
         reportCategory: category,
         currentUser: { memberId: token.memberId },
-        // otherUser: ''
     })
-    console.log(form);
+
     const [selectedOption, setSelectedOption] = useState("");
 
     const handleCheckboxChange = (event) => {
@@ -36,11 +31,10 @@ function Declaration({ category }) {
     };
 
     const handleReportSubmit = () => {
-        // API 호출
-        dispatch(reportPostAPI(form)); // form 데이터를 API로 전달
+        dispatch(reportPostAPI(form));
         closeModal();
     };
-    console.log(form);
+
     return (
         <div className="modalsize1111">
             <div className="inmodalcolor">
@@ -73,8 +67,6 @@ function Declaration({ category }) {
                             </div>
                         ))}
                     </div>
-
-
                 </div>
                 <div className="dis-flex align-center justify-around">
 

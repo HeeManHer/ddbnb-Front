@@ -1,13 +1,9 @@
-
 import "../../css/petsitterrecruit.css";
 import "./detail.css"
-import Modal from 'react-modal';
 import React, { useEffect, useState } from "react";
-import RegistPost from "../../component/modal/post/RegistPost";
-import CancelPost from "../../component/modal/post/CancelPost";
-import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import { OPEN_MODAL } from "../../modules/petSittermodal";
 import { useDispatch, useSelector } from "react-redux";
-import { getPetsitterdetailAPI, putPetsitterAPI, registPetsitterAPI } from "../../api/petsitterAPI";
+import { getPetsitterdetailAPI, putPetsitterAPI} from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import "../../css/petsitterList.css";
 import { useParams } from "react-router-dom";
@@ -23,10 +19,12 @@ function Sigoon({ sig }) {
     return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
 }
 
-
 function PetSitterModify() {
 
+    const dispatch = useDispatch();
     const { boardId } = useParams();
+
+    const petsdetail = useSelector(state => state.petSitterReducer);
 
     const [form, setForm] = useState({
         boardId,
@@ -45,6 +43,8 @@ function PetSitterModify() {
         request: ''
     });
 
+    const [selectedImage, setSelectedImage] = useState(null);
+
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
 
@@ -55,16 +55,6 @@ function PetSitterModify() {
 
     });
 
-    const onChangeSidoHandler = (e) => {
-
-        if (e.target.id == "sido")
-            setSigList(searchSig(e.target.value));
-        setLocation({
-            ...location,
-            [e.target.id]: e.target.value
-        });
-    };
-
     useEffect(() => {
         setForm({
             ...form,
@@ -73,55 +63,6 @@ function PetSitterModify() {
     }, [location]
     )
 
-    const onChangeHandler = (e) => {
-
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
-    console.log(form);
-
-
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
-
-    const dispatch = useDispatch();
-
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
-
-
-    const openModal = (type) => {
-        dispatch({ type: OPEN_MODAL, payload: type });
-    };
-
-    const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL });
-    };
-
-
-    const modifypetsitter = () => {
-
-        const formData = new FormData();
-
-        formData.append('modifyPetSitter', new Blob([JSON.stringify(form)], { type: "application/json" }))
-
-        // if (images) {
-        //     for (let index in images) {
-        //         formData.append("image", images[index])
-        //     }
-        // }
-        if (selectedImage) {
-            formData.append("image", selectedImage)
-        }
-
-        dispatch(putPetsitterAPI(formData));
-
-    };
-
     useEffect(
         () => {
             dispatch(getPetsitterdetailAPI(boardId));
@@ -129,10 +70,10 @@ function PetSitterModify() {
         []
     )
 
-    const petsdetail = useSelector(state => state.petSitterReducer);
-    console.log(petsdetail)
     useEffect(
         () => {
+            setForm(petsdetail)
+
             if (petsdetail && petsdetail.location) {
                 const arr = petsdetail.location.split(" ");
                 setLocation({
@@ -143,6 +84,41 @@ function PetSitterModify() {
             }
         }, [petsdetail]
     )
+
+    const onChangeSidoHandler = (e) => {
+
+        if (e.target.id === "sido")
+            setSigList(searchSig(e.target.value));
+        setLocation({
+            ...location,
+            [e.target.id]: e.target.value
+        });
+    };
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const openModal = (type) => {
+        dispatch({ type: OPEN_MODAL, payload: type });
+    };
+
+    const modifypetsitter = () => {
+
+        const formData = new FormData();
+
+        formData.append('modifyPetSitter', new Blob([JSON.stringify(form)], { type: "application/json" }))
+
+        if (selectedImage) {
+            formData.append("image", selectedImage)
+        }
+
+        dispatch(putPetsitterAPI(formData));
+
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -157,12 +133,9 @@ function PetSitterModify() {
             reader.readAsDataURL(file);
         }
     };
-    // console.log(petsdetail.boardTitle);
+
     return (
         <div className="petsitterrecruitcontainer">
-
-
-
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
                 <button className="insertwrite" onClick={modifypetsitter}>수정</button>
@@ -171,8 +144,8 @@ function PetSitterModify() {
 
             <div className="yongdate">
 
-                <h3 className="writeryong">작성자 : {petsdetail?.memberId?.nickname}</h3>
-                <div className="writedate">작성일 : {petsdetail.boardDate}
+                <h3 className="writeryong">작성자 : {form.member?.nickname}</h3>
+                <div className="writedate">작성일 : {form.boardDate}
                 </div>
             </div>
 
@@ -189,9 +162,7 @@ function PetSitterModify() {
                         <div>
                             제목
                         </div>
-                        <input className="textinput" value={petsdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
-
-                        {/* <textarea placeholder="제목을 입력해 주세요." /> */}
+                        <input className="textinput" value={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
                     </div>
 
                     <hr className="line"></hr>
@@ -293,7 +264,6 @@ function PetSitterModify() {
                                     <option value="" >남/여</option>
                                     <option value="남">남</option>
                                     <option value="여">여</option>
-                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 크기
                                 <select className="secondselect2" onChange={onChangeHandler} name="petSize" defaultValue={petsdetail.petSize}>
@@ -301,13 +271,12 @@ function PetSitterModify() {
                                     <option value="소형">소형</option>
                                     <option value="중형">중형</option>
                                     <option value="대형">대형</option>
-                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 <hr className="line"></hr>
                             </div>
                             <div className="acb">
                                 <button className="significantbtn">특이사항</button>
-                                <input className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.applicant} />
+                                <input className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.signficant} />
                             </div>
                         </div>
                     </div>
@@ -316,14 +285,10 @@ function PetSitterModify() {
                         우리 강아지를 맡아주세요
                     </div>
                     <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" defaultValue={petsdetail.request}>
-
                     </textarea>
                 </div>
             </div>
         </div >
-
-
-
 
     );
 }

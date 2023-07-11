@@ -21,7 +21,7 @@ export function getMemberList(page, { nickname, signDate }) {
             }
         }).then(res => res.json());
 
-        if (result.status == 200) {
+        if (result.status === 200) {
             dispatch({ type: GET_MEMBER, payload: result.data });
         }
     }

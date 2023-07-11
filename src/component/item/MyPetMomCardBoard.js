@@ -2,17 +2,14 @@ import style from './MyPetMomCardBoard.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
 import { getMyPetMomList } from '../../api/petMomAPI';
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { Link } from 'react-router-dom';
 
 function MyPetMomCardBoard() {
-
-
     //리덕스
     const dispatch = useDispatch();
     const myPetMom = useSelector(state => state.petMomReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    // const {pageInfo} = pageInfo;
     const { data: mypetMoms, pageInfo } = myPetMom;
 
     useEffect(() => {
@@ -31,8 +28,6 @@ function MyPetMomCardBoard() {
                 </article>
             </section>
 
-
-
             {Array.isArray(mypetMoms) && mypetMoms.map((myPetMom, index) =>
                 <Link to={`/petmom/${myPetMom.boardId}`} style={{ textDecoration: 'none', color: '#202020' }}>
                     <section className={`${style.category2} ${style.flex_center}`}>
@@ -44,17 +39,12 @@ function MyPetMomCardBoard() {
                         <div>{myPetMom.location}</div>
                         <div>{myPetMom.boardTitle}</div>
                         <div>{myPetMom.boardDate}</div>
-                        {/* <div>{REVIEW_DATE}</div> */}
                     </section>
                 </Link>
             )}
-            {/* {페이징} */}
             <PageBtn pageInfo={pageInfo} />
-
-
         </>
     )
-
 }
 
 export default MyPetMomCardBoard;

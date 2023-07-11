@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { flushSync } from "react-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { callKakaoLogoutAPI, callNaverLogoutAPI } from "../../api/LoginAPI";
@@ -9,7 +7,7 @@ function Header() {
     const navigate = useNavigate();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const admin = token !== null && token.memberId == '952' ? true : false;
+    const admin = token !== null && token.memberId === 952 ? true : false;
 
     const logout = () => {
         //     if(SocialLogin == "KAKAO") {
@@ -42,8 +40,9 @@ function Header() {
         if (admin) {
             return (
                 <header className="back-color dis-flex align-center">
+                    <span onClick={openMessageList}>쪽지함</span>
                     <span onClick={() => navigate("/manage")} >관리자페이지</span>
-                    <span onClick={() => navigate("/mypage")} >마이페이지</span>
+                    <span onClick={() => navigate(`/mypage/${token.memberId}`)} >마이페이지</span>
                     <span onClick={logout} >로그아웃</span>
                 </header>
             )
@@ -51,7 +50,7 @@ function Header() {
             return (
                 <header className="back-color dis-flex align-center">
                     <span onClick={openMessageList}>쪽지함</span>
-                    <span onClick={() => navigate("/mypage")} >마이페이지</span>
+                    <span onClick={() => navigate(`/mypage/${token.memberId}`)} >마이페이지</span>
                     <span onClick={logout} >로그아웃</span>
                 </header>
             )
@@ -63,7 +62,6 @@ function Header() {
             </header>
         )
     }
-
 }
 
 export default Header;
