@@ -9,16 +9,16 @@ export const getPetMomList = (currentPage, searchValue) => {
         URL += `&location=${searchValue?.location}`;
     }
 
-    if (searchValue?.petYN != '') {
-        URL += `&petYN=${searchValue?.petYN}`;
-    }
-
     if (searchValue?.startDate != '') {
         URL += `&startDate=${searchValue?.startDate}`;
     }
 
     if (searchValue?.endDate != '') {
         URL += `&endDate=${searchValue?.endDate}`;
+    }
+
+    if (searchValue?.petYN != '') {
+        URL += `&petYN=${searchValue?.petYN}`;
     }
 
     if (searchValue?.otherCondition != '') {
