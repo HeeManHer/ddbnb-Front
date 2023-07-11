@@ -1,7 +1,7 @@
 import { useState } from "react";
 import sigunguList from '../../data/sigoongu.json';
 import { useDispatch } from "react-redux";
-import { SET_VALUE } from "../../modules/searchValue";
+import { SET_LOCATION } from "../../modules/location";
 
 function Location() {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function Location() {
     }
 
     const onChangeSigunguHandler = (e) => {
-        dispatch({ type: SET_VALUE, payload: { location: `${sido} ${e.target.value}` } });
+        dispatch({ type: SET_LOCATION, payload: `${sido} ${e.target.value}` });
     }
 
     return (

@@ -2,9 +2,13 @@ import { GET_APPLICANT, GET_MOMAPPLICANT } from '../modules/applycant';
 import { CLOSE_MODAL } from '../modules/petSittermodal';
 
 //전체 참가자 조회
-export const getApplicantListAPI = (applicantId) => {
+export const getApplicantListAPI = (currentPage, applicantId, size) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}?page=${currentPage}`;
+
+    if (size !== null) {
+        URL += `&size=${size}`;
+    }
 
     return async (dispatch, getState) => {
 
@@ -69,9 +73,13 @@ export const getMyMomApplyListAPI = (currentPage) => {
 }
 
 
-export const getMomApplicantList = (applicantId) => {
+export const getMomApplicantList = (currentPage, applicantId, size) => {
 
-    const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/momApplicant/${applicantId}?page=${currentPage}`;
+
+    if (size !== null) {
+        URL += `&size=${size}`;
+    }
 
     return async (dispatch, getState) => {
 
@@ -137,7 +145,7 @@ export const registApplicantAPI = (form) => {
 
 
 //삭제
-export const deleteApplicantAPI = ({ applicantId }) =>{
+export const deleteApplicantAPI = ({ applicantId }) => {
     const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/mypetsitters/${applicantId}`;
     return async (dispatch, getState) => {
 
@@ -152,5 +160,5 @@ export const deleteApplicantAPI = ({ applicantId }) =>{
             window.location.replace('/mypage');
         }
     };
-    
+
 }

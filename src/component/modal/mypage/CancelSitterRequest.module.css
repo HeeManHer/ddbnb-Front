@@ -10,10 +10,10 @@
     border-radius: 4px;
     outline: none;
     padding: 20px;
-    z-index: 99;
+    z-index: 99999;
 }
 
-.Header{
+.Header {
     width: 90%;
     height: 40px;
     font-size: 20px;
