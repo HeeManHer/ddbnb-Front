@@ -36,7 +36,7 @@ function PetSitterList() {
     });
     console.log(searchValue)
 
-    // console.log(petsitterList);
+    console.log(petsitterList);
     useEffect(
         () => {
             dispatch(callPetsitterListAPI(currentPage, searchValue));
@@ -210,7 +210,9 @@ function PetSitterList() {
                     </div>
 
                 </div>
-                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
+
+                <br />
+                <br />
             </div>
 
             {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
@@ -237,7 +239,6 @@ function PetSitterList() {
                             <div>기간: {petsitter.startDate} ~ {petsitter.endDate}</div>
                             <div className="stardivbtn">
                                 <StarPoint starPoint={petsitter.member?.starPoint} />
-                                {/* <img className="star" src="../img/star.png"></img> */}
                                 <div className="divbtn">
                                     <div>사례 : {petsitter.rate}</div>
                                     <button className="section1">{petsitter.sitterStatus}</button>

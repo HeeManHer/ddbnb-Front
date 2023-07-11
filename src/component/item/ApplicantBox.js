@@ -2,7 +2,7 @@ import StarPoint from "./StarPoint";
 
 function ApplicantBox({ user }) {
 
-    
+
     const openModal = () => {
         // window.close();
 
