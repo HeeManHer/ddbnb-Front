@@ -52,7 +52,7 @@ function PostMessageList() {
                 <div>
                     <select name="" id="" onChange={e => setCriteria(e.target.value)}>
                         <option value="defalt">기준</option>
-                        <option value="name">{category === 'receive' ? '받은' : '보낸'} 사람</option>
+                        <option value="name">{category === 'receive' ? '보낸' : '받은'} 사람</option>
                         <option value="title">내용</option>
                         <option value="date">작성일</option>
                     </select>
@@ -62,7 +62,7 @@ function PostMessageList() {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>{category === 'receive' ? '받은' : '보낸'} 사람</th>
+                        <th>{category === 'receive' ? '보낸' : '받은'} 사람</th>
                         <th>내용</th>
                         <th>작성일</th>
                     </tr>
@@ -72,7 +72,7 @@ function PostMessageList() {
                         <tr key={item?.msgId}>
                             <td><input type="checkbox" value={item?.msgId} onChange={deleteListSetting} /></td>
                             <td onClick={() => openModal(item?.msgId)}>{category === 'receive' ? item?.who?.nickname : item?.whom?.nickname}</td>
-                            <td onClick={() => openModal(item?.msgId)}>{item?.msgContent}</td>
+                            <td onClick={() => openModal(item?.msgId)}>{item?.msgContent.length > 10 ? item.msgContent.substring(0, 10) + '...' : item.msgContent}</td>
                             <td onClick={() => openModal(item?.msgId)}>{item?.writeDate}</td>
                         </tr>
                     ))}
