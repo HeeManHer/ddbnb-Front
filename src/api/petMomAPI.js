@@ -59,6 +59,7 @@ export function putPetMomPage(boardId, form) {
             body: JSON.stringify(form)
         }).then(response => response.json());
         alert(result.message);
+        window.location.reload();
         dispatch({ type: PUT_PETMOMDETAIL, patload: result.data });
     }
 }
@@ -81,6 +82,7 @@ export function postPetMomPage(form) {
 
         if (result.status === 200) {
             alert(result.message);
+            // window.location.reload();
         }
     };
 }
