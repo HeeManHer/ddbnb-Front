@@ -1,6 +1,6 @@
 import style from "./MyPageMain.module.css";
 import MyReviewPage from "../review/MyReviewPage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MyCardList from "../../component/list/AppliedList";
 import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
@@ -15,15 +15,19 @@ function MyPageMain() {
     //리덕스
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const member = useSelector(state => state.memberReducer);
 
+    const { memberId } = useParams();
+    const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
+    console.log(memberId)
     useEffect(() => {
-        const token = JSON.parse(window.localStorage.getItem('accessToken'));
-        dispatch(getCurrentMember(token.memberId));
+        dispatch(getCurrentMember(memberId));
     }, []
     );
+
     const handleDelete = () => {
-        const memberId = member?.memberId;
         dispatch(deleteMember(memberId));
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
@@ -62,9 +66,11 @@ function MyPageMain() {
         <section className={style.board}>
             {/* 프로필블록 */}
             <div className={style.topBoard}>
-                <article className={style.editLine}>                   
+                <article className={style.editLine}>
                     <div>
-                        <button onClick={ClickHandler}>프로필수정</button>
+                        {token.memberId == memberId ?
+                            <button onClick={ClickHandler}>프로필수정</button> :
+                            <button className={style.report} onClick={ClickHandler}>신고</button>}
                         {/* <button>경력수정</button> */}
                     </div>
                 </article>
@@ -117,9 +123,13 @@ function MyPageMain() {
             <div className={style.bottomBoard}>
                 <div className={style.careerTitle}>
                     <button onClick={() => handleButtonClick(1)}>댕댕 리뷰 (n개)</button>
-                    <button onClick={() => handleButtonClick(2)}>신청 내역</button>
-                    <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
-                    <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
+                    {token.memberId == memberId &&
+                        <>
+                            <button onClick={() => handleButtonClick(2)}>신청 내역</button>
+                            <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
+                            <button onClick={() => handleButtonClick(4)}>나의 펫맘 모집</button>
+                        </>
+                    }
                 </div>
                 {buttonId && <MyCardList buttonId={buttonId} />}
             </div>

@@ -1,18 +1,18 @@
 .board {
     width: 60vw;
-    height:auto;
+    height: auto;
     margin-top: 10px;
 }
 
 .topBoard {
-    width:auto;
+    width: auto;
     height: 450 px;
     margin-inline: 12px;
- 
+
 }
 
 .bottomBoard {
-    width:auto;
+    width: auto;
     height: auto;
     margin-inline: 12px;
     box-shadow: 5px 5px 5px -5px #8d8d8d;
@@ -37,12 +37,13 @@
     height: 35px;
     border-radius: 5px;
     font-size: 13px;
-    
+
 }
 
 .editLine div:nth-child(1) {
-    width: 95%;
-    float: right;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .profileMain {
@@ -82,17 +83,17 @@
 }
 
 .careerTitle button {
-    width :130px;
+    width: 130px;
     height: 35px;
     /* border: none; */
-    background-color: white ;
+    background-color: white;
     font-weight: bold;
     border-top: #2d2d2d;
     border-left: #2d2d2d;
     border-bottom: #2d2d2d;
     font-size: 13px;
     cursor: pointer;
-    
+
 }
 
 .careerTitle button:focus,
@@ -102,10 +103,11 @@
 }
 
 
-.careerTitle button:nth-child(4){
+.careerTitle button:nth-child(4) {
     border-right: #2d2d2d;
 }
-.careerTitle button:nth-child(1){
+
+.careerTitle button:nth-child(1) {
     margin-left: 10px;
 }
 
@@ -135,9 +137,9 @@
 }
 
 .profileSub div {
-    width : 37%;
+    width: 37%;
     height: 33px;
-    background-color:#FAB7A2;
+    background-color: #FAB7A2;
     text-align: center;
     font-weight: bold;
     align-items: center;
@@ -149,7 +151,7 @@
 
 
 .profileSub h4 {
-    width : 37%;
+    width: 37%;
     font-size: 13px;
     height: 20px;
     /* border: 1px solid#2d2d2d; */
@@ -157,7 +159,7 @@
 }
 
 .profileSub h3 {
-    width : 37%;
+    width: 37%;
     font-size: 13px;
     height: 20px;
     /* border: 1px solid#2d2d2d; */
@@ -182,10 +184,10 @@
 }
 
 .careerSub div {
-    width : 92px;
+    width: 92px;
     height: 32px;
     display: flex;
-    background-color:#FAB7A2;
+    background-color: #FAB7A2;
     text-align: center;
     font-weight: bold;
     align-items: center;
@@ -198,10 +200,10 @@
 }
 
 .careerDetail div {
-    width : 92px;
+    width: 92px;
     height: 32px;
     display: flex;
-    background-color:#d8d8d8;
+    background-color: #d8d8d8;
     text-align: center;
     font-weight: bold;
     align-items: center;
@@ -213,7 +215,7 @@
     font-size: 13px;
 }
 
-.careerDetail div:nth-child(1){
+.careerDetail div:nth-child(1) {
     width: auto;
     max-width: 100px;
 }
@@ -223,11 +225,11 @@
     height: auto;
     text-align: left;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: left;
-    align-items: flex-start;   
+    align-items: flex-start;
     max-height: 180px;
-    overflow:scroll;
+    overflow: scroll;
 }
 
 .careerDetail p {

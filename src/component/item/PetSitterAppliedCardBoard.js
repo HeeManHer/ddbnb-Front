@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { Link, useNavigate } from 'react-router-dom';
+import { OPEN_MODAL } from '../../modules/modalModules';
 
 
 function PetSitterAppliedCardBoard() {
@@ -45,7 +46,7 @@ function PetSitterAppliedCardBoard() {
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
                         <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
-                    <div><button>신청취소</button></div>
+                    <div><button onClick = {()=>dispatch({type:OPEN_MODAL})}>신청취소</button></div>
                     </section>
             )}
 
