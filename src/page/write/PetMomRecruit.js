@@ -130,6 +130,19 @@ function PetMomRecruit() {
 
     const [selectedButton, setSelectedButton] = useState(null);
     const [selectedPetButton, setSelectedPetButton] = useState(null);
+  
+    const [selectedOtherButton, setSelectedOtherButton] = useState([]);
+    const [selectedButtonCare, setSelectedButtonCare] = useState("");
+
+    const onChangeHandlercare = (event) => {
+        const { value } = event.target;
+        if (selectedButtonCare === value) {
+            // 이미 선택된 버튼을 다시 클릭한 경우 선택 해제
+            setSelectedButtonCare("");
+        } else {
+            setSelectedButtonCare(value);
+        }
+    };
 
     const toggleSelected = (event) => {
         const buttonValue = event.target.value;
@@ -244,11 +257,36 @@ function PetMomRecruit() {
             <hr className="line"></hr>
 
             <div>
-                돌봄
-                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="방문">방문</button>
-                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="출장">출장</button>
-                <button className="dolbombtn" onClick={onChangeHandler} name="care" value="산책">산책</button>
+                돌봄{" "}
+                <button
+                    style={{ backgroundColor: selectedButtonCare === "방문" ? "#fab7a2" : "" }}
+                    className="dolbombtn"
+                    onClick={(e) => { onChangeHandlercare(e); onChangeHandler(e); }}
+                    name="care"
+                    value="방문"
+                >
+                    방문
+                </button>{" "}
+                <button
+                    style={{ backgroundColor: selectedButtonCare === "출장" ? "#fab7a2" : "" }}
+                    className="dolbombtn"
+                    onClick={(e) => { onChangeHandlercare(e); onChangeHandler(e); }}
+                    name="care"
+                    value="출장"
+                >
+                    출장
+                </button>{" "}
+                <button
+                    style={{ backgroundColor: selectedButtonCare === "산책" ? "#fab7a2" : "" }}
+                    className="dolbombtn"
+                    onClick={(e) => { onChangeHandlercare(e); onChangeHandler(e); }}
+                    name="care"
+                    value="산책"
+                >
+                    산책
+                </button>{" "}
             </div>
+
 
             <hr className="line"></hr>
             <div className="datemoneygive">

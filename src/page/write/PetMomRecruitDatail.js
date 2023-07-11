@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import Calendar from "../../component/item/Calendar";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
@@ -84,7 +83,7 @@ function PetMomRecruitDatail() {
         () => {
 
             dispatch(getPetMomDetail(boardId));
-            dispatch(getMomApplicantList(boardId));
+            dispatch(getMomApplicantList(1, boardId));
         },
         []
     )
@@ -180,9 +179,6 @@ function PetMomRecruitDatail() {
                         ) : null}
                         <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
                     </div>
-                    <div className="calendar">
-                        <Calendar />
-                    </div>
                 </div>
                 <div className="momplz">
                     <div>
@@ -233,7 +229,7 @@ function PetMomRecruitDatail() {
             {showModalList && <PetMomApplicant closeModalList={closeModalList} />}
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
-            {showApplicant && <ApplicantsList closeModalList={openApplicant} />}
+            {showApplicant && <ApplicantsList category='mom' closeModalList={openApplicant} />}
             {showApplicant && <div className="modal-backdrop" onClick={closeApplicant} />}
         </div >
     )

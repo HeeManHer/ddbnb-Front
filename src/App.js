@@ -39,7 +39,6 @@ import ReportManage from "./page/admin/ReportManage";
 import PostMessage from "./component/modal/pm/PostMessage";
 import SendMessage from "./component/modal/pm/SendMessage";
 import ApplicantsList from "./component/modal/apply/ApplicantsList";
-import Calendar from "./component/item/Calendar";
 import PostMessageList from "./page/list/PostMessageList";
 import KakaoPage from "./page/main/KakaoPage";
 import NaverPage from "./page/main/NaverPage";
@@ -101,7 +100,6 @@ function App() {
         <Route path="postMessageList" element={<PostMessageList />} />
         <Route path="postMessage/:messageId" element={<PostMessage />} />
         <Route path="sendMessage/:memberId" element={<SendMessage />} />
-        <Route path="calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );

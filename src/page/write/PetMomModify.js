@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./detail.css"
 import { useDispatch, useSelector } from "react-redux";
-import { putPetMomPage, getPetMomList } from "../../api/petMomAPI";
+import { putPetMomPage } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { getPetMomDetail } from "../../api/petDetailAPI";
 
 function searchSig(sido) {
     return sigunguList.filter(sig => sig.sig.sig_full_nm.startsWith(sido));
@@ -127,10 +128,17 @@ function PetMomModify() {
 
     useEffect(
         () => {
-            dispatch(getPetMomList(boardId));
+            dispatch(getPetMomDetail(boardId));
         },
         []
     )
+    useEffect(
+        () => {
+            setform(petmomdetail)
+
+        }, [petmomdetail]
+    )
+    console.log(petmomdetail)
 
     useEffect(
         () => {
@@ -160,7 +168,7 @@ function PetMomModify() {
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
                     <NavLink to="/petmom" className="insertwrite" onClick={modifypetMom}>
-                        <button class="declarationButton">수정</button>
+                        <button className="declarationButton">수정</button>
                     </NavLink>
                 </div>
 
@@ -179,7 +187,7 @@ function PetMomModify() {
                 <div>
                     제목
                 </div>
-                <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" />
+                <input className="textinput" type="text" defaultValue={form.boardTitle} onChange={onChangeHandler} name="boardTitle" />
             </div>
             <hr className="line"></hr>
 

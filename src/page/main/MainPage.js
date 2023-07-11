@@ -17,7 +17,7 @@ function MainPage() {
         () => {
             dispatch(getLastedPetmom());
             dispatch(getLastedPetsitter());
-        }
+        }, []
     )
 
     const goPetSitter = () => {

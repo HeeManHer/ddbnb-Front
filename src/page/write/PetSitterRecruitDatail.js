@@ -13,12 +13,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import style from './PetSitterRecruitDatail.module.css';
 import { getApplicantListAPI } from '../../api/applicantAPI';
 import Declaration from '../../component/modal/declaration/Declaration';
+import ApplicantsList from '../../component/modal/apply/ApplicantsList';
 
 
 function PetSitterRecruitDatail() {
 
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
+    const [showApplicantList, setOpenApplicantList] = useState(false);
 
     const navigate = useNavigate()
 
@@ -45,6 +47,9 @@ function PetSitterRecruitDatail() {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectfinish" });
     };
 
+    const openApplicantList = () => {
+        setOpenApplicantList(true);
+    };
     const closeModalReview = () => {
         setShowModalReview(false);
     };
@@ -56,6 +61,11 @@ function PetSitterRecruitDatail() {
     const closeModalList = () => {
         setShowModalList(false);
     };
+
+    const closeApplicantList = () => {
+        setOpenApplicantList(false);
+    };
+
 
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
     console.log(petsdetail)
@@ -202,8 +212,9 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
+                    <button className="wantbtn2" onClick={openApplicantList}>신청자 목록</button>
                     {postUser ? (<>
-                        <button className="wantbtn2" onClick={openModalList}>신청자 목록</button>
+                        <button className="wantbtn2" onClick={openModalList}>리뷰 목록</button>
                         <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
                     </>) :
                         <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>}
@@ -220,6 +231,9 @@ function PetSitterRecruitDatail() {
 
                     {showModalList && <ReviewList closeModalList={closeModalList} />}
                     {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
+
+                    {showApplicantList && <ApplicantsList closeModalList={openApplicantList} />}
+                    {showApplicantList && <div className="modal-backdrop" onClick={closeApplicantList} />}
                 </div>
             </div >
         </div >

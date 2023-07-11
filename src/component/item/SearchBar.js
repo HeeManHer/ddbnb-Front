@@ -1,14 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import Location from "./Location";
 import { RESET_VALUE, SET_VALUE } from "../../modules/searchValue";
+import { RESET_PAGE } from "../../modules/currentPage";
+import { useEffect } from "react";
 
 function SearchBar({ Option }) {
     const dispatch = useDispatch();
 
     const searchValue = useSelector(state => state.searchReducer);
+    const location = useSelector(state => state.locationReducer);
+
+    useEffect(
+        () => {
+            dispatch({ type: SET_VALUE, payload: { location } });
+        }, [location]
+    )
 
     const onChangeHandler = (e) => {
         dispatch({ type: SET_VALUE, payload: { [e.target.name]: e.target.value } });
+        dispatch({ type: RESET_PAGE });
     };
 
     const reset = () => {

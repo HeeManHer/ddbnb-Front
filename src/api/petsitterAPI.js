@@ -26,7 +26,7 @@ export const callPetsitterListAPI = (currentPage, searchValue) => {
         console.log(searchValue?.care)
         URL += `&care=${searchValue?.care}`;
     }
-  
+
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
@@ -61,6 +61,7 @@ export function registPetsitterAPI(form) {
 
         if (result.status === 200) {
             alert(result.message);
+            window.location.href = "../";
             // dispatch({ type: POST_PETSITTER, payload: result.data });
         }
     };
