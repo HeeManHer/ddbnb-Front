@@ -152,12 +152,12 @@ function PetSitterRecruitDatail() {
             <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2>
             <div className="comment">
                 <h3 className="comment-content" style={{ right: '4%' }}>게시판</h3>
-                <h3 className="comment-content2" style={{ left: '13px' }} > 펫시터 모집  게시판</h3>
+                <h3 className="comment-content2" style={{ left: '13px' }} > {petsdetail.boardCategory}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">
                 <h3 className="comment-content">제목 </h3>
-                <h3 className="comment-content2" >{petsdetail.boardCategory}</h3>
+                <h3 className="comment-content2" >{petsdetail.boardTitle}</h3>
             </div>
             <hr className="line"></hr>
             <div className="comment">

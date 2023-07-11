@@ -3,19 +3,16 @@ import { IS_LOGIN } from "../modules/LoginModule";
 
 
 /* 현재 로그인 된 멤버 정보 가져오기 */
-export const getCurrentMember = () => {
+export const getCurrentMember = (memberId) => {
 
-    const token = JSON.parse(window.localStorage.getItem('accessToken'));
-
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member/${token.memberId}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/member/${memberId}`;
     return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
             method: 'GET',
             headers: {
                 "Content-Type": 'application/json',
-                "Accept": '*/*',
-                "Auth": token
+                "Accept": '*/*'
             }
         }).then(res => res.json());
 

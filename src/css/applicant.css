@@ -48,19 +48,22 @@
 
 .evaluation,
 .navbtn {
-    width: 50%;
     height: 100%;
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: space-around;
 }
 
-.record,
+
+.evaluation {
+    width: 50%;
+}
+
+
 .point {
-    width: 70%;
-    height: 25% !important;
+    width: 100%;
+    height: 35%;
 
     display: flex;
     align-items: center;
@@ -69,26 +72,17 @@
     font-weight: bold;
 
     font-size: 0.7rem;
-}
 
-.record>div,
-.point {
-    height: 100%;
     background-color: white;
     border-radius: 5px;
 }
 
-.record>div,
-.point>div {
+.point>* {
     padding: 0px 10px;
 }
 
 .point>div {
     font-size: 1rem;
-}
-
-.point>span {
-    width: 50%;
 }
 
 .navbtn {
@@ -98,7 +92,7 @@
 
 .navbtn>* {
     width: 100%;
-    height: 40%;
+    height: 35%;
 
     font-weight: bold;
     background-color: white;
