@@ -7,7 +7,7 @@ function Header() {
     const navigate = useNavigate();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const admin = token !== null && token.memberId === '952' ? true : false;
+    const admin = token !== null && token.memberId === 952 ? true : false;
 
     const logout = () => {
         //     if(SocialLogin == "KAKAO") {
