@@ -4,13 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import { OPEN_MODAL } from '../../modules/modalModules';
+import { OPEN_MODAL, CLOSE_MODAL } from '../../modules/modalModules';
 import CancelSitterRequest from '../modal/mypage/CancelSitterRequest';
 
 function PetSitterAppliedCardBoard() {
 
     //모달
     const cancel = useSelector(state => state.modalsReducer.cancel);
+
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+
 
     //리덕스
     const dispatch = useDispatch();
@@ -44,9 +49,10 @@ function PetSitterAppliedCardBoard() {
             {Array.isArray(applys) && applys.map((apply, index) =>
                 <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
-                        <section style={apply.sitterStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
-                            {apply.boardId.sitterStatus}
-                        </section>
+                        <button onClick={() => { dispatch({ type: OPEN_MODAL , payload: 'cancel' })}}>신청취소</button>
+                        <Modal back-drop = "static" isOpen={cancel} onRequestClose={closeModal}>
+                            {<CancelSitterRequest applicantId ={apply.appicantId}/>}
+                        </Modal>
                     </div>
                     <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
                     <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
