@@ -23,5 +23,4 @@ const modalsReducer = handleActions({
 }, initialState
 );
 
-
 export default modalsReducer;

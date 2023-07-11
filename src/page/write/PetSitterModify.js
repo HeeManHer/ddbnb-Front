@@ -22,7 +22,11 @@ function Sigoon({ sig }) {
 
 function PetSitterModify() {
 
+    const dispatch = useDispatch();
     const { boardId } = useParams();
+
+    const petsdetail = useSelector(state => state.petSitterReducer);
+    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
 
     const [form, setForm] = useState({
         boardId,
@@ -41,6 +45,8 @@ function PetSitterModify() {
         request: ''
     });
 
+    const [selectedImage, setSelectedImage] = useState(null);
+
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
 
@@ -50,6 +56,36 @@ function PetSitterModify() {
         sigungu: ''
 
     });
+
+    useEffect(() => {
+        setForm({
+            ...form,
+            location: location.sido + " " + location.sigungu
+        })
+    }, [location]
+    )
+
+    useEffect(
+        () => {
+            dispatch(getPetsitterdetailAPI(boardId));
+        },
+        []
+    )
+
+    useEffect(
+        () => {
+            setForm(petsdetail)
+
+            if (petsdetail && petsdetail.location) {
+                const arr = petsdetail.location.split(" ");
+                setLocation({
+                    sido: arr[0],
+                    sigungu: arr[1],
+                })
+                setSigList(searchSig(arr[0]));
+            }
+        }, [petsdetail]
+    )
 
     const onChangeSidoHandler = (e) => {
 
@@ -61,28 +97,12 @@ function PetSitterModify() {
         });
     };
 
-    useEffect(() => {
-        setForm({
-            ...form,
-            location: location.sido + " " + location.sigungu
-        })
-    }, [location]
-    )
-
     const onChangeHandler = (e) => {
-
         setForm({
             ...form,
             [e.target.name]: e.target.value
         });
     };
-    console.log(form);
-
-
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    const dispatch = useDispatch();
-
 
     const openModal = (type) => {
         dispatch({ type: OPEN_MODAL, payload: type });
@@ -102,27 +122,6 @@ function PetSitterModify() {
 
     };
 
-    useEffect(
-        () => {
-            dispatch(getPetsitterdetailAPI(boardId));
-        },
-        []
-    )
-
-    const petsdetail = useSelector(state => state.petSitterReducer);
-    useEffect(
-        () => {
-            if (petsdetail && petsdetail.location) {
-                const arr = petsdetail.location.split(" ");
-                setLocation({
-                    sido: arr[0],
-                    sigungu: arr[1],
-                })
-                setSigList(searchSig(arr[0]));
-            }
-        }, [petsdetail]
-    )
-
     const handleImageChange = (e) => {
         const file = e.target.files[0];
 
@@ -136,9 +135,9 @@ function PetSitterModify() {
             reader.readAsDataURL(file);
         }
     };
+  
     return (
         <div className="petsitterrecruitcontainer">
-
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
                 <button className="insertwrite" onClick={modifypetsitter}>수정</button>
@@ -147,8 +146,8 @@ function PetSitterModify() {
 
             <div className="yongdate">
 
-                <h3 className="writeryong">작성자 : {petsdetail?.memberId?.nickname}</h3>
-                <div className="writedate">작성일 : {petsdetail.boardDate}
+                <h3 className="writeryong">작성자 : {form.member?.nickname}</h3>
+                <div className="writedate">작성일 : {form.boardDate}
                 </div>
             </div>
 
@@ -165,7 +164,9 @@ function PetSitterModify() {
                         <div>
                             제목
                         </div>
-                        <input className="textinput" value={petsdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
+                        <input className="textinput" value={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
+
+                        {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                     </div>
 
                     <hr className="line"></hr>
@@ -279,7 +280,7 @@ function PetSitterModify() {
                             </div>
                             <div className="acb">
                                 <button className="significantbtn">특이사항</button>
-                                <input className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.applicant} />
+                                <input className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={petsdetail.signficant} />
                             </div>
                         </div>
                     </div>

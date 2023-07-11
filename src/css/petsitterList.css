@@ -24,7 +24,6 @@
 .doglistbtn {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     position: relative;
     bottom: 60px;
 
