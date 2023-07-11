@@ -20,6 +20,7 @@ const actions = createActions({
     [POST_REPORT]: () => { },
 });
 
+
 const reportReducer = handleActions({
     [GET_USER_REPORT]: (state, { payload }) => payload,
     [GET_MEMBER_LIST]: (state, { payload }) => payload,

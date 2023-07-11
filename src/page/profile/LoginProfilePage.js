@@ -12,8 +12,6 @@ function LoginProfilePage() {
 
     const navigate = useNavigate();
     const members = useSelector(store => store.memberReducer);
-
-    const [texts, setTexts] = useState([]);
     const [inputText, setInputText] = useState('');
 
     const handleInputChange = (e) => {
@@ -80,7 +78,7 @@ function LoginProfilePage() {
     
     /* 성별 아이콘 */
     function GenderIcon() {
-        if (members?.gender == 'female' || 'F') {
+        if (members?.gender === 'female' || 'F') {
             return <IoIosFemale />
         } else {
             return <IoIosMale />

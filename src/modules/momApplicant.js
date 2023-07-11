@@ -10,6 +10,7 @@ const actions = createActions({
     [GET_MOMAPPLICANT]: () => { },
 });
 
+
 const momApplicantsReducer = handleActions({
     [SET_MOMAPPLICANT]: (state, { payload }) => payload,
     [GET_MOMAPPLICANT]: (state, { payload }) => payload

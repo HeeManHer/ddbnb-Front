@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getMemberList, searchMemberList } from '../../api/adminAPI';
+import { getMemberList } from '../../api/adminAPI';
 import { useEffect, useState } from 'react';
 import PageBtn from '../../component/common/PageBtn';
 import { RESET_PAGE } from '../../modules/currentPage';

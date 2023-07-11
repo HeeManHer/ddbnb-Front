@@ -5,23 +5,23 @@ export const getPetMomList = (currentPage, searchValue) => {
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/list?page=${currentPage}`;
 
-    if (searchValue?.location != '') {
+    if (searchValue?.location !== '') {
         URL += `&location=${searchValue?.location}`;
     }
 
-    if (searchValue?.startDate != '') {
+    if (searchValue?.startDate !== '') {
         URL += `&startDate=${searchValue?.startDate}`;
     }
 
-    if (searchValue?.endDate != '') {
+    if (searchValue?.endDate !== '') {
         URL += `&endDate=${searchValue?.endDate}`;
     }
 
-    if (searchValue?.petYN != '') {
+    if (searchValue?.petYN !== '') {
         URL += `&petYN=${searchValue?.petYN}`;
     }
 
-    if (searchValue?.otherCondition != '') {
+    if (searchValue?.otherCondition !== '') {
         URL += `&otherCondition=${searchValue?.otherCondition}`;
     }
 

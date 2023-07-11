@@ -2,7 +2,7 @@ import "../../../css/modaltest.css";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 import { registMomApplicantAPI } from '../../../api/applicantAPI';
-import React, { useState } from "react";
+import React from "react";
 
 function PetMomApply({ boardId }) {
     console.log(boardId)

@@ -11,7 +11,6 @@ function AdminNavbar() {
             <div className="menutext" onClick={() => navigate('./member')}>회원 관리</div>
             <div className="menutext" onClick={() => navigate('./board')}>게시판 관리</div>
             <div className="menutext" onClick={() => navigate('./report')}>신고 관리</div>
-            <div className="menutext" onClick={() => navigate('./modal')}>모달확인</div>
         </div>
     )
 }

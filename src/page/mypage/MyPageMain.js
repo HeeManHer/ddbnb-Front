@@ -2,7 +2,6 @@ import style from "./MyPageMain.module.css";
 import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate, useParams } from "react-router-dom";
 import MyCardList from "../../component/list/AppliedList";
-import AppliedCardBoard from "../../component/item/AppliedCardBoard"
 import { useEffect, useState } from "react";
 import { getCurrentMember, deleteMember } from "../../api/MemberAPICalls";
 import { useDispatch, useSelector } from 'react-redux';

@@ -43,7 +43,6 @@ import SendMessage from "./component/modal/pm/SendMessage";
 import ApplicantsList from "./component/modal/apply/ApplicantsList";
 import Calendar from "./component/item/Calendar";
 import PostMessageList from "./page/list/PostMessageList";
-import Temp from "./page/admin/Temp";
 import KakaoPage from "./page/main/KakaoPage";
 import NaverPage from "./page/main/NaverPage";
 
@@ -99,7 +98,6 @@ function App() {
           <Route path="member" element={<Member />} />
           <Route path="board" element={<BoardManage />} />
           <Route path="report" element={<ReportManage />} />
-          <Route path="modal" element={<Temp />} />
         </Route>
 
         <Route path="applicant" element={<ApplicantsList />} />

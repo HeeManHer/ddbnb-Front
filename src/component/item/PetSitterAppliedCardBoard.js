@@ -16,7 +16,7 @@ function PetSitterAppliedCardBoard() {
     const dispatch = useDispatch();
     const apply = useSelector(state => state.applicantsReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: applys, pageInfo } = apply;
+    const { data: applys } = apply;
 
     useEffect(() => {
         dispatch(getMyApplyListAPI(currentPage));

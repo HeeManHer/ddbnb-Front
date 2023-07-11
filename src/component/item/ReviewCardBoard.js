@@ -1,11 +1,9 @@
 import style from './ReviewCardBoard.module.css';
-import { Link, useNavigate } from 'react-router-dom';
-import MyReviewPage from '../../page/review/MyReviewPage';
-import { useEffect, useState } from "react";
+import { Link} from 'react-router-dom';
+import { useEffect} from "react";
 import { callReviewListAPI } from "../../api/reviewListAPI";
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
-import { FaStar } from 'react-icons/fa';
 import StarPoint from './StarPoint';
 
 function ReviewCardBoard() {
@@ -21,29 +19,15 @@ function ReviewCardBoard() {
 
     }, [currentPage]);
 
-    const navigate = useNavigate();
-    const goReviewHandler = () => {
-        navigate("/myReview");
-        // window.location.reload();
-    }
-
-
-    //리뷰리스트 출력
-    console.log(reviews);
-
-    /* 리뷰명 */
-    // const REVIEW_NAME = reviewList.reviewTitle;
 
     return (
         <section className={style.section}>
-            {/* 리뷰 */}
-            {/* 블럭1 */}
             <div className={style.board}>
                 {Array.isArray(reviews) && reviews.map((review, index) =>
                     <Link to={`/reviews/${review.reviewId}`} key={index}>
                         <button className={style.review} >
                             <div className={style.Image}>
-                                <img src={review.reviewImage[0]?.imageUrl} />
+                                <img src={review.reviewImage[0]?.imageUrl} alt="리뷰 이미지" />
                             </div>
                             <div className={style.context}>
                                 <div style={{ display: "flex" }}>
@@ -64,8 +48,6 @@ function ReviewCardBoard() {
                     </Link>
                 )}
             </div>
-
-            {/* 페이징 */}
             <PageBtn pageInfo={pageInfo} />
 
 

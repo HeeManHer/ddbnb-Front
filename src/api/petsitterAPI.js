@@ -4,29 +4,29 @@ export const callPetsitterListAPI = (currentPage, searchValue) => {
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?page=${currentPage}`;
 
-    if (searchValue?.location != '') {
+    if (searchValue?.location !== '') {
         console.log(searchValue?.location)
         URL += `&location=${searchValue?.location}`;
     }
 
-    if (searchValue?.startDate != '') {
+    if (searchValue?.startDate !== '') {
         URL += `&startDate=${searchValue?.startDate}`;
     }
 
-    if (searchValue?.endDate != '') {
+    if (searchValue?.endDate !== '') {
         URL += `&endDate=${searchValue?.endDate}`;
     }
 
-    if (searchValue?.petSize != '') {
+    if (searchValue?.petSize !== '') {
         console.log(searchValue?.petSize)
         URL += `&petSize=${searchValue?.petSize}`;
     }
 
-    if (searchValue?.care != '') {
+    if (searchValue?.care !== '') {
         console.log(searchValue?.care)
         URL += `&care=${searchValue?.care}`;
     }
-
+  
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {

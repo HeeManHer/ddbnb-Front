@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "../../component/item/Calendar";
 import "./detail.css"
-import Modal from 'react-modal';
 import { useDispatch, useSelector } from "react-redux";
-import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import RegistPost from "../../component/modal/post/RegistPost";
-import CancelPost from "../../component/modal/post/CancelPost";
 import { putPetMomPage, getPetMomList } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-
 
 function searchSig(sido) {
 
@@ -23,8 +17,6 @@ function Sigoon({ sig }) {
 }
 
 function PetMomModify() {
-
-
     const { boardId } = useParams();
 
     const [form, setform] = useState({
@@ -54,7 +46,7 @@ function PetMomModify() {
     });
     const onChangeSidoHandler = (e) => {
 
-        if (e.target.id == "sido")
+        if (e.target.id === "sido")
             setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
@@ -86,8 +78,6 @@ function PetMomModify() {
     }, [location]
     )
 
-
-
     const onChangeHandlerOther = (e) => {
         const value = e.target.value;
         const existingIndex = form.otherCondition.findIndex((item) => item.typeId === value.trim());
@@ -115,20 +105,12 @@ function PetMomModify() {
         }
     };
 
-
-
-    console.log(form)
-
     const [images, setImages] = useState([]);
     const [images2, setImages2] = useState([]);
-
-    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
-
     const [selectedButton, setSelectedButton] = useState(null);
     const [selectedPetButton, setSelectedPetButton] = useState(null);
     const [selectedOtherButton, setSelectedOtherButton] = useState([]);
-
 
     const toggleSelected = (event) => {
         const buttonValue = event.target.value;
@@ -150,16 +132,6 @@ function PetMomModify() {
         }
     };
 
-
-
-
-    const openModal = (type) => {
-        dispatch({ type: OPEN_MODAL, payload: type });
-    };
-
-    const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL });
-    };
     useEffect(
         () => {
             dispatch(getPetMomList(boardId));
@@ -167,7 +139,6 @@ function PetMomModify() {
         },
         []
     )
-
 
     useEffect(
         () => {
@@ -182,17 +153,6 @@ function PetMomModify() {
         }, [petmomdetail]
     )
 
-
-
-    const handleDatetimeChange = (event) => {
-        const selectedIndex = event.target.selectedIndex; // 선택된 옵션의 인덱스 가져오기
-        const selectedOption = event.target.options[selectedIndex]; // 선택된 옵션 가져오기
-        const selectedValue = selectedOption.value; // 선택된 옵션의 값 가져오기
-        const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
-
-
-    };
-
     const handleImageSelect = (event) => {
         const selectedImage = event.target.files[0];
         if (images.length < 1) {
@@ -205,28 +165,20 @@ function PetMomModify() {
     return (
         <div className="height-auto">
             <div className="petsitterrecruitcontainer">
-
-
-
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
                     <NavLink to="/petmom" className="insertwrite" onClick={modifypetMom}>
                         <button class="declarationButton">수정</button>
                     </NavLink>
-
                 </div>
 
-
-
                 <div className="yongdate">
-
                     <h3 className="writeryong">작성자 : {petmomdetail?.memberId?.nickname}</h3>
                     <div className="writedate">작성일 : {petmomdetail.boardDate}
                     </div>
                 </div>
             </div>
             <hr className="line"></hr>
-
 
             <h2>펫맘 모집 게시판</h2>
 
@@ -238,7 +190,6 @@ function PetMomModify() {
                 <input className="textinput" type="text" defaultValue={petmomdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" />
             </div>
             <hr className="line"></hr>
-
 
             <div>
                 지역
@@ -343,8 +294,6 @@ function PetMomModify() {
                             <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
                             <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
 
-
-
                             <hr className="line2"></hr>
 
                             <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
@@ -354,13 +303,11 @@ function PetMomModify() {
                             <button className={`choice-box3 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
                             <button className={`choice-box3 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>
 
-
                             <hr className="line2"></hr>
                         </div>
                         <div className="dateAndWriter">
                             <h2 className="signficanttext">특이사항</h2>
                             <input className="signficanttext" type="text" onChange={onChangeHandler} name="signficant" defaultValue={petmomdetail.signficant} />
-
                         </div>
                     </div>
                     <h2 className="caredog"> 강아지를 맡아줄게요</h2>
