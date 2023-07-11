@@ -1,13 +1,9 @@
-
 import "../../css/petsitterrecruit.css";
 import "./detail.css"
-import Modal from 'react-modal';
 import React, { useEffect, useState } from "react";
-import RegistPost from "../../component/modal/post/RegistPost";
-import CancelPost from "../../component/modal/post/CancelPost";
-import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
+import { OPEN_MODAL } from "../../modules/petSittermodal";
 import { useDispatch, useSelector } from "react-redux";
-import { getPetsitterdetailAPI, putPetsitterAPI, registPetsitterAPI } from "../../api/petsitterAPI";
+import { getPetsitterdetailAPI, putPetsitterAPI} from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import "../../css/petsitterList.css";
 import { useParams } from "react-router-dom";
@@ -57,7 +53,7 @@ function PetSitterModify() {
 
     const onChangeSidoHandler = (e) => {
 
-        if (e.target.id == "sido")
+        if (e.target.id === "sido")
             setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
@@ -85,23 +81,12 @@ function PetSitterModify() {
 
     const [selectedImage, setSelectedImage] = useState(null);
 
-    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
-
     const dispatch = useDispatch();
-
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
 
 
     const openModal = (type) => {
         dispatch({ type: OPEN_MODAL, payload: type });
     };
-
-    const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL });
-    };
-
 
     const modifypetsitter = () => {
 
@@ -109,11 +94,6 @@ function PetSitterModify() {
 
         formData.append('modifyPetSitter', new Blob([JSON.stringify(form)], { type: "application/json" }))
 
-        // if (images) {
-        //     for (let index in images) {
-        //         formData.append("image", images[index])
-        //     }
-        // }
         if (selectedImage) {
             formData.append("image", selectedImage)
         }
@@ -130,7 +110,6 @@ function PetSitterModify() {
     )
 
     const petsdetail = useSelector(state => state.petSitterReducer);
-    console.log(petsdetail)
     useEffect(
         () => {
             if (petsdetail && petsdetail.location) {
@@ -157,11 +136,8 @@ function PetSitterModify() {
             reader.readAsDataURL(file);
         }
     };
-    // console.log(petsdetail.boardTitle);
     return (
         <div className="petsitterrecruitcontainer">
-
-
 
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
@@ -190,8 +166,6 @@ function PetSitterModify() {
                             제목
                         </div>
                         <input className="textinput" value={petsdetail.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
-
-                        {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                     </div>
 
                     <hr className="line"></hr>
@@ -293,7 +267,6 @@ function PetSitterModify() {
                                     <option value="" >남/여</option>
                                     <option value="남">남</option>
                                     <option value="여">여</option>
-                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 크기
                                 <select className="secondselect2" onChange={onChangeHandler} name="petSize" defaultValue={petsdetail.petSize}>
@@ -301,7 +274,6 @@ function PetSitterModify() {
                                     <option value="소형">소형</option>
                                     <option value="중형">중형</option>
                                     <option value="대형">대형</option>
-                                    {/* <hr className="line"></hr> */}
                                 </select>
                                 <hr className="line"></hr>
                             </div>
@@ -321,9 +293,6 @@ function PetSitterModify() {
                 </div>
             </div>
         </div >
-
-
-
 
     );
 }

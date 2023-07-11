@@ -1,5 +1,4 @@
-import style from './collectModal.module.css';
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petCollectModule';
 import { useDispatch } from 'react-redux';
 
@@ -8,11 +7,6 @@ function PetSitterCollectCancle({onClickhandle}) {
 
     const dispatch = useDispatch();
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
     
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petsittercollectcancle" });

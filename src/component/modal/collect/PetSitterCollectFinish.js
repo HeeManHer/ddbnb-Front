@@ -1,18 +1,11 @@
-import Modal from 'react-modal';
 import "../../../css/modaltest.css";
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 
 function PetSitterCollectFinish({onClickhan}) {
 
     const dispatch = useDispatch();
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    };
 
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petsittercollectfinish" });

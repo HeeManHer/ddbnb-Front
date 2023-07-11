@@ -1,6 +1,5 @@
-import Modal from 'react-modal';
 import "../../../css/modaltest.css";
-import React, { useState } from "react";
+import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';

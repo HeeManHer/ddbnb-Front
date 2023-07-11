@@ -1,5 +1,4 @@
-
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../../css/petsitterList.css";
 import sigunguList from '../../data/sigoongu.json';
@@ -247,7 +246,7 @@ function PetMomList() {
                     </div>
 
                 </div>
-                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
+                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" alt="체크" /></h5>
 
             </div>
 
@@ -259,7 +258,7 @@ function PetMomList() {
                         style={petmom.momStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
                         onClick={() => navigate(`./${petmom.boardId}`)}
                     >
-                        <img className="dogimg" src={petmom?.boardImage[0]?.imageUrl} />
+                        <img className="dogimg" src={petmom?.boardImage[0]?.imageUrl } alt="강아지 사진" />
 
                         <div className="textlist">
                             <div className="wheretext">

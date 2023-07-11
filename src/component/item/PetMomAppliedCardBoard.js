@@ -1,9 +1,8 @@
 import style from './AppliedMomCardBoard.module.css';
-import { useEffect, useState } from "react";
-import MyCardList from "../../component/list/AppliedList";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyMomApplyListAPI } from '../../api/applicantAPI';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function PetMomAppliedCardBoard() {
 
@@ -11,7 +10,7 @@ function PetMomAppliedCardBoard() {
     const dispatch = useDispatch();
     const apply = useSelector(state => state.momApplicantsReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: applys, pageInfo } = apply;
+    const { data: applys } = apply;
 
 
     useEffect(() => {

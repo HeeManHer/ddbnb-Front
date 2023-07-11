@@ -2,7 +2,6 @@ import style from "./AllReviewPage.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { callReviewDetailAPI } from "../../api/reviewListAPI";
 import StarPoint from "../../component/item/StarPoint";
 import { getCurrentMember } from "../../api/MemberAPICalls";
@@ -25,7 +24,6 @@ function AllReviewPage() {
         , []
     );
 
-    console.log(review);
 
     const closeHandler = () => {
         dispatch(getCurrentMember());

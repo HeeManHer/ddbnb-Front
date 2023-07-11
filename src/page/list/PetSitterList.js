@@ -1,5 +1,5 @@
 import "../../css/petsitterList.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { callPetsitterListAPI } from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import { useDispatch, useSelector } from "react-redux";
@@ -105,11 +105,6 @@ function PetSitterList() {
             location: location.SIDO + ' ' + e.target.value
         });
     }
-    const [selectedPetsitter, setSelectedPetsitter] = useState(null);
-
-    const handleClick = (petsitter) => {
-        setSelectedPetsitter(petsitter);
-    };
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const postUser = token !== null ? true : false;
@@ -210,7 +205,7 @@ function PetSitterList() {
                     </div>
 
                 </div>
-                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" /></h5>
+                <h5 className="statecheck">최신순  평점순  리뷰순 <img src="../img/check.png" alt="체크" /></h5>
             </div>
 
             {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
@@ -222,7 +217,7 @@ function PetSitterList() {
                     key={petsitter.boardId}
                     onClick={() => navigate(`./${petsitter.boardId}`)}
                 >
-                    <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} />
+                    <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} alt="강아지 사진" />
                     <div className="textlist">
                         <div className="wheretext">
                             <div>{petsitter.location}</div>

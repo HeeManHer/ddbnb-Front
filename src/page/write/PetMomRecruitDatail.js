@@ -15,11 +15,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
 import { getMomApplicantList } from '../../api/applicantAPI';
 
-
 function PetMomRecruitDatail() {
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
     const navigate = useNavigate()
     const [showModalReview, setShowModalReview] = useState(false);
     const [showModalList, setShowModalList] = useState(false);
@@ -79,7 +75,6 @@ function PetMomRecruitDatail() {
 
             dispatch(getPetMomDetail(boardId));
             dispatch(getMomApplicantList(boardId));
-
         },
         []
     )
@@ -94,14 +89,9 @@ function PetMomRecruitDatail() {
         setCurrentImageIndex(newIndex);
     };
 
-
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const postUser = token !== null && token.memberId == data.member?.memberId ? true : false;
+    const postUser = token !== null && token.memberId === data.member?.memberId ? true : false;
     const isTokenNull = token === null;
-
-
-
-    console.log(data)
 
     return (
         <div className={`height-auto ${showModalReview ? "modal-open" : ""}`}>
@@ -109,7 +99,6 @@ function PetMomRecruitDatail() {
                 <h1>게시판</h1>
                 <h3 className='writer-size'>작성자: {data.member && data.member.nickname}</h3>
                 <h4 >작성일 : {data.boardDate}</h4>
-
 
                 {isTokenNull ?
                     null :
@@ -228,11 +217,6 @@ function PetMomRecruitDatail() {
                     </Modal>
                 </div>
             </div>
-
-
-
-
-
 
             {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
             {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}

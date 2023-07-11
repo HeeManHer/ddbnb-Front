@@ -1,5 +1,5 @@
 import style from './AppliedCardBoard.module.css';
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import MyCardList from "../../component/list/AppliedList";
 
 function AppliedCardBoard() {

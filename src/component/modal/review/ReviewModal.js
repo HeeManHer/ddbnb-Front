@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../review/review.css";
 import { useDispatch } from "react-redux";
 import { registNewReview } from "../../../api/reviewListAPI";
-import { json } from "react-router-dom";
 
 function ReviewModal({ closeModalReview, index: memberId }) {
 
@@ -21,7 +20,6 @@ function ReviewModal({ closeModalReview, index: memberId }) {
     const [imageUrl, setImageUrl] = useState([]);
 
     useEffect(() => {
-        // 이미지 업로드시 미리보기 세팅
         if (image.length > 0) {
             const fileReader = new FileReader();
             fileReader.onload = (e) => {
@@ -44,14 +42,9 @@ function ReviewModal({ closeModalReview, index: memberId }) {
     };
 
     const handleSubmit = () => {
-        // index에 대한 리뷰 작성 처리 로직
-        // 작성 완료 후 모달 닫기
-        // closeModalReview();
-
         const formData = new FormData();
 
         formData.append('newReview', new Blob([JSON.stringify(form)], { type: "application/json" }))
-
 
         if (image) {
             for (let index in image) {
@@ -59,17 +52,11 @@ function ReviewModal({ closeModalReview, index: memberId }) {
             }
         }
 
-        console.log(formData.get('img'));
-
-
-
         dispatch(registNewReview(formData, closeModalReview))
 
     };
 
     const handleCancel = () => {
-        // 작성 취소 처리 로직
-        // 모달 닫기
         closeModalReview();
     };
 

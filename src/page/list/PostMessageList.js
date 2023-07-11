@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteMessage, getMessageList } from "../../api/messageAPI";
 import '../../css/message.css';
@@ -8,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 function PostMessageList() {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const { data: message, pageInfo } = useSelector(state => state.messageReducer);
     const currentPage = useSelector(state => state.pageReducer);
@@ -40,8 +38,8 @@ function PostMessageList() {
         <div className="postMessageList  dis-flex flex-column">
             <h1>{category === 'receive' ? '받은' : '보낸'} 쪽지함</h1>
             <div className="msgMenu dis-flex align-center justify-between">
-                <h3 style={category == 'receive' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('receive')}>받은 쪽지</h3>
-                <h3 style={category == 'send' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('send')}>보낸 쪽지</h3>
+                <h3 style={category === 'receive' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('receive')}>받은 쪽지</h3>
+                <h3 style={category === 'send' ? { color: '#FAB7A2' } : null} onClick={() => setCategory('send')}>보낸 쪽지</h3>
             </div>
             <div className="dis-flex align-center justify-between">
                 <div className="dis-flex align-center justify-between">

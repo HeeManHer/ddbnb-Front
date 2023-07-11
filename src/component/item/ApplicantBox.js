@@ -4,7 +4,6 @@ function ApplicantBox({ user }) {
 
     
     const openModal = () => {
-        // window.close();
 
         const modal_width = '500';
         const modal_height = '500';
@@ -19,14 +18,13 @@ function ApplicantBox({ user }) {
 
     const closeModal = (url) => {
         window.opener.location.href = url;
-        // window.close();
     }
 
     return (
         <div className="applicantBox back-color dis-flex align-center bottom-shadow">
 
             <div className="applicantInfo dis-flex flex-column align-center">
-                <img src={user.img} />
+                <img src={user.img} alt="유저 이미지"/>
                 <span>{user.name}</span>
             </div>
 

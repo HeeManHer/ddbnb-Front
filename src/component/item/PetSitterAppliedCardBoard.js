@@ -2,7 +2,7 @@ import style from './AppliedCardBoard.module.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function PetSitterAppliedCardBoard() {
@@ -11,7 +11,7 @@ function PetSitterAppliedCardBoard() {
     const dispatch = useDispatch();
     const apply = useSelector(state => state.applicantsReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    const { data: applys, pageInfo } = apply;
+    const { data: applys } = apply;
 
     useEffect(() => {
         dispatch(getMyApplyListAPI(currentPage));

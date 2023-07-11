@@ -153,16 +153,6 @@ function Calendar() {
         return num;
     }
 
-    const calendarChoiceDay = e => {
-        if (e.target.className.indexOf(" choiceDay") >= 1) {
-            e.target.className = e.target.className.replace(" choiceDay", "")
-        } else {
-            e.target.className += " choiceDay";
-        }
-    }
-
-
-
     return (
         <div>
             <table className="scriptCalendar">

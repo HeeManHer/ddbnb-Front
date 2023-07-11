@@ -1,7 +1,7 @@
 import style from './MyPetSitterCardBoard.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { Link } from 'react-router-dom';
 import { getMyPetSitterList } from '../../api/petsitterAPI';
 
@@ -11,7 +11,6 @@ function MyPetSitterCardBoard() {
     const dispatch = useDispatch();
     const myPetSitter = useSelector(state => state.petSitterReducer);
     const currentPage = useSelector(state => state.pageReducer);
-    // const {pageInfo} = pageInfo;
     const { data: mypetSitters, pageInfo } = myPetSitter;
 
     useEffect(() => {
@@ -19,8 +18,6 @@ function MyPetSitterCardBoard() {
 
     }, [currentPage]);
 
-
-    // console.log(myPetSitter)
     return (
         <>
         <section className={style.section}>
@@ -45,11 +42,9 @@ function MyPetSitterCardBoard() {
                     <div>{myPetSitter.petShape}</div>
                     <div>{myPetSitter.boardTitle}</div>
                     <div>{myPetSitter.boardDate}</div>
-                    {/* <div>{REVIEW_DATE}</div> */}
                 </section>
             </Link>
         )}
-        {/* {페이징} */}
         <PageBtn pageInfo={pageInfo} />
         </>
     )

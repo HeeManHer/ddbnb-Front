@@ -1,5 +1,4 @@
 import style from "./MyPageMain.module.css";
-import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate } from "react-router-dom";
 
 function UserProfile() {

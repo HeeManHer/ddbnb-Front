@@ -1,4 +1,3 @@
-
 import "../../css/petsitterrecruit.css";
 import "./detail.css"
 import Modal from 'react-modal';
@@ -10,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { registPetsitterAPI } from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import "../../css/petsitterList.css";
-
 
 function searchSig(sido) {
 
@@ -54,7 +52,7 @@ function PetSitterRecruit() {
 
     const onChangeSidoHandler = (e) => {
 
-        if (e.target.id == "sido")
+        if (e.target.id === "sido")
             setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
@@ -78,17 +76,9 @@ function PetSitterRecruit() {
         });
     };
 
-
-    const [selectedImage, setSelectedImage] = useState(null);
-
     const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
 
     const dispatch = useDispatch();
-
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-    };
-
 
     const openModal = (type) => {
         dispatch({ type: OPEN_MODAL, payload: type });
@@ -144,9 +134,6 @@ function PetSitterRecruit() {
     console.log(images);
     return (
         <div className="petsitterrecruitcontainer">
-
-
-
             <div className="buttoncontainer">
                 <div className="board">게시판</div>
                 <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
@@ -179,7 +166,6 @@ function PetSitterRecruit() {
                         제목
                     </div>
                     <input className="textinput" vlaue={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" placeholder="제목을 입력해 주세요." />
-                    {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                 </div>
 
                 <hr className="line"></hr>

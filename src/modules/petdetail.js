@@ -12,6 +12,7 @@ const actions = createActions({
     [GET_PETMOMDETAIL]: () => { },
 });
 
+
 const petDetailReducer = handleActions({
     [SET_PETMOMDETAIL]: (state, { payload }) => { return payload; },
     [SET_PETSITTERDETAIL]: (state, { payload }) => { return payload; },

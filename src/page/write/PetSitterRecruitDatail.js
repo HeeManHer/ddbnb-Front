@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
 import PetSitterCollectFinish from '../../component/modal/collect/PetSitterCollectFinish';
-import { getPetsitterdetailAPI, putMypetSitterCancle, putPetsitterAPI } from "../../api/petsitterAPI";
+import { getPetsitterdetailAPI, putMypetSitterCancle } from "../../api/petsitterAPI";
 import { useNavigate, useParams } from 'react-router-dom';
 import style from './PetSitterRecruitDatail.module.css';
 import { getApplicantListAPI } from '../../api/applicantAPI';
@@ -22,7 +22,7 @@ function PetSitterRecruitDatail() {
 
     const navigate = useNavigate()
 
-    const { declaration: showModal, petsittercollectcancle, petsitterApply, petsittercollectfinish, petsitterreport } = useSelector(state => state.modalsReducer);
+    const { declaration: showModal, petsittercollectcancle, petsitterApply, petsittercollectfinish } = useSelector(state => state.modalsReducer);
     const dispatch = useDispatch();
 
     const openModals = () => {
@@ -36,10 +36,6 @@ function PetSitterRecruitDatail() {
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
     };
-    const toggleSelected = (event) => {
-        event.target.classList.toggle("selected");
-
-    };
 
     const openCollectCancleModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectcancle" });
@@ -48,9 +44,6 @@ function PetSitterRecruitDatail() {
     const openCollectFinishModal = () => {
         dispatch({ type: OPEN_MODAL, payload: "petsittercollectfinish" });
     };
-    const openpetsitterreportModal = () => {
-        dispatch({ type: OPEN_MODAL, payload: "petsitterreport" });
-    }
 
     const closeModalReview = () => {
         setShowModalReview(false);
@@ -67,8 +60,6 @@ function PetSitterRecruitDatail() {
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
     console.log(petsdetail)
 
-    const applicantlist = useSelector(state => state.applicantsReducer);
-
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 
@@ -81,17 +72,9 @@ function PetSitterRecruitDatail() {
         },
         []
     )
-    // console.log(boardId);
-
-    // const modifypetsitter = () => {
-    //     dispatch(putPetsitterAPI(boardId, form));
-    //     navigate("./modify");
-    // };
-
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
-    const postUser = token !== null && token.memberId == petsdetail.member?.memberId ? true : false;
-
+    const postUser = token !== null && token.memberId === petsdetail.member?.memberId ? true : false;
 
     const onClickhandle = () => {
         dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집취소" }));
@@ -104,7 +87,6 @@ function PetSitterRecruitDatail() {
         closeModal();
         window.location.reload();
     }
-
 
     const totalImages = petsdetail.boardImage ? petsdetail.boardImage.length : 0;
 
@@ -232,8 +214,6 @@ function PetSitterRecruitDatail() {
                     <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
                         <PetSitterApply boardId={boardId} />
                     </Modal>
-
-
 
                     {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
                     {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}

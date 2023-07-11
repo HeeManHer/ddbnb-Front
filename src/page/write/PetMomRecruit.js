@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "../../component/item/Calendar";
 import "./detail.css"
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from "react-redux";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
 import RegistPost from "../../component/modal/post/RegistPost";
 import CancelPost from "../../component/modal/post/CancelPost";
-import { postPetMomPage, putPetMomPage } from "../../api/petMomAPI";
+import { postPetMomPage } from "../../api/petMomAPI";
 import sigunguList from '../../data/sigoongu.json';
 
 function searchSig(sido) {
@@ -50,7 +49,7 @@ function PetMomRecruit() {
     });
     const onChangeSidoHandler = (e) => {
 
-        if (e.target.id == "sido")
+        if (e.target.id === "sido")
             setSigList(searchSig(e.target.value));
         setLocation({
             ...location,
@@ -158,9 +157,6 @@ function PetMomRecruit() {
         }
     };
 
-
-
-
     const openModal = (type) => {
         dispatch({ type: OPEN_MODAL, payload: type });
     };
@@ -181,30 +177,12 @@ function PetMomRecruit() {
                 formData.append("image", images[index])
             }
         }
-
         dispatch(postPetMomPage(formData));
-
     };
-
-
-
-
-    // const [inputmoney1, setInputmoney1] = useState(""); // 초기값은 빈 문자열로 설정
-
-    // const handleDatetimeChange = (event) => {
-    //     const selectedIndex = event.target.selectedIndex; // 선택된 옵션의 인덱스 가져오기
-    //     const selectedOption = event.target.options[selectedIndex]; // 선택된 옵션 가져오기
-    //     const selectedValue = selectedOption.value; // 선택된 옵션의 값 가져오기
-    //     const selectedText = selectedOption.text; // 선택된 옵션의 텍스트 가져오기
-
-    //     setInputmoney1(selectedValue); // inputmoney1 업데이트
-    // };
 
     return (
         <div className="height-auto">
             <div className="petsitterrecruitcontainer">
-
-
 
                 <div className="buttoncontainer">
                     <div className="board">게시판</div>
@@ -239,7 +217,6 @@ function PetMomRecruit() {
                 {/* <textarea placeholder="제목을 입력해 주세요." /> */}
             </div>
             <hr className="line"></hr>
-
 
             <div>
                 지역
@@ -322,7 +299,7 @@ function PetMomRecruit() {
                                     src={imagesUrl[0]}
                                     alt='첨부 이미지'
                                     className="reviewmodal-image1"
-                                    style={images.length == 0 ? { display: 'none' } : null}
+                                    style={images.length === 0 ? { display: 'none' } : null}
                                 />
                             </div>
                             <div className="image-preview-container2">
@@ -343,8 +320,6 @@ function PetMomRecruit() {
                         <button className={`choice-box2 ${selectedButton === '단독주택' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="단독주택">단독주택</button>
                         <button className={`choice-box2 ${selectedButton === '아파트' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="아파트">아파트</button>
                         <button className={`choice-box2 ${selectedButton === '빌라' ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelected(e); }} name="houseType" value="빌라">빌라</button>
-
-
 
                         <hr className="line2"></hr>
 

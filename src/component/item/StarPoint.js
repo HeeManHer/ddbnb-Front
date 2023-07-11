@@ -11,7 +11,7 @@ function StarPoint({ starPoint }) {
         }
         setScore(star);
     };
-  
+
     useEffect(() => {
         starScore(starPoint)
     }, [starPoint]
