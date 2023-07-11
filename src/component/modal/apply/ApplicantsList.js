@@ -6,7 +6,7 @@ import PageBtn from "../../common/PageBtn";
 import { getApplicantListAPI, getMomApplicantList } from "../../../api/applicantAPI";
 import { useParams } from "react-router-dom";
 
-function ApplicantsList({ category }) {
+function ApplicantsList({ category, closeModalList }) {
 
     const dispatch = useDispatch();
 
@@ -18,21 +18,24 @@ function ApplicantsList({ category }) {
     useEffect(
         () => {
             if (category === 'sitter') {
-                dispatch(getApplicantListAPI(boardId));
+                dispatch(getApplicantListAPI(currentPage, boardId, 6));
             } else if (category === 'mom') {
-                dispatch(getMomApplicantList(boardId));
+                dispatch(getMomApplicantList(currentPage, boardId, 6));
             }
         },
         [currentPage]
     );
 
     return (
-        <div className="applicantsList">
-            <h1>신청자 목록</h1>
-            <div className="dis-flex flex-column align-center applicants">
-                {Array.isArray(applicantsList) && applicantsList.map(applicant => <ApplicantBox key={applicant.applicantId} user={applicant} />)}
+
+        <div className="reviewmodal">
+            <div className="applicantsList">
+                <h1>신청자 목록</h1>
+                <div className="dis-flex flex-column align-center applicants">
+                    {Array.isArray(applicantsList) && applicantsList.map(applicant => <ApplicantBox key={applicant.applicantId} user={applicant} />)}
+                </div>
+                <PageBtn pageInfo={pageInfo} />
             </div>
-            <PageBtn pageInfo={pageInfo} />
         </div>
     )
 }

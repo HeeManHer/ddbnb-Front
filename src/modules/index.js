@@ -13,6 +13,8 @@ import reviewReducer from './ReviewModule';
 import memberReducer from './MemberModule';
 import momApplicantsReducer from './momApplicant';
 import searchReducer from './searchValue';
+import locationReducer from './location';
+
 
 const rootReducer = combineReducers({
     applicantsReducer,
@@ -29,7 +31,8 @@ const rootReducer = combineReducers({
     reviewReducer,
     memberReducer,
     momApplicantsReducer,
-    searchReducer
+    searchReducer,
+    locationReducer
 });
 
 export default rootReducer;
