@@ -1,7 +1,7 @@
 import StarPoint from "./StarPoint";
 
 function ApplicantBox({ user }) {
-  
+
     const openModal = () => {
 
         const modal_width = '500';
@@ -23,7 +23,7 @@ function ApplicantBox({ user }) {
         <div className="applicantBox back-color dis-flex align-center bottom-shadow">
 
             <div className="applicantInfo dis-flex flex-column align-center">
-                <img src={user.member.profileImage}  alt="유저 이미지"/>
+                <img src={user.member.profileImage} alt="유저 이미지" />
                 <span>{user.member.nickname}</span>
             </div>
 
