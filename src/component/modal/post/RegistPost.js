@@ -26,8 +26,6 @@ function RegistPost({ regist }) {
                 <h1 className="joinpet">게시글을 등록하시겠습니까?</h1>
             </div>
 
-
-
             <div className="button2list">
                 <NavLink
                     to="../"

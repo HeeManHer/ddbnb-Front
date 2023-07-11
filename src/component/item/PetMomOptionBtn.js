@@ -55,7 +55,6 @@ function PetMomOptionBtn() {
                 onClick={handleButtonClick}>
                 노견 케어
             </button>
-
         </div>
     );
 }

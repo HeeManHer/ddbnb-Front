@@ -20,7 +20,7 @@ function Declaration({ category }) {
         reportCategory: category,
         currentUser: { memberId: token.memberId },
     })
-    console.log(form);
+
     const [selectedOption, setSelectedOption] = useState("");
 
     const handleCheckboxChange = (event) => {
@@ -34,7 +34,7 @@ function Declaration({ category }) {
         dispatch(reportPostAPI(form));
         closeModal();
     };
-    console.log(form);
+
     return (
         <div className="modalsize1111">
             <div className="inmodalcolor">
@@ -67,8 +67,6 @@ function Declaration({ category }) {
                             </div>
                         ))}
                     </div>
-
-
                 </div>
                 <div className="dis-flex align-center justify-around">
 

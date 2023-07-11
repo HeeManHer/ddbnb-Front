@@ -7,10 +7,7 @@ import StarPoint from "../../component/item/StarPoint";
 import { getCurrentMember } from "../../api/MemberAPICalls";
 import { useNavigate } from "react-router-dom";
 
-
-
 function AllReviewPage() {
-
     //리덕스
     const dispatch = useDispatch();
     const { reviewId } = useParams();
@@ -24,13 +21,11 @@ function AllReviewPage() {
         , []
     );
 
-
     const closeHandler = () => {
         dispatch(getCurrentMember());
-        navigate('/myPage', { replace : true });
+        navigate('/myPage', { replace: true });
         window.location.reload();
     }
-
 
     return (
         <section className={style.board}>
@@ -48,7 +43,7 @@ function AllReviewPage() {
                             <div>{review.reviewer && review.reviewer.nickname}</div>
                             <StarPoint starPoint={review.reviewStarPoint} />
                             <div style={{ marginLeft: "3px", fontWeight: "bold" }}>
-                                        ( {review.reviewStarPoint}.0 )
+                                ( {review.reviewStarPoint}.0 )
                             </div>
                         </div>
                         <section className={style.context}>{review.reviewTitle}
@@ -61,7 +56,6 @@ function AllReviewPage() {
             <section>
                 <button className={style.imageBtn}> &gt; </button>
             </section>
-
         </section>
     )
 }

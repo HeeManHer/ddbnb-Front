@@ -11,7 +11,7 @@ function PetSitterCard({ petsitter }) {
             style={petsitter.sitterStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
             onClick={() => navigate(`./${petsitter.boardId}`)}
         >
-            <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} />
+            <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} alt = "강아지 사진" />
             <div className="textlist">
                 <div className="wheretext">
                     <div>{petsitter.location}</div>

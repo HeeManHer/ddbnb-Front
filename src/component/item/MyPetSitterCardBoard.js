@@ -48,7 +48,6 @@ function MyPetSitterCardBoard() {
         <PageBtn pageInfo={pageInfo} />
         </>
     )
-
 }
 
 export default MyPetSitterCardBoard;

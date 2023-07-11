@@ -10,8 +10,6 @@ function MainPage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
     const { data: petMom } = useSelector(state => state.petMomReducer);
     const { data: petSitter } = useSelector(state => state.petSitterReducer);
 

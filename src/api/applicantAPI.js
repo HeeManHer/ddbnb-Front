@@ -120,7 +120,6 @@ export const registMomApplicantAPI = (form) => {
 }
 
 export const registApplicantAPI = (form) => {
-    const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
 

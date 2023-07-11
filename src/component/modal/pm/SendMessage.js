@@ -31,12 +31,11 @@ function SendMessage() {
         // navigate('/postMessageList')
     }
 
-
     return (
         <div className="postMessage center back-color dis-flex flex-column justify-between">
             <div className='recipientInfo dis-flex align-center justify-between'>
                 <div className="userInfo dis-flex align-center flex-column">
-                    <img src={member?.profileImage} />
+                    <img src={member?.profileImage} alt ="프로필 이미지"/>
                     <div>{member?.nickname}</div>
                 </div>
                 <div className='dis-flex align-center recordInfo'>

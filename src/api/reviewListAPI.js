@@ -59,7 +59,7 @@ export const registNewReview = (form, close) => {
             body: form
         }).then(response => response.json())
 
-        if (result.status = 200) {
+        if (result.status === 200) {
             alert(result.message);
             close();
         }

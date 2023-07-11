@@ -9,10 +9,8 @@ import { useEffect } from "react";
 import "../../component/modal/review/review.css";
 
 function ReviseProfilePage() {
-
     const navigate = useNavigate();
     const members = useSelector(store => store.memberReducer);
-
     const dispatch = useDispatch();
 
     const [form, setForm] = useState({
@@ -21,7 +19,6 @@ function ReviseProfilePage() {
         preferredArea: "",
         detailedHistory: "",
         petSitterCareer: "",
-
     });
 
     const [image, setImage] = useState()
@@ -56,7 +53,7 @@ function ReviseProfilePage() {
         }
 
         dispatch(getUpdateMember(memberId, formData));
-        navigate("/mypage", { replace: true });
+        navigate(`/mypage/${memberId}`, { replace: true });
     }
 
     const [previewImage, setPreviewImage] = useState(null);
@@ -69,7 +66,7 @@ function ReviseProfilePage() {
         }
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         });
     };
     const handleImageUpload = (event) => {
@@ -88,16 +85,13 @@ function ReviseProfilePage() {
     }
     /* 소셜 로그인 아이콘 */
     function SocialIcon() {
-
         if (members?.socialLogin === "KAKAO") {
             return <img src='../../../img/kakao_logo.png' alt='kakao logo' width={'30px'} height={'27px'} />
         }
-
         if (members?.socialLogin === 'NAVER') {
             return <img src='../../../img/naver_logo.png' alt='naver logo' width={'30px'} height={'27px'} />
         }
     }
-    console.log(members?.profileImage)
     return (
         <div className={style.profileContainer}>
             <div>
@@ -125,13 +119,11 @@ function ReviseProfilePage() {
                         </label>
                     </div>
                 </div>
-
             </div>
             <div>
                 <hr />
                 <br />
             </div>
-
 
             <div className={style.profiles}>
                 <div className={style.profileCareer}>
@@ -211,10 +203,8 @@ function ReviseProfilePage() {
                     수정
                 </button>
             </div>
+            <br/>
         </div>
-
-
-
     )
 }
 

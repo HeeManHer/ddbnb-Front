@@ -37,7 +37,6 @@ function MyReviewPage() {
             <section>
                 <button className={style.imageBtn}> &gt; </button>
             </section>
-
         </section>
     )
 }

@@ -121,7 +121,6 @@ function PetMomRecruitDatail() {
                     )
                 }
 
-
                 <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
                     <Declaration category="게시글" />
                 </Modal>
@@ -232,9 +231,6 @@ function PetMomRecruitDatail() {
 
             {showApplicant && <ApplicantsList category='mom' closeModalList={openApplicant} />}
             {showApplicant && <div className="modal-backdrop" onClick={closeApplicant} />}
-
-
-
         </div >
     )
 

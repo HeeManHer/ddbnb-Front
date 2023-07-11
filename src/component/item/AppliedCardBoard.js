@@ -4,7 +4,6 @@ import MyCardList from "../../component/list/AppliedList";
 
 function AppliedCardBoard() {
 
-    
     const [buttonId, setButtonId] = useState(5);
 
     const handleButtonClick = (id) => {

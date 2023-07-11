@@ -4,7 +4,6 @@ import { RESET_VALUE, SET_VALUE } from "../../modules/searchValue";
 import { RESET_PAGE } from "../../modules/currentPage";
 import { useEffect } from "react";
 
-
 function SearchBar({ Option }) {
     const dispatch = useDispatch();
 
@@ -59,7 +58,6 @@ function SearchBar({ Option }) {
                 <Option />
                 <button className="doglistbtn align-center" onClick={reset}>초기화</button>
             </div>
-
         </div>
     )
 }

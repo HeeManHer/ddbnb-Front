@@ -6,7 +6,6 @@ import { RESET_PAGE } from '../../modules/currentPage';
 
 function Member() {
     const dispatch = useDispatch();
-
     const { data: memberList, pageInfo } = useSelector(state => state.memberReducer);
     const currentPage = useSelector(state => state.pageReducer);
     const [searchValue, setSearchValue] = useState({

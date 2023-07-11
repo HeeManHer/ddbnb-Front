@@ -1,5 +1,3 @@
-
-
 function Footer() {
     return (
         <footer className="back-color ">
@@ -25,7 +23,6 @@ function Footer() {
                 </div>
             </footer>
         </footer>
-
     )
 }
 

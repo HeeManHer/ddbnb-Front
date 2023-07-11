@@ -97,10 +97,6 @@ function PetMomRecruit() {
         }
     };
 
-
-
-    console.log(form)
-
     const [image, setImage] = useState();
     const [imagesUrl, setImagesUrl] = useState([]);
     const [images, setImages] = useState([]);
@@ -134,6 +130,7 @@ function PetMomRecruit() {
 
     const [selectedButton, setSelectedButton] = useState(null);
     const [selectedPetButton, setSelectedPetButton] = useState(null);
+  
     const [selectedOtherButton, setSelectedOtherButton] = useState([]);
     const [selectedButtonCare, setSelectedButtonCare] = useState("");
 
@@ -146,7 +143,6 @@ function PetMomRecruit() {
             setSelectedButtonCare(value);
         }
     };
-
 
     const toggleSelected = (event) => {
         const buttonValue = event.target.value;
@@ -225,7 +221,6 @@ function PetMomRecruit() {
                     제목
                 </div>
                 <input className="textinput" type="text" value={form.boardTitle} onChange={e => setform({ ...form, boardTitle: e.target.value })} placeholder="제목을 입력해 주세요." ></input>
-                {/* <textarea placeholder="제목을 입력해 주세요." /> */}
             </div>
             <hr className="line"></hr>
 
@@ -308,7 +303,6 @@ function PetMomRecruit() {
                 <input className="moneygive11" type="text" onChange={onChangeHandler} name="dateRate" value={form.dateRate} placeholder="사례금을 작성해 주세요." />
             </div>
 
-
             <hr className="line10000"></hr>
             <div className="formsize2">
                 <div className="doginfo-petmom">
@@ -359,9 +353,9 @@ function PetMomRecruit() {
 
                         <hr className="line2"></hr>
 
-                        <button className={`choice-box2 ${selectedOtherButton === '픽업가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '대형견 가능' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
-                        <button className={`choice-box2 ${selectedOtherButton === '노견케어' ? 'selected' : ''}`} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
+                        <button className={`choice-box2 `} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={1} >픽업가능</button>
+                        <button className={`choice-box2 `} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name="typeId" value={2}>대형견 가능</button>
+                        <button className={`choice-box2 `} onClick={(e) => { onChangeHandlerOther(e); toggleSelectedOther(e); }} name=" typeId" value={3}>노견케어</button>
                         <hr className="line2"></hr>
                         <button className={`choice-box3 ${selectedPetButton === "반려동물 있어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 있어요" >반려동물 있어요</button>
                         <button className={`choice-box3 ${selectedPetButton === "반려동물 없어요" ? 'selected' : ''}`} onClick={(e) => { onChangeHandler(e); toggleSelectedPet(e); }} name="petYN" value="반려동물 없어요">반려동물 없어요</button>

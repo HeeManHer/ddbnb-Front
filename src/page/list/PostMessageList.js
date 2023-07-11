@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 function PostMessageList() {
 
     const dispatch = useDispatch();
-
     const { data: message, pageInfo } = useSelector(state => state.messageReducer);
     const currentPage = useSelector(state => state.pageReducer);
     const [criteria, setCriteria] = useState();
@@ -45,7 +44,6 @@ function PostMessageList() {
                 <div className="dis-flex align-center justify-between">
                     <button onClick={() => dispatch(deleteMessage(deleteList))}>삭제</button>
                     <button>신고</button>
-                    {/* <button>답장</button> */}
                 </div>
                 <div>
                     <select name="" id="" onChange={e => setCriteria(e.target.value)}>
