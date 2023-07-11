@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { callKakaoLogoutAPI, callNaverLogoutAPI } from '../../api/LoginAPI';
 
 function LoginProfilePage() {
-
     const navigate = useNavigate();
     const members = useSelector(store => store.memberReducer);
     const [inputText, setInputText] = useState('');
@@ -22,11 +21,9 @@ function LoginProfilePage() {
         dispatch(callNaverLogoutAPI());
         dispatch(callKakaoLogoutAPI());
         navigate("/", { replace: true });
-
     }
 
     const dispatch = useDispatch();
-
     // const handleKeyClick = (e) => {
     //     if (e.key === 'Enter') {
     //         // 입력된 텍스트를 배열에 추가
@@ -71,11 +68,10 @@ function LoginProfilePage() {
         }
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         });
     };
 
-    
     /* 성별 아이콘 */
     function GenderIcon() {
         if (members?.gender === 'female' || 'F') {
@@ -91,7 +87,6 @@ function LoginProfilePage() {
         if (members?.socialLogin === "KAKAO") {
             return <img src='../../../img/kakao_logo.png' alt='kakao logo' width={'30px'} height={'27px'} />
         }
-
         if (members?.socialLogin === 'NAVER') {
             return <img src='../../../img/naver_logo.png' alt='naver logo' width={'30px'} height={'27px'} />
         }
@@ -207,10 +202,8 @@ function LoginProfilePage() {
                     회원가입
                 </button>
             </div>
+            <br/>
         </div>
-
-
-
     )
 }
 

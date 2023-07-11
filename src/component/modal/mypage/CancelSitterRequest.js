@@ -27,8 +27,6 @@ function CancelSitterRequest({applicantId}) {
                 <h5>모집자의 쪽지를 받을 수 있습니다.</h5>
             </div>
 
-
-
             <div>
                 <button onClick={commit}>
                     예

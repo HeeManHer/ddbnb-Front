@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Location from "./Location";
 import { RESET_VALUE, SET_VALUE } from "../../modules/searchValue";
 
-
 function SearchBar({ Option }) {
     const dispatch = useDispatch();
 
@@ -49,7 +48,6 @@ function SearchBar({ Option }) {
                 <Option />
                 <button className="doglistbtn align-center" onClick={reset}>초기화</button>
             </div>
-
         </div>
     )
 }

@@ -28,7 +28,7 @@ function Calendar() {
     }
 
     const getData = () => {
-        const date = new Array();
+        const date = [];
 
         let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
         let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -130,7 +130,7 @@ function Calendar() {
             dom++;
         }
 
-        const data = new Array();
+        const data = [];
         for (let i = 0; i < date.length; i += 7) {
             data.push(
                 <tr key={i}>

@@ -51,17 +51,12 @@ function ReviewModal({ closeModalReview, index: memberId }) {
                 formData.append("img", image[index])
             }
         }
-
         dispatch(registNewReview(formData, closeModalReview))
-
     };
 
     const handleCancel = () => {
         closeModalReview();
     };
-
-
-
 
     return (
         <div className="reviewmodal center">

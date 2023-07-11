@@ -25,10 +25,8 @@ import PetSitterRecruit from "./page/write/PetSitterRecruit";
 import PetSitterRecruitDatail from "./page/write/PetSitterRecruitDatail";
 import PetSitterModify from "./page/write/PetSitterModify";
 
-
 import AboutPage from "./page/main/AboutPage";
 import MyPageMain from "./page/mypage/MyPageMain";
-import UserProfile from "./page/mypage/UserProfile";
 
 import ReviewPage from "./page/review/ReviewPage";
 import MyReviewPage from "./page/review/MyReviewPage";
@@ -48,7 +46,6 @@ import NaverPage from "./page/main/NaverPage";
 
 import LoginProfilePage from "./page/profile/LoginProfilePage";
 import ReviceProfilePage from "./page/profile/ReviseProfilePage";
-
 
 function App() {
 

@@ -19,14 +19,12 @@ function Sigoon({ sig }) {
     return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
 }
 
-
 function PetSitterModify() {
 
     const dispatch = useDispatch();
     const { boardId } = useParams();
 
     const petsdetail = useSelector(state => state.petSitterReducer);
-    const { registpost: showModal, canclepost } = useSelector(state => state.modalsReducer);
 
     const [form, setForm] = useState({
         boardId,
@@ -135,7 +133,7 @@ function PetSitterModify() {
             reader.readAsDataURL(file);
         }
     };
-  
+
     return (
         <div className="petsitterrecruitcontainer">
             <div className="buttoncontainer">
@@ -165,8 +163,6 @@ function PetSitterModify() {
                             제목
                         </div>
                         <input className="textinput" value={form.boardTitle} onChange={onChangeHandler} name="boardTitle" type="text" />
-
-                        {/* <textarea placeholder="제목을 입력해 주세요." /> */}
                     </div>
 
                     <hr className="line"></hr>
@@ -289,7 +285,6 @@ function PetSitterModify() {
                         우리 강아지를 맡아주세요
                     </div>
                     <textarea placeholder="내용을 입력해 주세요." className="dogwrite" onChange={onChangeHandler} name="request" defaultValue={petsdetail.request}>
-
                     </textarea>
                 </div>
             </div>

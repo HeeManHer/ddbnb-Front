@@ -1,5 +1,4 @@
 import style from "./MyPageMain.module.css";
-import MyReviewPage from "../review/MyReviewPage";
 import { useNavigate, useParams } from "react-router-dom";
 import MyCardList from "../../component/list/AppliedList";
 import { useEffect, useState } from "react";
@@ -10,7 +9,6 @@ import StarPoint from "../../component/item/StarPoint";
 import { callNaverLogoutAPI } from "../../api/LoginAPI";
 
 function MyPageMain() {
-
     //리덕스
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -48,10 +46,6 @@ function MyPageMain() {
         navigate("/reviseprofile");
     }
 
-
-
-    // console.log(member);
-
     const [buttonId, setButtonId] = useState(1);
 
     const handleButtonClick = (id) => {
@@ -64,10 +58,9 @@ function MyPageMain() {
             <div className={style.topBoard}>
                 <article className={style.editLine}>
                     <div>
-                        {token.memberId == memberId ?
+                        {token.memberId === memberId ?
                             <button onClick={ClickHandler}>프로필수정</button> :
                             <button onClick={ClickHandler}>신고</button>}
-                        {/* <button>경력수정</button> */}
                     </div>
                     
                 </article>
@@ -114,13 +107,12 @@ function MyPageMain() {
                         </article>
                     </article>
                 </section>
-
             </div>
             {/* 리스트 블록 */}
             <div className={style.bottomBoard}>
                 <div className={style.careerTitle}>
                     <button onClick={() => handleButtonClick(1)}>댕댕 리뷰 (n개)</button>
-                    {token.memberId == memberId &&
+                    {token.memberId === memberId &&
                         <>
                             <button onClick={() => handleButtonClick(2)}>신청 내역</button>
                             <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
@@ -131,13 +123,11 @@ function MyPageMain() {
                 {buttonId && <MyCardList buttonId={buttonId} />}
             </div>
             <div className={style.out}> 
-                {token.memberId == memberId && 
+                {token.memberId === memberId && 
                 <button onClick={handleDelete} >사이트 탈퇴하기</button>}
             </div>
         </section>
     );
-
 }
-
 
 export default MyPageMain;

@@ -1,7 +1,7 @@
 import StarPoint from "./StarPoint";
 
 function ApplicantBox({ user }) {
-  
+
     const openModal = () => {
 
         const modal_width = '500';
@@ -42,7 +42,6 @@ function ApplicantBox({ user }) {
                 <div onClick={() => closeModal(`/mypage/${user.member.memberId}`)}>프로필 보기</div>
                 <div onClick={() => openModal('postMessage')}>쪽지 쓰기</div>
             </div>
-
         </div>
     )
 }

@@ -2,13 +2,11 @@ import style from './AppliedCardBoard.module.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
-import { Link, useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 import { OPEN_MODAL } from '../../modules/modalModules';
 import CancelSitterRequest from '../modal/mypage/CancelSitterRequest';
 
 function PetSitterAppliedCardBoard() {
-
     //모달
     const cancel = useSelector(state => state.modalsReducer.cancel);
 
@@ -25,8 +23,6 @@ function PetSitterAppliedCardBoard() {
 
     const navigate = useNavigate();
 
-
-
     return (
         <>
             <section className={style.section}>
@@ -39,7 +35,6 @@ function PetSitterAppliedCardBoard() {
                     <div>취소</div>
                 </article>
             </section>
-
 
             {Array.isArray(applys) && applys.map((apply, index) =>
                     <section className={`${style.category2} ${style.flex_center}`}>
@@ -58,8 +53,6 @@ function PetSitterAppliedCardBoard() {
                     </div>
                     </section>
             )}
-
-
         </>
     );
 }

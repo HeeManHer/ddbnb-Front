@@ -7,12 +7,10 @@ import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 function searchSig(sido) {
-
     return sigunguList.filter(sig => sig.sig.sig_full_nm.startsWith(sido));
 }
 
 function Sigoon({ sig }) {
-
     return <option value={sig.sig.sig_kor_nm} >{sig.sig.sig_kor_nm}</option>;
 }
 
@@ -56,19 +54,14 @@ function PetMomModify() {
 
     const modifypetMom = () => {
         dispatch(putPetMomPage(boardId, form));
-
-
     };
 
-
     const onChangeHandler = (e) => {
-
         setform({
             ...form,
             [e.target.name]: e.target.value
         });
     };
-
 
     useEffect(() => {
         setform({
@@ -135,7 +128,6 @@ function PetMomModify() {
     useEffect(
         () => {
             dispatch(getPetMomList(boardId));
-
         },
         []
     )

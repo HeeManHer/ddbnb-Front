@@ -5,13 +5,11 @@ import { useDispatch  } from 'react-redux';
 function PetMomCollectCancle({onClickhandle}) {
     
     const dispatch = useDispatch();
-
+    
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL, payload: "petmomcollectcancle" });
     };
 
-
-    
     return (
         <div className="modalsize111">
             <div className="inmodalcolor">

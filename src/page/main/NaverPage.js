@@ -7,16 +7,11 @@ import { getCurrentMember } from "../../api/MemberAPICalls";
 function NaverPage() {
 
     const code = new URL(window.location.href).searchParams.get('code');
-
     const state = new URL(window.location.href).searchParams.get('state');
-
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
-
     useEffect(() => {
-        console.log("너야?");
         dispatch(callNaverLoginAPI(code, state)).then(() => dispatch(getCurrentMember()))
             .then((member) => {
                 if (member === "새로운회원") {

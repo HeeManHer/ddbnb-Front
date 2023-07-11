@@ -8,10 +8,8 @@ import { useParams } from "react-router-dom";
 
 function PetMomApplicant({ closeModalList }) {
 
-
     const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
     const [isModalOpen, setIsModalOpen] = useState(false); // 추가
-
 
     const dispatch = useDispatch();
     const { data: getapplicant, pageInfo } = useSelector(state => state.momApplicantsReducer);
@@ -52,7 +50,6 @@ function PetMomApplicant({ closeModalList }) {
                                 <h6>{getapplicant.applicantId}</h6>
                             </div>
                             <div className="reviewList-line">
-
                             </div>
                         </div>
                         <div className="checkbox">

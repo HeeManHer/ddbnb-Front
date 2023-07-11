@@ -6,7 +6,6 @@ import PageBtn from "../../component/common/PageBtn";
 function ReportManage() {
 
     const dispatch = useDispatch();
-
     const { data: reportList, pageInfo } = useSelector(state => state.reportReducer);
     const currentPage = useSelector(state => state.pageReducer);
     const [category, setCategory] = useState('회원');

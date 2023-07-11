@@ -20,8 +20,6 @@ function CancelPost() {
                 <h1 className="joinpet">게시글 등록을 취소하시겠습니까?</h1>
             </div>
 
-
-
             <div className="button2list">
                 <button className="modalsize-button3" onClick={closeModal}>
                     예
