@@ -3,7 +3,7 @@ import "./detail.css"
 import React, { useEffect, useState } from "react";
 import { OPEN_MODAL } from "../../modules/petSittermodal";
 import { useDispatch, useSelector } from "react-redux";
-import { getPetsitterdetailAPI, putPetsitterAPI} from "../../api/petsitterAPI";
+import { getPetsitterdetailAPI, putPetsitterAPI } from "../../api/petsitterAPI";
 import sigunguList from '../../data/sigoongu.json';
 import "../../css/petsitterList.css";
 import { useParams } from "react-router-dom";
@@ -85,6 +85,32 @@ function PetSitterModify() {
         }, [petsdetail]
     )
 
+    const [image, setImage] = useState();
+    const [imagesUrl, setImagesUrl] = useState([]);
+    const [images, setImages] = useState([]);
+    const handleImageSelect = (event) => {
+        const selectedImage = event.target.files[0];
+        setImage(selectedImage); // 선택된 이미지를 큰 이미지 배열에 저장
+    };
+
+    useEffect(
+        () => {
+            // 이미지 업로드시 미리보기 세팅
+            if (image) {
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if (result) {
+                        setImagesUrl([...imagesUrl, result]);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+                if (images.length < 4) {
+                    setImages([...images, image]);
+                }
+            }
+        }, [image]
+    );
     const onChangeSidoHandler = (e) => {
 
         if (e.target.id === "sido")
@@ -156,8 +182,8 @@ function PetSitterModify() {
 
                     <div>
                         <h2>펫시터 모집 게시판</h2>
-                        <hr className="line"></hr>
                     </div>
+                    <hr className="line"></hr>
                     <div className="inputname">
                         <div>
                             제목
@@ -211,31 +237,44 @@ function PetSitterModify() {
 
                     <div className="moneydate">
                         기간
-                        <input className="dateselect3" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} />~<input className="dateselect4" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
+                        <input className="dateselect5" type="date" onChange={onChangeHandler} name="startDate" value={petsdetail.startDate} /><div className="wave3">~</div><input className="dateselect6" type="date" name="endDate" value={petsdetail.endDate} onChange={onChangeHandler} />
                         <div className="givemoney">
                             사례금
                         </div>
                         <input className="moneygive" type="text" onChange={onChangeHandler} name="rate" defaultValue={petsdetail.rate} placeholder="사례금을 작성해 주세요." />
                     </div>
 
-                    <hr className="line"></hr>
+
+                    <hr className="line123"></hr>
 
                     <div className="imgbtndiv">
+
                         <div className="image-container">
-                            {selectedImage && (
-                                <img
-                                    src={selectedImage}
-                                    alt="첨부된 이미지"
-                                    className="attached-image"
-                                />
-                            )}
                             <div>
                                 <input
-                                    id="image-upload"
                                     type="file"
-                                    accept="image/*"
-                                    onChange={handleImageChange}
+                                    id="imageUpload"
+                                    accept="image/jpg,image/png,image/jpeg,image/gif"
+                                    onChange={handleImageSelect}
+                                    disabled={images.length === 4}
                                 />
+                            </div>
+                            <div className="image-preview-container2">
+                                {imagesUrl.slice(1).map((url, index) => ( // 이미지 배열에서 첫 번째 이미지를 제외한 나머지 이미지를 사용
+                                    <img
+                                        key={index}
+                                        src={url}
+                                        alt={`첨부 이미지 ${index + 2}`} // index + 2로 수정하여 첨부 이미지 1부터 시작하도록 설정
+                                        className="attached-image small-image" // 모든 이미지에 작은 크기로 적용
+                                    />
+                                ))}
+                                {imagesUrl.length > 0 && ( // 이미지가 적어도 1장 이상일 때만 첫 번째 이미지를 추가
+                                    <img
+                                        src={imagesUrl[0]}
+                                        alt="첨부 이미지 1"
+                                        className="attached-image big-image" // 첨부 이미지 1에 큰 크기 적용
+                                    />
+                                )}
                             </div>
                         </div>
 
