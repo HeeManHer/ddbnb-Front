@@ -82,7 +82,7 @@ export function postPetMomPage(form) {
 
         if (result.status === 200) {
             alert(result.message);
-            // window.location.reload();
+            window.location.href = "./";
         }
     };
 }

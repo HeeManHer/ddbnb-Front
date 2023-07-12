@@ -1,7 +1,7 @@
 import style from './ProfileStyle.module.css';
 import { IoIosFemale } from 'react-icons/io';
 import { IoIosMale } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentMember, getUpdateMember } from '../../api/MemberAPICalls';
@@ -10,8 +10,10 @@ import "../../component/modal/review/review.css";
 
 function ReviseProfilePage() {
     const navigate = useNavigate();
-    const members = useSelector(store => store.memberReducer);
     const dispatch = useDispatch();
+
+    const { memberId } = useParams();
+    const members = useSelector(store => store.memberReducer);
 
     const [form, setForm] = useState({
         nickname: "",
@@ -25,7 +27,7 @@ function ReviseProfilePage() {
 
     useEffect(
         () => {
-            dispatch(getCurrentMember())
+            dispatch(getCurrentMember(memberId))
         }
         , []
     );
@@ -53,7 +55,7 @@ function ReviseProfilePage() {
         }
 
         dispatch(getUpdateMember(memberId, formData));
-        navigate(`/mypage/${memberId}`, { replace: true });
+        // navigate(`/mypage/${memberId}`, { replace: true });
     }
 
     const [previewImage, setPreviewImage] = useState(null);
@@ -203,7 +205,7 @@ function ReviseProfilePage() {
                     수정
                 </button>
             </div>
-            <br/>
+            <br />
         </div>
     )
 }

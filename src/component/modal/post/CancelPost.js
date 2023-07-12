@@ -2,12 +2,18 @@ import "../../../css/modaltest.css";
 import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 function CancelPost() {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const closeModal = () => {
         dispatch({ type: CLOSE_MODAL });
+    };
+
+    const backModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+        navigate('../');
     };
 
     return (
@@ -21,7 +27,7 @@ function CancelPost() {
             </div>
 
             <div className="button2list">
-                <button className="modalsize-button3" onClick={closeModal}>
+                <button className="modalsize-button3" onClick={backModal}>
                     예
                 </button>
                 <button className="modalsize-button3" onClick={closeModal}>

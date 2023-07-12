@@ -4,14 +4,14 @@ import StarPoint from "../item/StarPoint";
 function PetSitterCard({ petsitter }) {
 
     const navigate = useNavigate()
-
+    console.log(petsitter)
     return (
         <div
             className={`in ${petsitter.sitterStatus === '모집취소' ? 'gray' : ''}`}
             style={petsitter.sitterStatus === '모집취소' ? { backgroundColor: "#9D9D9D" } : {}}
             onClick={() => navigate(`./${petsitter.boardId}`)}
         >
-            <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} alt = "강아지 사진" />
+            <img className="dogimg" src={petsitter?.boardImage[0]?.imageUrl} alt="강아지 사진" />
             <div className="textlist">
                 <div className="wheretext">
                     <div>{petsitter.location}</div>
@@ -29,7 +29,7 @@ function PetSitterCard({ petsitter }) {
                         {/* <img className="star" src="../img/star.png"></img> */}
                         <div className="divbtn">
                             <div>사례 : {petsitter.rate}</div>
-                            <button className="section1">{petsitter.sitterStatus}</button>
+                            <button className="section1">{petsitter.boardStatus}</button>
                         </div>
                     </div>
                 </div>

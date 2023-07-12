@@ -135,7 +135,7 @@ function PetMomRecruit() {
     const [selectedButton, setSelectedButton] = useState(null);
     const [selectedCareButton, setSelectedCareButton] = useState(null);
     const [selectedPetButton, setSelectedPetButton] = useState(null);
-  
+
     const [selectedOtherButton, setSelectedOtherButton] = useState([]);
     const [selectedButtonCare, setSelectedButtonCare] = useState("");
 
@@ -207,9 +207,7 @@ function PetMomRecruit() {
                     <div className="board">게시판</div>
                     <button className="insertwrite" onClick={() => openModal("registpost")}>등록</button>
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
-                        <RegistPost regist={registPetMom}
-                        />
-
+                        <RegistPost regist={registPetMom} />
                     </Modal>
                     <button onClick={() => openModal("canclepost")}>취소</button>
                     <Modal className="modal-backdrop" isOpen={canclepost} onRequestClose={closeModal}>

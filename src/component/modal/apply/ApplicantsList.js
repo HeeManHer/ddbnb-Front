@@ -32,7 +32,10 @@ function ApplicantsList({ category, closeModalList }) {
             <div className="applicantsList">
                 <h1>신청자 목록</h1>
                 <div className="dis-flex flex-column align-center applicants">
-                    {Array.isArray(applicantsList) && applicantsList.map(applicant => <ApplicantBox key={applicant.applicantId} user={applicant} />)}
+                    {applicantsList ?
+                        applicantsList.map(applicant => <ApplicantBox key={applicant.applicantId} user={applicant} />) :
+                        <h2>신청자가 없습니다.</h2>
+                    }
                 </div>
                 <PageBtn pageInfo={pageInfo} />
             </div>

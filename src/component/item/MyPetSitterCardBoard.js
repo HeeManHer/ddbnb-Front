@@ -34,8 +34,8 @@ function MyPetSitterCardBoard() {
             <Link to={`/petsitter/${myPetSitter.boardId}`} style={{ textDecoration: 'none', color: '#202020' }}>
                 <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
-                        <section style={myPetSitter.momStatus === "취소됨" ? { backgroundColor : "#8d8d8d", color:"white"} : {backgroundColor : "#FAB7A2"}}>
-                            {myPetSitter.sitterStatus}
+                        <section style={myPetSitter.boardStatus === "취소됨" ? { backgroundColor : "#8d8d8d", color:"white"} : {backgroundColor : "#FAB7A2"}}>
+                            {myPetSitter.boardStatus}
                         </section>
                     </div>
                     <div>{myPetSitter.location}</div>

@@ -78,7 +78,6 @@ function PetSitterRecruitDatail() {
     useEffect(
         () => {
             dispatch(getPetsitterdetailAPI(boardId));
-            dispatch(getApplicantListAPI(boardId));
         },
         []
     )
@@ -118,7 +117,7 @@ function PetSitterRecruitDatail() {
                     {postUser ?
                         (<>
                             <button className="declarationButton" onClick={() => navigate("./modify")}>수정</button>
-                            <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>
+                            {petsdetail.boardStatus === '모집중' && <button className="declarationButton1" onClick={openCollectCancleModal}>모집취소</button>}
                         </>) :
                         <button className="declarationButton" onClick={openModals}>신고</button>}
                     <Modal className="modal-backdrop" isOpen={showModal} onRequestClose={closeModal}>
@@ -134,13 +133,18 @@ function PetSitterRecruitDatail() {
                 <h5>작성일: {petsdetail.boardDate}</h5>
             </div>
             <hr className="line"></hr>
+
             <div className="images">
                 <button className="imageBtn" onClick={() => changeImage(-1)}> &lt; </button>
-                {petsdetail.boardImage && petsdetail.boardImage.length > 0 ? (
-                    <img className='imgsize' src={petsdetail.boardImage[currentImageIndex].imageUrl} alt=" 사진이 없습니다!" />
-                ) : null}
+                {petsdetail.boardImage && petsdetail.boardImage.length > 0 ?
+                    (
+                        <img className='imgsize' src={petsdetail.boardImage[currentImageIndex].imageUrl} alt=" 사진이 없습니다!" />
+                    ) :
+                    null
+                }
                 <button className="imageBtn" onClick={() => changeImage(1)}> &gt; </button>
             </div>
+
             <h2 className="text">{currentImageIndex + 1}/{totalImages}</h2>
             <div className="comment">
                 <h3 className="comment-content" style={{ right: '4%' }}>게시판</h3>
@@ -212,12 +216,15 @@ function PetSitterRecruitDatail() {
                 <div className="endline2">
                     <hr className="line"></hr>
 
-                    <button className="wantbtn2" onClick={openApplicantList}>신청자 목록</button>
-                    {postUser ? (<>
-                        <button className="wantbtn2" onClick={openModalList}>리뷰 목록</button>
-                        <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
-                    </>) :
-                        <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>}
+                    {postUser ?
+                        (<>
+                            <button className="wantbtn2" onClick={openApplicantList}>신청자 목록</button>
+                            {petsdetail.sitterStatus === '모집마감' ?
+                                <button className="wantbtn2" onClick={openModalList}>리뷰 목록</button> :
+                                <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>}
+                        </>) :
+                        <button className="wantbtn2" onClick={() => openModal("petsitterApply")}>신청하기</button>
+                    }
 
                     <Modal className="modal-backdrop" isOpen={petsittercollectfinish} onRequestClose={closeModal}>
                         <PetSitterCollectFinish onClickhan={onClickhan} />

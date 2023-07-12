@@ -18,9 +18,6 @@ export const getCurrentMember = (memberId) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_MEMBER, payload: result.data.members });
-            if (result.data.members.nickname.startsWith("새로운회원")) {
-                return "새로운회원";
-            }
         }
     };
 }
@@ -42,8 +39,10 @@ export const getUpdateMember = (memberId, form) => {
             body: form// 업데이트할 데이터를 JSON 문자열로 변환하여 요청에 포함
         }).then(res => res.json());
 
-        if (result.status === 200) {
-            dispatch({ type: PUT_MEMBER, payload: result.data.members });
+        if (result.status === 201) {
+            dispatch({ type: PUT_MEMBER, payload: result.data });
+            alert(result.message);
+            window.location.href = `/mypage/${memberId}`;
         }
     };
 }
