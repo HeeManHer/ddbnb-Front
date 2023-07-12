@@ -14,9 +14,10 @@ function MyPageMain() {
     const navigate = useNavigate();
 
     const member = useSelector(state => state.memberReducer);
-    const {memberId} = useParams();
+    const { memberId } = useParams();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
+
     useEffect(() => {
         dispatch(getCurrentMember(memberId));
     }, []
@@ -27,7 +28,6 @@ function MyPageMain() {
         dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
     };
-
     //성별 구분
     const genderSet = () => {
         if (member.gender === "M" || member.gender === "male") {
@@ -43,7 +43,7 @@ function MyPageMain() {
     }
 
     const ClickHandler = () => {
-        navigate("/reviseprofile");
+        navigate(`/reviseprofile/${memberId}`);
     }
 
     const [buttonId, setButtonId] = useState(1);
@@ -58,11 +58,11 @@ function MyPageMain() {
             <div className={style.topBoard}>
                 <article className={style.editLine}>
                     <div>
-                        {token.memberId === memberId ?
+                        {token.memberId == memberId ?
                             <button onClick={ClickHandler}>프로필수정</button> :
                             <button onClick={ClickHandler}>신고</button>}
                     </div>
-                    
+
                 </article>
                 <section className={style.profileMain}>
                     {/* 왼쪽프로필 */}
@@ -112,7 +112,7 @@ function MyPageMain() {
             <div className={style.bottomBoard}>
                 <div className={style.careerTitle}>
                     <button onClick={() => handleButtonClick(1)}>댕댕 리뷰 (n개)</button>
-                    {token.memberId === memberId &&
+                    {token.memberId == memberId &&
                         <>
                             <button onClick={() => handleButtonClick(2)}>신청 내역</button>
                             <button onClick={() => handleButtonClick(3)}>나의 펫시터 모집</button>
@@ -122,9 +122,9 @@ function MyPageMain() {
                 </div>
                 {buttonId && <MyCardList buttonId={buttonId} />}
             </div>
-            <div className={style.out}> 
-                {token.memberId === memberId && 
-                <button onClick={handleDelete} >사이트 탈퇴하기</button>}
+            <div className={style.out}>
+                {token.memberId == memberId &&
+                    <button onClick={handleDelete} >사이트 탈퇴하기</button>}
             </div>
         </section>
     );

@@ -2,7 +2,6 @@ import "../../../css/modaltest.css";
 import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
 function RegistPost({ regist }) {
     const dispatch = useDispatch();
@@ -27,14 +26,9 @@ function RegistPost({ regist }) {
             </div>
 
             <div className="button2list">
-                <NavLink
-                    to="../"
-                    className="modalsize-button3"
-                    onClick={handleRegist}
-
-                >
+                <button className="modalsize-button3" onClick={handleRegist}>
                     예
-                </NavLink>
+                </button>
                 <button className="modalsize-button3" onClick={closeModal}>
                     아니요
                 </button>

@@ -81,9 +81,7 @@ function PetMomRecruitDatail() {
 
     useEffect(
         () => {
-
             dispatch(getPetMomDetail(boardId));
-            dispatch(getMomApplicantList(1, boardId));
         },
         []
     )
@@ -114,7 +112,7 @@ function PetMomRecruitDatail() {
                     postUser ? (
                         <>
                             <button className="declarationButton" onClick={() => navigate("./modify", { replace: true })}>수정</button>
-                            <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>
+                            {data.boardStatus === '모집중' && <button className="declarationButton" onClick={openCollectCancleModal}>모집취소</button>}
                         </>
                     ) : (
                         <button className="declarationButton" onClick={openModal}>신고</button>
@@ -207,11 +205,14 @@ function PetMomRecruitDatail() {
                 <div className='formSize'>
                     <hr className="line"></hr>
 
-                    <button className='wantbtn2' onClick={openApplicant}>신청자 목록</button>
-                    {postUser ? (<><button className="wantbtn2" onClick={openModalList}>리뷰 작성</button>
-                        <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
-
-                    </>) :
+                    {postUser ?
+                        (<>
+                            <button className='wantbtn2' onClick={openApplicant}>신청자 목록</button>
+                            {data.momStatus === '모집마감' ?
+                                <button className="wantbtn2" onClick={openModalList}>리뷰 작성</button> :
+                                <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>
+                            }
+                        </>) :
                         <button className="wantbtn2" onClick={openModaljoin}>신청하기</button>
                     }
                     <Modal className="modal-backdrop" isOpen={petmomcollectfinish} onRequestClose={closeModal}>

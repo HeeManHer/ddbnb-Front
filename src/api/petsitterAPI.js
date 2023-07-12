@@ -61,8 +61,7 @@ export function registPetsitterAPI(form) {
 
         if (result.status === 200) {
             alert(result.message);
-            window.location.href = "../";
-            // dispatch({ type: POST_PETSITTER, payload: result.data });
+            window.location.href = "./";
         }
     };
 }

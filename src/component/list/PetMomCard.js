@@ -40,7 +40,7 @@ function PetMomCard({ petmom }) {
                                 <div>{petmom.hourlyRate}￦
                                     <button>시간당</button>
                                     <div className="button-w">
-                                        <button className="section1">{petmom.momStatus}</button>
+                                        <button className="section1">{petmom.boardStatus}</button>
                                     </div>
                                 </div>
                             </div>

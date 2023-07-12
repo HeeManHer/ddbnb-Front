@@ -58,7 +58,7 @@ function App() {
           <Route path="/kakao/callback" element={<KakaoPage />} />
           <Route path="/login/oauth2/code/naver" element={<NaverPage />} />
           <Route path="/loginprofile" element={<LoginProfilePage />} />
-          <Route path="/reviseprofile" element={<ReviceProfilePage />} />
+          <Route path="/reviseprofile/:memberId" element={<ReviceProfilePage />} />
 
           <Route path="petMom" >
             <Route index element={<PetMomList />} />

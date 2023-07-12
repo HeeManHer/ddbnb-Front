@@ -33,7 +33,7 @@ function PetMomAppliedCardBoard() {
             {Array.isArray(applys) && applys.map((apply, index) =>
                 <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
-                        <section style={apply.momStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
+                        <section style={apply.boardStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
                             {apply.boardId.momStatus}
                         </section>
                     </div>

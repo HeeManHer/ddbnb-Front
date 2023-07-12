@@ -31,16 +31,15 @@ function PetSitterList() {
     return (
         <div>
             {postUser && <button className="write" onClick={() => navigate("./recruit")}>글쓰기</button>}
+            <br />
 
             <div className="main">
                 <SearchBar Option={PetSitterOptionBtn} />
             </div>
-
-            {
-                Array.isArray(petsitterList) && petsitterList.map(petsitter => (
-                    <PetSitterCard petsitter={petsitter} key={petsitter.boardId} />
-                ))
-            }
+            <br />
+            {Array.isArray(petsitterList) && petsitterList.map(petsitter => (
+                <PetSitterCard petsitter={petsitter} key={petsitter.boardId} />
+            ))}
             <PageBtn pageInfo={pageInfo} />
         </div >
     )

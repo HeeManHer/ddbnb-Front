@@ -5,7 +5,7 @@ function LastedCard({ category, item }) {
     const navigate = useNavigate();
 
     const url = item.boardImage && item.boardImage[0];
-
+    
     return (
         <div className="lastedCard" onClick={() => navigate(`/${category}/${item.boardId}`)}>
             <div className="lastedCard-inner card center-top">

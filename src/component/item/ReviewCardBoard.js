@@ -1,6 +1,6 @@
 import style from './ReviewCardBoard.module.css';
-import { Link} from 'react-router-dom';
-import { useEffect} from "react";
+import { Link } from 'react-router-dom';
+import { useEffect } from "react";
 import { callReviewListAPI } from "../../api/reviewListAPI";
 import { useDispatch, useSelector } from "react-redux";
 import PageBtn from '../common/PageBtn';
@@ -18,7 +18,6 @@ function ReviewCardBoard() {
         dispatch(callReviewListAPI({ currentPage: currentPage }));
 
     }, [currentPage]);
-
 
     return (
         <section className={style.section}>
