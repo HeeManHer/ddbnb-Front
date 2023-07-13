@@ -20,7 +20,7 @@ function PetSitterAppliedCardBoard() {
     const currentPage = useSelector(state => state.pageReducer);
 
     useEffect(() => {
-        dispatch(getMyApplyListAPI(currentPage,"펫시터"));
+        dispatch(getMyApplyListAPI(currentPage, "펫시터"));
 
     }, [currentPage]);
 
@@ -34,7 +34,6 @@ function PetSitterAppliedCardBoard() {
                 <article className={style.category}>
                     <div>전체</div>
                     <div>지역</div>
-                    <div>견종</div>
                     <div>게시글명</div>
                     <div>신청일</div>
                     <div>취소</div>
@@ -44,14 +43,13 @@ function PetSitterAppliedCardBoard() {
             {Array.isArray(applys) && applys.map((apply, index) =>
                 <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
-                        <section style={apply.boardStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
-                            {apply.boardId.sitterStatus}
+                        <section style={apply.board.boardStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
+                            {apply.board.boardStatus}
                         </section>
                     </div>
-                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
-                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.petShape}</div>
-                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
-                    <div onClick={() => navigate(`/petsitter/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.board.boardId}`)}>{apply.board.location}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.board.boardId}`)}>{apply.board.boardTitle}</div>
+                    <div onClick={() => navigate(`/petsitter/${apply.board.boardId}`)}>{apply.appliedDate}</div>
                     <div>
                         <button onClick={() => { dispatch({ type: OPEN_MODAL, payload: 'cancel' }) }}>신청취소</button>
                         <Modal className="modal-backdrop" isOpen={cancel} onRequestClose={closeModal}>

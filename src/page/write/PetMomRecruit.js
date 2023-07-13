@@ -355,7 +355,7 @@ function PetMomRecruit() {
 
                     <div className="dateAndWriter2">
                         <h2>특이사항</h2>
-                        <textarea className="momplz-textarea1" type="text" onChange={onChangeHandler} name="signficant" />
+                        <textarea className="momplz-textarea1" type="text" onChange={onChangeHandler} name="significant" />
 
                     </div>
 

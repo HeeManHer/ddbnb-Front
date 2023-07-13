@@ -301,7 +301,7 @@ function PetSitterRecruit() {
                         </div>
                         <div className="acb">
                             <button className="significantbtn">특이사항</button>
-                            <textarea className="significant" type="textarea" onChange={onChangeHandler} name="signficant" defaultValue={form.applicant} />
+                            <textarea className="significant" type="textarea" onChange={onChangeHandler} name="significant" defaultValue={form.applicant} />
                         </div>
                     </div>
                 </div>

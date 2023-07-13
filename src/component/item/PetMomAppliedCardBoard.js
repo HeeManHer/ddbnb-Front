@@ -33,12 +33,12 @@ function PetMomAppliedCardBoard() {
             {Array.isArray(applys) && applys.map((apply, index) =>
                 <section className={`${style.category2} ${style.flex_center}`}>
                     <div>
-                        <section style={apply.boardStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
-                            {apply.boardId.momStatus}
+                        <section style={apply.board.boardStatus === "취소됨" ? { backgroundColor: "#8d8d8d", color: "white" } : { backgroundColor: "#FAB7A2" }}>
+                            {apply.board.boardStatus}
                         </section>
                     </div>
-                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.location}</div>
-                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.boardId.boardTitle}</div>
+                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.board.location}</div>
+                    <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.board.boardTitle}</div>
                     <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
                     <div ><button>신청취소</button></div>
                 </section>
