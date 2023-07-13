@@ -11,7 +11,7 @@ function ApplyModal({ boardId }) {
 
     const form = {
         member: { memberId: token.memberId },
-        boardId
+        board: { boardId }
     }
 
     const commit = () => {

@@ -1,23 +1,32 @@
 import style from './AppliedMomCardBoard.module.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getMyApplyListAPI, getMyMomApplyListAPI } from '../../api/applicantAPI';
+import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { useNavigate } from 'react-router-dom';
+import CancelRequest from '../modal/mypage/CancelRequest';
+import Modal from 'react-modal';
+import { OPEN_MODAL, CLOSE_MODAL } from '../../modules/modalModules';
 
 function PetMomAppliedCardBoard() {
 
     const dispatch = useDispatch();
-    const apply = useSelector(state => state.momApplicantsReducer);
-    const currentPage = useSelector(state => state.pageReducer);
-    const { data: applys } = apply;
+    const navigate = useNavigate();
+    
+    //모달
+    const cancel = useSelector(state => state.modalsReducer.cancel);
 
+    const { data: applys } = useSelector(state => state.momApplicantsReducer);
+    const currentPage = useSelector(state => state.pageReducer);
 
     useEffect(() => {
         dispatch(getMyApplyListAPI(currentPage, "펫맘"));
     }, [currentPage]
     );
 
-    const navigate = useNavigate();
+
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
     return (
         <>
             <section className={style.section}>
@@ -40,7 +49,12 @@ function PetMomAppliedCardBoard() {
                     <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.board.location}</div>
                     <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.board.boardTitle}</div>
                     <div onClick={() => navigate(`/petMom/${apply.boardId.boardId}`)}>{apply.appliedDate}</div>
-                    <div ><button>신청취소</button></div>
+                    <div>
+                        <button onClick={() => { dispatch({ type: OPEN_MODAL, payload: 'cancel' }) }}>신청취소</button>
+                        <Modal className="modal-backdrop" isOpen={cancel} onRequestClose={closeModal}>
+                            <CancelRequest applicantId={apply.applicantId} closeModalList={closeModal} />
+                        </Modal>
+                    </div>
                 </section>
             )}
         </>

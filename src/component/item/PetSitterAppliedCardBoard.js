@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMyApplyListAPI } from '../../api/applicantAPI';
 import { useNavigate } from 'react-router-dom';
 import { OPEN_MODAL, CLOSE_MODAL } from '../../modules/modalModules';
-import CancelSitterRequest from '../modal/mypage/CancelSitterRequest';
+import CancelRequest from '../modal/mypage/CancelRequest';
 
 function PetSitterAppliedCardBoard() {
 
@@ -53,7 +53,7 @@ function PetSitterAppliedCardBoard() {
                     <div>
                         <button onClick={() => { dispatch({ type: OPEN_MODAL, payload: 'cancel' }) }}>신청취소</button>
                         <Modal className="modal-backdrop" isOpen={cancel} onRequestClose={closeModal}>
-                            <CancelSitterRequest closeModalList={closeModal} />
+                            <CancelRequest applicantId={apply.applicantId} closeModalList={closeModal} />
                         </Modal>
                     </div>
                 </section>

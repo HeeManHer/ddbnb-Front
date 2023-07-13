@@ -72,8 +72,10 @@ export const registApplicantAPI = (form) => {
 
 
 //삭제
-export const deleteApplicantAPI = ({ applicantId }) => {
+export const deleteApplicantAPI = (applicantId) => {
+
     const URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/${applicantId}`;
+
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
@@ -84,7 +86,8 @@ export const deleteApplicantAPI = ({ applicantId }) => {
             }
         })
         if (result.status === 204) {
-            window.location.replace('/mypage');
+            alert("취소 성공");
+            window.location.reload()
         }
     };
 

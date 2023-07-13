@@ -1,12 +1,10 @@
 import { deleteApplicantAPI } from "../../../api/applicantAPI";
 import { useDispatch } from 'react-redux';
 import { CLOSE_MODAL } from "../../../modules/modalModules";
-import style from './CancelSitterRequest.module.css'
 
-function CancelSitterRequest({ applicantId }) {
+function CancelRequest({ applicantId }) {
     const dispatch = useDispatch();
 
-    const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const commit = () => {
         dispatch(deleteApplicantAPI(applicantId));
     }
@@ -18,7 +16,7 @@ function CancelSitterRequest({ applicantId }) {
     return (
         <div className="modalsize111">
             <div className="inmodalcolor">
-                펫시터 신청 취소
+                신청 취소
             </div>
             <div className="dis-flex justify-between flex-column align-center">
                 <h1 className="joinpet">신청 취소하시겠습니까?</h1>
@@ -42,4 +40,4 @@ function CancelSitterRequest({ applicantId }) {
     )
 }
 
-export default CancelSitterRequest;
+export default CancelRequest;
