@@ -10,13 +10,13 @@ function Navbar() {
 
     const goPetSitter = () => {
         dispatch({ type: RESET_PAGE });
-        // dispatch({ type: RESET_VALUE })
+        dispatch({ type: RESET_VALUE })
         navigate("/petSitter");
     }
 
     const goPetMom = () => {
         dispatch({ type: RESET_PAGE });
-        // dispatch({ type: RESET_VALUE })
+        dispatch({ type: RESET_VALUE })
         navigate("/petMom");
     }
 

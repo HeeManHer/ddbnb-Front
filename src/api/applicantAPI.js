@@ -121,7 +121,7 @@ export const registMomApplicantAPI = (form) => {
 
 export const registApplicantAPI = (form) => {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/applicant`;
 
     return async (dispatch, getState) => {
 
@@ -137,7 +137,6 @@ export const registApplicantAPI = (form) => {
         if (result.status === 200) {
             alert(result.message);
             dispatch({ type: CLOSE_MODAL });
-
         }
     }
 }

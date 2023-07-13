@@ -2,16 +2,16 @@ import "../../../css/modaltest.css";
 import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
-import { registApplicantAPI} from '../../../api/applicantAPI';
+import { registApplicantAPI } from '../../../api/applicantAPI';
 
-function PetSitterApply({ boardId }) {
+function ApplyModal({ boardId }) {
     const dispatch = useDispatch();
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
     const form = {
         member: { memberId: token.memberId },
-        boardId: { boardId: boardId }
+        boardId
     }
 
     const commit = () => {
@@ -26,7 +26,7 @@ function PetSitterApply({ boardId }) {
 
         <div className="modalsize111">
             <div className="inmodalcolor">
-                펫시터 신청
+                모집 신청
             </div>
             <div className="dis-flex justify-between flex-column align-center">
                 <h1 className="joinpet">모집에 신청하시겠습니까?</h1>
@@ -50,4 +50,4 @@ function PetSitterApply({ boardId }) {
 
 
 
-export default PetSitterApply;
+export default ApplyModal;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import "../write/detail.css"
-import PetSitterApply from "../../component/modal/apply/PetSitterApply";
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import ReviewList from "../../component/modal/review/ReviewList";
 import Modal from 'react-modal';
@@ -14,6 +13,7 @@ import style from './PetSitterRecruitDatail.module.css';
 import { getApplicantListAPI } from '../../api/applicantAPI';
 import Declaration from '../../component/modal/declaration/Declaration';
 import ApplicantsList from '../../component/modal/apply/ApplicantsList';
+import ApplyModal from '../../component/modal/apply/ApplyModal';
 
 
 function PetSitterRecruitDatail() {
@@ -230,7 +230,7 @@ function PetSitterRecruitDatail() {
                         <PetSitterCollectFinish onClickhan={onClickhan} />
                     </Modal>
                     <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
-                        <PetSitterApply boardId={boardId} />
+                        <ApplyModal boardId={boardId} />
                     </Modal>
 
                     {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
@@ -239,7 +239,7 @@ function PetSitterRecruitDatail() {
                     {showModalList && <ReviewList closeModalList={closeModalList} />}
                     {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
-                    {showApplicantList && <ApplicantsList closeModalList={openApplicantList} />}
+                    {showApplicantList && <ApplicantsList />}
                     {showApplicantList && <div className="modal-backdrop" onClick={closeApplicantList} />}
                 </div>
             </div >

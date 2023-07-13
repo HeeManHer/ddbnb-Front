@@ -36,7 +36,7 @@ function PetSitterRecruit() {
         petShape: '',
         petGender: '',
         petSize: '',
-        signficant: '',
+        significant: '',
         request: '',
         member: { memberId: token.memberId }
     });
@@ -187,13 +187,13 @@ function PetSitterRecruit() {
                     지역
                     <select className="firstselect1" onChange={onChangeSidoHandler} id="sido" readOnly>
                         <option value="">시/도</option>
-                        <option value="서울">서울특별시</option>
-                        <option value="부산">부산광역시</option>
-                        <option value="대구">대구광역시</option>
-                        <option value="인천">인천광역시</option>
-                        <option value="광주">광주광역시</option>
-                        <option value="대전">대전광역시</option>
-                        <option value="울산">울산광역시</option>
+                        <option value="서울특별시">서울특별시</option>
+                        <option value="부산광역시">부산광역시</option>
+                        <option value="대구광역시">대구광역시</option>
+                        <option value="인천광역시">인천광역시</option>
+                        <option value="광주광역시">광주광역시</option>
+                        <option value="대전광역시">대전광역시</option>
+                        <option value="울산광역시">울산광역시</option>
                         <option value="세종특별자치시">세종특별자치시</option>
                         <option value="경기도">경기도</option>
                         <option value="강원도">강원도</option>

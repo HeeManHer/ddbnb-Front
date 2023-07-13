@@ -4,7 +4,7 @@ import StarPoint from "../item/StarPoint";
 function PetSitterCard({ petsitter }) {
 
     const navigate = useNavigate()
-    console.log(petsitter)
+
     return (
         <div
             className={`in ${petsitter.sitterStatus === '모집취소' ? 'gray' : ''}`}

@@ -22,6 +22,7 @@ function PetMomList() {
     const searchValue = useSelector(state => state.searchReducer);
     const currentPage = useSelector(state => state.pageReducer);
 
+
     useEffect(
         () => {
             dispatch(getPetMomList(currentPage, searchValue));

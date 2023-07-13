@@ -2,10 +2,9 @@ import { GET_PETSITTERDETAIL, GET_PETSITTERLIST, PUT_PETSITTER } from '../module
 
 export const callPetsitterListAPI = (currentPage, searchValue) => {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?page=${currentPage}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter?page=${currentPage}`;
 
     if (searchValue?.location !== '') {
-        console.log(searchValue?.location)
         URL += `&location=${searchValue?.location}`;
     }
 
@@ -18,15 +17,13 @@ export const callPetsitterListAPI = (currentPage, searchValue) => {
     }
 
     if (searchValue?.petSize !== '') {
-        console.log(searchValue?.petSize)
         URL += `&petSize=${searchValue?.petSize}`;
     }
 
     if (searchValue?.care !== '') {
-        console.log(searchValue?.care)
         URL += `&care=${searchValue?.care}`;
     }
-
+    console.log(URL);
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {
@@ -47,7 +44,7 @@ export const callPetsitterListAPI = (currentPage, searchValue) => {
 
 export function registPetsitterAPI(form) {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter`;
 
     return async function (dispatch, getState) {
 
@@ -69,7 +66,7 @@ export function registPetsitterAPI(form) {
 
 export function getPetsitterdetailAPI(boardId) {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter/${boardId}`;
 
     return async function (dispatch, getState) {
 
@@ -86,7 +83,7 @@ export function getPetsitterdetailAPI(boardId) {
 
 export function putPetsitterAPI(form) {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/modify`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter`;
 
     return async function (dispatch, getState) {
 
@@ -109,7 +106,7 @@ export const putMypetSitterCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list/${boardId}/status`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter/${boardId}/status`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -131,7 +128,7 @@ export const putMypetSitterCancle = (boardId, form) => {
 export const getMyPetSitterList = ({ currentPage }) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/mypetsitters?page=${currentPage}&memberId=${token.memberId}`;
 
     return async (dispatch, getState) => {
 

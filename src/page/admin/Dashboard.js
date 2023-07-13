@@ -22,7 +22,7 @@ function Dashboard() {
             dispatch(getNewReport());
             getMemberAmount().then(amount => setMemberAmount(amount.data));
             findMemberBySignDayIsToday().then(member => setSignDayIsToday(member.data));
-        }
+        }, []
     )
 
     return (

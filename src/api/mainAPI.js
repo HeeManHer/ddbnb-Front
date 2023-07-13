@@ -3,7 +3,7 @@ import { SET_PETSITTER } from '../modules/petSitter';
 
 export function getLastedPetmom() {
 
-    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/list?size=3`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom?size=3`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {
@@ -22,7 +22,7 @@ export function getLastedPetmom() {
 
 export function getLastedPetsitter() {
 
-    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petsitter/list?size=3`;
+    let url = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter?size=3`;
 
     return async function (dispatch, getState) {
         const result = await fetch(url, {

@@ -8,17 +8,19 @@ import { useParams } from "react-router-dom";
 
 function ReviewList({ closeModalList }) {
 
+    const dispatch = useDispatch();
+
     const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
     const [isModalOpen, setIsModalOpen] = useState(false); // 추가
 
-    const dispatch = useDispatch();
+    const currentPage = useSelector(state => state.pageReducer);
     const { data: getapplicant, pageInfo } = useSelector(state => state.applicantsReducer);
 
     const { boardId } = useParams();
 
     useEffect(
         () => {
-            dispatch(getApplicantListAPI(boardId));
+            dispatch(getApplicantListAPI(currentPage, boardId));
         }
         , []
     )

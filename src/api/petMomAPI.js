@@ -2,8 +2,8 @@ import { GET_PETMOM, PUT_PETMOMDETAIL, PUT_PETMOM } from "../modules/petMom";
 
 //펫맘 리스트 조회
 export const getPetMomList = (currentPage, searchValue) => {
-
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/list?page=${currentPage}`;
+    console.log(searchValue)
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom?page=${currentPage}`;
 
     if (searchValue?.location !== '') {
         URL += `&location=${searchValue?.location}`;
@@ -45,7 +45,7 @@ export const getPetMomList = (currentPage, searchValue) => {
 
 export function putPetMomPage(boardId, form) {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/modify`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom`;
 
     return async function (dispatch, getState) {
 
@@ -68,7 +68,7 @@ export function putPetMomPage(boardId, form) {
 //펫맘 글쓰기
 export function postPetMomPage(form) {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/regist`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom`;
 
     return async function (dispatch, getState) {
 
@@ -92,7 +92,7 @@ export function postPetMomPage(form) {
 export const getMyPetMomList = (currentPage) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
 
     return async (dispatch, getState) => {
 
@@ -116,7 +116,7 @@ export const putMypetMomCancle = (boardId, form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/list/${boardId}/status`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom/${boardId}/status`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {

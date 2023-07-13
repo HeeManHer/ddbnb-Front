@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import "../write/detail.css"
 import ReviewModal from "../../component/modal/review/ReviewModal";
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import PetMomApplicant from "../../component/modal/review/petMomApplicant";
 import Modal from 'react-modal';
 import Declaration from "../../component/modal/declaration/Declaration";
-import PetMomApply from "../../component/modal/apply/PetMomApply";
 import PetMomCollectCancle from '../../component/modal/collect/PetMomCollectCancle';
 import PetMomCollectFinish from '../../component/modal/collect/PetMomCollectFinish';
 import { getPetMomDetail } from '../../api/petDetailAPI';
 import { useParams, useNavigate } from 'react-router-dom';
 import { putMypetMomCancle } from '../../api/petMomAPI';
-import { getMomApplicantList } from '../../api/applicantAPI';
 import ApplicantsList from "../../component/modal/apply/ApplicantsList"
+import ApplyModal from '../../component/modal/apply/ApplyModal';
+import ReviewList from '../../component/modal/review/ReviewList';
 
 function PetMomRecruitDatail() {
     const navigate = useNavigate()
@@ -219,7 +218,7 @@ function PetMomRecruitDatail() {
                         <PetMomCollectFinish onClickhan={onClickhan} />
                     </Modal>
                     <Modal className="modal-backdrop" isOpen={petMomApply} onRequestClose={closeModal}>
-                        <PetMomApply boardId={boardId} />
+                        <ApplyModal boardId={boardId} />
                     </Modal>
                 </div>
             </div>
@@ -227,10 +226,10 @@ function PetMomRecruitDatail() {
             {showModalReview && <ReviewModal closeModalReview={closeModalReview} />}
             {showModalReview && <div className="modal-backdrop" onClick={closeModalReview} />}
 
-            {showModalList && <PetMomApplicant closeModalList={closeModalList} />}
+            {showModalList && <ReviewList closeModalList={closeModalList} />}
             {showModalList && <div className="modal-backdrop" onClick={closeModalList} />}
 
-            {showApplicant && <ApplicantsList category='mom' closeModalList={openApplicant} />}
+            {showApplicant && <ApplicantsList />}
             {showApplicant && <div className="modal-backdrop" onClick={closeApplicant} />}
         </div >
     )

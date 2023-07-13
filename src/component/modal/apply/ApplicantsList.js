@@ -6,7 +6,7 @@ import PageBtn from "../../common/PageBtn";
 import { getApplicantListAPI, getMomApplicantList } from "../../../api/applicantAPI";
 import { useParams } from "react-router-dom";
 
-function ApplicantsList({ category, closeModalList }) {
+function ApplicantsList() {
 
     const dispatch = useDispatch();
 
@@ -17,11 +17,7 @@ function ApplicantsList({ category, closeModalList }) {
 
     useEffect(
         () => {
-            if (category === 'sitter') {
                 dispatch(getApplicantListAPI(currentPage, boardId, 6));
-            } else if (category === 'mom') {
-                dispatch(getMomApplicantList(currentPage, boardId, 6));
-            }
         },
         [currentPage]
     );
