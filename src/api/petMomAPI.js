@@ -91,7 +91,7 @@ export function postPetMomPage(form) {
 export const getMyPetMomList = (currentPage) => {
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/mypetmoms?page=${currentPage}&memberId=${token.memberId}`;
 
     return async (dispatch, getState) => {
 

@@ -2,7 +2,7 @@ import { GET_PETMOMDETAIL } from '../modules/petdetail';
 
 export const getPetMomDetail = (boardId) => {
 
-    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petmom/list/${boardId}`;
+    let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom/${boardId}`;
 
     return async (dispatch, getState) => {
         const result = await fetch(URL, {
