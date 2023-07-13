@@ -1,6 +1,6 @@
 import { useState } from "react";
 import sigunguList from '../../data/sigoongu.json';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_LOCATION } from "../../modules/location";
 
 function Location() {
@@ -9,7 +9,7 @@ function Location() {
     // 시도 선택시 시군구 리스트 담음
     const [sigList, setSigList] = useState([]);
 
-    const [sido, setSido] = useState("")
+    const location = useSelector(state => state.locationReducer);
 
     const onChangeSidoHandler = (e) => {
         setSigList(
@@ -17,16 +17,17 @@ function Location() {
                 sig => sig.sig.sig_full_nm.startsWith(e.target.value)
             )
         );
-        setSido(e.target.value)
+
+        dispatch({ type: SET_LOCATION, payload: { sido: e.target.value } });
     }
 
     const onChangeSigunguHandler = (e) => {
-        dispatch({ type: SET_LOCATION, payload: `${sido} ${e.target.value}` });
+        dispatch({ type: SET_LOCATION, payload: { sigungu: e.target.value } });
     }
 
     return (
         <>
-            <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} readOnly>
+            <select className="firstselect" id="sigungu" onChange={onChangeSidoHandler} value={location.sido} readOnly>
                 <option value="">시/도</option>
                 <option value="서울특별시">서울특별시</option>
                 <option value="부산광역시">부산광역시</option>
@@ -48,7 +49,7 @@ function Location() {
             </select>
 
             <div className="sidogu">
-                <select className="secondselect" id="sigungu" onChange={onChangeSigunguHandler} readOnly>
+                <select className="secondselect" id="sigungu" value={location.sigungu} onChange={onChangeSigunguHandler} readOnly>
                     <option value="">시 / 군 / 구</option>
                     {sigList.map(sig => <option value={sig.sig.sig_kor_nm} key={sig.id}>{sig.sig.sig_kor_nm}</option>)}
                 </select>

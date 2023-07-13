@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Location from "./Location";
 import { RESET_VALUE, SET_VALUE } from "../../modules/searchValue";
 import { useEffect } from "react";
+import { RESET_LOCATION } from "../../modules/location";
 
 function SearchBar({ Option }) {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ function SearchBar({ Option }) {
 
     useEffect(
         () => {
-            dispatch({ type: SET_VALUE, payload: { location } });
+            dispatch({ type: SET_VALUE, payload: { location: `${location.sido} ${location.sigungu}` } });
         }, [location]
     )
 
@@ -21,6 +22,7 @@ function SearchBar({ Option }) {
 
     const reset = () => {
         dispatch({ type: RESET_VALUE })
+        dispatch({ type: RESET_LOCATION })
     }
 
     return (
