@@ -67,7 +67,6 @@ export const getMyMomApplyListAPI = (currentPage) => {
 
         if (result.status === 200) {
             dispatch({ type: GET_MOMAPPLICANT, payload: result.data });
-            console.log(result);
         }
     }
 }

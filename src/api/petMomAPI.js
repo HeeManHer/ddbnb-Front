@@ -2,7 +2,6 @@ import { GET_PETMOM, PUT_PETMOMDETAIL, PUT_PETMOM } from "../modules/petMom";
 
 //펫맘 리스트 조회
 export const getPetMomList = (currentPage, searchValue) => {
-    console.log(searchValue)
     let URL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petMom?page=${currentPage}`;
 
     if (searchValue?.location !== '') {

@@ -23,7 +23,6 @@ export const callPetsitterListAPI = (currentPage, searchValue) => {
     if (searchValue?.care !== '') {
         URL += `&care=${searchValue?.care}`;
     }
-    console.log(URL);
     return async (dispatch, getState) => {
 
         const result = await fetch(URL, {

@@ -10,16 +10,10 @@ function Header() {
     const admin = token !== null && token.memberId === 1 ? true : false;
 
     const logout = () => {
-        if (token.loginType === 'kakao') {
-            dispatch(callKakaoLogoutAPI());
-        } else if (token.loginType === 'naver') {
-            dispatch(callNaverLogoutAPI());
-        }
+        dispatch(callKakaoLogoutAPI());
+        dispatch(callNaverLogoutAPI());
         navigate("/", { replace: true });
-
     }
-
-    console.log(token)
 
     const openMessageList = () => {
 
