@@ -9,9 +9,14 @@ import { useEffect } from "react";
 import { callKakaoLogoutAPI, callNaverLogoutAPI } from '../../api/LoginAPI';
 
 function LoginProfilePage() {
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const members = useSelector(store => store.memberReducer);
+
     const [inputText, setInputText] = useState('');
+    const [image, setImage] = useState()
 
     const handleInputChange = (e) => {
         setInputText(e.target.value);
@@ -23,22 +28,7 @@ function LoginProfilePage() {
         navigate("/", { replace: true });
     }
 
-    const dispatch = useDispatch();
-    // const handleKeyClick = (e) => {
-    //     if (e.key === 'Enter') {
-    //         // 입력된 텍스트를 배열에 추가
-    //         setTexts((prevTexts) => [...prevTexts, e.target.value]);
-    //         setInputText(''); // 입력 필드 초기화
-    //     }
-    // };
 
-    // const handleDelete = (index) => {
-    //     setTexts((prevTexts) => {
-    //         const updatedTexts = [...prevTexts];
-    //         updatedTexts.splice(index, 1);
-    //         return updatedTexts;
-    //     });
-    // };
 
     useEffect(
         () => {
@@ -56,8 +46,16 @@ function LoginProfilePage() {
 
     const handleActions = () => {
         const memberId = members?.memberId;
-        dispatch(getUpdateMember(memberId, form));
-        navigate("/", { replace: true });
+
+        const formData = new FormData();
+
+        formData.append("newProfile", new Blob([JSON.stringify(form)], { type: "application/json" }));
+
+        if (image) {
+            formData.append("image", image);
+        }
+
+        dispatch(getUpdateMember(memberId, formData));
     }
 
     const onChangeHandler = (e) => {
@@ -92,6 +90,11 @@ function LoginProfilePage() {
         }
     }
 
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        setImage(file);
+    };
+
     return (
         <div className={style.profileContainer}>
             <div>
@@ -106,6 +109,18 @@ function LoginProfilePage() {
                     성별
                     &nbsp;
                     <label className={style.Gender}>{GenderIcon()}</label>
+                    <div>
+                        <input
+                            type="file"
+                            id="imageUpload"
+                            accept='image/jpg,image/png,image/jpeg,image/gif'
+                            style={{ display: "none" }}
+                            onChange={handleImageUpload}
+                        />
+                        <label className="yellow reviewmodal-imgbtn" htmlFor="imageUpload">
+                            +
+                        </label>
+                    </div>
                 </div>
             </div>
 
