@@ -44,7 +44,7 @@ function LoginProfilePage() {
         () => {
             dispatch(getCurrentMember())
         }
-        ,[]
+        , []
     );
     const [form, setForm] = useState({
         nickname: "",
@@ -74,7 +74,7 @@ function LoginProfilePage() {
 
     /* 성별 아이콘 */
     function GenderIcon() {
-        if (members?.gender === 'female' || 'F') {
+        if (members?.gender === 'female' || members?.gender === 'F') {
             return <IoIosFemale />
         } else {
             return <IoIosMale />
@@ -119,14 +119,14 @@ function LoginProfilePage() {
                     닉네임
                 </div>
                 <div style={{ width: '70%' }}>
-                    <input className={style.underLine} 
-                    type="text" 
-                    name='nickname' 
-                    onChange={onChangeHandler} 
-                    placeholder="닉네임을 입력해주세요" 
-                    maxLength={5}
+                    <input className={style.underLine}
+                        type="text"
+                        name='nickname'
+                        onChange={onChangeHandler}
+                        placeholder="닉네임을 입력해주세요"
+                        maxLength={5}
                     />
-                    
+
                 </div>
             </div>
 
@@ -159,11 +159,11 @@ function LoginProfilePage() {
                     펫시터 경력
                 </div>
                 <div style={{ width: '70%' }}>
-                    <input className={style.underLine} 
-                    type="text" 
-                    name='petSitterCareer'
-                    onChange={onChangeHandler} 
-                    placeholder="펫시터 경력을 적어주세요"/>
+                    <input className={style.underLine}
+                        type="text"
+                        name='petSitterCareer'
+                        onChange={onChangeHandler}
+                        placeholder="펫시터 경력을 적어주세요" />
                 </div>
             </div>
 
@@ -172,11 +172,11 @@ function LoginProfilePage() {
                     선호 지역
                 </div>
                 <div style={{ width: '70%' }}>
-                    <input className={style.underLine} 
-                    type="text" 
-                    name='preferredArea'
-                    onChange={onChangeHandler} 
-                    placeholder="선호하는 지역을 적어주세요"/>
+                    <input className={style.underLine}
+                        type="text"
+                        name='preferredArea'
+                        onChange={onChangeHandler}
+                        placeholder="선호하는 지역을 적어주세요" />
                 </div>
             </div>
 
@@ -185,11 +185,11 @@ function LoginProfilePage() {
                     상세 이력
                 </div>
                 <div style={{ width: '70%' }}>
-                    <textarea className={style.textareabox} 
-                    type="text" 
-                    name='detailedHistory'
-                    onChange={onChangeHandler} 
-                    placeholder="상세한 이력을 적어주세요" />
+                    <textarea className={style.textareabox}
+                        type="text"
+                        name='detailedHistory'
+                        onChange={onChangeHandler}
+                        placeholder="상세한 이력을 적어주세요" />
                 </div>
             </div>
 
@@ -202,7 +202,7 @@ function LoginProfilePage() {
                     회원가입
                 </button>
             </div>
-            <br/>
+            <br />
         </div>
     )
 }

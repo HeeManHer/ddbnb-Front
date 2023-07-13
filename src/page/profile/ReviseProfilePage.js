@@ -79,7 +79,7 @@ function ReviseProfilePage() {
 
     /* 성별 아이콘 */
     function GenderIcon() {
-        if (members?.gender === 'female') {
+        if (members?.gender === 'female' || members?.gender === 'F') {
             return <IoIosFemale />
         } else {
             return <IoIosMale />
