@@ -11,7 +11,10 @@ function KakaoPage() {
 
     useEffect(() => {
         dispatch(callKakaoLoginAPI(code))
-            .then(() => dispatch(getCurrentMember()))
+            .then(() => {
+                const token = JSON.parse(window.localStorage.getItem('accessToken'));
+                dispatch(getCurrentMember(token.memberId));
+            })
             .then((member) => {
                 if (member === "새로운회원") {
                     navigate("/loginprofile", { replace: true });
@@ -20,7 +23,7 @@ function KakaoPage() {
                 }
             });
     }, [code, dispatch, navigate]);
-    
+
     return null;
 }
 
