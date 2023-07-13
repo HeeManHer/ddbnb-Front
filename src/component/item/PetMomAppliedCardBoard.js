@@ -1,7 +1,7 @@
 import style from './AppliedMomCardBoard.module.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getMyMomApplyListAPI } from '../../api/applicantAPI';
+import { getMyApplyListAPI, getMyMomApplyListAPI } from '../../api/applicantAPI';
 import { useNavigate } from 'react-router-dom';
 
 function PetMomAppliedCardBoard() {
@@ -13,7 +13,7 @@ function PetMomAppliedCardBoard() {
 
 
     useEffect(() => {
-        dispatch(getMyMomApplyListAPI(currentPage));
+        dispatch(getMyApplyListAPI(currentPage, "펫맘"));
     }, [currentPage]
     );
 

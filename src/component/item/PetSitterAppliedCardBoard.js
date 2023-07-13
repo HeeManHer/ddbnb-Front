@@ -20,7 +20,7 @@ function PetSitterAppliedCardBoard() {
     const currentPage = useSelector(state => state.pageReducer);
 
     useEffect(() => {
-        dispatch(getMyApplyListAPI(currentPage));
+        dispatch(getMyApplyListAPI(currentPage,"펫시터"));
 
     }, [currentPage]);
 

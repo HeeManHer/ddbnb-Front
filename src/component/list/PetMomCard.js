@@ -4,7 +4,7 @@ import StarPoint from "../item/StarPoint";
 function PetMomCard({ petmom }) {
 
     const navigate = useNavigate()
-
+    console.log(petmom)
     return (
         <div onClick={() => navigate(`./${petmom.boardId}`)}>
             <div

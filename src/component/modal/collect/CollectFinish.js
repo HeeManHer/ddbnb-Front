@@ -2,19 +2,28 @@ import "../../../css/modaltest.css";
 import React from "react";
 import { CLOSE_MODAL } from '../../../modules/petSittermodal';
 import { useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
+import { putBoardStatusChange } from "../../../api/petsitterAPI";
 
-function PetSitterCollectFinish({onClickhan}) {
+function CollectFinish() {
 
     const dispatch = useDispatch();
+    const { boardId } = useParams();
 
     const closeModal = () => {
-        dispatch({ type: CLOSE_MODAL, payload: "petsittercollectfinish" });
+        dispatch({ type: CLOSE_MODAL });
     };
+
+    const onClickhan = () => {
+        dispatch(putBoardStatusChange({ boardId, boardStatus: "모집마감" }));
+        closeModal();
+        window.location.reload();
+    }
 
     return (
         <div className="modalsize111">
             <div className="inmodalcolor">
-                펫시터 모집 마감
+                모집 마감
             </div>
             <div className="dis-flex justify-between flex-column align-center">
                 <h1 className="joinpet">모집을 마감하시겠습니까?</h1>
@@ -37,4 +46,4 @@ function PetSitterCollectFinish({onClickhan}) {
     )
 }
 
-export default PetSitterCollectFinish;
+export default CollectFinish;

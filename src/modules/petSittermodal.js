@@ -7,6 +7,7 @@ const initialState = {
     registpost: false,
     canclepost: false,
     finishpost: false,
+    collectFinish: false
 };
 
 export const OPEN_MODAL = 'modal/OPEN_MODAL';

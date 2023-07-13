@@ -101,11 +101,11 @@ export function putPetsitterAPI(form) {
 }
 
 
-export const putMypetSitterCancle = (boardId, form) => {
+export const putBoardStatusChange = (form) => {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/petSitter/${boardId}/status`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_URL}/api/v1/board/status`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -119,6 +119,7 @@ export const putMypetSitterCancle = (boardId, form) => {
         }).then(res => res.json());
 
         if (result.status === 200) {
+            alert(result.message);
             dispatch({ type: PUT_PETSITTER, payload: result.data });
         }
     };

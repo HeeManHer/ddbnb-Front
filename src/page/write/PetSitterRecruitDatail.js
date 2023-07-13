@@ -5,12 +5,11 @@ import ReviewModal from "../../component/modal/review/ReviewModal";
 import ReviewList from "../../component/modal/review/ReviewList";
 import Modal from 'react-modal';
 import { CLOSE_MODAL, OPEN_MODAL } from "../../modules/petSittermodal";
-import PetSitterCollectCancle from '../../component/modal/collect/PetSitterCollectCancle';
-import PetSitterCollectFinish from '../../component/modal/collect/PetSitterCollectFinish';
-import { getPetsitterdetailAPI, putMypetSitterCancle } from "../../api/petsitterAPI";
+import CollectFinish from '../../component/modal/collect/CollectFinish';
+import CollectCancel from '../../component/modal/collect/CollectCancel';
+import { getPetsitterdetailAPI } from "../../api/petsitterAPI";
 import { useNavigate, useParams } from 'react-router-dom';
 import style from './PetSitterRecruitDatail.module.css';
-import { getApplicantListAPI } from '../../api/applicantAPI';
 import Declaration from '../../component/modal/declaration/Declaration';
 import ApplicantsList from '../../component/modal/apply/ApplicantsList';
 import ApplyModal from '../../component/modal/apply/ApplyModal';
@@ -68,7 +67,6 @@ function PetSitterRecruitDatail() {
 
 
     const petsdetail = useSelector(state => state.petSitterReducer) || { images: [] };
-    console.log(petsdetail)
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -84,18 +82,6 @@ function PetSitterRecruitDatail() {
 
     const token = JSON.parse(window.localStorage.getItem('accessToken'));
     const postUser = token !== null && token.memberId === petsdetail.member?.memberId ? true : false;
-
-    const onClickhandle = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집취소" }));
-        closeModal();
-        window.location.reload();
-    }
-
-    const onClickhan = () => {
-        dispatch(putMypetSitterCancle(petsdetail.boardId, { sitterStatus: "모집마감" }));
-        closeModal();
-        window.location.reload();
-    }
 
     const totalImages = petsdetail.boardImage ? petsdetail.boardImage.length : 0;
 
@@ -125,7 +111,7 @@ function PetSitterRecruitDatail() {
                     </Modal>
                 </div>
                 <Modal className="modal-backdrop" isOpen={petsittercollectcancle} onRequestClose={closeModal}>
-                    <PetSitterCollectCancle onClickhandle={onClickhandle} />
+                    <CollectCancel />
                 </Modal>
             </div>
             <div className="dateAndWriter">
@@ -219,7 +205,7 @@ function PetSitterRecruitDatail() {
                     {postUser ?
                         (<>
                             <button className="wantbtn2" onClick={openApplicantList}>신청자 목록</button>
-                            {petsdetail.sitterStatus === '모집마감' ?
+                            {petsdetail.boardStatus === '모집마감' ?
                                 <button className="wantbtn2" onClick={openModalList}>리뷰 목록</button> :
                                 <button className="wantbtn2" onClick={openCollectFinishModal}>모집마감</button>}
                         </>) :
@@ -227,7 +213,7 @@ function PetSitterRecruitDatail() {
                     }
 
                     <Modal className="modal-backdrop" isOpen={petsittercollectfinish} onRequestClose={closeModal}>
-                        <PetSitterCollectFinish onClickhan={onClickhan} />
+                        <CollectFinish />
                     </Modal>
                     <Modal className="modal-backdrop" isOpen={petsitterApply} onRequestClose={closeModal}>
                         <ApplyModal boardId={boardId} />

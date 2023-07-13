@@ -1,7 +1,7 @@
 import style from './MainStyle.module.css';
 
 const KAKAO_REST_API_KEY = '202bf1013addf514255b52a8c9c69ebf';
-const KAKAO_REDIRECT_URI = `https://${process.env.REACT_APP_LOGIN_URL}/kakao/callback`;
+const KAKAO_REDIRECT_URI = `http://${process.env.REACT_APP_LOGIN_URL}/kakao/callback`;
 const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 
 const NAVER_CLIENT_ID = 'T0mWG2VjAfBH9cYz6Qrf';
